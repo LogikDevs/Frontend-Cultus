@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 
-const inputNombre = document.getElementById('nombre') as HTMLInputElement | null;
-const inputApellido = document.getElementById('apellido') as HTMLInputElement | null;
-const inputCorreo = document.getElementById('correo') as HTMLInputElement | null;
+const inputName = document.getElementById('name') as HTMLInputElement | null;
+const inputSurname = document.getElementById('surname') as HTMLInputElement | null;
+const inputEmail = document.getElementById('email') as HTMLInputElement | null;
 const inputPassword = document.getElementById('password') as HTMLInputElement | null;
-const inputConfirmacionPassword = document.getElementById('password2') as HTMLInputElement | null;
-console.log(inputNombre, inputApellido, inputCorreo, inputPassword, inputConfirmacionPassword);
+const inputRepeatPassword = document.getElementById('password2') as HTMLInputElement | null;
+
+console.log(inputName, inputSurname, inputEmail, inputPassword, inputRepeatPassword);
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-
+  
 }

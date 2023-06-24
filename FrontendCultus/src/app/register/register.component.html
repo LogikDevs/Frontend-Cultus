@@ -1,9 +1,28 @@
 <p>Register</p>
 <form>
-<input type="text" placeholder="Ingrese su nombre" pattern="[A-Za-z]{2,20}" id="nombre" required>
-<input type="text" placeholder="Ingrese su apellido" pattern="[A-Za-z]{2,20}" id="apellido" required>
-<input type="email" placeholder="Ingrese su correo" pattern="@gmail.com" id="correo" required>
-<input type="password" placeholder="Ingrese su contraseña" id="password" required>
-<input type="password" placeholder="Repite su contraseña" id="password2" required>
-<input type="submit">
+<input type="text" placeholder="Enter your name" id="name" required>
+<input type="text" placeholder="Enter your Surname" id="surname" required>
+<input type="email" placeholder="Enter your email" id="email" required>
+<input type="password" placeholder="Enter your password" id="password" required>
+<input type="password" placeholder="Repeat your password" id="password2" required>
+<input type="text" placeholder="Enter your age" id="age" required>
+<select id="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="non-binary">Non-Binary</option>
+    <option value="other">Other</option>
+</select>
+<input type="file" accept="image/*" id="pfp">
+<input type="text" placeholder="Enter a description for your Profile" id="description">
+<input type="submit" id="CreateAccountButton">
+<select id="Country">
+    <option value="Uruguay">Uruguay</option>
+    <option value="Mexico">Mexico</option>
+    <option value="Brazil">Brazil</option>
+</select>
+<select id="residenceCountry">
+    <option value="Uruguay">Uruguay</option>
+    <option value="Uganda">Uganda</option>
+    <option value="Argentina">Argentina</option>
+</select>
 </form>
