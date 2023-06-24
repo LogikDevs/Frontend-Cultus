@@ -1,11 +1,9 @@
 <p>Register</p>
 <form>
-<input type="text" placeholder="Ingrese su nombre" id="nombre" #nombre>
-<input type="text" placeholder="Ingrese su apellido" id="apellido" #apellido>
-<input type="text" placeholder="Ingrese su correo" id="correo" #correo>
-<input type="password" placeholder="Ingrese su contraseña" id="password" #password>
-<input type="password" placeholder="Repite su contraseña" id="password" #password>
+<input type="text" placeholder="Ingrese su nombre" pattern="[A-Za-z]{2,20}" id="nombre" required>
+<input type="text" placeholder="Ingrese su apellido" pattern="[A-Za-z]{2,20}" id="apellido" required>
+<input type="email" placeholder="Ingrese su correo" pattern="@gmail.com" id="correo" required>
+<input type="password" placeholder="Ingrese su contraseña" id="password" required>
+<input type="password" placeholder="Repite su contraseña" id="password2" required>
+<input type="submit">
 </form>
-
-
-<p>TROLASO</p>
