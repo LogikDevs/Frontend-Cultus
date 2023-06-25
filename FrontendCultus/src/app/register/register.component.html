@@ -1,29 +1,29 @@
 <p>Register</p>
-<form>
-<input type="text" placeholder="Enter your name" id="name" required>
-<input type="text" placeholder="Enter your Surname" id="surname" required>
-<input type="email" placeholder="Enter your email" id="email" required>
-<input type="password" placeholder="Enter your password" id="password" required>
-<input type="password" placeholder="Repeat your password" id="password2" required>
-<input type="text" placeholder="Enter your age" id="age" required>
-<select id="gender">
+<form #registerForm="ngForm" (ngSubmit)="getRegisterFormData(registerForm.value)">
+<input ngModel name="name" type="text" placeholder="Enter your name" id="name" required>
+<input ngModel name="surname" type="text" placeholder="Enter your Surname" id="surname" required>
+<input ngModel name="age" type="text" placeholder="Enter your age" id="age" required>
+<select ngModel id="gender" name="gender" required>
     <option value="male">Male</option>
     <option value="female">Female</option>
     <option value="non-binary">Non-Binary</option>
     <option value="other">Other</option>
 </select>
-<input type="file" accept="image/*" id="pfp">
-<input type="text" placeholder="Enter a description for your Profile" id="description">
-<input type="submit" id="CreateAccountButton">
-<select id="Country">
+<input ngModel name="email" type="email" placeholder="Enter your email" id="email" required>
+<input ngModel name="password" type="password" placeholder="Enter your password" id="password" required>
+<input ngModel name="password2" type="password" placeholder="Repeat your password" id="password2" required>
+<input ngModel name="description" type="text" placeholder="Enter a description for your Profile" id="description">
+<select ngModel id="homeland" name="homeland">
     <option value="Uruguay">Uruguay</option>
     <option value="Mexico">Mexico</option>
     <option value="Brazil">Brazil</option>
     <option value="Japan">Japan</option>
 </select>
-<select id="residenceCountry">
+<select ngModel id="residenceCountry" name="residanceCountry">
     <option value="Uruguay">Uruguay</option>
     <option value="Uganda">Uganda</option>
     <option value="Argentina">Argentina</option>
 </select>
+<input ngModel type="file" accept="image/*" id="pfp" name="pfp">
+<button id="FinishRegister">Create Account</button>
 </form>
