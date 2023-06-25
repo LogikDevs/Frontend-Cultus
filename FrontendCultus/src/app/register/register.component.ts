@@ -11,6 +11,7 @@ export class RegisterComponent {
   };
 getRegisterFormData(RegisterAccountData:any){
     console.log(RegisterAccountData);
-    this.http.post('/api/v1/user', RegisterAccountData);
-}
+    this.http.post('/api/v1/user', RegisterAccountData).subscribe((res)=>{
+      console.log(res)});
+    }
 }
