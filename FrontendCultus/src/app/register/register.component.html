@@ -1,8 +1,29 @@
 <p>Register</p>
-<form>
-<input type="text" placeholder="Ingrese su nombre" id="nombre" #nombre>
-<input type="text" placeholder="Ingrese su apellido" id="apellido" #apellido>
-<input type="text" placeholder="Ingrese su correo" id="correo" #correo>
-<input type="password" placeholder="Ingrese su contraseña" id="password" #password>
-<input type="password" placeholder="Repite su contraseña" id="password" #password>
+<form #registerForm="ngForm" (ngSubmit)="getRegisterFormData(registerForm.value)">
+<input ngModel name="name" type="text" placeholder="Enter your name" id="name" required>
+<input ngModel name="surname" type="text" placeholder="Enter your Surname" id="surname" required>
+<input ngModel name="age" type="text" placeholder="Enter your age" id="age" required>
+<select ngModel id="gender" name="gender" required>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="non-binary">Non-Binary</option>
+    <option value="other">Other</option>
+</select>
+<input ngModel name="mail" type="email" placeholder="Enter your email" id="email" required>
+<input ngModel name="passwd" type="password" placeholder="Enter your password" id="password" required>
+<input ngModel name="passwd_confirmation" type="password" placeholder="Repeat your password" id="password2" required>
+<input ngModel name="description" type="text" placeholder="Enter a description for your Profile" id="description">
+<select ngModel id="homeland" name="homeland">
+    <option value="1">Uruguay</option>
+    <option value="2">Mexico</option>
+    <option value="3">Brazil</option>
+    <option value="4">Japan</option>
+</select>
+<select ngModel id="residenceCountry" name="residanceCountry">
+    <option value="1">Uruguay</option>
+    <option value="2">Uganda</option>
+    <option value="3">Argentina</option>
+</select>
+<input ngModel type="file" accept="image/*" id="pfp" name="profile_pic">
+<button id="FinishRegister">Create Account</button>
 </form>
