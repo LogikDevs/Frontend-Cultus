@@ -1,1 +1,108 @@
-/*# sourceMappingURL=login.component.css.map */
+.DataLogin {
+  padding: 40px;
+}
+
+.ContainerImagesExamples {
+  display: none;
+}
+
+.ContainerLogin {
+  background-image: url("https://i.ibb.co/x3xGChv/Viaje-1-modified.png");
+  background-color: rgb(0, 0, 0);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Return {
+  cursor: pointer;
+}
+
+.TextLogin {
+  color: #537D57;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.InputLogin input {
+  background-color: rgba(0, 0, 0, 0.432);
+  padding: 0px 10px;
+  color: #537D57;
+  border: none;
+  width: 100%;
+  height: 45px;
+  border-radius: 15px;
+}
+
+.InputLogin p {
+  color: #537D57;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.InputLogin {
+  margin-top: 40px;
+}
+
+.Password a {
+  cursor: pointer;
+  color: rgb(19, 79, 207);
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.ContinueBottom button {
+  border: none;
+  background-color: #4D844D;
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.StartWithGoogle {
+  text-align: center;
+}
+
+.LogosStartSection {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.LogosStartSection p {
+  font-size: 12px;
+  margin: 5px;
+}
+
+.Google img {
+  cursor: pointer;
+  background-color: #1d1f1d;
+  border-radius: 10px;
+}
+
+.Guest img {
+  cursor: pointer;
+  background-color: #1d1f1d;
+  border-radius: 10px;
+}
+
+@media (min-width: 800px) {
+  .ContainerImagesExamples {
+    display: block;
+    width: 40%;
+  }
+  .DataLogin, .ContainerImagesExamples {
+    margin-top: 80px;
+  }
+  .DataLogin {
+    background-color: #232723;
+    border-radius: 15px;
+  }
+}/*# sourceMappingURL=login.component.css.map */
