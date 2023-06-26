@@ -5,7 +5,7 @@ body {
 footer {
   position: static;
   background-color: #111111;
-  height: 170px;
+  height: 200px;
   width: 100%;
-  margin-top: -170px;
+  margin-top: -100px;
 }/*# sourceMappingURL=footer.component.css.map */
