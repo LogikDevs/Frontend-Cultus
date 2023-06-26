@@ -5,7 +5,52 @@ body {
 footer {
   position: static;
   background-color: #111111;
-  height: 200px;
+  height: 250px;
   width: 100%;
   margin-top: -100px;
+}
+
+.ContentLogoAndName {
+  display: flex;
+  justify-content: start;
+}
+
+.LogoCultus img {
+  width: 130px;
+  height: 130px;
+}
+
+.WordCultus img {
+  width: 150px;
+  height: 60px;
+  margin-top: 40px;
+  margin-left: -20px;
+}
+
+.FooterLicense {
+  display: flex;
+  justify-content: center;
+}
+
+.FooterLicense p, a {
+  font-size: 11px;
+  margin: 5px;
+  margin-top: 210px;
+}
+
+.FooterLicense a {
+  color: rgb(138, 136, 134);
+  font-weight: bold;
+}
+
+.FooterLicense p {
+  color: rgb(138, 136, 134);
+}
+
+@media (min-width: 800px) {
+  .FooterLicense p, a {
+    font-size: 15px;
+    margin: 5px;
+    margin-top: 210px;
+  }
 }/*# sourceMappingURL=footer.component.css.map */
