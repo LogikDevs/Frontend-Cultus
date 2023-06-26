@@ -132,14 +132,27 @@ justify-content: center;
 width: 650px;
     }
    .DataLogin,.ContainerImagesExamples{
-  margin-top: 80px;
+  margin-top: 10px;
 
     }
+    .Return{
+        margin-top: -10px;
+    }
     .DataLogin{
-        background-color: #232723;
+        background-color: #232723ee;
         border-radius: 15px;
     }
-    
+    .InputLogin input{
+   
+        height: 45px;
+    }
+    .TextLogin h2{
+        font-size: 25px;
+    }
+    .TextLogin p{
+        font-size: 15px;
+    }
+
 }
 @media (min-width:1100px){
     .PhoneImage{
@@ -154,4 +167,5 @@ width: 650px;
     .DataLogin{
         margin-left: 60px;
     }
+ 
 }
