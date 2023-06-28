@@ -1,65 +1,68 @@
 <form #loginForm="ngForm" action="" (ngSubmit)="getLoginFormData(loginForm.value)">
 
-    <div class="ContainerLogin">
-        <div class="ContainerImagesExamples">
-            <div class="PhoneImage">
-                <img src="assets/Diseño_sin_título__1_-removebg-preview.png" alt="">
-            </div>
-            <div class="PhoneAndDesktopImage">
-                <img src="assets/imagenes.png" alt="">
-            </div>
-        </div>
+ 
 
-        <div class="DataLogin">
-
-            <div class="Return">
-                <img src="assets/Go Back.png" alt="">
-            </div>
-            <div class="TextLogin">
-                <h2>Bienvenido de vuelta</h2>
-                <p>Inicia sesion en tu cuenta</p>
-            </div>
-            <div class="InputLogin">
-                <div class="Username">
-                    <p>Ingrese su correo</p>
-                    <input ngModel name='mail' type="text" placeholder="">
+        <div class="ContainerLogin">
+            <div class="ContainerImagesExamples">
+                <div class="PhoneImage">
+                    <img src="assets/Diseño_sin_título__1_-removebg-preview.png" alt="">
                 </div>
-                <div class="Password">
-                    <p>Contraseña</p>
-                    <input ngModel name='password' type="password" placeholder="">
-                    <a href="·">Olvide mi contraseña</a>
+                <div class="PhoneAndDesktopImage">
+                    <img src="assets/imagenes.png" alt="">
                 </div>
-                <div class="ContinueBottom">
-                    <button>Continuar</button>
+            </div>
+    
+            <div class="DataLogin">
+    
+                <div class="Return">
+                    <img src="assets/Go Back.png" alt="">
                 </div>
-
-                <div class="StartWithGoogle">
-                    <p>o continuar con</p>
-                    <div class="LogosStartSection">
-                        <div class="Google">
-                            <img src="assets/Google.png" alt="">
-                            <p>Google</p>
-                        </div>
-                        <div class="Guest">
-                            <img src="assets/Account.png" alt="">
-                            <p>Invitado</p>
-                        </div>
-
+                <div class="TextLogin">
+                    <h2>Bienvenido de vuelta</h2>
+                    <p>Inicia sesion en tu cuenta</p>
+                </div>
+                <div class="InputLogin">
+                    <div class="Username">
+                        <p>Nombre de usuario</p>
+                        <input type="text" placeholder="">
                     </div>
+                    <div class="Password">
+                        <p>Contraseña</p>
+                        <input type="password" placeholder="">
+                        <a href="·">Olvide mi contraseña</a>
+                    </div>
+                    <div class="ContinueBottom">
+                        <button>Continuar</button>
+                    </div>
+    
+                    <div class="StartWithGoogle">
+                        <p>o continuar con</p>
+                        <div class="LogosStartSection">
+                            <div class="Google">
+                                <img src="assets/Google.png" alt="">
+                                <p>Google</p>
+                            </div>
+                            <div class="Guest">
+                                <img src="assets/Account.png" alt="">
+                                <p>Invitado</p>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="RegisterFromLogin">
+                        <p>¿No tienes cuenta?</p>
+                        <a routerLink="/register">Registrese aqui</a>
+                    </div>
+    
                 </div>
-                <div class="RegisterFromLogin">
-                    <p>¿No tienes cuenta?</p>
-                    <a href="#">Registrese aqui</a>
-                </div>
-
             </div>
+    
+    
+    
+    
+    
         </div>
-
-
-
-
-
-    </div>
-
-
-</form>
+    
+    
+    </form>
+<app-footer></app-footer>
