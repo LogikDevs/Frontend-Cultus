@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {urlAuthenticationAPI} from 'src/app/app.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ export class LoginComponent {
   };
   getLoginFormData(LoginAccountData:any){
     console.log(LoginAccountData);
-    this.http.post('http://localhost:8000/api/v1/user', LoginAccountData).subscribe((res)=>{
+    this.http.post(urlAuthenticationAPI, LoginAccountData).subscribe((res)=>{
       console.log(res)});
     }
   }
