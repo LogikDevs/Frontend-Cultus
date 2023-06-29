@@ -56,7 +56,7 @@ input:-webkit-autofill:focus {
 .InputRegister p {
   color: #537D57;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 12px;
   margin-bottom: 3px;
   margin-left: 10px;
 }
@@ -71,6 +71,10 @@ input:-webkit-autofill:focus {
   text-decoration: underline;
   font-weight: bold;
   font-size: 13px;
+}
+
+.RegisterFromLogin p {
+  font-size: 15px;
 }
 
 .ContinueBottom button {
