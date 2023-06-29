@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { PostsComponent } from './posts/posts.component';
+import { ComienzoComponent } from './comienzo/comienzo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { PostsComponent } from './posts/posts.component';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    PostsComponent
+    PostsComponent,
+    ComienzoComponent
   ],
   imports: [
     BrowserModule,
