@@ -1,3 +1,9 @@
 
-<p #HtmlName *ngIf="UserObj">{{UserObj}}</p>
+<p #HtmlNameSurname *ngFor="let userData of User;">Name: {{ userData.name }} {{ userData.surname }}</p>
+<p #HtmlAge *ngFor="let userData of User;">Age: {{ userData.age }}</p>
+<p #HtmlGender *ngFor="let userData of User;">Gender: {{ userData.gender }}</p>
+<p #HtmlHomeland *ngFor="let userData of User;">Homeland: {{ userData.homeland }}</p>
+<p #HtmlResidence *ngFor="let userData of User;">Residence: {{ userData.residence }}</p>
+<p #HtmlDescription *ngFor="let userData of User;">Description: {{ userData.description }}</p>
+<p #HtmlProfile_Pic *ngFor="let userData of User;">Pfp: {{ userData.profile_pic }}</p>
 
