@@ -30,7 +30,7 @@
 
 
 
-<form #registerForm="ngForm" (ngSubmit)="getRegisterFormData(registerForm.value)">
+<form #registerForm="ngForm" (ngSubmit)="PostRegister(registerForm.value)">
 
     <div class="ContainerRegister">
         <div class="ContainerImagesExamples">
@@ -46,7 +46,7 @@
 <div class="HeaderDataRegister">
     
             <div class="Return">
-                <a routerLink="/login"><img src="assets/Go Back.png" alt=""></a>
+                <a routerLink="/comienzo"><img src="assets/Go Back.png" alt=""></a>
             </div>
             <div class="TextRegister">
                 <h2>Registrate y crea tu cuenta</h2>

@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" action="" (ngSubmit)="getLoginFormData(loginForm.value)">
+<form #loginForm="ngForm" action="" (ngSubmit)="sendLogin(loginForm.value)">
 
  
 
@@ -15,7 +15,7 @@
             <div class="DataLogin">
     
                 <div class="Return">
-                    <img src="assets/Go Back.png" alt="">
+                 <a routerLink="/comienzo"><img src="assets/Go Back.png" alt=""></a>   
                 </div>
                 <div class="TextLogin">
                     <h2>Bienvenido de vuelta</h2>
@@ -28,8 +28,13 @@
                     </div>
                     <div class="Password">
                         <p>Contraseña</p>
-                        <input ngModel name='passwd' type="password" placeholder="">
-                        <a href="·">Olvide mi contraseña</a>
+
+                              
+                      <input ngModel name='passwd' type="password" placeholder="">
+                        <a routerLink="#">Olvide mi contraseña</a>
+
+                   
+
                     </div>
                     <div class="ContinueBottom">
                         <button>Continuar</button>
