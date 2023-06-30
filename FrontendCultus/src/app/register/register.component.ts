@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {urlAuthenticationAPI} from 'src/app/app.component';
+import { PostRegisterService } from '../services/post-register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  constructor(private http: HttpClient){
-  };
-getRegisterFormData(RegisterAccountData:any){
-    console.log(RegisterAccountData);
-    this.http.post(urlAuthenticationAPI, RegisterAccountData).subscribe((res)=>{
-      console.log(res)});
-    }
+  constructor(private api: PostRegisterService){};
+PostRegister(inputdata:any){
+  this.api.PostRegister(inputdata).subscribe((res)=>{
+    console.log(res);
+  });
+}
 }

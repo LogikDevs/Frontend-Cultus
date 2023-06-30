@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ComienzoComponent } from './comienzo/comienzo.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'comienzo', component: ComienzoComponent }
+  { path: 'comienzo', component: ComienzoComponent },
+  { path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({
