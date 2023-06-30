@@ -8,15 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ComienzoComponent } from './comienzo/comienzo.component';
 import { ProfileComponent } from './profile/profile.component';
+import { GuardAuthentication } from './guards/authentication-guard.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [GuardAuthentication] },
   { path: 'login', component: LoginComponent },
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent},
   { path: 'comienzo', component: ComienzoComponent },
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent, canActivate: [GuardAuthentication]}
 ];
 
 @NgModule({
