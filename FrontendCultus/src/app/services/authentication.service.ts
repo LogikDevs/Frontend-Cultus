@@ -15,8 +15,8 @@ export class AuthenticationService {
       grant_type: "password",
       client_id: "1",
       client_secret: "sLlRFyItNUXGE9m6Ziv8radhRcdpdBWNEJx13A4d",
-      mail: credentials.mail,
-      passwd: credentials.passwd
+      mail: credentials.email,
+      passwd: credentials.password
     }
 
     const httpOptions = {
