@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { PostsComponent } from './posts/posts.component';
 import { ComienzoComponent } from './comienzo/comienzo.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { ComienzoComponent } from './comienzo/comienzo.component';
     HomeComponent,
     FooterComponent,
     PostsComponent,
-    ComienzoComponent
+    ComienzoComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
