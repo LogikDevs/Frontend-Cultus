@@ -10,13 +10,13 @@ var userData: any;
 })
 
 export class ProfileComponent implements OnInit{
-  constructor(private api: AuthenticationService) { }
+  constructor(private api: GetUserService) { }
   User: any[] = [];
   ngOnInit():void {
     this.getUser();
   }
   getUser(){
-    this.api.sendLogout().subscribe(res => {
+    this.api.getUser().subscribe(res => {
       var response = res;
       console.log(response);
       /*this.User.push({

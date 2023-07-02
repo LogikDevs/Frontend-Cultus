@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  [x: string]: any;
   private loginUrl = "http://localhost:8000/oauth/token";
   private logoutUrl = "http://localhost:8000/v1/logout";
   constructor(private http: HttpClient) {}
@@ -13,8 +14,8 @@ export class AuthenticationService {
   sendLogin(credentials: any){
     const body = {
       grant_type: "password",
-      client_id: "1",
-      client_secret: "BSyYkajbSkMTQPLmJfKEG4YkLSiw2S9pRRmvmZzg",
+      client_id: "7",
+      client_secret: "x914D4NlkKn4jcPfN8l72AQmH4kgwvjIZy75kE8m",
       username: credentials.email,
       password: credentials.password
     }
