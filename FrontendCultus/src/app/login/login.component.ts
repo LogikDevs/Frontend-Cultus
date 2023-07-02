@@ -19,12 +19,15 @@ export class LoginComponent {
 
     return this.api.sendLogin(credentials).subscribe( 
       (res:any) => {
+        var resultado = res.access_token;
+        console.log(resultado); 
         localStorage.setItem('accessToken', JSON.stringify(res["access_token"]));
         this.status.isLoggedIn = true;
         this.router.navigateByUrl('/');
 
       },(error) => {
         this.loginError = true;
+        console.log("Login Error: " + this.loginError);
       }
     );
   }
