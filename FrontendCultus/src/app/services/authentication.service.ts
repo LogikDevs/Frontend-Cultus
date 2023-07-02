@@ -14,16 +14,16 @@ export class AuthenticationService {
     const body = {
       grant_type: "password",
       client_id: "1",
-      client_secret: "sLlRFyItNUXGE9m6Ziv8radhRcdpdBWNEJx13A4d",
-      mail: credentials.mail,
-      passwd: credentials.passwd
+      client_secret: "BSyYkajbSkMTQPLmJfKEG4YkLSiw2S9pRRmvmZzg",
+      username: credentials.email,
+      password: credentials.password
     }
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-
     return this.http.post(this.loginUrl, body, httpOptions);
+    
   }
   sendLogout(){
     const httpOptions = {
@@ -31,8 +31,8 @@ export class AuthenticationService {
         'Content-Type': 'application/json',
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
       })
+      
     };
-
     return this.http.get(this.loginUrl, httpOptions);
   }
 }
