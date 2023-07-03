@@ -1,6 +1,5 @@
 import { Component , OnInit } from '@angular/core';
 import { GetUserService } from '../services/get-user.service';
-import { AuthenticationService } from '../services/authentication.service';
 
 var userData: any;
  @Component({
@@ -17,9 +16,8 @@ export class ProfileComponent implements OnInit{
   }
   getUser(){
     this.api.getUser().subscribe(res => {
-      var response = res;
-      console.log(response);
-      /*this.User.push({
+      userData = res;
+      this.User.push({
         id: userData.id,
         name: userData.name,
         surname: userData.surname,
@@ -29,7 +27,7 @@ export class ProfileComponent implements OnInit{
         residence: userData.residence,
         description: userData.description,
         profile_pic: userData.profile_pic
-      });*/
+      });
       console.log(this.User);
     })
   }

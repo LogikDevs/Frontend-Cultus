@@ -12,12 +12,10 @@ export class HeaderComponent {
 
   constructor(private api: AuthenticationService, private router: Router, public status: StatusService) {}
   public loggedIn: boolean=false;
-
   logout(){
     this.api.sendLogout().subscribe();
     localStorage.removeItem("accessToken");
     this.status.isLoggedIn = false;
     this.router.navigateByUrl("/login")
-    
   }
 }
