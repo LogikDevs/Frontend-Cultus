@@ -1,4 +1,4 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GetUserService } from '../services/get-user.service';
 
 var userData: any;
@@ -11,6 +11,8 @@ var userData: any;
 export class ProfileComponent implements OnInit{
   constructor(private api: GetUserService) { }
   User: any[] = [];
+  selectedImage: string | undefined;
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   ngOnInit():void {
     this.getUser();
   }
@@ -28,7 +30,17 @@ export class ProfileComponent implements OnInit{
         description: userData.description,
         profile_pic: userData.profile_pic
       });
-      console.log(this.User);
     })
+  }
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
+  }
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.selectedImage = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 }
