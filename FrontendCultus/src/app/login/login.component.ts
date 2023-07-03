@@ -19,7 +19,7 @@ export class LoginComponent {
 
     return this.api.sendLogin(credentials).subscribe( 
       (res:any) => {
-        localStorage.setItem('accessToken', JSON.stringify(res["access_token"]));
+        localStorage.setItem('accessToken', (res["access_token"]));
         this.status.isLoggedIn = true;
         this.router.navigateByUrl('/');
 
