@@ -1,7 +1,7 @@
 import { Component , ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GetUserService } from '../services/get-user.service';
 
-var userData: any;
+//var userData: any;
  @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -10,14 +10,14 @@ var userData: any;
 
 export class ProfileComponent implements OnInit{
   constructor(private api: GetUserService) { }
-  User: any[] = [];
+
   selectedImage: string | undefined;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   ngOnInit():void {
     this.getUser();
   }
   getUser(){
-    this.api.getUser().subscribe(res => {
+    this.api.getUser()/*.subscribe(res => {
       userData = res;
       this.User.push({
         id: userData.id,
@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit{
         description: userData.description,
         profile_pic: userData.profile_pic
       });
-    })
+    })*/
   }
   triggerFileInput() {
     this.fileInput.nativeElement.click();
