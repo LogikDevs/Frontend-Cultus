@@ -1,0 +1,100 @@
+textarea {
+  resize: none;
+}
+
+.AddImage {
+  text-align: center;
+}
+
+.AddImage img {
+  margin-top: 10px;
+}
+
+.AddImageInput {
+  background-color: #537D57;
+  opacity: 0%;
+}
+
+#pfp-input {
+  background-color: #537D57;
+}
+
+.ImageSpace {
+  margin: auto;
+  position: relative;
+  top: 30px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background-image: url("https://static.thenounproject.com/png/3465604-200.png");
+}
+
+.ImageSpace img {
+  width: 100%;
+  height: 100%;
+}
+
+.hideImage {
+  background-image: none !important;
+}
+
+.BackgroundAddImage {
+  background-color: rgb(27, 26, 26);
+  width: 100%;
+  height: 300px;
+  border-bottom: solid 2px #537D57;
+}
+
+.AddDescription textarea {
+  width: 90%;
+  max-width: 500px;
+  height: 80px;
+  background-color: rgb(28, 27, 27);
+  border: 1px solid rgb(26, 40, 26);
+  color: #537D57;
+  font-weight: bold;
+}
+
+.AddDescription {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.TittleDescription p {
+  text-align: start;
+  margin-left: 22px;
+  color: #537D57;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+input {
+  background-color: #537D57;
+}
+
+select {
+  text-align: center;
+  background-color: rgb(28, 27, 27);
+  border: 1px solid rgb(26, 40, 26);
+  border: none;
+  width: 350px;
+  height: 40px;
+  border-radius: 20px;
+  color: #537D57;
+  font-weight: bold;
+}
+
+.AddGender, .AddCountry, .AddResidenceCountry, .FinishProfileData {
+  text-align: center;
+  margin: 20px;
+}
+
+.FinishProfileData button {
+  background-color: rgb(50, 84, 50);
+  border: 1px solid rgb(26, 40, 26);
+  width: 320px;
+  height: 50px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: black;
+}/*# sourceMappingURL=datos-perfil.component.css.map */
