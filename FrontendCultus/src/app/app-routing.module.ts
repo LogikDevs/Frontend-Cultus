@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [GuardAuthentication]}
+  { path: 'profile', component: ProfileComponent } 
 
 ];
 
