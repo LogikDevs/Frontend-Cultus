@@ -32,7 +32,7 @@ export class AuthenticationService {
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
       })
     };
-    console.log(this.logoutUrl, httpOptions);
+
     return this.http.get(this.logoutUrl, httpOptions);
   }
 }
