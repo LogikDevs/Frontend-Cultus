@@ -14,6 +14,7 @@ import { ComienzoComponent } from './comienzo/comienzo.component';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProfileComponent } from './profile/profile.component';
     ComienzoComponent,
 
     SidebarComponent,
-    ProfileComponent
+    ProfileComponent,
+    DatosPerfilComponent
 
   
 

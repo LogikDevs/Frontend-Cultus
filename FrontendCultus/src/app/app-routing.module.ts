@@ -12,6 +12,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostsComponent } from './posts/posts.component';
 import { ProfileComponent } from './profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
+import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication] },
   { path: 'home', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [GuardAuthentication]}
+  { path: 'DatosPerfil', component: DatosPerfilComponent },
+  { path: 'profile', component: ProfileComponent}
 
 ];
 
