@@ -6,7 +6,6 @@ var userData:any;
 })
 
 export class GetUserService {
-  User: any[] = [];
   urlgetUser: string = 'http://localhost:8000/api/v1/validate';
   urlUserInterests: string = "http://localhost:8000/api/v1/likes/";
   httpOptions = {
@@ -18,22 +17,11 @@ export class GetUserService {
   private constructor(private http: HttpClient) { }
   
   getUser(){
-    return this.http.get(this.urlgetUser, this.httpOptions).subscribe(res => {
-        userData = res;
-        this.User.push({
-          id: userData.id,
-          name: userData.name,
-          surname: userData.surname,
-          age: userData.age,
-          gender: userData.gender,
-          homeland: userData.homeland,
-          residence: userData.residence,
-          description: userData.description,
-          profile_pic: userData.profile_pic
-      });
-    });
+    return this.http.get(this.urlgetUser, this.httpOptions)
   }
   getUserInterests(){
+    console.log(userData.id);
     return this.http.get(this.urlUserInterests + userData.id);
+    
   }
 }
