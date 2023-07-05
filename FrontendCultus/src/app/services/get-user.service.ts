@@ -14,7 +14,7 @@ export class GetUserService {
     })
   };
   private constructor(private http: HttpClient) { }
-
+  
   getUser(){
     return this.http.get(this.urlgetUser, this.httpOptions);
   }
