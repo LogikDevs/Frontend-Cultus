@@ -1,4 +1,17 @@
-.ContainerHome{
+.ContainerHome {
     display: flex;
-    justify-content: center;
 }
+
+.PostHome {
+ 
+    margin-left: 150px;
+    width: calc(100% - 278px);
+    transition: all .5s ease;
+ 
+}
+.PostHome{
+    border-left: 1px solid rgba(52, 137, 52, 0.239);
+    border-right: 1px solid rgba(52, 137, 52, 0.239);
+}
+
+
