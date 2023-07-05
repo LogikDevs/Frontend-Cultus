@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-var userData:any;
 @Injectable({
   providedIn: 'root'
 })
 
 export class GetUserService {
   urlgetUser: string = 'http://localhost:8000/api/v1/validate';
-  urlUserInterests: string = "http://localhost:8000/api/v1/likes/";
+  urlUserInterests: string = "http://localhost:8000/api/v1/likes/user/";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -17,11 +16,9 @@ export class GetUserService {
   private constructor(private http: HttpClient) { }
   
   getUser(){
-    return this.http.get(this.urlgetUser, this.httpOptions)
+    return this.http.get(this.urlgetUser, this.httpOptions);
   }
-  getUserInterests(){
-    console.log(userData.id);
-    return this.http.get(this.urlUserInterests + userData.id);
-    
+  getUserInterests(IDinserted:any){
+    return this.http.get(this.urlUserInterests + IDinserted, this.httpOptions);
   }
 }
