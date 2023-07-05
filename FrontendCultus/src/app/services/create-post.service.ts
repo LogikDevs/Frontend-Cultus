@@ -8,7 +8,7 @@ export class CreatePostService {
   
   constructor(private http: HttpClient) {}
   postCreate(postDataReceived:any){
-  const urlCreatePost:any= 'http://localhost:8000/api/post/create';
+  const urlCreatePost:any= 'http://localhost:8001/api/post/create';
   const body = {
     text: postDataReceived.text,
     location: postDataReceived.location
