@@ -5,18 +5,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CreatePostService {
-  body = {
-    text: "texto ejemplo",
-    location: "locacion ejemplo"
+  
+  constructor(private http: HttpClient) {}
+  postCreate(postDataReceived:any){
+  const urlCreatePost:any= 'http://localhost:8000/api/post/create';
+  const body = {
+    text: postDataReceived.text,
+    location: postDataReceived.location
   }
-  httpOptions = {
+  const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
     })
   }
-  constructor(private http: HttpClient) {}
-  getPosts(){
-    return this.http.post('http://localhost:8000/post/create',this.body, this.httpOptions);
+    return this.http.post(urlCreatePost, body, httpOptions);
   }
 }
