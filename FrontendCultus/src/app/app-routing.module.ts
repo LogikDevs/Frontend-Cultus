@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'profile', component: ProfileComponent } 
+  { path: 'profile', component: ProfileComponent } ,
+  { path: 'DatosPerfil', component: DatosPerfilComponent }
 ];
 
 @NgModule({
