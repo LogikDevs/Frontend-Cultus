@@ -40,3 +40,4 @@ export class SidebarComponent implements OnInit {
   }
 
 }
+
