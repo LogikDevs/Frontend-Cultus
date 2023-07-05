@@ -12,6 +12,7 @@ import { PostsComponent } from './posts/posts.component';
 import { ProfileComponent } from './profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 const routes: Routes = [ 
 { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
   { path: 'home', component: HomeComponent },
@@ -22,9 +23,12 @@ const routes: Routes = [
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent } ,
+  { path: 'DatosPerfil', component: DatosPerfilComponent },
   { path: 'createpost', component: CreatePostComponent } 
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
