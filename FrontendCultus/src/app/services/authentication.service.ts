@@ -24,6 +24,7 @@ export class AuthenticationService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     return this.http.post(this.loginUrl, body, httpOptions);
+
   }
   sendLogout(){
     const httpOptions = {
