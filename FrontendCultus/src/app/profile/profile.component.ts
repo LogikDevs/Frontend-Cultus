@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit{
       userData = res;
       this.User.push({
         id: userData.id,
+        email: userData.email,
         name: userData.name,
         surname: userData.surname,
         age: userData.age,
