@@ -44,12 +44,15 @@ export class PostsComponent implements OnInit {
     <div class="FooterPost">
         <div class="DataPost">
             <div class="UpvotesPost">
-                <div class="IconUpvotesPost">
- <img src="assets/like-green.png" alt=""> 
-                </div>
+            <div class="IconUpvotesPost">
+            <img src="assets/post-images/like.svg" alt=""> 
+                           </div>
                 <div class="AmountUpvotesPost">
-                    <p>100k</p>
+                    <p>110k</p>
                 </div>
+                <div class="IconUpvotesPost">
+                <img src="assets/post-images/disgusto.svg" alt=""> 
+                               </div>
             </div>
             <div class="CommentsPost">
                 <div class="IconCommentsPost">
