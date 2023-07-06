@@ -15,6 +15,9 @@ import { ComienzoComponent } from './comienzo/comienzo.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { SelectInterestComponent } from './select-interest/select-interest.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 
     SidebarComponent,
     ProfileComponent,
-    DatosPerfilComponent
+    DatosPerfilComponent,
+    CreatePostComponent,
+    SelectInterestComponent,
+    ForgotPasswordComponent
 
   
 

@@ -1,5 +1,6 @@
 .ContainerHome {
     display: flex;
+    
 }
 
 .PostHome {
@@ -13,5 +14,37 @@
     border-left: 1px solid rgba(52, 137, 52, 0.239);
     border-right: 1px solid rgba(52, 137, 52, 0.239);
 }
+@media(max-width:650px){
+    .PostHome{
+        border: none;
+    }
 
+}
+@media(max-width:499px){
+ #SidebarOff{
+    display: none;
+ }
+ .Post{
+    width: 100%;
+ 
+ }
+ .ContainerPostMobile {
+    width: 100%;
+    margin-left: -30px;
+}
+.ContainerPost {
+    width: 100%;
+}
+.ContainerPostDesktop {
+    display: none;
+}
+.ContainerHome {
+    display: block;
+}
+.PostHome {
+    margin-left: 50px;
+    width: 90%;
+}
+
+}
 

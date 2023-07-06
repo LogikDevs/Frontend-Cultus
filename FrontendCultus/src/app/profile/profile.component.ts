@@ -1,7 +1,7 @@
 import { Component , ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GetUserService } from '../services/get-user.service';
-
 var userData: any;
+var userInterests: any;
  @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit{
       userData = res;
       this.User.push({
         id: userData.id,
+        email: userData.email,
         name: userData.name,
         surname: userData.surname,
         age: userData.age,
@@ -29,7 +30,11 @@ export class ProfileComponent implements OnInit{
         residence: userData.residence,
         description: userData.description,
         profile_pic: userData.profile_pic
-      });
+      }); 
+    this.api.getUserInterests(userData.id).subscribe(res => {
+      userInterests = res;
+      console.log(userInterests);
+      })
     })
   }
   triggerFileInput() {
