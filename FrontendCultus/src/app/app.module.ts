@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { SelectInterestComponent } from './select-interest/select-interest.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SelectInterestComponent } from './select-interest/select-interest.compo
     ProfileComponent,
     DatosPerfilComponent,
     CreatePostComponent,
-    SelectInterestComponent
+    SelectInterestComponent,
+    ForgotPasswordComponent
 
   
 
