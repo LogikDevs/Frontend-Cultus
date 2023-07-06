@@ -13,6 +13,10 @@
   border-right: 1px solid rgba(52, 137, 52, 0.239);
 }
 
+#MenuMobile {
+  display: none;
+}
+
 @media (max-width: 650px) {
   .PostHome {
     border: none;
@@ -21,6 +25,9 @@
 @media (max-width: 499px) {
   #SidebarOff {
     display: none;
+  }
+  #MenuMobile {
+    display: block;
   }
   .Post {
     width: 100%;

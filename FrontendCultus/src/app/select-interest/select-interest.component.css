@@ -103,6 +103,10 @@
   margin-top: 20px;
 }
 
+#MenuMobile {
+  display: none;
+}
+
 .FinishSelectInterest {
   width: 100%;
   margin: auto;
@@ -141,5 +145,17 @@
   .ContainerSelectInterest {
     width: 70%;
     margin-left: 110px;
+  }
+}
+@media (max-width: 499px) {
+  #SidebarOff {
+    display: none;
+  }
+  #MenuMobile {
+    display: block;
+  }
+  .ContainerSelectInterest {
+    margin: auto;
+    margin-top: -20px;
   }
 }/*# sourceMappingURL=select-interest.component.css.map */
