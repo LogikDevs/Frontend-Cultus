@@ -14,17 +14,12 @@ export class RegisterComponent {
   constructor(private api: PostRegisterService, private router: Router, private status: StatusService, private apiauth: AuthenticationService){};
 PostRegister(inputdata:any){
   this.api.PostRegister(inputdata).subscribe(
-    (res:any)=>{
-    console.log(res);
-    //if (res.statusCode == 201){
-    //}
-  });
+    (res:any)=>{console.log("Cuenta Creada")});
   this.apiauth.sendLogin(inputdata).subscribe( 
     (res:any) => {
-      console.log(res);
       localStorage.setItem('accessToken', (res["access_token"]));
       this.status.isLoggedIn = true;
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/DatosPerfil');
       console.log("IsLoggedIn: "+this.status.isLoggedIn);
     }
   );
