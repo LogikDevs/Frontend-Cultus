@@ -20,6 +20,7 @@ import { BackofficeComponent } from './backoffice/backoffice.component';
 import { SidebarBackofficeComponent } from './sidebar-backoffice/sidebar-backoffice.component';
 import { BackofficePostComponent } from './backoffice-post/backoffice-post.component';
 import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.component';
+import { MenuMobileComponent } from './menu-mobile/menu-mobile.component';
 
 const routes: Routes = [ 
 { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'backoffice', component: BackofficeComponent } ,
   { path: 'backoffice-post', component: BackofficePostComponent },
   { path: 'backoffice-users', component: BackofficeUsersComponent},
-  { path: 'sidebar-backoffice', component: SidebarBackofficeComponent }
+  { path: 'sidebar-backoffice', component: SidebarBackofficeComponent },
+  { path: 'Menu-Mobile', component: MenuMobileComponent }
 
 ];
 
