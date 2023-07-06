@@ -18,6 +18,10 @@ import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { SelectInterestComponent } from './select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { BackofficeComponent } from './backoffice/backoffice.component';
+import { SidebarBackofficeComponent } from './sidebar-backoffice/sidebar-backoffice.component';
+import { BackofficePostComponent } from './backoffice-post/backoffice-post.component';
+import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     DatosPerfilComponent,
     CreatePostComponent,
     SelectInterestComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    BackofficeComponent,
+    SidebarBackofficeComponent,
+    BackofficePostComponent,
+    BackofficeUsersComponent
 
   
 
