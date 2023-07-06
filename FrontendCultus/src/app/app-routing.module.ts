@@ -15,6 +15,11 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 import { SelectInterestComponent } from './select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { BackofficeComponent } from './backoffice/backoffice.component';
+
+import { SidebarBackofficeComponent } from './sidebar-backoffice/sidebar-backoffice.component';
+import { BackofficePostComponent } from './backoffice-post/backoffice-post.component';
+import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.component';
 
 const routes: Routes = [ 
 { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -30,8 +35,11 @@ const routes: Routes = [
   { path: 'DatosPerfil', component: DatosPerfilComponent },
   { path: 'createpost', component: CreatePostComponent } ,
   { path: 'SelectInterest', component: SelectInterestComponent } ,
-  { path: 'ForgotPassword', component: ForgotPasswordComponent } 
-  
+  { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
+  { path: 'backoffice', component: BackofficeComponent } ,
+  { path: 'backoffice-post', component: BackofficePostComponent },
+  { path: 'backoffice-users', component: BackofficeUsersComponent},
+  { path: 'sidebar-backoffice', component: SidebarBackofficeComponent }
 
 ];
 
