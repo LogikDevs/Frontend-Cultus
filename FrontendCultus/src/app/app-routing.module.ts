@@ -13,7 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
 import { CreatePostComponent } from './create-post/create-post.component';
 const routes: Routes = [ 
-{ path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
+  { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'header', component: HeaderComponent },
