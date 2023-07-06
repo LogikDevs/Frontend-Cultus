@@ -5,26 +5,23 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  [x: string]: any;
   private loginUrl = "http://localhost:8000/oauth/token";
   private logoutUrl = "http://localhost:8000/api/v1/logout";
   constructor(private http: HttpClient) {}
-  
   
   sendLogin(credentials: any){
     const body = {
       grant_type: "password",
       client_id: "101",
-      client_secret: "giluuq2PCJvS87wI10mo93DpODOTyZKKqAFA0qO4",
+      client_secret: "bVcKUFSmc9NwkhsnR1nM2g4E9eu6UZ2iSkLwkM8i",
       username: credentials.email,
       password: credentials.password
     }
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
+    }
     return this.http.post(this.loginUrl, body, httpOptions);
-
   }
   sendLogout(){
     const httpOptions = {
@@ -32,8 +29,7 @@ export class AuthenticationService {
         'Content-Type': 'application/json',
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
       })
-    };
-
+    }
     return this.http.get(this.logoutUrl, httpOptions);
   }
 }
