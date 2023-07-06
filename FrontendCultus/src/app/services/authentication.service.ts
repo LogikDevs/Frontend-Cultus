@@ -15,7 +15,7 @@ export class AuthenticationService {
     const body = {
       grant_type: "password",
       client_id: "101",
-      client_secret: "giluuq2PCJvS87wI10mo93DpODOTyZKKqAFA0qO4",
+      client_secret: "gtu2QOMPHXNBAeEu0BSaSJhxwS4YLJy9Os1yI9Kg",
       username: credentials.email,
       password: credentials.password
     }
