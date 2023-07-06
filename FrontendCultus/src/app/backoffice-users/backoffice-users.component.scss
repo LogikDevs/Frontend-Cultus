@@ -1,0 +1,48 @@
+.ContainerBackofficeUsers{
+    background-color: rgb(40, 42, 42);
+    width: 80%;
+    height: 700px;
+    margin: auto;
+    margin-top: 50px;
+}
+.User{
+    border-radius: 15px;
+    width: 60%;
+    background-color: rgb(28, 31, 28);
+ margin: auto;
+ margin-top: 20px;
+ color: rgb(11, 86, 11);
+ font-weight: bold;
+   position: relative;
+top: 30px  ;
+    
+}
+.DataUser{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+
+}
+.NameAndPhoto{
+    display: flex;
+width: 40%;
+}
+.SuspendAccount
+{
+display: flex;
+cursor: pointer;
+}
+.DeleteAccount{
+ display: flex; cursor: pointer;
+}
+.DataUser img{
+    width: 80%;height: 60%;
+    margin: 10px;
+}
+
+.Photo img{
+    width: 75%;
+    height: 80%;
+    margin: 5px;
+}

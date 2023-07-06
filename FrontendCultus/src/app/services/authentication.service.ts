@@ -5,11 +5,9 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  [x: string]: any;
   private loginUrl = "http://localhost:8000/oauth/token";
   private logoutUrl = "http://localhost:8000/api/v1/logout";
   constructor(private http: HttpClient) {}
-  
   
   sendLogin(credentials: any){
     const body = {
@@ -22,9 +20,8 @@ export class AuthenticationService {
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
+    }
     return this.http.post(this.loginUrl, body, httpOptions);
-
   }
   sendLogout(){
     const httpOptions = {
@@ -32,8 +29,7 @@ export class AuthenticationService {
         'Content-Type': 'application/json',
         'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
       })
-    };
-
+    }
     return this.http.get(this.logoutUrl, httpOptions);
   }
 }
