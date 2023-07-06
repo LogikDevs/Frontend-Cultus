@@ -16,6 +16,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { SelectInterestComponent } from './select-interest/select-interest.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     SidebarComponent,
     ProfileComponent,
     DatosPerfilComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    SelectInterestComponent
 
   
 
