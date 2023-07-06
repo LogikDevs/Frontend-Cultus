@@ -23,7 +23,7 @@ import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.co
 import { MenuMobileComponent } from './menu-mobile/menu-mobile.component';
 
 const routes: Routes = [ 
-{ path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
+  { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'header', component: HeaderComponent },
