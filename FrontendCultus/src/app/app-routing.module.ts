@@ -12,6 +12,15 @@ import { PostsComponent } from './posts/posts.component';
 import { ProfileComponent } from './profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
+import { SelectInterestComponent } from './select-interest/select-interest.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { BackofficeComponent } from './backoffice/backoffice.component';
+
+import { SidebarBackofficeComponent } from './sidebar-backoffice/sidebar-backoffice.component';
+import { BackofficePostComponent } from './backoffice-post/backoffice-post.component';
+import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.component';
+
 const routes: Routes = [ 
 { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
   { path: 'home', component: HomeComponent },
@@ -22,9 +31,18 @@ const routes: Routes = [
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'createpost', component: CreatePostComponent } 
+  { path: 'profile', component: ProfileComponent } ,
+  { path: 'DatosPerfil', component: DatosPerfilComponent },
+  { path: 'createpost', component: CreatePostComponent } ,
+  { path: 'SelectInterest', component: SelectInterestComponent } ,
+  { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
+  { path: 'backoffice', component: BackofficeComponent } ,
+  { path: 'backoffice-post', component: BackofficePostComponent },
+  { path: 'backoffice-users', component: BackofficeUsersComponent},
+  { path: 'sidebar-backoffice', component: SidebarBackofficeComponent }
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

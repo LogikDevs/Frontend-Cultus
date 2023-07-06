@@ -1,4 +1,50 @@
-.ContainerHome{
+.ContainerHome {
     display: flex;
-    justify-content: center;
+    
 }
+
+.PostHome {
+ 
+    margin-left: 150px;
+    width: calc(100% - 278px);
+    transition: all .5s ease;
+ 
+}
+.PostHome{
+    border-left: 1px solid rgba(52, 137, 52, 0.239);
+    border-right: 1px solid rgba(52, 137, 52, 0.239);
+}
+@media(max-width:650px){
+    .PostHome{
+        border: none;
+    }
+
+}
+@media(max-width:499px){
+ #SidebarOff{
+    display: none;
+ }
+ .Post{
+    width: 100%;
+ 
+ }
+ .ContainerPostMobile {
+    width: 100%;
+    margin-left: -30px;
+}
+.ContainerPost {
+    width: 100%;
+}
+.ContainerPostDesktop {
+    display: none;
+}
+.ContainerHome {
+    display: block;
+}
+.PostHome {
+    margin-left: 50px;
+    width: 90%;
+}
+
+}
+
