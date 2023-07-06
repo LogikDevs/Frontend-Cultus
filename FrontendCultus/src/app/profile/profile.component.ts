@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit{
         residence: userData.residence,
         description: userData.description,
         profile_pic: userData.profile_pic
-      }); 
+    }); 
     this.api.getUserInterests(userData.id).subscribe(res => {
       userInterests = res;
       console.log(userInterests);
