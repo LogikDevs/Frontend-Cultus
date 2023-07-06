@@ -4,7 +4,7 @@
 </div>
 
 <div class="ContainerDatosPerfil">
-    <form action="">
+    <form #ProfileDataForm="ngForm" action="" (ngSubmit)="sendProfileData(ProfileDataForm.value)">
 
 
         <div class="BackgroundAddImage">
@@ -67,7 +67,7 @@
             
         </div>
         <div class="AddResidenceCountry">
-            <select ngModel id="residenceCountry" name="residanceCountry">
+            <select ngModel id="residenceCountry" name="residenceCountry">
                 <option disabled selected value="">Selecciona tu pais de residencia</option>
                 <option value="1">Uruguay</option>
                 <option value="2">Uganda</option>
