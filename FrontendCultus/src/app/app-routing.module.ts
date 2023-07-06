@@ -22,7 +22,7 @@ import { BackofficePostComponent } from './backoffice-post/backoffice-post.compo
 import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.component';
 
 const routes: Routes = [ 
-{ path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
+  { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'header', component: HeaderComponent },
