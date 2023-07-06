@@ -16,15 +16,12 @@ export class LoginComponent {
   constructor(private api: AuthenticationService, private router: Router, private status: StatusService) {}
   
   sendLogin(credentials: any){
-
     return this.api.sendLogin(credentials).subscribe( 
       (res:any) => {
         localStorage.setItem('accessToken', (res["access_token"]));
         this.status.isLoggedIn = true;
         this.router.navigateByUrl('/');
         console.log("IsLoggedIn: "+this.status.isLoggedIn);
-      },(error) => {
-        this.loginError = true;
       }
     );
   }
