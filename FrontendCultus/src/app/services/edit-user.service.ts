@@ -15,10 +15,8 @@ export class EditUserService {
       'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
     })
   }
-
   getEditUser(EditUserData:any){
     this.api.getUser().subscribe((res:any)=>{
-      
       const body = {
         id: res.id,
         name: res.name,

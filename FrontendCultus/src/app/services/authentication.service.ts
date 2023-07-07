@@ -17,7 +17,6 @@ export class AuthenticationService {
       username: credentials.email,
       password: credentials.password
     }
-
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }
