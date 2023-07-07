@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'sidebar', component: SidebarComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'profile', component: ProfileComponent } ,
-  { path: 'DatosPerfil', component: DatosPerfilComponent },
+  { path: 'optionsdata', component: DatosPerfilComponent },
   { path: 'createpost', component: CreatePostComponent } ,
   { path: 'SelectInterest', component: SelectInterestComponent } ,
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
