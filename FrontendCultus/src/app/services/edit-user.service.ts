@@ -9,17 +9,14 @@ import { Router } from '@angular/router';
 export class EditUserService {
   constructor(private http: HttpClient, private api: GetUserService, private router: Router) { }
   urlApiEditUser:string = "http://localhost:8000/api/v1/user/";
-  userData:any;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
     })
   }
-
   getEditUser(EditUserData:any){
     this.api.getUser().subscribe((res:any)=>{
-      
       const body = {
         id: res.id,
         name: res.name,
@@ -37,8 +34,7 @@ export class EditUserService {
     });
   }  
   sendEditUser(body:any){
-    this.http.put(this.urlApiEditUser+body.id, body).subscribe((res:any)=>{
+    this.http.put(this.urlApiEditUser+body.id, body, this.httpOptions);
     this.router.navigateByUrl('/SelectInterest');
-    })
   }
 }
