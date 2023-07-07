@@ -30,7 +30,6 @@ export class DatosPerfilComponent {
     const selecthomeland:any = document.getElementById("homeland");
     const selectresidence:any = document.getElementById("residenceCountry");
     this.countries.getCountries().subscribe((res:any)=>{
-      console.log(res);
       for (let i = 0; i < res.length; i++){
         var country = res[i];
         let newOption = new Option(country.country_name, country.id_country);
