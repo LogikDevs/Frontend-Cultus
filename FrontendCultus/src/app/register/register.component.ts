@@ -12,15 +12,16 @@ import { AuthenticationService } from '../services/authentication.service';
 export class RegisterComponent {
   
   constructor(private api: PostRegisterService, private router: Router, private status: StatusService, private apiauth: AuthenticationService){};
-PostRegister(inputdata:any){
-  this.api.PostRegister(inputdata).subscribe(
-    (res:any)=>{console.log("Cuenta Creada")});
-  this.apiauth.sendLogin(inputdata).subscribe( 
-    (res:any) => {
-      localStorage.setItem('accessToken', (res["access_token"]));
-      this.status.isLoggedIn = true;
-      this.router.navigateByUrl('/optionsdata');
-      console.log("IsLoggedIn: "+this.status.isLoggedIn);
+  PostRegister(inputdata:any){
+    this.api.PostRegister(inputdata).subscribe((res:any)=>{//Creo la cuenta
+      this.apiauth.sendLogin(inputdata).subscribe( //Inicio sesion con los datos de la cuenta recien creada
+      (res2:any) => {
+        console.log(res2); //recibo un accesstoken
+        localStorage.setItem('accessToken', (res2["access_token"]));
+        this.status.isLoggedIn = true;
+        this.router.navigateByUrl('/optionsdata');
+        console.log("IsLoggedIn: "+this.status.isLoggedIn);
       })
-    }
+    })
   }
+}
