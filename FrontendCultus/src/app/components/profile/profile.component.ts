@@ -1,5 +1,5 @@
 import { Component , ElementRef, OnInit, ViewChild } from '@angular/core';
-import { GetUserService } from '../services/get-user.service';
+import { GetUserService } from '../../services/get-user.service';
 var userData: any;
 var userInterests: any;
  @Component({

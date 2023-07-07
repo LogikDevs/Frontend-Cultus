@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
-import { GetPostsService } from '../services/get-posts.service';
-import { GetUserService } from '../services/get-user.service';
+import { GetPostsService } from '../../services/get-posts.service';
+import { GetUserService } from '../../services/get-user.service';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
