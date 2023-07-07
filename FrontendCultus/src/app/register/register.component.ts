@@ -21,7 +21,6 @@ PostRegister(inputdata:any){
       this.status.isLoggedIn = true;
       this.router.navigateByUrl('/optionsdata');
       console.log("IsLoggedIn: "+this.status.isLoggedIn);
+      })
     }
-  );
   }
-}
