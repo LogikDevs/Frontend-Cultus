@@ -26,7 +26,7 @@ body {
   width: 250px;
 }
 
-.sidebar .logo_details {
+.sidebar .LogoDetails {
   height: 60px;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@ body {
   opacity: 0;
 }
 
-.sidebar .logo_details .logo_name {
+.sidebar .LogoDetails .LogoName {
   color: #537D57;
   font-size: 22px;
   font-weight: 600;
@@ -50,15 +50,15 @@ body {
   transition: all 0.5s ease;
 }
 
-.sidebar.open .logo_details .logo_name {
+.sidebar.open .LogoDetails .LogoName {
   opacity: 1;
 }
 
-.sidebar.open .logo_details .menu {
+.sidebar.open .LogoDetails .menu {
   display: none;
 }
 
-.logo_details .menu {
+.LogoDetails .menu {
   width: 80%;
   display: block;
 }
@@ -89,7 +89,7 @@ a {
   display: block;
 }
 
-.sidebar .logo_details #btn {
+.sidebar .LogoDetails #btn {
   position: absolute;
   top: 50%;
   right: 0;
@@ -100,7 +100,7 @@ a {
   transition: all 0.5s ease;
 }
 
-.sidebar.open .logo_details #btn {
+.sidebar.open .LogoDetails #btn {
   text-align: right;
 }
 
@@ -182,7 +182,7 @@ a {
   color: #1F201F;
 }
 
-.sidebar li a .link_name {
+.sidebar li a .LinkName {
   color: #537D57;
   font-size: 15px;
   font-weight: 400;
@@ -193,13 +193,13 @@ a {
   opacity: 0;
 }
 
-.sidebar li a:hover .link_name,
+.sidebar li a:hover .LinkName,
 .sidebar li a:hover i {
   transition: all 0.5s ease;
   color: #537D57;
 }
 
-.sidebar.open li a .link_name {
+.sidebar.open li a .LinkName {
   opacity: 1;
   pointer-events: auto;
 }
@@ -239,7 +239,7 @@ a {
   width: 250px;
 }
 
-.sidebar .profile .profile_details {
+.sidebar .profile .ProfileDetails {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -294,6 +294,6 @@ a {
   margin-top: -10px !important;
 }
 
-.profile_content {
+.ProfileContent {
   margin-left: 10px;
 }/*# sourceMappingURL=sidebar-backoffice.component.css.map */
