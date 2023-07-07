@@ -117,7 +117,9 @@ select{
     overflow-y: auto;
 
 }
-
+#MenuMobile{
+    display: none;
+}
 .AddGender,.AddCountry,.AddResidenceCountry,.FinishProfileData{
     text-align: center;
     margin: 20px;
@@ -181,4 +183,15 @@ select{
 }
 
 
-  
+@media(max-width:499px){
+    #SidebarOff{
+       display: none;
+    }
+    #MenuMobile{
+       display: block;
+    }
+    .ContainerDatosPerfil{
+        margin: auto;
+        margin-top: -20px;
+    }
+}

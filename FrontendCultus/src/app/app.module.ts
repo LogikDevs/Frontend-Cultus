@@ -22,6 +22,7 @@ import { BackofficeComponent } from './backoffice/backoffice.component';
 import { SidebarBackofficeComponent } from './sidebar-backoffice/sidebar-backoffice.component';
 import { BackofficePostComponent } from './backoffice-post/backoffice-post.component';
 import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.component';
+import { MenuMobileComponent } from './menu-mobile/menu-mobile.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.co
     BackofficeComponent,
     SidebarBackofficeComponent,
     BackofficePostComponent,
-    BackofficeUsersComponent
+    BackofficeUsersComponent,
+    MenuMobileComponent
 
   
 
