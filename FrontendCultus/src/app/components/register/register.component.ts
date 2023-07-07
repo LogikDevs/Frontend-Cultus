@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { PostRegisterService } from '../services/post-register.service';
+import { PostRegisterService } from '../../services/post-register.service';
 import { Router } from '@angular/router';
-import { StatusService } from '../services/status.service';
+import { StatusService } from '../../services/status.service';
 import { catchError} from 'rxjs';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

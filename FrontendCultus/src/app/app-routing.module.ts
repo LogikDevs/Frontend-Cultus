@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-import { ComienzoComponent } from './comienzo/comienzo.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { PostsComponent } from './posts/posts.component';
-import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ComienzoComponent } from './components/comienzo/comienzo.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
-import { CreatePostComponent } from './create-post/create-post.component';
-import { DatosPerfilComponent } from './datos-perfil/datos-perfil.component';
-import { SelectInterestComponent } from './select-interest/select-interest.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { BackofficeComponent } from './backoffice/backoffice.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
+import { SelectInterestComponent } from './components/select-interest/select-interest.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { BackofficeComponent } from './components/backoffice/backoffice.component';
 
-import { SidebarBackofficeComponent } from './sidebar-backoffice/sidebar-backoffice.component';
-import { BackofficePostComponent } from './backoffice-post/backoffice-post.component';
-import { BackofficeUsersComponent } from './backoffice-users/backoffice-users.component';
-import { MenuMobileComponent } from './menu-mobile/menu-mobile.component';
+import { SidebarBackofficeComponent } from './components/sidebar-backoffice/sidebar-backoffice.component';
+import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
+import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
+import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
