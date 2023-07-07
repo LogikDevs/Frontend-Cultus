@@ -19,7 +19,7 @@ PostRegister(inputdata:any){
     (res:any) => {
       localStorage.setItem('accessToken', (res["access_token"]));
       this.status.isLoggedIn = true;
-      this.router.navigateByUrl('/DatosPerfil');
+      this.router.navigateByUrl('/optionsdata');
       console.log("IsLoggedIn: "+this.status.isLoggedIn);
     }
   );
