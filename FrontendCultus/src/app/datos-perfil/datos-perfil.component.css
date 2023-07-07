@@ -116,6 +116,10 @@ select {
   overflow-y: auto;
 }
 
+#MenuMobile {
+  display: none;
+}
+
 .AddGender, .AddCountry, .AddResidenceCountry, .FinishProfileData {
   text-align: center;
   margin: 20px;
@@ -172,5 +176,17 @@ select {
   .ContainerDatosPerfil {
     width: 70%;
     margin-left: 110px;
+  }
+}
+@media (max-width: 499px) {
+  #SidebarOff {
+    display: none;
+  }
+  #MenuMobile {
+    display: block;
+  }
+  .ContainerDatosPerfil {
+    margin: auto;
+    margin-top: -20px;
   }
 }/*# sourceMappingURL=datos-perfil.component.css.map */
