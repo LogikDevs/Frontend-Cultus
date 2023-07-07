@@ -38,7 +38,7 @@ export class EditUserService {
   }  
   sendEditUser(body:any){
     this.http.put(this.urlApiEditUser+body.id, body).subscribe((res:any)=>{
-    this.router.navigateByUrl('/SelectInterest');
+      this.router.navigateByUrl('/SelectInterest');
     })
   }
 }
