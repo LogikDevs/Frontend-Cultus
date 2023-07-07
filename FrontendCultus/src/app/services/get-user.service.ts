@@ -10,7 +10,7 @@ export class GetUserService {
   private urlUserFromId = 'http://localhost:8000/api/v1/user/'
   private constructor(private http: HttpClient) { }
   
-  getUser(){  
+  getUser(){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -26,9 +26,9 @@ export class GetUserService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
+        'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
       })
-    }
+    };
     return this.http.get(this.urlUserInterests + IDinserted, httpOptions);
   }
 }
