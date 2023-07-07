@@ -10,22 +10,22 @@ export class GetUserService {
 
   private constructor(private http: HttpClient) { }
   
-  getUser(){  
+  getUser(){
     const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
-    })
-  }
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
+      })
+    };
     return this.http.get(this.urlgetUser, httpOptions);
   }
   getUserInterests(IDinserted:any){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
+        'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
       })
-    }
+    };
     return this.http.get(this.urlUserInterests + IDinserted, httpOptions);
   }
 }
