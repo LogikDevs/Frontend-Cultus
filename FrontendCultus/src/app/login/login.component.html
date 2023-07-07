@@ -1,73 +1,64 @@
 <form #loginForm="ngForm" action="" (ngSubmit)="sendLogin(loginForm.value)">
 
- 
-
-        <div class="ContainerLogin">
-            <div class="ContainerImagesExamples">
-                <div class="PhoneImage">
-                    <img src="assets/Diseño_sin_título__1_-removebg-preview.png" alt="">
-                </div>
-                <div class="PhoneAndDesktopImage">
-                    <img src="assets/imagenes.png" alt="">
-                </div>
+    <div class="ContainerLogin">
+        <div class="ContainerImagesExamples">
+            <div class="PhoneImage">
+                <img src="assets/Diseño_sin_título__1_-removebg-preview.png" alt="">
             </div>
-    
-            <div class="DataLogin">
-    
-                <div class="Return">
-                 <a routerLink="/comienzo"><img src="assets/Go Back.png" alt=""></a>   
-                </div>
-                <div class="TextLogin">
-                    <h2>Bienvenido de vuelta</h2>
-                    <p>Inicia sesion en tu cuenta</p>
-                </div>
-                <div class="InputLogin">
-                    <div class="Username"> 
-                        <p>Correo electronico</p>
-                        <input ngModel name='email' type="text" placeholder="">
-                    </div>
-                    <div class="Password">
-                        <p>Contraseña</p>
-
-                              
-                      <input ngModel name='password' type="password" placeholder="">
-                        <a routerLink="/ForgotPassword">Olvide mi contraseña</a>
-
-                   
-
-                    </div>
-                    <div class="ContinueBottom">
-                        <button>Continuar</button>
-                    </div>
-    
-                    <div class="StartWithGoogle">
-                        <p>o continuar con</p>
-                        <div class="LogosStartSection">
-                            <div class="Google">
-                                <img src="assets/Google.png" alt="">
-                                <p>Google</p>
-                            </div>
-                            <div class="Guest">
-                                <img src="assets/Account.png" alt="">
-                                <p>Invitado</p>
-                            </div>
-    
-                        </div>
-                    </div>
-                    <div class="RegisterFromLogin">
-                        <p>¿No tienes cuenta?</p>
-                        <a routerLink="/register">Registrese aqui</a>
-                    </div>
-    
-                </div>
+            <div class="PhoneAndDesktopImage">
+                <img src="assets/imagenes.png" alt="">
             </div>
-    
-    
-    
-    
-    
         </div>
-    
-    
-    </form>
+
+        <div class="DataLogin">
+
+            <div class="Return">
+                <a routerLink="/comienzo"><img src="assets/Go Back.png" alt=""></a>
+            </div>
+            <div class="TextLogin">
+                <h2>Bienvenido de vuelta</h2>
+                <p>Inicia sesion en tu cuenta</p>
+            </div>
+            <div class="InputLogin">
+                <div class="Username">
+                    <p>Correo electronico</p>
+                    <input ngModel name='email' type="text" placeholder="">
+                </div>
+                <div class="Password">
+                    <p>Contraseña</p>
+
+                    <input ngModel name='password' type="password" placeholder="">
+                    <a routerLink="/ForgotPassword">Olvide mi contraseña</a>
+
+                </div>
+                <div class="ContinueBottom">
+                    <button>Continuar</button>
+                </div>
+
+                <div class="StartWithGoogle">
+                    <p>o continuar con</p>
+                    <div class="LogosStartSection">
+                        <div class="Google">
+                            <img src="assets/Google.png" alt="">
+                            <p>Google</p>
+                        </div>
+                        <div class="Guest">
+                            <img src="assets/Account.png" alt="">
+                            <p>Invitado</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="RegisterFromLogin">
+                    <p>¿No tienes cuenta?</p>
+                    <a routerLink="/register">Registrese aqui</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</form>
 <app-footer></app-footer>

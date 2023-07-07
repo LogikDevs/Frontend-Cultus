@@ -2,7 +2,7 @@ $ColorFuente:#537D57;
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  /* Restablece el color de fondo y el color de texto */
+
   -webkit-box-shadow: 0 0 0px 1000px #030303e4 inset;
   -webkit-text-fill-color:$ColorFuente;
 }
@@ -151,9 +151,7 @@ margin-top: 0px;
 
 
 @media (min-width:800px){
-    .ContainerRegister{
-      
-    }
+   
     .ContainerImagesExamples{
         display: block;
         width: 40%;

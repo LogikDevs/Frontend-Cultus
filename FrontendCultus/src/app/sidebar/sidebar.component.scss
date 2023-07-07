@@ -33,7 +33,7 @@ body{
   width: 250px;
 }
 
-.sidebar .logo_details{
+.sidebar .LogoDetails{
   height: 60px;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@ body{
 
 
 
-.sidebar .logo_details .logo_name{
+.sidebar .LogoDetails .LogoName{
   color:$ColorFuente;
   font-size: 22px;
   font-weight: 600;
@@ -58,15 +58,15 @@ body{
   transition: all .5s ease;
 }
 
-.sidebar.open .logo_details .logo_name{
+.sidebar.open .LogoDetails .LogoName{
   opacity: 1;
 }
 
-.sidebar.open .logo_details .menu{
+.sidebar.open .LogoDetails .menu{
 
 display: none;
 }
-.logo_details .menu{
+.LogoDetails .menu{
 
 width: 80%;
     display: block;
@@ -105,7 +105,7 @@ margin-top: 20px;
       
       
 
-.sidebar .logo_details #btn{
+.sidebar .LogoDetails #btn{
   position: absolute;
   top:50%;
   right: 0;
@@ -116,7 +116,7 @@ margin-top: 20px;
   transition: all .5s ease;
 }
 
-.sidebar.open .logo_details #btn{
+.sidebar.open .LogoDetails #btn{
   text-align: right;
 }
 
@@ -206,7 +206,7 @@ margin-top: 20px;
   color:$ColorSeleccionado;
 }
 
-.sidebar li a .link_name{
+.sidebar li a .LinkName{
   color:$ColorFuente;
   font-size: 15px;
   font-weight: 400;
@@ -217,13 +217,13 @@ margin-top: 20px;
   opacity: 0;
 }
 
-.sidebar li a:hover .link_name,
+.sidebar li a:hover .LinkName,
 .sidebar li a:hover i{
   transition: all 0.5s ease;
   color:$ColorFuente;
 }
 
-.sidebar.open li a .link_name{
+.sidebar.open li a .LinkName{
   opacity: 1;
   pointer-events: auto;
 }
@@ -265,7 +265,7 @@ position:absolute;
   width: 250px;
 }
 
-.sidebar .profile .profile_details{
+.sidebar .profile .ProfileDetails{
   display: flex;
   align-items: center;
   flex-wrap:  nowrap;
@@ -320,6 +320,6 @@ position:absolute;
 .ProfileUser{
     margin-top: -10px !important;
 }
-.profile_content{
+.ProfileContent{
     margin-left: 10px;
 }

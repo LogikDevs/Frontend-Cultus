@@ -1,6 +1,6 @@
 <div class="OthersComponents">
     <app-header></app-header>
-   <app-sidebar id="SidebarOff"></app-sidebar>
+    <app-sidebar id="SidebarOff"></app-sidebar>
 </div>
 
 <div class="ContainerDatosPerfil">
@@ -8,23 +8,23 @@
 
 
         <div class="BackgroundAddImage">
-       <div class="SkipDatosPerfil">
-        <button>Omitir</button>
-       </div>
+            <div class="SkipDatosPerfil">
+                <button routerLink="/SelectInterest">Omitir</button>
+            </div>
             <div class="AddImage">
-                
-                <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
-                [style.background-size]="'cover'" [style.background-position]="'center'"
-                [class.hideImage]="!selectedImage" [class.showEdit]="selectedImage"
-                (click)="triggerFileInput()">
-             <img *ngIf="!selectedImage" src="https://i.ibb.co/Fh9yqwz/add-profile-picture-icon-upload-photo-of-social-media-user-vector-removebg-preview.png" alt="">
-             <p *ngIf="!selectedImage" class="hideImage">Agregar imagen</p>
 
-             <span class="editText">Editar imagen</span>
-         
-           </div>
-           
-           
+                <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
+                    [style.background-size]="'cover'" [style.background-position]="'center'"
+                    [class.hideImage]="!selectedImage" [class.showEdit]="selectedImage" (click)="triggerFileInput()">
+                    <img *ngIf="!selectedImage"
+                        src="https://i.ibb.co/Fh9yqwz/add-profile-picture-icon-upload-photo-of-social-media-user-vector-removebg-preview.png"
+                        alt="">
+                    <p *ngIf="!selectedImage" class="hideImage">Agregar imagen</p>
+
+                    <span class="editText">Editar imagen</span>
+
+                </div>
+
                 <div class="AddImageInput">
                     <label for="pfp" class="InputContainer">
                         <input ngModel type="file" (change)="onFileSelected($event)" accept="image/*" id="pfp"
@@ -33,8 +33,6 @@
                 </div>
             </div>
         </div>
-       
- 
 
         <div class="AddDescription">
             <div class="TittleDescription">
@@ -55,7 +53,7 @@
         </div>
 
         <div class="AddCountry">
-            <select ngModel id="homeland" name="homeland" >
+            <select ngModel id="homeland" name="homeland">
                 <option disabled selected value="">Selecciona tu país</option>
             </select>
         </div>
