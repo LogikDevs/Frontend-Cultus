@@ -9,31 +9,30 @@ var userInterests: any;
 })
 
 export class ProfileComponent implements OnInit{
-  constructor(private api: GetUserService) { }
-  User: any[] = [];
-  selectedImage: string | undefined;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  selectedImage: string | undefined;
+  User: any[] = [];
+  constructor(private api: GetUserService) { }
+
   ngOnInit():void {
     this.getUser();
   }
   getUser(){
-    this.api.getUser().subscribe(res => {
-      userData = res;
+    this.api.getUser().subscribe((res:any) => {
       this.User.push({
-        id: userData.id,
-        email: userData.email,
-        name: userData.name,
-        surname: userData.surname,
-        age: userData.age,
-        gender: userData.gender,
-        homeland: userData.homeland,
-        residence: userData.residence,
-        description: userData.description,
-        profile_pic: userData.profile_pic
+        id: res.id,
+        email: res.email,
+        name: res.name,
+        surname: res.surname,
+        age: res.age,
+        gender: res.gender,
+        homeland: res.homeland,
+        residence: res.residence,
+        description: res.description,
+        profile_pic: res.profile_pic
     }); 
-    this.api.getUserInterests(userData.id).subscribe(res => {
-      userInterests = res;
-      console.log(userInterests);
+    this.api.getUserInterests(res.id).subscribe((res2:any) => {
+      userInterests = res2;
       })
     })
   }

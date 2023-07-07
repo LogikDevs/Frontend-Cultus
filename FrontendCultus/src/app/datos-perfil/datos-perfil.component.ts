@@ -10,8 +10,10 @@ import { GetCountriesService } from '../services/get-countries.service';
 })
 export class DatosPerfilComponent {
   constructor(private api: EditUserService, private countries: GetCountriesService){};
+  
   selectedImage: string | undefined;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  
   sendProfileData(ProfileEditData:any){
     this.api.getEditUser(ProfileEditData);
   }
@@ -30,17 +32,16 @@ export class DatosPerfilComponent {
     const selecthomeland:any = document.getElementById("homeland");
     const selectresidence:any = document.getElementById("residenceCountry");
     this.countries.getCountries().subscribe((res:any)=>{
-      for (let i = 0; i < res.length; i++){
-        var country = res[i];
-        let newOption = new Option(country.country_name, country.id_country);
-        selectresidence.add(newOption,undefined);
-      }
-      for (let i = 0; i < res.length; i++){
-        var country = res[i];
-        let newOption = new Option(country.country_name, country.id_country);
-        selecthomeland.add(newOption,undefined);
-      }
+      this.countriesIntoDropbox(selecthomeland, res);
+      this.countriesIntoDropbox(selectresidence, res);
     })
+  }
+  countriesIntoDropbox(select:any,res:any){
+    for (let i = 0; i < res.length; i++){
+      var country = res[i];
+      let newOption = new Option(country.country_name, country.id_country);
+      select.add(newOption,undefined);
+    }
   }
   ngOnInit(){
     this.countriesDropbox();
