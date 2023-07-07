@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GetUserService } from './get-user.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditUserService {
-  constructor(private http: HttpClient, private api: GetUserService) { }
+  constructor(private http: HttpClient, private api: GetUserService, private router: Router) { }
   urlApiEditUser:string = "http://localhost:8000/api/v1/user/";
   userData:any;
   httpOptions = {
@@ -37,7 +38,7 @@ export class EditUserService {
   }  
   sendEditUser(body:any){
     this.http.put(this.urlApiEditUser+body.id, body).subscribe((res:any)=>{
-      console.log(res);
-    });
+    this.router.navigateByUrl('/SelectInterest');
+    })
   }
 }
