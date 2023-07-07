@@ -4,14 +4,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GetPostsService {
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
-    })
-  }
+  private urlGetPosts = 'http://localhost:8001/api/post/listAll';
   constructor(private http: HttpClient) {}
-  getPosts(){
-    return this.http.get('http://localhost:8000/api/v1/posts', this.httpOptions);
+  getPosts(){  
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization' : `Bearer ` + localStorage.getItem("accessToken")
+      })
+    }
+    return this.http.get(this.urlGetPosts, httpOptions);
   }
 }
