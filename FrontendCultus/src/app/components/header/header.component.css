@@ -1,0 +1,26 @@
+.Header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: end;
+  background-color: #1c1d1c;
+}
+
+.LogoHeader h2 {
+  color: #f7fbf7;
+  margin-left: 100px;
+  margin-top: 5px;
+}
+
+.notifications img {
+  height: 70%;
+  width: 70%;
+}
+
+.notifications {
+  margin-right: 50px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=header.component.css.map */
