@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { PostsComponent } from './components/posts/posts.component';
 import { ComienzoComponent } from './components/comienzo/comienzo.component';
-
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
