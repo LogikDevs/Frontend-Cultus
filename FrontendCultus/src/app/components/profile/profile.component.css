@@ -1,3 +1,16 @@
 * {
   color: white;
+}
+
+#MenuMobile {
+  display: none;
+}
+
+@media (max-width: 499px) {
+  #SidebarOff {
+    display: none;
+  }
+  #MenuMobile {
+    display: block;
+  }
 }/*# sourceMappingURL=profile.component.css.map */
