@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ComienzoComponent } from './components/comienzo/comienzo.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { PostsComponent } from './components/posts/posts.component';
+import { PostsComponent } from './components/PostsFolder/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
 import { CreatePostComponent } from './components/create-post/create-post.component';
