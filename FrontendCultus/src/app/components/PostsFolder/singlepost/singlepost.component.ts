@@ -27,9 +27,13 @@ export class SinglepostComponent {
 		});
 	}
 	ClickVote(votetype: any) {
-		
-		this.votes.voteCreate(this.post.fk_id_user, this.user.id, votetype).subscribe((res: any) => {
-			console.log(res);
-		});;
+		this.votes.voteCreate(this.post.id_post, this.user.id, votetype).subscribe((res: any) => {
+			this.updateVotes();
+		})
+	}
+	updateVotes() {
+		this.votes.updateVotes(this.post.id_post).subscribe((res: any) => {
+			this.post.votes = res.votes;
+		});
 	}
 }

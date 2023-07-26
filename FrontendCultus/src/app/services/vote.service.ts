@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class VoteService {
 	private urlCreateVote = 'http://localhost:8001/api/votes/create';
+	private urlUpdateVotes = 'http://localhost:8001/api/post/listPost/';
 	constructor(private http: HttpClient) { }
 
 	voteCreate(postIdReceived: any, UserIdReceived: any, votetype: any) {
@@ -21,5 +22,8 @@ export class VoteService {
 			})
 		}
 		return this.http.post(this.urlCreateVote, body, httpOptions);
+	}
+	updateVotes(fk_id_post:any){
+		return this.http.get(this.urlUpdateVotes+fk_id_post);
 	}
 }

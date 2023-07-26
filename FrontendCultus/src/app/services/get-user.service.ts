@@ -8,8 +8,9 @@ export class GetUserService {
 	private urlgetUser = 'http://localhost:8000/api/v1/validate';
 	private urlUserInterests = "http://localhost:8000/api/v1/likes/user/";
 	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
-	private constructor(private http: HttpClient) { }
 
+	private constructor(private http: HttpClient) { }
+	ID_User:any;
 	getUser() {
 		const httpOptions = {
 			headers: new HttpHeaders({
