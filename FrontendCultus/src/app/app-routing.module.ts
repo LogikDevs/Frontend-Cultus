@@ -24,15 +24,15 @@ import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.compon
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
-  { path: 'home', component: HomeComponent, canActivate: [GuardAuthentication]},
+  { path: 'home', component: HomeComponent, canActivate: [GuardAuthentication] },
   { path: 'login', component: LoginComponent },
   { path: 'header', component: HeaderComponent, canActivate: [GuardAuthentication] },
   { path: 'footer', component: FooterComponent, canActivate: [GuardAuthentication] },
   { path: 'register', component: RegisterComponent },
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent, canActivate: [GuardAuthentication] },
-  { path: 'posts', component: PostsComponent},
-  { path: 'profile', component: ProfileComponent,  } ,
+  { path: 'posts', component: PostsComponent, canActivate: [GuardAuthentication] },
+  { path: 'profile', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
   { path: 'optionsdata', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,

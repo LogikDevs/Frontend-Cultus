@@ -23,6 +23,7 @@ import { BackofficePostComponent } from './components/backoffice-post/backoffice
 import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
 import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { SinglepostComponent } from './components/PostsFolder/singlepost/singlepost.component';
+import { AgenProfileComponent } from './agen-profile/agen-profile.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SinglepostComponent } from './components/PostsFolder/singlepost/singlep
     BackofficePostComponent,
     BackofficeUsersComponent,
     MenuMobileComponent,
-    SinglepostComponent
+    SinglepostComponent,
+    AgenProfileComponent
 
   
 
