@@ -11,7 +11,7 @@ import { GetUserService } from 'src/app/services/get-user.service';
 export class CommentComponent implements OnInit{
     @Input() author: any;
 	@Input() comment: Comment;
-  constructor(private api: GetUserService, private comments: GetCommentsService) { }
+  constructor(private api: GetUserService) { }
   ngOnInit(){
     this.getWriter();
   }

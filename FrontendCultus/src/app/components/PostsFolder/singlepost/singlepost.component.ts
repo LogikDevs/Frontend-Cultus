@@ -13,28 +13,21 @@ export class SinglepostComponent {
 	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService) { }
 	@Input() author: any;
 	@Input() post: Post;
-	UserId: any;
+	userId:any = localStorage.getItem("IdUser");
 
 	ngOnInit() {
-		this.getUser();
 		this.getWriter();
 		this.getComments();
 	}
-
 	getWriter() {
 		this.api.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
 			this.author = res;
 		});
 	}
-	getUser() {
-		this.api.getUser().subscribe((res: any) => {
-			this.UserId = res.id;
-		});
-	}
 	
 	sendComment(){
 		const CommentText:any = document.getElementById("AddComment");
-		this.api2.postComment(this.UserId, this.post.id_post, CommentText.value).subscribe((res:any)=>{
+		this.api2.postComment(this.userId, this.post.id_post, CommentText.value).subscribe((res:any)=>{
 			console.log(res);
 		});
 	}
@@ -44,11 +37,8 @@ export class SinglepostComponent {
         })
     }
 
-
-
-
 	ClickVote(votetype: any) {
-		this.votes.voteCreate(this.post.id_post, this.UserId, votetype).subscribe((res: any) => {
+		this.votes.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
 		})
 	}
