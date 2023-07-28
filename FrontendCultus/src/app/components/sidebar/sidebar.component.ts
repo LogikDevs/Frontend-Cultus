@@ -12,12 +12,13 @@ export class SidebarComponent implements OnInit {
     sidebar!: HTMLElement;
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
-
+    userId = localStorage.getItem("IdUser");
     constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public api2: GetUserService) { }
-
+   
     logout() {
         this.api.sendLogout().subscribe();
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("IdUser");
         this.status.isLoggedIn = false;
         this.router.navigateByUrl("/login");
     }
@@ -30,7 +31,7 @@ export class SidebarComponent implements OnInit {
             this.sidebar.classList.toggle("open");
             this.menuBtnChange();
         });
-        this.api2.getUser().subscribe((res: any) => {
+        this.api2.getUserFromId(this.userId).subscribe((res: any) => {
             var Username: any = document.getElementById("username");
             Username.textContent = res.name + " " + res.surname;
         })

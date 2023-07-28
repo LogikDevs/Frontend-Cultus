@@ -9,8 +9,13 @@ export class GetUserService {
 	private urlUserInterests = "http://localhost:8000/api/v1/likes/user/";
 	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
 
-	private constructor(private http: HttpClient) { }
-	ID_User:any;
+	private constructor(private http: HttpClient) {  }
+	public ID_User:any;
+	UserIdIntoStorage(){
+        this.getUser().subscribe((res:any)=>{
+            localStorage.setItem('IdUser', (res["id"]));
+        });
+    }
 	getUser() {
 		const httpOptions = {
 			headers: new HttpHeaders({

@@ -57,10 +57,10 @@
 		</div>
 	</div>
 	<div class="ContainerPostDesktop">
-		<!-- <div class="PostDesktop">
+		<div class="PostDesktop">
                         <div class="HeaderPostDesktop">
                             <div class="LocationPostDesktop">
-                                <p>${postDataFromRes.location}</p>
+                                <p>{{post.location}}</p>
                             </div>
                             <div class="OptionPostDesktop">
                             </div>
@@ -79,13 +79,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="TextPostDesktop">
-                            <p>Estoy muy sorprendido por las vistas de esta maravillosa ciudad</p>
-                        </div>
-                        <div class="AddCommentDesktop">
-                            <input type="text" placeholder="Agregar comentario...">
-                        </div>
-                    </div> -->
+                        <div *ngFor="let comment of comments">
+							<app-comment [comment]="comment"></app-comment>
+						</div>
+						<div class="AddCommentDesktop">
+							<input id="AddComment" type="text" placeholder="Agregar comentario...">
+							<button (click)="sendComment()"> Send </button>
+						</div>
+                    </div> 
 		<div class="ProfilePostDesktop">
 			<div class="PerfilImage">
 				<img src="/assets/post-images/profile_def.jpg" alt="">

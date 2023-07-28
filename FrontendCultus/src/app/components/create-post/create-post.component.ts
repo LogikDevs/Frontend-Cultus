@@ -7,18 +7,11 @@ import { GetUserService } from '../../services/get-user.service';
 	styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent {
+	userId = localStorage.getItem("IdUser");
+	
 	constructor(private api: CreatePostService, private api2: GetUserService) { }
-	private userId: any;
 
-	getUser() {
-		return this.api2.getUser().subscribe((res: any) => {
-			this.userId = res.id;
-		})
-	}
 	sendCreatedPost(postData: any) {
 		return this.api.postCreate(postData, this.userId).subscribe((res: any) => { })
-	}
-	ngOnInit() {
-		this.getUser();
 	}
 }

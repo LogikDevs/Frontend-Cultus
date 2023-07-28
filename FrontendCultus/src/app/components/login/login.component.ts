@@ -23,7 +23,7 @@ export class LoginComponent {
 				this.status.isLoggedIn = true;
 				this.router.navigateByUrl('/home');
 				console.log("IsLoggedIn: " + this.status.isLoggedIn);
-				
+				this.api2.UserIdIntoStorage();
 			}
 		);
 	}

@@ -12,13 +12,13 @@ export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 	selectedImage: string | undefined;
 	User: any[] = [];
+	userId = localStorage.getItem("IdUser");
 	constructor(private api: GetUserService) { }
-
 	ngOnInit(): void {
 		this.getUser();
 	}
 	getUser() {
-		this.api.getUser().subscribe((res: any) => {
+		this.api.getUserFromId(this.userId).subscribe((res: any) => {
 			this.User.push({
 				id: res.id,
 				email: res.email,
