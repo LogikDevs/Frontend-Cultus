@@ -82,10 +82,14 @@
                         <div id="CommentsSection" *ngFor="let comment of comments">
 							<app-comment [comment]="comment"></app-comment>
 						</div>
-						<div id = "AddCommentDesktop" class="AddCommentDesktop">
+						<!--<div id = "AddCommentDesktop" class="AddCommentDesktop">
 							<button id="CommentButton" (click)="sendComment($event)"> Send </button>
 							<input id="AddComment" type="text" placeholder="Agregar comentario...">
-						</div>
+						</div>!-->
+						<form (submit)="sendComment()">
+							<textarea [(ngModel)]="AddComment" name="AddComment"></textarea>
+							<button type="submit">Send</button>
+						</form>
                     </div> 
 		<div class="ProfilePostDesktop">
 			<div class="PerfilImage">

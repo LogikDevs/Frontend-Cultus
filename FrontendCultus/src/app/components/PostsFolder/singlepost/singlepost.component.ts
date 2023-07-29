@@ -11,20 +11,18 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	styleUrls: ['./singlepost.component.scss']
 })
 export class SinglepostComponent {
-
 	@Input() author: any;
 	@Input() post: Post;
-	comments: Comment[];
 	userId:any = localStorage.getItem("IdUser");
-
 	username:any;
-	Text: any;
-	CommentText:any;
+	comments: Comment[];
+	AddComment:string = '';
+	
+	
 	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService, private postservice: GetPostsService) { }
 	
 	ngOnInit() {
 		this.PostData();
-		this.ChangeElementNames();
 		this.getComments();
 	}
 
@@ -33,32 +31,29 @@ export class SinglepostComponent {
 			this.author = res;		
 		});
 	}
-	ChangeElementNames(){
-		this.postservice.getPosts().subscribe((res: any) => {
-			const button = document.getElementById("CommentButton");
-			const CommentName = document.getElementById("AddComment");
-			console.log(CommentName);
-			button?.setAttribute("id", `${this.post.id_post}`);
-			CommentName?.setAttribute("id", "AddComment"+this.post.id_post);		
-		});
-	}
 	getSelfUser(){
 		this.api.getUserFromId(this.userId).subscribe((res: any)=>{
 			this.username = res.name + " " + res.surname;
 		})
 	}
 	
-	sendComment(event:any){
-		const buttonId = event.target.id;
-		this.Text = document.getElementById("AddComment"+buttonId);
-		this.api2.postComment(this.userId, this.post.id_post, this.Text.value).subscribe((res:any)=>{
-			this.getComments();
-		});
+	sendComment(){
+		if (this.AddComment.trim() !== '') {
+			this.api2.postComment(this.userId, this.post.id_post, this.AddComment).subscribe((res:any)=>{
+				const NewComment: Comment = {
+					id_comment: res.id_comment,
+					fk_id_user: res.fk_id_user,
+					text: res.text
+				}
+				this.comments.push(NewComment);
+			});
+			this.AddComment = ''; // Limpiar el formulario
+		  }
+		
 	}	
 	getComments() {
         this.api2.getComment(this.post.id_post).subscribe((res: any) => {
             this.comments = res;
-			console.log(this.comments);
         })
     }
 	ClickVote(votetype: any) {
