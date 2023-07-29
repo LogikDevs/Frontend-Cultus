@@ -64,7 +64,7 @@
 			
 			<div class="AddCommentDesktop">
 				<input id="AddComment" type="text" placeholder="Agregar comentario...">
-				<button (click)="sendComment()"> Send </button>
+				<button (click)="sendComment()"> <img src="assets/post-images/enviar-mensaje.svg" alt=""> </button>
 			</div>
 			<div class="AllCommentsPost" *ngFor="let comment of comments">
 				<app-comment [comment]="comment"></app-comment>
