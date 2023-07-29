@@ -72,7 +72,7 @@
 		</div>
 	</div>
 	<div class="ContainerPostDesktop">
-		<div class="PostDesktop">
+		<div id = "PostDesktop" class="PostDesktop">
                         <div class="HeaderPostDesktop">
                        
                             <div class="OptionPostDesktop">
@@ -92,7 +92,13 @@
                                 </div>
                             </div>
                         </div>
-                     
+                        <div id="CommentsSection" *ngFor="let comment of comments">
+							<app-comment [comment]="comment"></app-comment>
+						</div>
+						<form (submit)="sendComment()">
+							<textarea [(ngModel)]="AddComment" name="AddComment"></textarea>
+							<button type="submit">Send</button>
+						</form>
                     </div> 
 		<div class="ProfilePostDesktop">
 			<div class="PerfilImage">

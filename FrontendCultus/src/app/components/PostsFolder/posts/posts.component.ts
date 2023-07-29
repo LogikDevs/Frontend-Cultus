@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GetPostsService } from '../../../services/get-posts.service';
 import { Post } from './post.model';
 
@@ -19,6 +19,7 @@ export class PostsComponent implements OnInit {
     getPosts() {
         this.api.getPosts().subscribe((res: any) => {
             this.posts = res;
+            console.log(this.posts);
         })
     }
 }

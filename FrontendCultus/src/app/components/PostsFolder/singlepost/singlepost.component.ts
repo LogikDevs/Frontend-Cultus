@@ -3,40 +3,59 @@ import { Post, Comment } from '../posts/post.model';
 import { VoteService } from 'src/app/services/vote.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
+import { GetPostsService } from 'src/app/services/get-posts.service';
+
 @Component({
 	selector: 'app-singlepost',
 	templateUrl: './singlepost.component.html',
 	styleUrls: ['./singlepost.component.scss']
 })
 export class SinglepostComponent {
-	comments: Comment[];
-	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService) { }
 	@Input() author: any;
 	@Input() post: Post;
 	userId:any = localStorage.getItem("IdUser");
-
+	username:any;
+	comments: Comment[];
+	AddComment:string = '';
+	
+	
+	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService, private postservice: GetPostsService) { }
+	
 	ngOnInit() {
-		this.getWriter();
+		this.PostData();
 		this.getComments();
 	}
-	getWriter() {
+
+	PostData() {
 		this.api.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
-			this.author = res;
+			this.author = res;		
 		});
+	}
+	getSelfUser(){
+		this.api.getUserFromId(this.userId).subscribe((res: any)=>{
+			this.username = res.name + " " + res.surname;
+		})
 	}
 	
 	sendComment(){
-		const CommentText:any = document.getElementById("AddComment");
-		this.api2.postComment(this.userId, this.post.id_post, CommentText.value).subscribe((res:any)=>{
-			console.log(res);
-		});
-	}
+		if (this.AddComment.trim() !== '') {
+			this.api2.postComment(this.userId, this.post.id_post, this.AddComment).subscribe((res:any)=>{
+				const NewComment: Comment = {
+					id_comment: res.id_comment,
+					fk_id_user: res.fk_id_user,
+					text: res.text
+				}
+				this.comments.push(NewComment);
+			});
+			this.AddComment = ''; // Limpiar el formulario
+		  }
+		
+	}	
 	getComments() {
         this.api2.getComment(this.post.id_post).subscribe((res: any) => {
             this.comments = res;
         })
     }
-
 	ClickVote(votetype: any) {
 		this.votes.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();

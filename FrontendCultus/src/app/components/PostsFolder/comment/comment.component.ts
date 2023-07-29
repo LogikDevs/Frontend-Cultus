@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from '../posts/post.model';
-import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
