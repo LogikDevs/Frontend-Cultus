@@ -12,11 +12,16 @@
 					<div class="PostUploadDate">
 						<p>{{post.date.slice(2,-3)}}</p>
 					</div>
+					
 				</div>
+			
 				<div class="OptionsPost">
 					<img src="assets/menu-logo.png" alt="">
 				</div>
 			</div>
+		</div>
+		<div class="LocationPostDesktop">
+			<p>{{post.location}}</p>
 		</div>
 		<div class="Interest">
 			<p>#Interes1</p>
@@ -34,8 +39,8 @@
 						<img src="assets/post-images/like.svg" alt="">
 					</div>
 					<div class="AmountUpvotesPost">
-					</div>
-					<p>{{ post.votes }}</p>
+					
+					<p>{{ post.votes }}</p></div>
 					<div class="IconUpvotesPost" (click)="ClickVote(0)">
 						<img src="assets/post-images/disgusto.svg" alt="">
 					</div>
@@ -55,13 +60,21 @@
 				</div>
 			</div>
 		</div>
+		<div class="Comments">
+			
+			<div class="AddCommentDesktop">
+				<input id="AddComment" type="text" placeholder="Agregar comentario...">
+				<button (click)="sendComment()"> Send </button>
+			</div>
+			<div class="AllCommentsPost" *ngFor="let comment of comments">
+				<app-comment [comment]="comment"></app-comment>
+			</div>
+		</div>
 	</div>
 	<div class="ContainerPostDesktop">
 		<div id = "PostDesktop" class="PostDesktop">
                         <div class="HeaderPostDesktop">
-                            <div class="LocationPostDesktop">
-                                <p>{{post.location}}</p>
-                            </div>
+                       
                             <div class="OptionPostDesktop">
                             </div>
                         </div>
@@ -82,10 +95,6 @@
                         <div id="CommentsSection" *ngFor="let comment of comments">
 							<app-comment [comment]="comment"></app-comment>
 						</div>
-						<!--<div id = "AddCommentDesktop" class="AddCommentDesktop">
-							<button id="CommentButton" (click)="sendComment($event)"> Send </button>
-							<input id="AddComment" type="text" placeholder="Agregar comentario...">
-						</div>!-->
 						<form (submit)="sendComment()">
 							<textarea [(ngModel)]="AddComment" name="AddComment"></textarea>
 							<button type="submit">Send</button>

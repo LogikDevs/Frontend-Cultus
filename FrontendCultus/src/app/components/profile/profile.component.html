@@ -1,4 +1,4 @@
-<p #HtmlNameSurname *ngFor="let userData of User;">Name: {{ userData.name }} {{ userData.surname }}</p>
+
 <p #HtmlAge *ngFor="let userData of User;">Age: {{ userData.age }}</p>
 <p #HtmlGender *ngFor="let userData of User;">Gender: {{ userData.gender }}</p>
 <p #HtmlHomeland *ngFor="let userData of User;">Homeland: {{ userData.homeland }}</p>
@@ -6,6 +6,91 @@
 <p #HtmlDescription *ngFor="let userData of User;">Description: {{ userData.description }}</p>
 <p #HtmlProfile_Pic *ngFor="let userData of User;">Pfp: {{ userData.profile_pic }}</p>
 
+
+<app-header id="header"></app-header>
+
+<app-menu-mobile id="MenuMobile"></app-menu-mobile>
+
+<div id="SidebarOff">
+    <app-sidebar></app-sidebar>
+</div>
+<div class="Profile">
+<div class="ContainerData">
+
+
+
+<div class="ContainerMyProfile">
+    <div class="BackgroundProfile">
+           <div class="ImageProfile">
+        <img src="assets/post-images/profile_def.jpg" alt="">
+        <div class="EditProfile">
+            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="">
+        </div>
+    </div> 
+    </div>
+
+    <div class="DataMyProfile">
+        <div class="NameMyProfile">
+            <p #HtmlNameSurname *ngFor="let userData of User;">{{ userData.name }} {{ userData.surname }} ,</p>
+        </div>
+        <div class="Age">
+            <p #HtmlAge *ngFor="let userData of User;">{{ userData.age }} ,</p>
+        </div>
+        <div class="CountryMyProfile">
+            <p>Uruguay</p>
+        </div>
+    </div>
+    <div class="MyInterestProfile">
+        <div class="TittleInterest">
+            <p>Mis intereses</p>
+        </div>
+
+        <div class="Interest">
+            <p>Deportes</p>
+            <p>Comidas</p>
+            <p>Turismo</p>
+            <p>Animales</p>
+        </div>
+    </div>
+
+    <div class="PostMyProfile">
+        <div class="PostTypes">
+            <div class="ImagePost">
+                <p>Publicaciones</p>
+            </div>
+            <div class="TextPost">
+                <p>Textos</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ContainerImagePost">
+    <div class="PostImage">
+        <img src="assets/post-images/descarga (2).jpeg" alt="">
+    </div>
+    <div class="PostImage">
+        <img src="assets/post-images/descarga (2).jpeg" alt="">
+    </div>
+    <div class="PostImage">
+        <img src="assets/post-images/descarga (2).jpeg" alt="">
+    </div>
+
+    <div class="PostImage">
+        <img src="assets/post-images/descarga (2).jpeg" alt="">
+    </div>
+    <div class="PostImage">
+        <img src="assets/post-images/descarga (2).jpeg" alt="">
+    </div>
+</div>
+
+<div class="ContainerTextPost">
+
+</div>
+</div>
+</div>
+
+<!-- 
 <div class="ContainerDatosPerfil">
     <form action="">
 
@@ -66,4 +151,4 @@
 
     </form>
 
-</div>
+</div> -->
