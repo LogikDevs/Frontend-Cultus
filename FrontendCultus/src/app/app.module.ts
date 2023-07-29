@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -9,7 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { PostsComponent } from './components/posts/posts.component';
+import { PostsComponent } from './components/PostsFolder/posts/posts.component';
 import { ComienzoComponent } from './components/comienzo/comienzo.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -22,6 +23,10 @@ import { SidebarBackofficeComponent } from './components/sidebar-backoffice/side
 import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
 import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
 import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
+import { SinglepostComponent } from './components/PostsFolder/singlepost/singlepost.component';
+import { CommentComponent } from './components/PostsFolder/comment/comment.component';
+import { AgenProfileComponent } from './agen-profile/agen-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +49,11 @@ import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.compon
     SidebarBackofficeComponent,
     BackofficePostComponent,
     BackofficeUsersComponent,
-    MenuMobileComponent
+    MenuMobileComponent,
+    SinglepostComponent,
+    CommentComponent,
+    AgenProfileComponent
+
 
   
 
