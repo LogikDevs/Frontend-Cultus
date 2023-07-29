@@ -33,7 +33,6 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 	ngOnInit() {
 		this.PostData();
 		this.getComments();
-	
 	}
 
 	PostData() {
@@ -65,7 +64,7 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
         this.api2.getComment(this.post.id_post).subscribe((res: any) => {
             this.comments = res;
         })
-  }
+  	}
 	ClickVote(votetype: any) {
 		this.votes.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
