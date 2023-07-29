@@ -57,7 +57,7 @@
 		</div>
 	</div>
 	<div class="ContainerPostDesktop">
-		<div class="PostDesktop">
+		<div id = "PostDesktop" class="PostDesktop">
                         <div class="HeaderPostDesktop">
                             <div class="LocationPostDesktop">
                                 <p>{{post.location}}</p>
@@ -79,12 +79,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div *ngFor="let comment of comments">
+                        <div id="CommentsSection" *ngFor="let comment of comments">
 							<app-comment [comment]="comment"></app-comment>
 						</div>
-						<div class="AddCommentDesktop">
+						<div id = "AddCommentDesktop" class="AddCommentDesktop">
+							<button id="CommentButton" (click)="sendComment($event)"> Send </button>
 							<input id="AddComment" type="text" placeholder="Agregar comentario...">
-							<button (click)="sendComment()"> Send </button>
 						</div>
                     </div> 
 		<div class="ProfilePostDesktop">
