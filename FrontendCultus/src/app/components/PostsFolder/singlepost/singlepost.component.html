@@ -79,13 +79,14 @@
 			</div>
 		</div>
 		<div class="Comments">
-
+      
 			<div class="AddCommentDesktop">
-				<input id="AddComment" type="text" placeholder="Agregar comentario...">
-				<button (click)="sendComment()"> <img src="assets/post-images/enviar-mensaje.svg" alt=""> </button>
-			</div>
-
-		</div>
+        
+			  <form (submit)="sendComment()">
+				  <textarea [(ngModel)]="AddComment" name="AddComment"></textarea>
+				  <button type="submit"><img src="assets/post-images/enviar-mensaje.svg" alt=""></button>
+			  </form>
+		  </div>
 
 
 	</div>
