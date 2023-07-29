@@ -62,10 +62,10 @@
 		</div>
 		<div class="Comments">
 			
-			<div class="AddCommentDesktop">
-				<input id="AddComment" type="text" placeholder="Agregar comentario...">
-				<button (click)="sendComment()"> Send </button>
-			</div>
+			<form (submit)="sendComment()">
+				<textarea [(ngModel)]="AddComment" name="AddComment"></textarea>
+				<button type="submit">Send</button>
+			</form>
 			<div class="AllCommentsPost" *ngFor="let comment of comments">
 				<app-comment [comment]="comment"></app-comment>
 			</div>
@@ -91,14 +91,7 @@
                                 <div class="IconShare">
                                 </div>
                             </div>
-                        </div>
-                        <div id="CommentsSection" *ngFor="let comment of comments">
-							<app-comment [comment]="comment"></app-comment>
-						</div>
-						<form (submit)="sendComment()">
-							<textarea [(ngModel)]="AddComment" name="AddComment"></textarea>
-							<button type="submit">Send</button>
-						</form>
+                        </div>	
                     </div> 
 		<div class="ProfilePostDesktop">
 			<div class="PerfilImage">
