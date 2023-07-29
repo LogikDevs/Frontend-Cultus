@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class GetCommentsService {
   private URLCreateComment = "http://localhost:8001/api/comments/create";
-  private URLGetComment = "http://localhost:8001/api/comments/listPostComments/";
+  private URLGetComment = "http://localhost:8001/api/comments/listPost/";
 
   constructor(private http: HttpClient) { }
   
