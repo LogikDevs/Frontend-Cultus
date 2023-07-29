@@ -1,4 +1,4 @@
-<p #HtmlNameSurname *ngFor="let userData of User;">Name: {{ userData.name }} {{ userData.surname }}</p>
+
 <p #HtmlAge *ngFor="let userData of User;">Age: {{ userData.age }}</p>
 <p #HtmlGender *ngFor="let userData of User;">Gender: {{ userData.gender }}</p>
 <p #HtmlHomeland *ngFor="let userData of User;">Homeland: {{ userData.homeland }}</p>
@@ -31,7 +31,10 @@
 
     <div class="DataMyProfile">
         <div class="NameMyProfile">
-            <p>Nicolas Moitiño ,</p>
+            <p #HtmlNameSurname *ngFor="let userData of User;">{{ userData.name }} {{ userData.surname }} ,</p>
+        </div>
+        <div class="Age">
+            <p #HtmlAge *ngFor="let userData of User;">{{ userData.age }} ,</p>
         </div>
         <div class="CountryMyProfile">
             <p>Uruguay</p>
