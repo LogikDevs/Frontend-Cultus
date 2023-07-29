@@ -3,7 +3,6 @@ import { Post, Comment } from '../posts/post.model';
 import { VoteService } from 'src/app/services/vote.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
-import { GetPostsService } from 'src/app/services/get-posts.service';
 
 @Component({
 	selector: 'app-singlepost',
@@ -19,7 +18,7 @@ export class SinglepostComponent {
 	AddComment:string = '';
 	
 	
-	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService, private postservice: GetPostsService) { }
+	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService) { }
 	
 	ngOnInit() {
 		this.PostData();
