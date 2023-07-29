@@ -18,23 +18,21 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 	],
   })	
   export class SinglepostComponent implements OnInit {
-  @Input() author: any;
+  	@Input() author: any;
 	@Input() post: Post;
-  userId:any = localStorage.getItem("IdUser");
-  username:any;
-  comments: Comment[];
-  AddComment:string = '';  
+  	userId:any = localStorage.getItem("IdUser");
+  	username:any;
+  	comments: Comment[];
+  	AddComment:string = '';  
   	
-  scrollOffset: number = 0;
+  	scrollOffset: number = 0;
 	containerVisible: boolean = false;
-  showComments: boolean = false;
+  	showComments: boolean = false;
 	noCommentsTemplate: any;
- 
 	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService) { }
 	ngOnInit() {
 		this.PostData();
 		this.getComments();
-	
 	}
 
 	PostData() {
@@ -66,7 +64,7 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
         this.api2.getComment(this.post.id_post).subscribe((res: any) => {
             this.comments = res;
         })
-  }
+  	}
 	ClickVote(votetype: any) {
 		this.votes.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();

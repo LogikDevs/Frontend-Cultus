@@ -8,14 +8,14 @@ export class AuthenticationService {
 	private loginUrl = "http://localhost:8000/oauth/token";
 	private logoutUrl = "http://localhost:8000/api/v1/logout";
 	private client = "101";
-	private secret = "eyxxKG0Z8D50kZhIVDBJWsHyMfWoWDtkBFUSkn29";
+	private secret = "XMbyCPPJhnfcChVS35iVurrgcIB1tGdZxJg4jGim";
 	constructor(private http: HttpClient) { }
 
 	sendLogin(credentials: any) {
 		const body = {
 			grant_type: "password",
-			client_id: "101",
-			client_secret: "Q3S07ripwNJvonGpNxNn3AMuFcUWIe4Hi2d7iaC7",
+			client_id: this.client,
+			client_secret: this.secret,
 			username: credentials.email,
 			password: credentials.password
 		}
