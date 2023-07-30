@@ -16,7 +16,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
-import { SelectInterestComponent } from './components/select-interest/select-interest.component';
+import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { BackofficeComponent } from './components/backoffice/backoffice.component';
 import { SidebarBackofficeComponent } from './components/sidebar-backoffice/sidebar-backoffice.component';
@@ -26,6 +26,7 @@ import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.compon
 import { SinglepostComponent } from './components/PostsFolder/singlepost/singlepost.component';
 import { CommentComponent } from './components/PostsFolder/comment/comment.component';
 import { AgenProfileComponent } from './agen-profile/agen-profile.component';
+import { InterestComponent } from './components/InterestsFolder/interest/interest.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { AgenProfileComponent } from './agen-profile/agen-profile.component';
     MenuMobileComponent,
     SinglepostComponent,
     CommentComponent,
-    AgenProfileComponent
+    AgenProfileComponent,
+    InterestComponent
 
 
   
