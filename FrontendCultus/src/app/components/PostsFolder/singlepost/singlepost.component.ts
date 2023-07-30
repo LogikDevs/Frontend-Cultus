@@ -81,12 +81,9 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	}
 	VotesColor(){
 		const VotesNumber:any = document.getElementById("VotesNumber");
-
 		if (this.post.votes < 0){
-			console.log("red");
 			VotesNumber.style.color = "red";
 		}else{
-			console.log("green");
 			VotesNumber.style.color = "green"
 		}
 	}
