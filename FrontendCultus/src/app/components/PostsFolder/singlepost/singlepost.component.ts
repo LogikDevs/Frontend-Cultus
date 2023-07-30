@@ -24,7 +24,6 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
   	username:any;
   	comments: Comment[];
   	AddComment:string = '';  
-  	
   	scrollOffset: number = 0;
 	containerVisible: boolean = false;
   	showComments: boolean = false;
@@ -33,19 +32,16 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 	ngOnInit() {
 		this.PostData();
 		this.getComments();
+		
 	}
 
 	PostData() {
 		this.api.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
-			this.author = res;		
+			this.author = res;
+			this.VotesColor();		
 		});
 	}
-	getSelfUser(){
-		this.api.getUserFromId(this.userId).subscribe((res: any)=>{
-			this.username = res.name + " " + res.surname;
-		})
-	}
-	
+
 	sendComment(){
 		if (this.AddComment.trim() !== '') {
 			this.api2.postComment(this.userId, this.post.id_post, this.AddComment).subscribe((res:any)=>{
@@ -57,7 +53,7 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 				this.comments.push(NewComment);
 			});
 			this.AddComment = '';
-		  }
+		}
 		
 	}	
 	getComments() {
@@ -68,12 +64,25 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 	ClickVote(votetype: any) {
 		this.votes.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
+			
 		})
 	}
 	updateVotes() {
 		this.votes.updateVotes(this.post.id_post).subscribe((res: any) => {
 			this.post.votes = res.votes;
+			this.VotesColor();
 		});
+	}
+	VotesColor(){
+		const VotesNumber:any = document.getElementById("VotesNumber");
+
+		if (this.post.votes < 0){
+			console.log("red");
+			VotesNumber.style.color = "red";
+		}else{
+			console.log("green");
+			VotesNumber.style.color = "green"
+		}
 	}
 	mostrarComentarios() {
 		this.showComments = true;
