@@ -4,6 +4,7 @@ import { Post, Comment } from '../posts/post.model';
 import { VoteService } from 'src/app/services/vote.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
+import { GetPostsService } from 'src/app/services/get-posts.service';
 
 @Component({
 	selector: 'app-singlepost',
@@ -28,7 +29,7 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 	containerVisible: boolean = false;
   	showComments: boolean = false;
 	noCommentsTemplate: any;
-	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService) { }
+	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService, private postService: GetPostsService) { }
 	ngOnInit() {
 		this.PostData();
 		this.getComments();
@@ -51,6 +52,7 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 					text: res.text
 				}
 				this.comments.push(NewComment);
+				this.updateComments();
 			});
 			this.AddComment = '';
 		}
@@ -64,7 +66,6 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 	ClickVote(votetype: any) {
 		this.votes.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
-			
 		})
 	}
 	updateVotes() {
@@ -73,14 +74,16 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 			this.VotesColor();
 		});
 	}
+	updateComments(){
+		this.postService.updatePostComments(this.post.id_post).subscribe((res:any)=>{
+			this.post.comments = res.comments;
+		});
+	}
 	VotesColor(){
 		const VotesNumber:any = document.getElementById("VotesNumber");
-
 		if (this.post.votes < 0){
-			console.log("red");
 			VotesNumber.style.color = "red";
 		}else{
-			console.log("green");
 			VotesNumber.style.color = "green"
 		}
 	}
