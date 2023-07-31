@@ -13,16 +13,8 @@ export class SidebarComponent implements OnInit {
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
     userId = localStorage.getItem("IdUser");
-    constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public api2: GetUserService) { }
-   
-    logout() {
-        this.api.sendLogout().subscribe();
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("IdUser");
-        this.status.isLoggedIn = false;
-        this.router.navigateByUrl("/login");
-    }
-
+    constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public userService: GetUserService) { }
+    
     ngOnInit() {
         this.sidebar = document.querySelector(".sidebar")!;
         this.closeBtn = document.querySelector("#btn")!;
@@ -31,11 +23,26 @@ export class SidebarComponent implements OnInit {
             this.sidebar.classList.toggle("open");
             this.menuBtnChange();
         });
-        this.api2.getUserFromId(this.userId).subscribe((res: any) => {
+
+        this.getUser();
+    }
+
+    getUser(){
+        this.userService.getUserFromId(this.userId).subscribe((res: any) => {
             var Username: any = document.getElementById("username");
             Username.textContent = res.name + " " + res.surname;
         })
     }
+
+    logout() {
+        this.api.sendLogout().subscribe();
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("IdUser");
+        this.status.isLoggedIn = false;
+        this.router.navigateByUrl("/login");
+    }
+
+
     menuBtnChange() {
         if (this.sidebar.classList.contains("open")) {
             this.closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");

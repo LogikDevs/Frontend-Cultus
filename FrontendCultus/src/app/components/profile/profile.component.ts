@@ -12,49 +12,67 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 
 export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-	
+	@Input() userInterests: any;
 	@Input() userData:User;
 	@Input() userCountries:UserCountries = {
 		homelandName: "", 
 		residenceName: ""
 	}
-	@Input() userInterests: any;
-	posts: Post[];
-	selectedImage: string | undefined;
+
 	userId = localStorage.getItem("IdUser");
-	constructor(private api: GetUserService, private postsService: GetPostsService) { }
-	ngOnInit(): void {
+	posts: Post[];
+	
+	selectedImage: string | undefined;
+	
+	constructor(private userService: GetUserService, private postsService: GetPostsService) { }
+
+	ngOnInit() {
 		this.getUser();
 		this.getUserInterests();
 		this.getUserPosts();
 	}
+
 	getUser() {
-		this.api.getUserFromId(this.userId).subscribe((res:any) => {
+		this.userService.getUserFromId(this.userId).subscribe((res:any) => {
 			this.userData = res;
-			this.getUserHomeland(this.userData.homeland);
-			this.getUserResidence(this.userData.residence);
+			
+			this.getUserCountryInfo(this.userData.homeland, "homeland");
+			this.getUserCountryInfo(this.userData.residence, "residence");
 		})
 	}
-	getUserHomeland(idCountry:any){
-		this.api.getUserCountry(idCountry).subscribe((res:any)=>{	
-			this.userCountries.homelandName = res.country_name;
-		})
+
+	getUserCountryInfo(idCountry: any, countryType: 'homeland' | 'residence') {
+		this.userService.getUserCountry(idCountry).subscribe(
+			(res: any) => {
+				const countryName = res.country_name;
+				
+				this.setUserCountryName(countryType, countryName);
+			},
+			(error: any) => {
+				this.setUserCountryName(countryType, 'Not specified');
+			}
+		);
 	}
-	getUserResidence(idCountry:any){
-		this.api.getUserCountry(idCountry).subscribe((res:any)=>{			
-			this.userCountries.residenceName = res.country_name;
-		})
+	setUserCountryName(countryType: 'homeland' | 'residence', countryName: string) {
+		if (countryType === 'homeland') {
+			this.userCountries.homelandName = countryName;
+		} else if (countryType === 'residence') {
+			this.userCountries.residenceName = countryName;
+		}
 	}
+
 	getUserPosts(){
 		this.postsService.getUserPosts(this.userId).subscribe((res:any)=>{
 			this.posts = res;
 		})
 	}
 	getUserInterests(){
-		this.api.getUserInterests(this.userId).subscribe((res: any) => {
+		this.userService.getUserInterests(this.userId).subscribe((res: any) => {
 			this.userInterests = res;
 		})
 	}
+	
+
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
 	}

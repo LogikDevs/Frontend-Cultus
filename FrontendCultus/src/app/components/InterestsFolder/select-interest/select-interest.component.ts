@@ -39,9 +39,7 @@ export class SelectInterestComponent {
 	sendInterests(){
 		const InterestsArray:any = this.interestService.NewUserInterestsArray;
 		for (let i = 0; i < InterestsArray.length; i++){
-			this.interestService.sendInterests(this.userId, InterestsArray[i]).subscribe((res:any)=>{
-				console.log(res);
-			});
+			this.interestService.sendInterests(this.userId, InterestsArray[i]);
 		}
 		this.router.navigateByUrl('/home');
 	}

@@ -12,17 +12,13 @@ export class InterestComponent {
 	interestsArray:any[] = [];
 
 	constructor(private interestService: GetInterestsService) { }
- 	AddInterestFunction() {
+ 	
+	AddInterestFunction() {
 		const insertId = this.interest.id_label;
-		var canBeAdded = true;
-		for(let i = 0; i < this.interestService.NewUserInterestsArray.length; i++){
-			if (insertId == this.interestService.NewUserInterestsArray[i]){
-				canBeAdded = false;
-			}
-		}
-		if (canBeAdded == true){
-    		this.interestService.NewUserInterestsArray.push(insertId);
-			console.log(this.interestService.NewUserInterestsArray);
+		const isInterestAlreadyAdded = this.interestService.NewUserInterestsArray.includes(insertId);
+		
+		if (!isInterestAlreadyAdded) {
+			this.interestService.NewUserInterestsArray.push(insertId);
 		}
  	}
 }

@@ -7,11 +7,12 @@ import { Interest, UserInterests } from '../components/InterestsFolder/interest/
   providedIn: 'root'
 })
 export class GetInterestsService {
-
-  private urlGetInterests = 'http://localhost:8000/api/v1/interest';
-  private urlSendInterests = 'http://localhost:8000/api/v1/likes';
+  	private urlGetInterests = 'http://localhost:8000/api/v1/interest';
+  	private urlSendInterests = 'http://localhost:8000/api/v1/likes';
 	NewUserInterestsArray:any[] = [];
+	
 	constructor(private http: HttpClient) { }
+	
 	getInterests(): Observable<Interest[]> {
 		const httpOptions = {
 			headers: new HttpHeaders({

@@ -9,17 +9,24 @@ import { GetCountriesService } from '../../services/get-countries.service';
 	styleUrls: ['./datos-perfil.component.scss']
 })
 export class DatosPerfilComponent {
-	constructor(private api: EditUserService, private countries: GetCountriesService) { };
-
 	selectedImage: string | undefined;
+
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
+	constructor(private api: EditUserService, private countries: GetCountriesService) { };
+	
+	ngOnInit() {
+		this.countriesDropbox();
+	}
+	
 	sendProfileData(ProfileEditData: any) {
 		this.api.getEditUser(ProfileEditData);
 	}
+
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
 	}
+
 	onFileSelected(event: any) {
 		const file: File = event.target.files[0];
 		const reader = new FileReader();
@@ -28,22 +35,24 @@ export class DatosPerfilComponent {
 		};
 		reader.readAsDataURL(file);
 	}
+
 	countriesDropbox() {
 		const selecthomeland: any = document.getElementById("homeland");
 		const selectresidence: any = document.getElementById("residenceCountry");
+		
 		this.countries.getCountries().subscribe((res: any) => {
 			this.countriesIntoDropbox(selecthomeland, res);
 			this.countriesIntoDropbox(selectresidence, res);
 		})
 	}
+
 	countriesIntoDropbox(select: any, res: any) {
 		for (let i = 0; i < res.length; i++) {
 			var country = res[i];
 			let newOption = new Option(country.country_name, country.id_country);
+
 			select.add(newOption, undefined);
 		}
 	}
-	ngOnInit() {
-		this.countriesDropbox();
-	}
+
 }

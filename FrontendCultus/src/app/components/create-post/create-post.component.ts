@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CreatePostService } from '../../services/create-post.service';
-import { GetUserService } from '../../services/get-user.service';
+
 @Component({
 	selector: 'app-create-post',
 	templateUrl: './create-post.component.html',
@@ -9,9 +9,14 @@ import { GetUserService } from '../../services/get-user.service';
 export class CreatePostComponent {
 	userId = localStorage.getItem("IdUser");
 	
-	constructor(private api: CreatePostService, private api2: GetUserService) { }
+	constructor(private createPostService: CreatePostService) { }
 
 	sendCreatedPost(postData: any) {
-		return this.api.postCreate(postData, this.userId).subscribe((res: any) => { })
+		return this.createPostService.postCreate(postData, this.userId).subscribe((res:any)=>{
+			console.log(res);
+		});
+	}
+	sendPostMultimedia(postMultimedia:any) {
+
 	}
 }
