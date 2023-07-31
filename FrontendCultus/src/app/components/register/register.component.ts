@@ -11,16 +11,19 @@ import { GetUserService } from 'src/app/services/get-user.service';
 })
 export class RegisterComponent {
 
-	constructor(private getUser: GetUserService, private api: PostRegisterService, private router: Router, private status: StatusService, private apiauth: AuthenticationService) { };
+	constructor(private getUser: GetUserService, private registerService: PostRegisterService, private router: Router, private status: StatusService, private apiauth: AuthenticationService) { };
 
 	PostRegister(inputdata: any) {
-		this.api.PostRegister(inputdata).subscribe((res) => {
-			this.apiauth.sendLogin(inputdata).subscribe((res2: any) => {
-				localStorage.setItem('accessToken', (res2["access_token"]));
-				this.status.isLoggedIn = true;
-				this.router.navigateByUrl('/optionsdata');
-				this.getUser.UserIdIntoStorage();
-			})
+		this.registerService.PostRegister(inputdata).subscribe((res) => {
+			this.RegisterLogin(inputdata);
+		})
+	}
+	RegisterLogin(inputdata:any){
+		this.apiauth.sendLogin(inputdata).subscribe((res2: any) => {
+			localStorage.setItem('accessToken', (res2["access_token"]));
+			this.status.isLoggedIn = true;
+			this.router.navigateByUrl('/optionsdata');
+			this.getUser.UserIdIntoStorage();
 		})
 	}
 }

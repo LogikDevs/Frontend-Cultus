@@ -14,7 +14,6 @@ export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 	@Input() userInterests: any;
 	@Input() userData:User;
-	
 	@Input() userCountries:UserCountries = {
 		homelandName: "", 
 		residenceName: ""

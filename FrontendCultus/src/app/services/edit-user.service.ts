@@ -37,6 +37,6 @@ export class EditUserService {
 			})
 		}
 		this.http.put(this.urlApiEditUser + body.id, body, httpOptions).subscribe((res: any) => { });
-		this.router.navigateByUrl('/SelectInterest');
+		this.router.navigateByUrl('/selectInterest');
 	}
 }

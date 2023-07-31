@@ -9,9 +9,14 @@ import { CreatePostService } from '../../services/create-post.service';
 export class CreatePostComponent {
 	userId = localStorage.getItem("IdUser");
 	
-	constructor(private api: CreatePostService) { }
+	constructor(private createPostService: CreatePostService) { }
 
 	sendCreatedPost(postData: any) {
-		return this.api.postCreate(postData, this.userId);
+		return this.createPostService.postCreate(postData, this.userId).subscribe((res:any)=>{
+			console.log(res);
+		});
+	}
+	sendPostMultimedia(postMultimedia:any) {
+
 	}
 }
