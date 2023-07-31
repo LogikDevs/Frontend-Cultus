@@ -8,7 +8,7 @@ export class GetUserService {
 	private urlgetUser = 'http://localhost:8000/api/v1/validate';
 	private urlUserInterests = "http://localhost:8000/api/v1/likes/user/";
 	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
-
+	private urlUserCountries = 'http://localhost:8000/api/v1/country/'
 	private constructor(private http: HttpClient) {  }
 	public ID_User:any;
 	UserIdIntoStorage(){
@@ -27,6 +27,9 @@ export class GetUserService {
 	}
 	getUserFromId(userId: any) {
 		return this.http.get(this.urlUserFromId + userId)
+	}
+	getUserCountry(idCountry:any){
+		return this.http.get(this.urlUserCountries+idCountry)
 	}
 	getUserInterests(IDinserted: any) {
 		const httpOptions = {
