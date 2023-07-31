@@ -19,14 +19,14 @@ export class GetPostsService {
 		}
 		return this.http.get<Post[]>(this.urlGetPosts, httpOptions);
 	}
-	getUserPosts(): Observable<Post[]> {
+	getUserPosts(userId:any): Observable<Post[]> {
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.get<Post[]>(this.urlUserPosts, httpOptions);
+		return this.http.get<Post[]>(this.urlUserPosts+userId, httpOptions);
 	}
 	updatePostComments(fk_id_post:any){
 		const httpOptions = {
