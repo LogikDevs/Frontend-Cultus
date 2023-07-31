@@ -1,0 +1,130 @@
+<app-header id="header"></app-header>
+
+<app-menu-mobile id="MenuMobile"></app-menu-mobile>
+
+<div id="SidebarOff">
+    <app-sidebar></app-sidebar>
+</div>
+<div class="Profile">
+<div class="ContainerData">
+
+
+
+<div class="ContainerMyProfile">
+    <div class="BackgroundProfile">
+           <div class="ImageProfile">
+        <img src="assets/post-images/profile_def.jpg" alt="">
+        <div class="EditProfile">
+            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="">
+        </div>
+    </div> 
+    </div>
+
+    <div class="DataMyProfile">
+        <div class="NameMyProfile">
+            <p #HtmlNameSurname *ngIf="userData"> {{userData.name}} {{userData.surname}} </p>
+        </div>
+        <div class="Age">
+            <p #HtmlAge *ngIf="userData">, {{userData.age}} </p>
+        </div>
+        <div class="CountryMyProfile">
+            <p *ngIf="userData"> {{userCountries.homelandName}}</p>
+        </div>
+    </div>
+    <div class="MyInterestProfile">
+        <div class="TittleInterest">
+            <p>Mis intereses</p>
+        </div>
+
+        <div class="Interest">
+            <p>Deportes</p>
+            <p>Comidas</p>
+            <p>Turismo</p>
+            <p>Animales</p>
+        </div>
+    </div>
+
+    <div class="PostMyProfile">
+        <div class="PostTypes">
+            <div class="ImagePost">
+                <p>Publicaciones</p>
+            </div>
+            <div class="TextPost">
+                <p>Textos</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ContainerImagePost"  *ngFor="let post of posts.reverse()">
+    <app-singlepost *ngIf="post" [post]="post"></app-singlepost>
+</div>
+
+<div class="ContainerTextPost">
+
+</div>
+</div>
+</div>
+
+<!-- 
+<div class="ContainerDatosPerfil">
+    <form action="">
+
+
+        <div class="BackgroundAddImage">
+            <div class="AddImage">
+                <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
+                    [style.background-size]="'cover'" [style.background-position]="'center'"
+                    (click)="triggerFileInput()"></div>
+                <div class="AddImageInput">
+                    <label for="pfp" class="InputContainer">
+                        <input ngModel type="file" (change)="onFileSelected($event)" accept="image/*" id="pfp"
+                            name="profile_pic" #fileInput>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="AddDescription">
+            <div class="TittleDescription">
+                <p>Agrega una descripcion:</p>
+            </div>
+
+            <textarea ngModel *ngFor="let userData of User;" name="description" id="description"
+                placeholder="">{{userData.description}}</textarea>
+        </div>
+
+        <div class="AddGender">
+            <select *ngFor="let userData of User;" ngModel id="gender" name="gender" required>
+                <option disabled selected value="">Gender: {{userData.gender}}</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="non-binary">Non-Binary</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="AddCountry">
+            <select ngModel id="homeland" name="homeland">
+                <option disabled selected value="">Selecciona tu pais</option>
+                <option value="1">Uruguay</option>
+                <option value="2">Mexico</option>
+                <option value="3">Brazil</option>
+                <option value="4">Japan</option>
+            </select>
+        </div>
+        <div class="AddResidenceCountry">
+            <select ngModel id="residenceCountry" name="residanceCountry">
+                <option disabled selected value="">Selecciona tu pais de residencia</option>
+                <option value="1">Uruguay</option>
+                <option value="2">Uganda</option>
+                <option value="3">Argentina</option>
+            </select>
+        </div>
+
+        <div class="FinishProfileData">
+            <button id="FinishRegister">Guardar datos</button>
+        </div>
+
+    </form>
+
+</div> -->
