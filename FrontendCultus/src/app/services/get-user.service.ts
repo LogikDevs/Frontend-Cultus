@@ -9,8 +9,11 @@ export class GetUserService {
 	private urlUserInterests = "http://localhost:8000/api/v1/likes/user/";
 	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
 	private urlUserCountries = 'http://localhost:8000/api/v1/country/'
-	private constructor(private http: HttpClient) {  }
+	
 	public ID_User:any;
+	
+	private constructor(private http: HttpClient) {  }
+	
 	UserIdIntoStorage(){
         this.getUser().subscribe((res:any)=>{
             localStorage.setItem('IdUser', (res["id"]));
@@ -26,10 +29,10 @@ export class GetUserService {
 		return this.http.get(this.urlgetUser, httpOptions);
 	}
 	getUserFromId(userId: any) {
-		return this.http.get(this.urlUserFromId + userId)
+		return this.http.get(this.urlUserFromId + userId);
 	}
 	getUserCountry(idCountry:any){
-		return this.http.get(this.urlUserCountries+idCountry)
+		return this.http.get(this.urlUserCountries+idCountry);
 	}
 	getUserInterests(IDinserted: any) {
 		const httpOptions = {

@@ -17,39 +17,48 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 			    transition('show <=> hide', animate('300ms ease-in-out')),
 		   ]),
 	],
-  })	
+  })
+
   export class SinglepostComponent implements OnInit {
   	@Input() author: any;
 	@Input() post: Post;
+
   	userId:any = localStorage.getItem("IdUser");
   	username:any;
   	comments: Comment[];
-  	AddComment:string = '';  
+  	AddComment:string = '';
+
   	scrollOffset: number = 0;
 	containerVisible: boolean = false;
   	showComments: boolean = false;
 	noCommentsTemplate: any;
-	constructor(private api: GetUserService, private votes: VoteService, private api2: GetCommentsService, private postService: GetPostsService) { }
+
+	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService) { }
 	ngOnInit() {
 		this.PostData();
-		this.getComments();
-		
+		this.getComments();	
 	}
 
 	PostData() {
-		this.api.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
+		this.userService.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
 			this.author = res;
-			this.VotesColor();		
+			//this.VotesColor();		
 		});
 	}
 
 	sendComment(){
+		const bodyComment = {
+			fk_id_user: this.userId,
+			fk_id_post: this.post.id_post,
+			text: this.AddComment
+		}
+
 		if (this.AddComment.trim() !== '') {
-			this.api2.postComment(this.userId, this.post.id_post, this.AddComment).subscribe((res:any)=>{
+			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
 				const NewComment: Comment = {
-					id_comment: res.id_comment,
-					fk_id_user: res.fk_id_user,
-					text: res.text
+					id_comment: CreatedComment.id_comment,
+					fk_id_user: CreatedComment.fk_id_user,
+					text: CreatedComment.text
 				}
 				this.comments.push(NewComment);
 				this.updateComments();
@@ -59,21 +68,24 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 		
 	}	
 	getComments() {
-        this.api2.getComment(this.post.id_post).subscribe((res: any) => {
+        this.commentsService.getComment(this.post.id_post).subscribe((res: any) => {
             this.comments = res;
         })
   	}
+
 	ClickVote(votetype: any) {
-		this.votes.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
+		this.voteService.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
 		})
 	}
 	updateVotes() {
-		this.votes.updateVotes(this.post.id_post).subscribe((res: any) => {
+		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
 			this.post.votes = res.votes;
+			
 			this.VotesColor();
 		});
 	}
+
 	updateComments(){
 		this.postService.updatePostComments(this.post.id_post).subscribe((res:any)=>{
 			this.post.comments = res.comments;
