@@ -1,4 +1,4 @@
-<form #postCreateForm="ngForm" (ngSubmit)="sendCreatedPost(postCreateForm.value)">
+<form #postCreateForm="ngForm" (ngSubmit)="sendPostData(postCreateForm.value)">
     <input ngModel name="text" type="text" placeholder="text" required>
     <input ngModel name="latitud" type="number" placeholder="latitud" required >
     <input ngModel name="longitud" type="number" placeholder="longitud" required >
