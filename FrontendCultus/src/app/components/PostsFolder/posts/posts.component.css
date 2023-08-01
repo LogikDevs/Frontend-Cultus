@@ -58,6 +58,7 @@
 .OptionsPost {
   margin: 15px;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .OptionsPost img {
@@ -265,10 +266,18 @@
 
 .AddCommentDesktop {
   display: flex;
+  width: 100%;
   margin: 10px;
 }
 
-.AddCommentDesktop input {
+.AddCommentDesktop form {
+  width: 100%;
+}
+
+.AddCommentDesktop textarea {
+  outline: none;
+  width: 80%;
+  resize: none;
   margin-right: 5px;
   height: 20px;
   background-color: rgba(0, 0, 0, 0);
