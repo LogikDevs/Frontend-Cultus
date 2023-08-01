@@ -2,6 +2,7 @@
     <input ngModel name="text" type="text" placeholder="text" required>
     <input ngModel name="latitud" type="number" placeholder="latitud" required >
     <input ngModel name="longitud" type="number" placeholder="longitud" required >
-    <input ngModel name="image" type="file" placeholder="Image" >
+    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
     <button name="CreatePost">Publish Post</button>
 </form>
+
