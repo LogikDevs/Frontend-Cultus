@@ -1,5 +1,10 @@
+
+<app-sidebar></app-sidebar>
 <form #postCreateForm="ngForm" (ngSubmit)="sendCreatedPost(postCreateForm.value)">
     <input ngModel name="text" type="text" placeholder="text" required>
-    <input ngModel name="location" type="text" placeholder="location" required >
+    <input ngModel name="latitud" type="number" placeholder="latitud" required >
+    <input ngModel name="longitud" type="number" placeholder="longitud" required >
+    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
     <button name="CreatePost">Publish Post</button>
 </form>
+

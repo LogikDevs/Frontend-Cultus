@@ -8,7 +8,7 @@ import { Post } from './post.model';
     styleUrls: ['./posts.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit {    
     posts: Post[];
 
     constructor(private api: GetPostsService) { }
@@ -16,10 +16,10 @@ export class PostsComponent implements OnInit {
     ngOnInit() {
         this.getPosts();
     }
+
     getPosts() {
         this.api.getPosts().subscribe((res: any) => {
             this.posts = res;
-            console.log(this.posts);
         })
     }
 }
