@@ -13,7 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
-import { SelectInterestComponent } from './components/select-interest/select-interest.component';
+import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { BackofficeComponent } from './components/backoffice/backoffice.component';
 

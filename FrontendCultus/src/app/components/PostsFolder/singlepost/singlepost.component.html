@@ -58,7 +58,7 @@
 					</div>
 					<div class="AmountUpvotesPost">
 
-						<p>{{ post.votes }}</p>
+						<p id="VotesNumber">{{ post.votes }}</p>
 					</div>
 					<div class="IconUpvotesPost" (click)="ClickVote(0)">
 						<img src="assets/post-images/disgusto.svg" alt="">
@@ -69,7 +69,7 @@
 						<img src="assets/chat.png" alt="">
 					</div>
 					<div class="AmountCommentPost">
-						<p>20k</p>
+						<p>{{post.comments}}</p>
 					</div>
 				</div>
 			</div>

@@ -3,6 +3,7 @@ export interface Post {
 	fk_id_user: number;
 	text: string;
 	location: string;
+	comments: number;
 	votes: number;
 	date: string;
 }
