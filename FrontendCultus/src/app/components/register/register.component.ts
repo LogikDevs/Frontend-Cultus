@@ -20,10 +20,14 @@ export class RegisterComponent {
 	}
 	RegisterLogin(inputdata:any){
 		this.apiauth.sendLogin(inputdata).subscribe((res2: any) => {
+			
 			localStorage.setItem('accessToken', (res2["access_token"]));
 			this.status.isLoggedIn = true;
 			this.router.navigateByUrl('/optionsdata');
 			this.getUser.UserIdIntoStorage();
 		})
+		this.getUser.getUser().subscribe((res:any)=>{
+			localStorage.setItem('userDataOnStorage', JSON.stringify(res));
+		});
 	}
 }

@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit {
 		homelandName: "", 
 		residenceName: ""
 	}
-
 	userId = localStorage.getItem("IdUser");
 	posts: Post[];
 	
