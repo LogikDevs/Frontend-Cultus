@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -26,7 +27,9 @@ import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.compon
 import { SinglepostComponent } from './components/PostsFolder/singlepost/singlepost.component';
 import { CommentComponent } from './components/PostsFolder/comment/comment.component';
 import { AgenProfileComponent } from './agen-profile/agen-profile.component';
+import { ModalOptionCommentComponent } from './components/modal-option-comment/modal-option-comment.component';
 import { InterestComponent } from './components/InterestsFolder/interest/interest.component';
+
 
 
 @NgModule({
@@ -54,9 +57,11 @@ import { InterestComponent } from './components/InterestsFolder/interest/interes
     SinglepostComponent,
     CommentComponent,
     AgenProfileComponent,
+    ModalOptionCommentComponent,
     InterestComponent
 
 
+   
   
 
   ],
@@ -66,7 +71,7 @@ import { InterestComponent } from './components/InterestsFolder/interest/interes
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
