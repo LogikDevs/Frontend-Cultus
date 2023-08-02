@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { PostRegisterService } from '../../services/post-register.service';
 import { EditUserService } from '../../services/edit-user.service';
 import { GetCountriesService } from '../../services/get-countries.service';
 
