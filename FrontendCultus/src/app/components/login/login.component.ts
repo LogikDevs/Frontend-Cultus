@@ -14,16 +14,16 @@ export class LoginComponent {
 	public loginError: boolean = false;
 	public loginStatus: boolean = false;
 
-	constructor(private api: AuthenticationService, private router: Router, private status: StatusService, private api2: GetUserService) { }
+	constructor(private api: AuthenticationService, private router: Router, private status: StatusService, private UserService: GetUserService) { }
 
 	sendLogin(credentials: any) {
-		return this.api.sendLogin(credentials).subscribe(
+		this.api.sendLogin(credentials).subscribe(
 			(res: any) => {
 				localStorage.setItem('accessToken', (res["access_token"]));
 				this.status.isLoggedIn = true;
 				this.router.navigateByUrl('/home');
-				this.api2.UserIdIntoStorage();
+				this.UserService.UserIdIntoStorage();
 			}
-		);
+		)
 	}
 }

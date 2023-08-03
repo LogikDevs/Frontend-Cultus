@@ -18,8 +18,8 @@ export class ProfileComponent implements OnInit {
 		homelandName: "", 
 		residenceName: ""
 	}
-
 	userId = localStorage.getItem("IdUser");
+	
 	posts: Post[];
 	
 	selectedImage: string | undefined;
@@ -27,20 +27,17 @@ export class ProfileComponent implements OnInit {
 	constructor(private userService: GetUserService, private postsService: GetPostsService) { }
 
 	ngOnInit() {
-		this.getUser();
+		this.userData = this.userService.getUserData();
+		this.getCountries();
 		this.getUserInterests();
 		this.getUserPosts();
 	}
 
-	getUser() {
-		this.userService.getUserFromId(this.userId).subscribe((res:any) => {
-			this.userData = res;
-			
-			this.getUserCountryInfo(this.userData.homeland, "homeland");
-			this.getUserCountryInfo(this.userData.residence, "residence");
-		})
+	getCountries(){
+		this.getUserCountryInfo(this.userData.homeland, "homeland");
+		this.getUserCountryInfo(this.userData.residence, "residence");
 	}
-
+	
 	getUserCountryInfo(idCountry: any, countryType: 'homeland' | 'residence') {
 		this.userService.getUserCountry(idCountry).subscribe(
 			(res: any) => {
