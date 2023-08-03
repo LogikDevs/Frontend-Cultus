@@ -13,13 +13,16 @@ import { GetInterestsService } from 'src/app/services/get-interests.service';
 
 export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-	userInterestsId: any[] = [];
-	userInterestsNames: any[] = [];
+
 	@Input() userData:User;
 	@Input() userCountries:UserCountries = {
 		homelandName: "", 
 		residenceName: ""
 	}
+
+	userInterestsId: any[] = [];
+	userInterestsNames: any[] = [];
+
 	userId = localStorage.getItem("IdUser");
 	
 	posts: Post[];
@@ -65,6 +68,7 @@ export class ProfileComponent implements OnInit {
 			this.posts = res;
 		})
 	}
+
 	getUserInterests(){
 		this.userService.getUserInterests(this.userId).subscribe((res: any) => {
 			Object.keys(res).forEach((key) => {
