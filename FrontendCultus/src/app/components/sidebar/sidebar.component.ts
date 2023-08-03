@@ -25,7 +25,6 @@ export class SidebarComponent implements OnInit {
             this.sidebar.classList.toggle("open");
             this.menuBtnChange();
         });
-        console.log(this.userData.name);
         this.Username = this.userData.name + " " + this.userData.surname;
     }
 
