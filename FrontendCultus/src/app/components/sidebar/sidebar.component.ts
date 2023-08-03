@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { StatusService } from 'src/app/services/status.service';
@@ -12,7 +12,9 @@ export class SidebarComponent implements OnInit {
     sidebar!: HTMLElement;
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
+    @Input() Username:any;
     userId = localStorage.getItem("IdUser");
+    userData = this.userService.getUserData();
     constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public userService: GetUserService) { }
     
     ngOnInit() {
@@ -23,21 +25,15 @@ export class SidebarComponent implements OnInit {
             this.sidebar.classList.toggle("open");
             this.menuBtnChange();
         });
-
-        this.getUser();
-    }
-
-    getUser(){
-        this.userService.getUserFromId(this.userId).subscribe((res: any) => {
-            var Username: any = document.getElementById("username");
-            Username.textContent = res.name + " " + res.surname;
-        })
+        console.log(this.userData.name);
+        this.Username = this.userData.name + " " + this.userData.surname;
     }
 
     logout() {
         this.api.sendLogout().subscribe();
         localStorage.removeItem("accessToken");
         localStorage.removeItem("IdUser");
+        localStorage.removeItem("userData");
         this.status.isLoggedIn = false;
         this.router.navigateByUrl("/login");
     }

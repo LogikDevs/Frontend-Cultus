@@ -10,13 +10,19 @@ export class GetUserService {
 	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
 	private urlUserCountries = 'http://localhost:8000/api/v1/country/'
 	
-	public ID_User:any;
-	
+	profileKey:any = "userData";
+
 	private constructor(private http: HttpClient) {  }
 	
+	getUserData(): any {
+		const cachedData = localStorage.getItem(this.profileKey);
+		return cachedData ? JSON.parse(cachedData) : null;
+	}
+
 	UserIdIntoStorage(){
         this.getUser().subscribe((res:any)=>{
             localStorage.setItem('IdUser', (res["id"]));
+			localStorage.setItem(this.profileKey, JSON.stringify(res));
         });
     }
 	getUser() {

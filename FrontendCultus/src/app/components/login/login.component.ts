@@ -25,8 +25,5 @@ export class LoginComponent {
 				this.UserService.UserIdIntoStorage();
 			}
 		)
-		this.UserService.getUser().subscribe((res:any)=>{
-			localStorage.setItem('userDataOnStorage', JSON.stringify(res));
-		});
 	}
 }

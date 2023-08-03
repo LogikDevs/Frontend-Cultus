@@ -26,8 +26,5 @@ export class RegisterComponent {
 			this.router.navigateByUrl('/optionsdata');
 			this.getUser.UserIdIntoStorage();
 		})
-		this.getUser.getUser().subscribe((res:any)=>{
-			localStorage.setItem('userDataOnStorage', JSON.stringify(res));
-		});
 	}
 }
