@@ -9,6 +9,7 @@ export class AuthenticationService {
 	private logoutUrl = "http://localhost:8000/api/v1/logout";
 	private client = "102";
 	private secret = "OD6mY0ddiqMUGjCNAgBjC8YPaqWRCV5NogFSNxv4";
+
 	constructor(private http: HttpClient) { }
 
 	sendLogin(credentials: any) {
