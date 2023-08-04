@@ -20,8 +20,7 @@ export class ProfileComponent implements OnInit {
 		residenceName: ""
 	}
 
-	userInterestsId: any[] = [];
-	userInterestsNames: any[] = [];
+	userInterests: any[] = [];
 
 	userId = localStorage.getItem("IdUser");
 	
@@ -70,10 +69,11 @@ export class ProfileComponent implements OnInit {
 	}
 
 	getUserInterests(){
-		this.userService.getUserInterests(this.userId).subscribe((res: any) => {
-			Object.keys(res).forEach((key) => {
-				this.userInterestsId.push(res[key].id_interest);
-			});
+		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
+			for (let i = 0; i < res.interests.length; i++){
+				console.log(res.interests[i].interest);
+				this.userInterests.push(res.interests[i].interest);
+			}
 		})
 	}
 	

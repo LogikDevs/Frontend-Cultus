@@ -42,7 +42,7 @@ export class SelectInterestComponent {
 		for (let i = 0; i < InterestsArray.length; i++){
 			this.interestService.sendInterests(this.userId, InterestsArray[i]).subscribe((res:any)=>{
 				
-			});
+			})
 		}
 		this.router.navigateByUrl('/home');
 	}
