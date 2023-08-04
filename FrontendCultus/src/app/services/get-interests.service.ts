@@ -9,6 +9,8 @@ import { Interest, UserInterests } from '../components/InterestsFolder/interest/
 export class GetInterestsService {
   	private urlGetInterests = 'http://localhost:8000/api/v1/interest';
   	private urlSendInterests = 'http://localhost:8000/api/v1/likes';
+	private urlGetUserInterests = 'http://localhost:8000/api/v1/likes/user/'
+	
 	NewUserInterestsArray:any[] = [];
 	
 	constructor(private http: HttpClient) { }
@@ -28,5 +30,14 @@ export class GetInterestsService {
 			id_user: User
 		}
 		return this.http.post<UserInterests[]>(this.urlSendInterests, body);
+	}
+	getUserInterests(userId:any){
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get(this.urlGetUserInterests+userId, httpOptions);
 	}
 }

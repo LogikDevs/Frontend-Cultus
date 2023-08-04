@@ -3,6 +3,7 @@ import { GetUserService } from '../../services/get-user.service';
 import { User, UserCountries } from './profile.model';
 import { Post } from '../PostsFolder/posts/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
+import { GetInterestsService } from 'src/app/services/get-interests.service';
 
 @Component({
 	selector: 'app-profile',
@@ -12,19 +13,22 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 
 export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-	@Input() userInterests: any;
+
 	@Input() userData:User;
 	@Input() userCountries:UserCountries = {
 		homelandName: "", 
 		residenceName: ""
 	}
+
+	userInterests: any[] = [];
+
 	userId = localStorage.getItem("IdUser");
 	
 	posts: Post[];
 	
 	selectedImage: string | undefined;
 	
-	constructor(private userService: GetUserService, private postsService: GetPostsService) { }
+	constructor(private userService: GetUserService, private postsService: GetPostsService, private interestService: GetInterestsService) { }
 
 	ngOnInit() {
 		this.userData = this.userService.getUserData();
@@ -63,9 +67,13 @@ export class ProfileComponent implements OnInit {
 			this.posts = res;
 		})
 	}
+
 	getUserInterests(){
-		this.userService.getUserInterests(this.userId).subscribe((res: any) => {
-			this.userInterests = res;
+		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
+			for (let i = 0; i < res.interests.length; i++){
+				console.log(res.interests[i].interest);
+				this.userInterests.push(res.interests[i].interest);
+			}
 		})
 	}
 	
