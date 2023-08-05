@@ -21,8 +21,8 @@ export class LoginComponent {
 			(res: any) => {
 				localStorage.setItem('accessToken', (res["access_token"]));
 				this.status.isLoggedIn = true;
-				this.router.navigateByUrl('/home');
 				this.UserService.UserIdIntoStorage();
+				this.router.navigateByUrl('/home');
 			}
 		)
 	}
