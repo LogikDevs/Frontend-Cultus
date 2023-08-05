@@ -9,6 +9,8 @@ import { NewPostData } from './create-post.model';
 export class CreatePostComponent {
 	userId = localStorage.getItem("IdUser");
 	postMultimedia: File;
+
+	displaySelectInterest:boolean = false;
 	constructor(private createPostService: CreatePostService) { }
 
 	sendCreatedPost(FormData:any){
@@ -37,5 +39,8 @@ export class CreatePostComponent {
 	}
 	onFileChange(event: any) {
 		this.postMultimedia = event.target.files[0];
+	}
+	showPostInterestSelection(){
+		this.displaySelectInterest = !this.displaySelectInterest;
 	}
 }
