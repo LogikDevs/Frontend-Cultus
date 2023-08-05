@@ -27,7 +27,6 @@ export class RegisterComponent {
 
 	PostRegister(inputdata: any) {
 		this.registerService.PostRegister(inputdata).subscribe((res: HttpResponse<Object>) => {
-			console.log(res);
 			if (res.status === 201) this.RegisterLogin(inputdata);
 
 			if (res.status !== 201) this.handleErrorResponse(res);
@@ -84,5 +83,5 @@ export class RegisterComponent {
 		  this.InputSurnameError = '';
 		  this.InputAgeError = '';
 		}, this.secondsToReset);
-	  }
+	}
 }
