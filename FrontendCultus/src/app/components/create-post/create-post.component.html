@@ -5,6 +5,10 @@
     <input ngModel name="latitud" type="number" placeholder="latitud" required >
     <input ngModel name="longitud" type="number" placeholder="longitud" required >
     <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
+    <button (click)="showPostInterestSelection()">Selec post interests</button>
     <button name="CreatePost">Publish Post</button>
 </form>
+<div *ngIf="displaySelectInterest">
+    <app-select-interest></app-select-interest>
+</div>
 
