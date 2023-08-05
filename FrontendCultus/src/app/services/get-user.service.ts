@@ -10,6 +10,7 @@ export class GetUserService {
 	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
 	private urlUserCountries = 'http://localhost:8000/api/v1/country/'
 	
+	user:any = "IdUser";
 	profileKey:any = "userData";
 
 	private constructor(private http: HttpClient) {  }
@@ -21,7 +22,7 @@ export class GetUserService {
 
 	UserIdIntoStorage(){
         this.getUser().subscribe((res:any)=>{
-            localStorage.setItem('IdUser', (res["id"]));
+            localStorage.setItem(this.user, (res["id"]));
 			localStorage.setItem(this.profileKey, JSON.stringify(res));
         });
     }

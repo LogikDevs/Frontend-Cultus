@@ -24,15 +24,12 @@ export class CreatePostComponent {
 			multimedia_file: this.postMultimedia
 		};
 		this.createPostService.postCreate(postData, this.userId).subscribe((res:any)=>{
-			console.log(res);
 			const newPostId = res.id_post;
-			if (this.postMultimedia){
-				this.sendPostMultimedia(postData.multimedia_file, newPostId)
-			}
+			
+			if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
 		});
 	}
-	sendPostMultimedia(postMultimedia:any, id_post:any ) {
-		console.log("postMultimedia: ",postMultimedia);
+	sendPostMultimedia(postMultimedia:File, id_post:any ) {
 		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{
 			console.log("sendPostMultimedia: ", res);
 		});

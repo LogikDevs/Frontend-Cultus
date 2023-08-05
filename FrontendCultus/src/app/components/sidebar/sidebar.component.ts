@@ -12,21 +12,22 @@ export class SidebarComponent implements OnInit {
     sidebar!: HTMLElement;
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
-    @Input() Username:any;
     userId = localStorage.getItem("IdUser");
     userData = this.userService.getUserData();
+    @Input() Username:any;
     constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public userService: GetUserService) { }
     
     ngOnInit() {
+        this.Username = this.userData.name + " " + this.userData.surname;
         this.sidebar = document.querySelector(".sidebar")!;
         this.closeBtn = document.querySelector("#btn")!;
         this.searchBtn = document.querySelector(".bx-search")!;
+        
         this.closeBtn.addEventListener("click", () => {
             this.sidebar.classList.toggle("open");
             this.menuBtnChange();
         });
-        console.log(this.userData.name);
-        this.Username = this.userData.name + " " + this.userData.surname;
+        
     }
 
     logout() {
