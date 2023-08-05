@@ -55,11 +55,8 @@ export class ProfileComponent implements OnInit {
 		);
 	}
 	setUserCountryName(countryType: 'homeland' | 'residence', countryName: string) {
-		if (countryType === 'homeland') {
-			this.userCountries.homelandName = countryName;
-		} else if (countryType === 'residence') {
-			this.userCountries.residenceName = countryName;
-		}
+		if (countryType === 'homeland') this.userCountries.homelandName = countryName;
+		if (countryType === 'residence') this.userCountries.residenceName = countryName;
 	}
 
 	getUserPosts(){
