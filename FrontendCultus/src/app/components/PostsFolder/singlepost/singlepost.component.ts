@@ -22,10 +22,12 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
   export class SinglepostComponent implements OnInit {
   	@Input() author: any;
 	@Input() post: Post;
+	@Input() postInterests:any;
 
   	userId:any = localStorage.getItem("IdUser");
   	username:any;
   	comments: Comment[];
+	
   	AddComment:string = '';
 
   	scrollOffset: number = 0;
@@ -36,6 +38,7 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService) { }
 	ngOnInit() {
 		this.PostData();
+		this.getPostsInterests();
 		this.getComments();	
 	}
 
@@ -72,7 +75,12 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
             this.comments = res;
         })
   	}
-
+	getPostsInterests(){
+		this.postService.getPostsInterests(this.post.id_post).subscribe((res: any) => {
+            this.postInterests = res;
+			console.log(this.postInterests);
+        })
+	}
 	ClickVote(votetype: any) {
 		this.voteService.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
