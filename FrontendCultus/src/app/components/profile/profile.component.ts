@@ -68,7 +68,6 @@ export class ProfileComponent implements OnInit {
 	getUserInterests(){
 		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
 			for (let i = 0; i < res.interests.length; i++){
-				console.log(res.interests[i].interest);
 				this.userInterests.push(res.interests[i].interest);
 			}
 		})
