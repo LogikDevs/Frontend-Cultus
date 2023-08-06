@@ -12,8 +12,7 @@ export class CreatePostComponent {
 	
 	postMultimedia: File;
 
-	displaySelectInterest:boolean = false;
-	constructor(private createPostService: CreatePostService, private interestService: GetInterestsService) { }
+	constructor(private createPostService: CreatePostService, public interestService: GetInterestsService) { }
 
 	sendCreatedPost(FormData:any){
 		this.sendPostData(FormData);
@@ -39,18 +38,15 @@ export class CreatePostComponent {
 	onFileChange(event: any) {
 		this.postMultimedia = event.target.files[0];
 	}
+
 	showPostInterestSelection(){
-		this.displaySelectInterest = true;
+		this.interestService.displaySelectInterest = true;
 	}
 
 	sendPostInterests(postId:any){
 		const InterestsArray:any = this.interestService.NewUserInterestsArray;
-		console.log(InterestsArray);
-
 		for (let i = 0; i < InterestsArray.length; i++){
-			this.interestService.sendPostInterests(postId, InterestsArray[i]).subscribe((res:any)=>{
-				console.log(res);
-			})
+			this.interestService.sendPostInterests(postId, InterestsArray[i]).subscribe((res:any)=>{})
 		}
 	}
 }

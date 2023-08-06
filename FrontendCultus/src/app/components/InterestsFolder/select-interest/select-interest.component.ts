@@ -16,11 +16,10 @@ export class SelectInterestComponent {
 	filteredInterests: Interest[] = [];
 
 	@Input() postInterestType: boolean = false;
+	@Input() WindowVisibility: boolean = true;
 
 	constructor(private interestService: GetInterestsService, private router: Router) { }
 	ngOnInit(){
-		console.log(this.postInterestType);
-		
 		this.getInterests();
 	}
 	getInterests(){
@@ -42,15 +41,16 @@ export class SelectInterestComponent {
 			interest.interest.toLowerCase().startsWith(dataReceived.toLowerCase())
 		)
 	}
+
 	sendInterests(){
-		console.log(this.postInterestType);
-		if (this.postInterestType == true) this.postInterestType = false;
-		
+		if (this.postInterestType == true) {
+			this.interestService.displaySelectInterest = false;
+			this.WindowVisibility = false;
+		}
 		else this.sendUserInterests();
 	}
 	sendUserInterests(){
 		const InterestsArray:any = this.interestService.NewUserInterestsArray;
-		console.log(InterestsArray);
 		for (let i = 0; i < InterestsArray.length; i++){
 			this.interestService.sendUserInterests(this.userId, InterestsArray[i]).subscribe((res:any)=>{})
 		}

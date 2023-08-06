@@ -12,6 +12,8 @@ export class GetInterestsService {
 	private urlGetUserInterests = 'http://localhost:8000/api/v1/likes/user/'
 	private urlSendPostInterests = 'http://localhost:8001/api/characterizes/create';
 
+	public displaySelectInterest:boolean = false;
+
 	NewUserInterestsArray:any[] = [];
 
 	constructor(private http: HttpClient) { }
@@ -37,7 +39,7 @@ export class GetInterestsService {
 			fk_id_label: Interests,
 			fk_id_post: Post
 		}
-		return this.http.post<UserInterests[]>(this.urlSendPostInterests, body);
+		return this.http.post(this.urlSendPostInterests, body);
 	}
 	getUserInterests(userId:any){
 		const httpOptions = {
