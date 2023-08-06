@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { Interest } from '../interest/interest.model';
 import { Router } from '@angular/router';
@@ -10,18 +10,24 @@ import { Router } from '@angular/router';
 	styleUrls: ['./select-interest.component.scss']
 })
 export class SelectInterestComponent {
+	
 	userId = localStorage.getItem("IdUser");
 	interests: Interest[] = [];
 	filteredInterests: Interest[] = [];
+
+	@Input() postInterestType: boolean = false;
+
 	constructor(private interestService: GetInterestsService, private router: Router) { }
 	ngOnInit(){
+		console.log(this.postInterestType);
+		
 		this.getInterests();
 	}
 	getInterests(){
 		this.interestService.getInterests().subscribe((res:any)=>{
 			this.interests = res;
 			this.filteredInterests = res;
-		});
+		})
 	}
 	onInterestsSearch(data:Event){
 		const ReceivedText = (data.target as HTMLInputElement).value.toLowerCase();
@@ -34,16 +40,21 @@ export class SelectInterestComponent {
 	filterInterests(dataReceived: string) {
 		this.filteredInterests = this.interests.filter(interest =>
 			interest.interest.toLowerCase().startsWith(dataReceived.toLowerCase())
-		  );
+		)
 	}
 	sendInterests(){
+		console.log(this.postInterestType);
+		if (this.postInterestType == true) this.postInterestType = false;
+		
+		else this.sendUserInterests();
+	}
+	sendUserInterests(){
 		const InterestsArray:any = this.interestService.NewUserInterestsArray;
 		console.log(InterestsArray);
 		for (let i = 0; i < InterestsArray.length; i++){
-			this.interestService.sendInterests(this.userId, InterestsArray[i]).subscribe((res:any)=>{
-				
-			})
+			this.interestService.sendUserInterests(this.userId, InterestsArray[i]).subscribe((res:any)=>{})
 		}
 		this.router.navigateByUrl('/home');
 	}
 }
+
