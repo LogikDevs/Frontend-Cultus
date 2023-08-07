@@ -24,6 +24,8 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	@Input() post: Post;
 	@Input() postInterests:any;
 
+	Followable:boolean;
+
   	userId:any = localStorage.getItem("IdUser");
   	username:any;
   	comments: Comment[];
@@ -40,11 +42,14 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 
 	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService) { }
 	ngOnInit() {
+		this.IsFollowable();
 		this.PostData();
 		this.getPostsInterests();
 		this.getComments();	
 	}
-
+	IsFollowable(){
+		if (this.post.fk_id_user != this.userId) this.Followable = true;
+	}
 	PostData() {
 		this.userService.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
 			this.author = res;
