@@ -31,8 +31,6 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
   	AddComment:string = '';
 
 	userVotes:any[] = [];;
-	Voted: boolean = false;
-	likeIdToDelete:any = null;
 	vote:any;
 
   	scrollOffset: number = 0;
@@ -114,7 +112,6 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	updateVotes() {
 		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
 			this.post.votes = res.votes;
-			console.log(this.post.votes);
 			//this.VotesColor();
 		});
 	}
