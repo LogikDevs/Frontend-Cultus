@@ -5,6 +5,7 @@ import { VoteService } from 'src/app/services/vote.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
+import { FollowsService } from 'src/app/services/follows.service';
 
 @Component({
 	selector: 'app-singlepost',
@@ -24,7 +25,7 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	@Input() post: Post;
 	@Input() postInterests:any;
 
-	Followable:boolean;
+	Followable:boolean = false;
 
   	userId:any = localStorage.getItem("IdUser");
   	username:any;
@@ -40,23 +41,23 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
   	showComments: boolean = false;
 	noCommentsTemplate: any;
 
-	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService) { }
+	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
-		this.IsFollowable();
 		this.PostData();
+		this.IsFollowable();
 		this.getPostsInterests();
 		this.getComments();	
 	}
-	IsFollowable(){
-		if (this.post.fk_id_user != this.userId) this.Followable = true;
-	}
+
 	PostData() {
 		this.userService.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
 			this.author = res;
 			//this.VotesColor();		
 		});
 	}
-
+	IsFollowable(){
+		if (this.post.fk_id_user != this.userId) this.Followable = true;
+	}
 	sendComment(){
 		const bodyComment = {
 			fk_id_user: this.userId,
@@ -133,6 +134,11 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 		}else{
 			VotesNumber.style.color = "green"
 		}
+	}
+	FollowAction(){
+		this.followService.sendFollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+			console.log(res);
+		});
 	}
 	mostrarComentarios() {
 		this.showComments = true;
