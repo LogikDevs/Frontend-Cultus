@@ -1,12 +1,3 @@
-
-<p #HtmlAge *ngFor="let userData of User;">Age: {{ userData.age }}</p>
-<p #HtmlGender *ngFor="let userData of User;">Gender: {{ userData.gender }}</p>
-<p #HtmlHomeland *ngFor="let userData of User;">Homeland: {{ userData.homeland }}</p>
-<p #HtmlResidence *ngFor="let userData of User;">Residence: {{ userData.residence }}</p>
-<p #HtmlDescription *ngFor="let userData of User;">Description: {{ userData.description }}</p>
-<p #HtmlProfile_Pic *ngFor="let userData of User;">Pfp: {{ userData.profile_pic }}</p>
-
-
 <app-header id="header"></app-header>
 
 <app-menu-mobile id="MenuMobile"></app-menu-mobile>
@@ -31,13 +22,13 @@
 
     <div class="DataMyProfile">
         <div class="NameMyProfile">
-            <p #HtmlNameSurname *ngFor="let userData of User;">{{ userData.name }} {{ userData.surname }} ,</p>
+            <p #HtmlNameSurname *ngIf="userData"> {{userData.name}} {{userData.surname}} </p>
         </div>
         <div class="Age">
-            <p #HtmlAge *ngFor="let userData of User;">{{ userData.age }} ,</p>
+            <p #HtmlAge *ngIf="userData">, {{userData.age}} </p>
         </div>
         <div class="CountryMyProfile">
-            <p>Uruguay</p>
+            <p *ngIf="userData"> {{userCountries.homelandName}}</p>
         </div>
     </div>
     <div class="MyInterestProfile">
@@ -46,10 +37,7 @@
         </div>
 
         <div class="Interest">
-            <p>Deportes</p>
-            <p>Comidas</p>
-            <p>Turismo</p>
-            <p>Animales</p>
+            <p *ngFor="let interest of userInterests">{{ interest }}</p>
         </div>
     </div>
 
@@ -65,23 +53,8 @@
     </div>
 </div>
 
-<div class="ContainerImagePost">
-    <div class="PostImage">
-        <img src="assets/post-images/descarga (2).jpeg" alt="">
-    </div>
-    <div class="PostImage">
-        <img src="assets/post-images/descarga (2).jpeg" alt="">
-    </div>
-    <div class="PostImage">
-        <img src="assets/post-images/descarga (2).jpeg" alt="">
-    </div>
-
-    <div class="PostImage">
-        <img src="assets/post-images/descarga (2).jpeg" alt="">
-    </div>
-    <div class="PostImage">
-        <img src="assets/post-images/descarga (2).jpeg" alt="">
-    </div>
+<div class="ContainerImagePost"  *ngFor="let post of posts.reverse()">
+    <app-singlepost *ngIf="post" [post]="post"></app-singlepost>
 </div>
 
 <div class="ContainerTextPost">

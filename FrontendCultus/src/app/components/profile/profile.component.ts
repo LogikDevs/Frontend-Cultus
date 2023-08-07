@@ -1,7 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { GetUserService } from '../../services/get-user.service';
-var userData: any;
-var userInterests: any;
+import { User, UserCountries } from './profile.model';
+import { Post } from '../PostsFolder/posts/post.model';
+import { GetPostsService } from 'src/app/services/get-posts.service';
+import { GetInterestsService } from 'src/app/services/get-interests.service';
+
 @Component({
 	selector: 'app-profile',
 	templateUrl: './profile.component.html',
@@ -10,32 +13,67 @@ var userInterests: any;
 
 export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-	selectedImage: string | undefined;
-	User: any[] = [];
-	userId = localStorage.getItem("IdUser");
-	constructor(private api: GetUserService) { }
-	ngOnInit(): void {
-		this.getUser();
+
+	@Input() userData:User;
+	@Input() userCountries:UserCountries = {
+		homelandName: "", 
+		residenceName: ""
 	}
-	getUser() {
-		this.api.getUserFromId(this.userId).subscribe((res: any) => {
-			this.User.push({
-				id: res.id,
-				email: res.email,
-				name: res.name,
-				surname: res.surname,
-				age: res.age,
-				gender: res.gender,
-				homeland: res.homeland,
-				residence: res.residence,
-				description: res.description,
-				profile_pic: res.profile_pic
-			});
-			this.api.getUserInterests(res.id).subscribe((res2: any) => {
-				userInterests = res2;
-			})
+
+	userInterests: any[] = [];
+
+	userId = localStorage.getItem("IdUser");
+	
+	posts: Post[];
+	
+	selectedImage: string | undefined;
+	
+	constructor(private userService: GetUserService, private postsService: GetPostsService, private interestService: GetInterestsService) { }
+
+	ngOnInit() {
+		this.userData = this.userService.getUserData();
+		this.getCountries();
+		this.getUserInterests();
+		this.getUserPosts();
+	}
+
+	getCountries(){
+		this.getUserCountryInfo(this.userData.homeland, "homeland");
+		this.getUserCountryInfo(this.userData.residence, "residence");
+	}
+	
+	getUserCountryInfo(idCountry: any, countryType: 'homeland' | 'residence') {
+		this.userService.getUserCountry(idCountry).subscribe(
+			(res: any) => {
+				const countryName = res.country_name;
+				
+				this.setUserCountryName(countryType, countryName);
+			},
+			(error: any) => {
+				this.setUserCountryName(countryType, 'Not specified');
+			}
+		);
+	}
+	setUserCountryName(countryType: 'homeland' | 'residence', countryName: string) {
+		if (countryType === 'homeland') this.userCountries.homelandName = countryName;
+		if (countryType === 'residence') this.userCountries.residenceName = countryName;
+	}
+
+	getUserPosts(){
+		this.postsService.getUserPosts(this.userId).subscribe((res:any)=>{
+			this.posts = res;
 		})
 	}
+
+	getUserInterests(){
+		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
+			for (let i = 0; i < res.interests.length; i++){
+				this.userInterests.push(res.interests[i].interest);
+			}
+		})
+	}
+	
+
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
 	}

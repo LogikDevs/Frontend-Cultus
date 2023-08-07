@@ -8,12 +8,22 @@ export class GetUserService {
 	private urlgetUser = 'http://localhost:8000/api/v1/validate';
 	private urlUserInterests = "http://localhost:8000/api/v1/likes/user/";
 	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
+	private urlUserCountries = 'http://localhost:8000/api/v1/country/'
+	
+	user:any = "IdUser";
+	profileKey:any = "userData";
 
 	private constructor(private http: HttpClient) {  }
-	public ID_User:any;
+	
+	getUserData(): any {
+		const cachedData = localStorage.getItem(this.profileKey);
+		return cachedData ? JSON.parse(cachedData) : null;
+	}
+
 	UserIdIntoStorage(){
         this.getUser().subscribe((res:any)=>{
-            localStorage.setItem('IdUser', (res["id"]));
+            localStorage.setItem(this.user, (res["id"]));
+			localStorage.setItem(this.profileKey, JSON.stringify(res));
         });
     }
 	getUser() {
@@ -26,7 +36,10 @@ export class GetUserService {
 		return this.http.get(this.urlgetUser, httpOptions);
 	}
 	getUserFromId(userId: any) {
-		return this.http.get(this.urlUserFromId + userId)
+		return this.http.get(this.urlUserFromId + userId);
+	}
+	getUserCountry(idCountry:any){
+		return this.http.get(this.urlUserCountries+idCountry);
 	}
 	getUserInterests(IDinserted: any) {
 		const httpOptions = {

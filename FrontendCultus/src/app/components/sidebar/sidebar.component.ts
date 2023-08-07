@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { StatusService } from 'src/app/services/status.service';
@@ -13,29 +13,33 @@ export class SidebarComponent implements OnInit {
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
     userId = localStorage.getItem("IdUser");
-    constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public api2: GetUserService) { }
-   
-    logout() {
-        this.api.sendLogout().subscribe();
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("IdUser");
-        this.status.isLoggedIn = false;
-        this.router.navigateByUrl("/login");
-    }
-
+    userData = this.userService.getUserData();
+    @Input() Username:any;
+    constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public userService: GetUserService) { }
+    
     ngOnInit() {
+        this.Username = this.userData.name + " " + this.userData.surname;
         this.sidebar = document.querySelector(".sidebar")!;
         this.closeBtn = document.querySelector("#btn")!;
         this.searchBtn = document.querySelector(".bx-search")!;
+        
         this.closeBtn.addEventListener("click", () => {
             this.sidebar.classList.toggle("open");
             this.menuBtnChange();
         });
-        this.api2.getUserFromId(this.userId).subscribe((res: any) => {
-            var Username: any = document.getElementById("username");
-            Username.textContent = res.name + " " + res.surname;
-        })
+        
     }
+
+    logout() {
+        this.api.sendLogout().subscribe();
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("IdUser");
+        localStorage.removeItem("userData");
+        this.status.isLoggedIn = false;
+        this.router.navigateByUrl("/login");
+    }
+
+
     menuBtnChange() {
         if (this.sidebar.classList.contains("open")) {
             this.closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
