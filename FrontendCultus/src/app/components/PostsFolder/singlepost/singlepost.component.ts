@@ -30,6 +30,11 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	
   	AddComment:string = '';
 
+	userVotes:any[] = [];;
+	Voted: boolean = false;
+	likeIdToDelete:any = null;
+	vote:any;
+
   	scrollOffset: number = 0;
 	containerVisible: boolean = false;
   	showComments: boolean = false;
@@ -81,16 +86,36 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 			console.log(this.postInterests);
         })
 	}
-	ClickVote(votetype: any) {
+
+	ClickVote(votetype:any){
+		this.voteService.checkUserVotes(this.userId).subscribe((res:any)=>{
+			this.userVotes = res;	
+			this.vote = this.userVotes.find(vote => vote.fk_id_post === this.post.id_post);
+			this.CheckVote(votetype);
+		})
+	}	
+	CheckVote(votetype:any) {
+		if (this.vote && this.vote.vote == votetype) this.DeleteVote(this.vote.id_vote);
+		
+		if (!this.vote || this.vote.vote != votetype) this.CreateVote(votetype);
+	}
+
+	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
 		})
 	}
+	DeleteVote(voteId:any){
+		this.voteService.voteDelete(voteId).subscribe((res:any)=>{
+			this.updateVotes();
+		})
+	}
+
 	updateVotes() {
 		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
 			this.post.votes = res.votes;
-			
-			this.VotesColor();
+			console.log(this.post.votes);
+			//this.VotesColor();
 		});
 	}
 
