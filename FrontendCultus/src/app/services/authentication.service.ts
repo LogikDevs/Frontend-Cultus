@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthenticationService {
 	private loginUrl = "http://localhost:8000/oauth/token";
 	private logoutUrl = "http://localhost:8000/api/v1/logout";
-	private client = "102";
-	private secret = "3D192H1GoYCwuwkPzdBZqH1AaVkYMTw7atv1PzBC";
+	private client = "101";
+	private secret = "hZdGRxWmw4iNy1rwbQZwALDhP5oHKH2uaWIv4ctr";
 
 	constructor(private http: HttpClient) { }
 
