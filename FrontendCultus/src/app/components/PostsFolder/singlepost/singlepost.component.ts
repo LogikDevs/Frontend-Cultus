@@ -26,6 +26,8 @@ import { FollowsService } from 'src/app/services/follows.service';
 	@Input() postInterests:any;
 
 	Followable:boolean = false;
+	userFollows:any[] = [];
+	userFollowsAccount:any;
 
   	userId:any = localStorage.getItem("IdUser");
   	username:any;
@@ -87,7 +89,6 @@ import { FollowsService } from 'src/app/services/follows.service';
 	getPostsInterests(){
 		this.postService.getPostsInterests(this.post.id_post).subscribe((res: any) => {
             this.postInterests = res;
-			console.log(this.postInterests);
         })
 	}
 
@@ -135,10 +136,24 @@ import { FollowsService } from 'src/app/services/follows.service';
 			VotesNumber.style.color = "green"
 		}
 	}
+	CheckFollowOrUnfollow(){
+		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+			this.userFollows = Object.values(res);
+			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.fk_id_user);
+			
+			if (this.userFollowsAccount) this.UnfollowAction();
+			if (!this.userFollowsAccount) this.FollowAction();
+		})
+	}
 	FollowAction(){
 		this.followService.sendFollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
-			console.log(res);
-		});
+
+		})
+	}
+	UnfollowAction(){
+		this.followService.Unfollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+
+		})
 	}
 	mostrarComentarios() {
 		this.showComments = true;
