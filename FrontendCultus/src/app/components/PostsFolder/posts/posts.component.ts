@@ -11,14 +11,14 @@ import { Post } from './post.model';
 export class PostsComponent implements OnInit {    
     posts: Post[];
 
-    constructor(private api: GetPostsService) { }
+    constructor(private postsService: GetPostsService) { }
 
     ngOnInit() {
         this.getPosts();
     }
 
     getPosts() {
-        this.api.getPosts().subscribe((res: any) => {
+        this.postsService.getPosts().subscribe((res: any) => {
             this.posts = res;
         })
     }

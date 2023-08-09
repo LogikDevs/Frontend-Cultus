@@ -86,7 +86,6 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 	getPostsInterests(){
 		this.postService.getPostsInterests(this.post.id_post).subscribe((res: any) => {
             this.postInterests = res;
-			console.log(this.postInterests);
         })
 	}
 

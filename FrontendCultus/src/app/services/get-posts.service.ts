@@ -6,10 +6,12 @@ import { Observable } from 'rxjs';
 	providedIn: 'root'
 })
 export class GetPostsService {
+	userId = localStorage.getItem("IdUser");
 	private urlGetPosts = 'http://localhost:8001/api/post/listAll';
+	private urlGetPostsFromInterests = 'http://localhost:8001/api/post/listInterested/';
 	private urlUserPosts = 'http://localhost:8001/api/post/listUser/';
-	private urlUpdateComments='http://localhost:8001/api/post/listPost/'
-	private urlGetPostsInterests='http://localhost:8001/api/characterizes/listPost/'
+	private urlUpdateComments='http://localhost:8001/api/post/listPost/';
+	private urlGetPostsInterests='http://localhost:8001/api/characterizes/listPost/';
 	constructor(private http: HttpClient) { }
 	getPosts(): Observable<Post[]> {
 		const httpOptions = {
@@ -19,6 +21,15 @@ export class GetPostsService {
 			})
 		}
 		return this.http.get<Post[]>(this.urlGetPosts, httpOptions);
+	}
+	getPostsFromInterests(): Observable<Post[]> {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get<Post[]>(this.urlGetPostsFromInterests+this.userId, httpOptions);
 	}
 	getPostsInterests(IdPost:any) {
 		const httpOptions = {
