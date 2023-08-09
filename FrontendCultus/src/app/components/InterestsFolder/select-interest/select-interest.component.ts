@@ -15,6 +15,7 @@ export class SelectInterestComponent {
 	interests: Interest[] = [];
 	filteredInterests: Interest[] = [];
 	userInterests:any[];
+	
 	DataBaseInterests:any[];
 	NewInterests:any[];
 	InterestsToDelete:any[];
@@ -39,7 +40,9 @@ export class SelectInterestComponent {
 
 	getUserInterests(){
 		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
+
 			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item.id_label);
+			
 			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item.id_label);
 		})
 	}
@@ -70,21 +73,21 @@ export class SelectInterestComponent {
 		
 		this.InterestsToAdd = InterestsArray.filter((item:any) => !this.DataBaseInterests.includes(item));
 		this.InterestsToDelete = this.DataBaseInterests.filter((item: any) => !InterestsArray.includes(item));
-		
-		console.log("Agregar: ", this.InterestsToAdd);
-		this.AddInterests(this.InterestsToAdd);
-		console.log("Borrar: ", this.InterestsToDelete); 
+
+		this.AddInterests(this.InterestsToAdd); 
 		this.DeleteInterests(this.InterestsToDelete);
 	}
 	AddInterests(interest:any){
-		for (let i = 0; i < interest.length; i++){
-			this.interestService.sendUserInterests(this.userId, interest[i]).subscribe((res:any)=>{})
-		}
+		interest.forEach((item: any) => {
+			this.interestService.sendUserInterests(this.userId, item).subscribe(res => {});
+		});
 	}
 	DeleteInterests(interest:any){
-		for (let i = 0; i < interest.length; i++){
-			this.interestService.deleteInterest(interest[i], this.userId).subscribe((res:any)=>{})
-		}
+		interest.forEach((item: any) => {
+			this.interestService.deleteInterest(item, this.userId).subscribe(res => {
+				console.log(res);
+			})
+		})
 	}
 }
 
