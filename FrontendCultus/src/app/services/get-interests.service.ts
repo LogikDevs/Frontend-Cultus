@@ -8,7 +8,7 @@ import { Interest, UserInterests } from '../components/InterestsFolder/interest/
 })
 export class GetInterestsService {
   	private urlGetInterests = 'http://localhost:8000/api/v1/interest';
-  	private urlSendInterests = 'http://localhost:8000/api/v1/likes';
+  	private urlSendInterests = 'http://localhost:8000/api/v1/likes/';
 	private urlGetUserInterests = 'http://localhost:8000/api/v1/likes/user/'
 	private urlSendPostInterests = 'http://localhost:8001/api/characterizes/create';
 
@@ -40,6 +40,9 @@ export class GetInterestsService {
 			fk_id_post: Post
 		}
 		return this.http.post(this.urlSendPostInterests, body);
+	}
+	deleteInterest(IdInterest:any, userId:any){
+		return this.http.delete(this.urlSendInterests+userId+"/"+IdInterest);
 	}
 	getUserInterests(userId:any){
 		const httpOptions = {

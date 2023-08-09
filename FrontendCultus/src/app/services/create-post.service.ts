@@ -35,6 +35,7 @@ export class CreatePostService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
+		console.log(MultimediaBody);
 		return this.http.post(this.urlCreateMultimedia, MultimediaBody, httpOptions);
 	}
 }
