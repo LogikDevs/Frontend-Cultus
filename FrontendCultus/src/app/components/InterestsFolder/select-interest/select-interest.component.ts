@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 export class SelectInterestComponent {
 	
 	userId = localStorage.getItem("IdUser");
+	
 	interests: Interest[] = [];
 	filteredInterests: Interest[] = [];
-	userInterests:any[];
 	
 	DataBaseInterests:any[];
-	NewInterests:any[];
+
 	InterestsToDelete:any[];
 	InterestsToAdd:any[];
 
@@ -27,6 +27,7 @@ export class SelectInterestComponent {
 	constructor(private interestService: GetInterestsService, private router: Router) { }
 
 	ngOnInit(){
+		
 		if (this.postInterestType == false) this.getUserInterests();
 		this.getInterests();
 	}
@@ -76,6 +77,7 @@ export class SelectInterestComponent {
 
 		this.AddInterests(this.InterestsToAdd); 
 		this.DeleteInterests(this.InterestsToDelete);
+		this.router.navigateByUrl('/home');
 	}
 	AddInterests(interest:any){
 		interest.forEach((item: any) => {
@@ -84,9 +86,7 @@ export class SelectInterestComponent {
 	}
 	DeleteInterests(interest:any){
 		interest.forEach((item: any) => {
-			this.interestService.deleteInterest(item, this.userId).subscribe(res => {
-				console.log(res);
-			})
+			this.interestService.deleteInterest(item, this.userId).subscribe(res => {})
 		})
 	}
 }
