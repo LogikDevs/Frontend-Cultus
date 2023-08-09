@@ -21,9 +21,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	userInterests: any[] = [];
-
 	userId = localStorage.getItem("IdUser");
-	
 	posts: Post[];
 	
 	selectedImage: string | undefined;
@@ -67,9 +65,7 @@ export class ProfileComponent implements OnInit {
 
 	getUserInterests(){
 		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
-			for (let i = 0; i < res.interests.length; i++){
-				this.userInterests.push(res.interests[i].interest);
-			}
+			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
 		})
 	}
 	
