@@ -37,10 +37,7 @@
         </div>
 
         <div class="Interest">
-            <p>Deportes</p>
-            <p>Comidas</p>
-            <p>Turismo</p>
-            <p>Animales</p>
+            <p *ngFor="let interest of userInterests">{{ interest }}</p>
         </div>
     </div>
 

@@ -5,6 +5,7 @@ import { VoteService } from 'src/app/services/vote.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
+import { FollowsService } from 'src/app/services/follows.service';
 
 @Component({
 	selector: 'app-singlepost',
@@ -22,20 +23,32 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
   export class SinglepostComponent implements OnInit {
   	@Input() author: any;
 	@Input() post: Post;
+	@Input() postInterests:any;
+
+	Followable:boolean = false;
+	userFollows:any[] = [];
+	userFollowsAccount:any;
 
   	userId:any = localStorage.getItem("IdUser");
   	username:any;
   	comments: Comment[];
+	
   	AddComment:string = '';
+
+	userVotes:any[] = [];;
+	vote:any;
 
   	scrollOffset: number = 0;
 	containerVisible: boolean = false;
   	showComments: boolean = false;
 	noCommentsTemplate: any;
 
-	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService) { }
+	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
 		this.PostData();
+		this.IsFollowable();
+		this.CheckFollowValue()
+		this.getPostsInterests();
 		this.getComments();	
 	}
 
@@ -45,7 +58,9 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 			//this.VotesColor();		
 		});
 	}
-
+	IsFollowable(){
+		if (this.post.fk_id_user != this.userId) this.Followable = true;
+	}
 	sendComment(){
 		const bodyComment = {
 			fk_id_user: this.userId,
@@ -72,17 +87,40 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
             this.comments = res;
         })
   	}
+	getPostsInterests(){
+		this.postService.getPostsInterests(this.post.id_post).subscribe((res: any) => {
+            this.postInterests = res;
+        })
+	}
 
-	ClickVote(votetype: any) {
+	ClickVote(votetype:any){
+		this.voteService.checkUserVotes(this.userId).subscribe((res:any)=>{
+			this.userVotes = res;	
+			this.vote = this.userVotes.find(vote => vote.fk_id_post === this.post.id_post);
+			this.CheckVote(votetype);
+		})
+	}	
+	CheckVote(votetype:any) {
+		if (this.vote && this.vote.vote == votetype) this.DeleteVote(this.vote.id_vote);
+		
+		if (!this.vote || this.vote.vote != votetype) this.CreateVote(votetype);
+	}
+
+	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
 		})
 	}
+	DeleteVote(voteId:any){
+		this.voteService.voteDelete(voteId).subscribe((res:any)=>{
+			this.updateVotes();
+		})
+	}
+
 	updateVotes() {
 		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
 			this.post.votes = res.votes;
-			
-			this.VotesColor();
+			//this.VotesColor();
 		});
 	}
 
@@ -98,6 +136,32 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 		}else{
 			VotesNumber.style.color = "green"
 		}
+	}
+	CheckFollowValue(){
+		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+			this.userFollows = Object.values(res);
+			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.fk_id_user);
+			if (this.userFollowsAccount) console.log("USER " + this.userId + " FOLLOWS USER " + this.post.fk_id_user);
+		})
+	}
+	CheckFollowOrUnfollow(){
+		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+			this.userFollows = Object.values(res);
+			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.fk_id_user);
+			
+			if (this.userFollowsAccount) this.UnfollowAction();
+			if (!this.userFollowsAccount) this.FollowAction();
+		})
+	}
+	FollowAction(){
+		this.followService.sendFollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+			console.log("followed");
+		})
+	}
+	UnfollowAction(){
+		this.followService.Unfollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+			console.log("unfollowed");
+		})
 	}
 	mostrarComentarios() {
 		this.showComments = true;

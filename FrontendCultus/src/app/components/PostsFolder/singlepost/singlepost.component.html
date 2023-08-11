@@ -41,9 +41,8 @@
 		<div class="LocationPostDesktop">
 			<p>{{post.location}}</p>
 		</div>
-		<div class="Interest">
-			<p>#Interes1</p>
-			<p>#Interes2</p>
+		<div class="Interest" *ngFor="let interest of postInterests">
+			<p>{{interest.fk_id_label}}</p>
 		</div>
 		<div class="PostDescription">
 			<p>{{ post.text }}</p>
@@ -123,10 +122,10 @@
 				<p>{{ author.name }} {{ author.surname }}</p>
 			</div>
 			<div class="DataProfile">
-				<div class="Follow">
-					<img src="/assets/follow.png" alt="">
+				<div class="Follow" *ngIf="Followable">
+					<img src="/assets/follow.png" alt="" (click)="CheckFollowOrUnfollow()">
 				</div>
-				<div class="SendMessage">
+				<div class="SendMessage" *ngIf="Followable">
 					<img src="/assets/charlando.png" alt="">
 				</div>
 				<div class="Country">

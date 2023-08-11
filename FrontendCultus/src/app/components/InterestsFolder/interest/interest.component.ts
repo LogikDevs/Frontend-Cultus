@@ -9,7 +9,6 @@ import { GetInterestsService } from 'src/app/services/get-interests.service';
 })
 export class InterestComponent {
 	@Input() interest: Interest;
-	interestsArray:any[] = [];
 
 	constructor(private interestService: GetInterestsService) { }
  	
@@ -17,9 +16,13 @@ export class InterestComponent {
 		const insertId = this.interest.id_label;
 		const isInterestAlreadyAdded = this.interestService.NewUserInterestsArray.includes(insertId);
 		
-		if (!isInterestAlreadyAdded) {
-			this.interestService.NewUserInterestsArray.push(insertId);
+		if (isInterestAlreadyAdded) {
+			const removedElementArray = this.interestService.NewUserInterestsArray.filter(item => item !== insertId);
+			this.interestService.NewUserInterestsArray = removedElementArray;
 		}
+		if (!isInterestAlreadyAdded) this.interestService.NewUserInterestsArray.push(insertId);
+		
+		console.log(this.interestService.NewUserInterestsArray);
  	}
 }
 
