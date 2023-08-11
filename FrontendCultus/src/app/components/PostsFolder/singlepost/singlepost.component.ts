@@ -49,13 +49,20 @@ import { FollowsService } from 'src/app/services/follows.service';
 		this.IsFollowable();
 		this.CheckFollowValue()
 		this.getPostsInterests();
-		this.getComments();	
+		this.getComments();
 	}
-
+	//ngAfterContentInit(){
+	//	this.VotesColor();
+	//}
+	VotesColor(){
+		const voteColor:any = document.getElementById('VotesNumber_'+this.post.id_post);
+		if (this.post.votes < 0) voteColor.style.color = "red";
+		if (this.post.votes == 0) voteColor.style.color = "grey";
+		if (this.post.votes > 0) voteColor.style.color = "green";
+	}
 	PostData() {
 		this.userService.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
 			this.author = res;
-			//this.VotesColor();		
 		});
 	}
 	IsFollowable(){
@@ -120,7 +127,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	updateVotes() {
 		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
 			this.post.votes = res.votes;
-			//this.VotesColor();
+			this.VotesColor();
 		});
 	}
 
@@ -129,14 +136,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 			this.post.comments = res.comments;
 		});
 	}
-	VotesColor(){
-		const VotesNumber:any = document.getElementById("VotesNumber");
-		if (this.post.votes < 0){
-			VotesNumber.style.color = "red";
-		}else{
-			VotesNumber.style.color = "green"
-		}
-	}
+
 	CheckFollowValue(){
 		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
