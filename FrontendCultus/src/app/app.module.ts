@@ -45,7 +45,6 @@ import { DiscoverySectionComponent } from './components/discovery-section/discov
     FooterComponent,
     PostsComponent,
     ComienzoComponent,
-
     SidebarComponent,
     ProfileComponent,
     DatosPerfilComponent,
@@ -64,12 +63,6 @@ import { DiscoverySectionComponent } from './components/discovery-section/discov
     InterestComponent,
     ClickOutDirectiveDirective,
     DiscoverySectionComponent
-
-
-
-   
-  
-
   ],
   imports: [
     BrowserModule,
