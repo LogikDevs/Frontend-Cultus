@@ -122,10 +122,10 @@
 				<p>{{ author.name }} {{ author.surname }}</p>
 			</div>
 			<div class="DataProfile">
-				<div class="Follow">
-					<img src="/assets/follow.png" alt="">
+				<div class="Follow" *ngIf="Followable">
+					<img src="/assets/follow.png" alt="" (click)="CheckFollowOrUnfollow()">
 				</div>
-				<div class="SendMessage">
+				<div class="SendMessage" *ngIf="Followable">
 					<img src="/assets/charlando.png" alt="">
 				</div>
 				<div class="Country">

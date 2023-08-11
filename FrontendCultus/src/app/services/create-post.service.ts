@@ -11,7 +11,7 @@ export class CreatePostService {
 
 	postCreate(postDataReceived: any, UserIdReceived: any) {
 		const body = {
-			id_user: UserIdReceived,
+			fk_id_user: UserIdReceived,
 			text: postDataReceived.text,
 			latitud: postDataReceived.latitud,
 			longitud:postDataReceived.longitud
@@ -35,6 +35,7 @@ export class CreatePostService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
+		console.log(MultimediaBody);
 		return this.http.post(this.urlCreateMultimedia, MultimediaBody, httpOptions);
 	}
 }

@@ -6,22 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GetCommentsService {
-  private URLCreateComment = "http://localhost:8001/api/comments/create";
-  private URLGetComment = "http://localhost:8001/api/comments/listPost/";
-
-  constructor(private http: HttpClient) { }
+  	private URLCreateComment = "http://localhost:8001/api/comments/create";
+  	private URLGetComment = "http://localhost:8001/api/comments/listPost/";
+	private URLDeleteComment = "http://localhost:8001/api/comments/delete/";
+  	constructor(private http: HttpClient) { }
   
-  getComment(PostId:number): Observable<Comment[]>{
-    const httpOptions = {
+ 	 getComment(PostId:number): Observable<Comment[]>{
+    	const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-    return this.http.get<Comment[]>(this.URLGetComment + PostId, httpOptions);
-  }
+    	return this.http.get<Comment[]>(this.URLGetComment + PostId, httpOptions);
+  	}
 
-  postComment(receivedPostData:any) {
+  	postComment(receivedPostData:any) {
 
 		const httpOptions = {
 			headers: new HttpHeaders({
@@ -30,5 +30,14 @@ export class GetCommentsService {
 			})
 		}
 		return this.http.post(this.URLCreateComment, receivedPostData, httpOptions);
-  }
+  	}
+  	deleteComment(CommentId:any){
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.post(this.URLDeleteComment+CommentId, httpOptions);
+  	}
 }
