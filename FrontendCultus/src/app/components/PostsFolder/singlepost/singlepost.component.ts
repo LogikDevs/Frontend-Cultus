@@ -47,6 +47,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	ngOnInit() {
 		this.PostData();
 		this.IsFollowable();
+		this.CheckFollowValue()
 		this.getPostsInterests();
 		this.getComments();	
 	}
@@ -136,6 +137,13 @@ import { FollowsService } from 'src/app/services/follows.service';
 			VotesNumber.style.color = "green"
 		}
 	}
+	CheckFollowValue(){
+		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+			this.userFollows = Object.values(res);
+			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.fk_id_user);
+			if (this.userFollowsAccount) console.log("USER " + this.userId + " FOLLOWS USER " + this.post.fk_id_user);
+		})
+	}
 	CheckFollowOrUnfollow(){
 		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
@@ -147,12 +155,12 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
-
+			console.log("followed");
 		})
 	}
 	UnfollowAction(){
 		this.followService.Unfollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
-
+			console.log("unfollowed");
 		})
 	}
 	mostrarComentarios() {

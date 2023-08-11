@@ -77,6 +77,8 @@ export class SelectInterestComponent {
 
 		this.AddInterests(this.InterestsToAdd); 
 		this.DeleteInterests(this.InterestsToDelete);
+		this.interestService.NewUserInterestsArray = [];
+		this.DataBaseInterests=[];
 		this.router.navigateByUrl('/home');
 	}
 	AddInterests(interest:any){
