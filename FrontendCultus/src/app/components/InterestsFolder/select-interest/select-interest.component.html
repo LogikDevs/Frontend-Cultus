@@ -1,9 +1,9 @@
-<div class="OthersComponents">
+<div class="OthersComponents" *ngIf="WindowVisibility">
     <app-header></app-header>
     <app-sidebar id="SidebarOff"></app-sidebar>
 </div>
 
-<div class="ContainerSelectInterest">
+<div class="ContainerSelectInterest" *ngIf="WindowVisibility">
 
     <div class="ContainerSearchInterest">
 
@@ -19,7 +19,7 @@
                 <input class="input" type="text" (input)="onInterestsSearch($event)" placeholder="Busca tus intereses...">
             </form>
             <div class="SkipSearchInterest">
-                <button routerLink="/home">Omitir</button>
+                <button routerLink="/home" *ngIf="!postInterestType">Omitir</button>
             </div>
         </div>
 

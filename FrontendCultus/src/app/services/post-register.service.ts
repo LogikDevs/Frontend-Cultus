@@ -10,7 +10,7 @@ export class PostRegisterService {
 	private constructor(private http: HttpClient) { }
 
 	PostRegister(credentials: any) { 
-		return this.http.post(this.urlAuthenticationAPI, credentials);
+		return this.http.post(this.urlAuthenticationAPI, credentials,  { observe: 'response' });
 	}
 }
 

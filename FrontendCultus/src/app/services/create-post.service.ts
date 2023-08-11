@@ -11,7 +11,7 @@ export class CreatePostService {
 
 	postCreate(postDataReceived: any, UserIdReceived: any) {
 		const body = {
-			id_user: UserIdReceived,
+			fk_id_user: UserIdReceived,
 			text: postDataReceived.text,
 			latitud: postDataReceived.latitud,
 			longitud:postDataReceived.longitud
@@ -24,7 +24,7 @@ export class CreatePostService {
 		}
 		return this.http.post(this.urlCreatePost, body, httpOptions);
 	}
-	postMultimedia(MultimediaReceived: any, PostIdReceived: any){
+	postMultimedia(MultimediaReceived: File, PostIdReceived: any){
 		const MultimediaBody = {
 			fk_id_post: PostIdReceived,
 			multimedia_file: MultimediaReceived
@@ -35,7 +35,7 @@ export class CreatePostService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		console.log("MultimediaBody: ",MultimediaBody);
+		console.log(MultimediaBody);
 		return this.http.post(this.urlCreateMultimedia, MultimediaBody, httpOptions);
 	}
 }
