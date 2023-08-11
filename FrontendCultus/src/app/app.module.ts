@@ -30,6 +30,8 @@ import { AgenProfileComponent } from './agen-profile/agen-profile.component';
 import { ModalOptionCommentComponent } from './components/modal-option-comment/modal-option-comment.component';
 import { InterestComponent } from './components/InterestsFolder/interest/interest.component';
 import { ClickOutDirectiveDirective } from './directives/click-out-directive.directive';
+import { DiscoverySectionComponent } from './components/discovery-section/discovery-section.component';
+
 
 
 
@@ -61,6 +63,8 @@ import { ClickOutDirectiveDirective } from './directives/click-out-directive.dir
     ModalOptionCommentComponent,
     InterestComponent,
     ClickOutDirectiveDirective
+    DiscoverySectionComponent
+
 
 
    

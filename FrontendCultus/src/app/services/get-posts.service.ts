@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class GetPostsService {
 	private urlGetPosts = 'http://localhost:8001/api/post/listAll';
+	private urlGetPostsFromInterests = 'http://localhost:8001/api/post/listInterested/';
 	private urlUserPosts = 'http://localhost:8001/api/post/listUser/';
 	private urlUpdateComments='http://localhost:8001/api/post/listPost/'
 	private urlGetPostsInterests='http://localhost:8001/api/characterizes/listPost/'
@@ -19,6 +20,15 @@ export class GetPostsService {
 			})
 		}
 		return this.http.get<Post[]>(this.urlGetPosts, httpOptions);
+	}
+	getPostsDiscoverySection(userId:any): Observable<Post[]> {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get<Post[]>(this.urlGetPostsFromInterests+userId, httpOptions);
 	}
 	getPostsInterests(IdPost:any) {
 		const httpOptions = {
