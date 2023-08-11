@@ -12,14 +12,14 @@ export class DatosPerfilComponent {
 
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
-	constructor(private api: EditUserService, private countries: GetCountriesService) { };
+	constructor(private EditService: EditUserService, private countries: GetCountriesService) { };
 	
 	ngOnInit() {
 		this.countriesDropbox();
 	}
 	
 	sendProfileData(ProfileEditData: any) {
-		this.api.getEditUser(ProfileEditData);
+		this.EditService.getEditUser(ProfileEditData);
 	}
 
 	triggerFileInput() {

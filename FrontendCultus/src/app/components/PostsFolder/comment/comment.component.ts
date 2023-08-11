@@ -10,11 +10,15 @@ import { GetUserService } from 'src/app/services/get-user.service';
 export class CommentComponent implements OnInit{
   @Input() author: any;
 	@Input() comment: Comment;
-  commentVisibility:boolean = true;
-  commentId:any;
+
   userId:any = localStorage.getItem("IdUser");
+  
+  commentId:any;
   ownComment:boolean = false;
+
+  commentVisibility:boolean = true;
   displayedOptions:boolean = false;
+
   constructor(private userService: GetUserService) { }
 
     ngOnInit(){
