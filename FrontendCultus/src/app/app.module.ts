@@ -62,7 +62,7 @@ import { DiscoverySectionComponent } from './components/discovery-section/discov
     AgenProfileComponent,
     ModalOptionCommentComponent,
     InterestComponent,
-    ClickOutDirectiveDirective
+    ClickOutDirectiveDirective,
     DiscoverySectionComponent
 
 
