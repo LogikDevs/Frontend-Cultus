@@ -1,4 +1,4 @@
-<div class="ContainerPost" *ngIf="author">
+<div class="ContainerPost">
 	<div class="ContainerPostMobile">
 		<div class="ContainerAllComments" [ngClass]="{'slide-up': showComments}">
 			<div class="HeaderComments">
@@ -8,9 +8,8 @@
 				</div>
 			</div>
 			<div class="ScrollableContent">
-				<div class="AllCommentsPost" *ngFor="let comment of comments">
+				<div class="AllCommentsPost" *ngFor="let comment of post.comments">
 					<app-comment [comment]="comment"></app-comment>
-					<!-- <app-modal-option-comment></app-modal-option-comment> -->
 				</div>
 			</div>
 			<ng-template #noCommentsTemplate>
@@ -25,7 +24,7 @@
 				</div>
 				<div class="NameAndDate">
 					<div class="UsernamePost">
-						<p>{{ author.name }} {{ author.surname }}</p>
+						<p>{{ post.author.name }} {{ post.author.surname }}</p>
 					</div>
 					<div class="PostUploadDate">
 						<p>{{post.date.slice(2,-3)}}</p>
@@ -39,10 +38,10 @@
 			</div>
 		</div>
 		<div class="LocationPostDesktop">
-			<p>{{post.location}}</p>
+			<p></p>
 		</div>
-		<div class="Interest" *ngFor="let interest of postInterests">
-			<p>{{interest.fk_id_label}}</p>
+		<div class="Interest">
+			<p>{{post.interests}}</p>
 		</div>
 		<div class="PostDescription">
 			<p>{{ post.text }}</p>
@@ -68,7 +67,7 @@
 						<img src="assets/chat.png" alt="">
 					</div>
 					<div class="AmountCommentPost">
-						<p>{{post.comments}}</p>
+						<p>{{post.commentsValue}}</p>
 					</div>
 				</div>
 			</div>
@@ -119,7 +118,7 @@
 				<img src="/assets/post-images/profile_def.jpg" alt="">
 			</div>
 			<div class="UsernameProfile">
-				<p>{{ author.name }} {{ author.surname }}</p>
+				<p>{{ post.author.name }} {{ post.author.surname }}</p>
 			</div>
 			<div class="DataProfile">
 				<div class="Follow" *ngIf="Followable">

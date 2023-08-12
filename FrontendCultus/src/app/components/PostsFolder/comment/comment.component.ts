@@ -8,27 +8,19 @@ import { GetUserService } from 'src/app/services/get-user.service';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit{
-  @Input() author: any;
 	@Input() comment: Comment;
+  @Input() author: any;
   commentVisibility:boolean = true;
   commentId:any;
   userId:any = localStorage.getItem("IdUser");
   ownComment:boolean = false;
   displayedOptions:boolean = false;
-  constructor(private userService: GetUserService) { }
+  constructor() { }
 
     ngOnInit(){
-        this.getWriter();
         this.checkAuthor();
         this.commentId = this.comment.id_comment;
     }
-  
-    getWriter() {
-		this.userService.getUserFromId(this.comment.fk_id_user).subscribe((res: any) => {
-			this.author = res.name + " " + res.surname;
-		});
-	}
-
     checkAuthor(){
         if (this.comment.fk_id_user == this.userId) this.ownComment = true;
     }
