@@ -12,8 +12,13 @@ export class CommentComponent implements OnInit{
   commentVisibility:boolean = true;
   commentId:any;
   userId:any = localStorage.getItem("IdUser");
+  
+  commentId:any;
   ownComment:boolean = false;
+
+  commentVisibility:boolean = true;
   displayedOptions:boolean = false;
+ 
   constructor() { }
 
     ngOnInit(){
