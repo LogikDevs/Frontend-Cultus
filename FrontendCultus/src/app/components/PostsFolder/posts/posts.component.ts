@@ -17,9 +17,5 @@ export class PostsComponent implements OnInit {
     constructor(private postService: GetPostsService, private followService: FollowsService) { }
 
     ngOnInit() {
-        this.getPosts();
-    }
-    getPosts() {
-        const response = this.postService.FuncionDePrueba();
     }
 }

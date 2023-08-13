@@ -1,4 +1,4 @@
-<div class="ContainerPost">
+<div class="ContainerPost" *ngIf="postVisibility">
 	<div class="ContainerPostMobile">
 		<div class="ContainerAllComments" [ngClass]="{'slide-up': showComments}">
 			<div class="HeaderComments">
@@ -33,7 +33,7 @@
 				</div>
 
 				<div class="OptionsPost">
-					<img src="assets/menu-logo.png" alt="">
+					<img src="assets/menu-logo.png" alt="" (click)="displayOptions($event)">
 				</div>
 			</div>
 		</div>
@@ -134,4 +134,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div *ngIf="displayedOptions">
+		<app-modal-option-post [optionVisibility]="displayedOptions" [postId]="postId" [ownPost]="ownPost" (PostRemoved)="onRemoving()"></app-modal-option-post>
 	</div>

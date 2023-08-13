@@ -31,6 +31,7 @@ import { ModalOptionCommentComponent } from './components/modal-option-comment/m
 import { InterestComponent } from './components/InterestsFolder/interest/interest.component';
 import { ClickOutDirectiveDirective } from './directives/click-out-directive.directive';
 import { DiscoverySectionComponent } from './components/discovery-section/discovery-section.component';
+import { ModalOptionPostComponent } from './components/modal-option-post/modal-option-post.component';
 
 
 
@@ -62,7 +63,8 @@ import { DiscoverySectionComponent } from './components/discovery-section/discov
     ModalOptionCommentComponent,
     InterestComponent,
     ClickOutDirectiveDirective,
-    DiscoverySectionComponent
+    DiscoverySectionComponent,
+    ModalOptionPostComponent
   ],
   imports: [
     BrowserModule,
