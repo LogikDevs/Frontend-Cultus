@@ -1,9 +1,9 @@
-<div class="Modal">
+<div class="Modal" *ngIf="optionVisibility" (appClickOutside)="hideComponent()">
     <div class="OptionsModal">
-        <div class="ReportComment">
+        <div class="ReportComment" *ngIf="!ownComment" (click)="reportComment()">
             <p>Reportar comentario</p>
         </div>
-        <div class="DeleteComment">
+        <div class="DeleteComment" *ngIf="ownComment" (click)="removeComment()">
             <p>Eliminar Comentario</p>
         </div>
     </div>
