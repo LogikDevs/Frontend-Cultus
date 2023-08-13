@@ -6,7 +6,6 @@ import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { FollowsService } from 'src/app/services/follows.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
 	selector: 'app-singlepost',
@@ -48,25 +47,24 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 	}
 
 	IsFollowable(){
-		if (this.post.fk_id_user != this.userId) this.Followable = true;
+		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
 	}
 	sendComment(){
 		const bodyComment = {
 			fk_id_user: this.userId,
-			fk_id_post: this.post.id_post,
+			fk_id_post: this.post.post.id_post,
 			text: this.AddComment
 		}
 
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
+				console.log(CreatedComment);
 				const NewComment: Comment = {
 					id_comment: CreatedComment.id_comment,
-					name: this.UserData.name,
-					surname: this.UserData.surname,
-					fk_id_user: CreatedComment.fk_id_user,
+					user: CreatedComment.fk_id_user,
 					text: CreatedComment.text
 				}
-				this.post.comments.push(NewComment);
+				this.post.commentsPublished.push(NewComment);
 				this.updateComments();
 			});
 			this.AddComment = '';
@@ -75,7 +73,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 	ClickVote(votetype:any){
 		this.voteService.checkUserVotes(this.userId).subscribe((res:any)=>{
-			this.vote = res.find((vote:any) => vote.fk_id_post === this.post.id_post);
+			this.vote = res.find((vote:any) => vote.fk_id_post === this.post.post.id_post);
 			this.CheckVote(votetype);
 		})
 	}	
@@ -86,7 +84,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 	}
 
 	CreateVote(votetype:any){
-		this.voteService.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
+		this.voteService.voteCreate(this.post.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
 		})
 	}
@@ -97,20 +95,20 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 	}
 
 	updateVotes() {
-		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
-			this.post.votes = res.votes;
+		this.voteService.updateVotes(this.post.post.id_post).subscribe((res: any) => {
+			this.post.post.votes = res.votes;
 			//this.VotesColor();
 		});
 	}
 
 	updateComments(){
-		this.postService.updatePostComments(this.post.id_post).subscribe((res:any)=>{
-			this.post.comments = res.comments;
+		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
+			this.post.post.comments = res.comments;
 		});
 	}
 	VotesColor(){
 		const VotesNumber:any = document.getElementById("VotesNumber");
-		if (this.post.votes < 0){
+		if (this.post.post.votes < 0){
 			VotesNumber.style.color = "red";
 		}else{
 			VotesNumber.style.color = "green"
@@ -119,11 +117,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 	CheckFollowValue(){
 			this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
 				this.userFollows = Object.values(res);
-				this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.fk_id_user);
-			},error=>{
-				this.userFollows = [];
-				this.userFollowsAccount = null;
-				return;
+				this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.post.fk_id_user);
 			})
 	}
 	
@@ -132,13 +126,13 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 			if (!this.userFollowsAccount) this.FollowAction();
 	}
 	FollowAction(){
-		this.followService.sendFollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+		this.followService.sendFollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
 			this.CheckFollowValue();
 			console.log("Followed");
 		})
 	}
 	UnfollowAction(){
-		this.followService.Unfollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+		this.followService.Unfollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
 			this.CheckFollowValue();
 			console.log("Unfollowed");
 		})

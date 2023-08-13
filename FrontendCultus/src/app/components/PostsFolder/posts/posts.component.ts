@@ -21,7 +21,5 @@ export class PostsComponent implements OnInit {
     }
     getPosts() {
         const response = this.postService.FuncionDePrueba();
-        this.posts = response;
-        console.log(this.posts);
     }
 }

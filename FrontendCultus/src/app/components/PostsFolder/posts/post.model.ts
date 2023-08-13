@@ -1,4 +1,20 @@
 export interface Post {
+	commentsPublished: Comment[];
+	interests: any;
+	multimedia: MultimediaLink;
+	post: PostData;
+	user: UserOnPost;
+  }
+  export interface Comment {
+	id_comment: number;
+	text: string;
+	user: UserOnComment;
+  }
+  export interface MultimediaLink {
+	multimediaLink: string
+  }
+
+  export interface PostData {
 	id_post: number;
 	fk_id_user: number;
 	text: string;
@@ -6,23 +22,21 @@ export interface Post {
 	longitud: string;
 	date: string;
 	votes: number;
-	commentsValue: number;
+	comments: number;
 	created_at: string;
 	updated_at: string;
 	deleted_at: string | null;
-	interests: string[];
-	author: Author,
-	comments: Comment[];
-	multimedia: string;
-  }
-  export interface Comment {
-	id_comment: number;
-	name: string,
-	surname: string,
-	fk_id_user: number;
-	text: string;
-  }
+  }   
   export interface Author {
 	name: string,
 	surname: string
+  }
+  export interface UserOnComment {
+	id: number;
+	name: string;
+	surname: string;
+  }
+  export interface UserOnPost {
+	name: string;
+	surname: string;
   }

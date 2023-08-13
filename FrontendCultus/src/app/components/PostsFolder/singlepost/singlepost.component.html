@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="ScrollableContent">
-				<div class="AllCommentsPost" *ngFor="let comment of post.comments">
+				<div class="AllCommentsPost" *ngFor="let comment of post.commentsPublished">
 					<app-comment [comment]="comment"></app-comment>
 				</div>
 			</div>
@@ -24,10 +24,10 @@
 				</div>
 				<div class="NameAndDate">
 					<div class="UsernamePost">
-						<p>{{ post.author.name }} {{ post.author.surname }}</p>
+						<p>{{ post.user.name }} {{ post.user.surname }}</p>
 					</div>
 					<div class="PostUploadDate">
-						<p>{{post.date.slice(2,-3)}}</p>
+						<p>{{post.post.date.slice(2,-3)}}</p>
 					</div>
 
 				</div>
@@ -44,7 +44,7 @@
 			<p>{{post.interests}}</p>
 		</div>
 		<div class="PostDescription">
-			<p>{{ post.text }}</p>
+			<p>{{ post.post.text }}</p>
 		</div>
 
 
@@ -56,7 +56,7 @@
 					</div>
 					<div class="AmountUpvotesPost">
 
-						<p id="VotesNumber">{{ post.votes }}</p>
+						<p id="VotesNumber">{{ post.post.votes }}</p>
 					</div>
 					<div class="IconUpvotesPost" (click)="ClickVote(0)">
 						<img src="assets/post-images/disgusto.svg" alt="">
@@ -67,7 +67,7 @@
 						<img src="assets/chat.png" alt="">
 					</div>
 					<div class="AmountCommentPost">
-						<p>{{post.commentsValue}}</p>
+						<p>{{post.post.comments}}</p>
 					</div>
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 				<img src="/assets/post-images/profile_def.jpg" alt="">
 			</div>
 			<div class="UsernameProfile">
-				<p>{{ post.author.name }} {{ post.author.surname }}</p>
+				<p>{{ post.user.name }} {{ post.user.surname }}</p>
 			</div>
 			<div class="DataProfile">
 				<div class="Follow" *ngIf="Followable">
