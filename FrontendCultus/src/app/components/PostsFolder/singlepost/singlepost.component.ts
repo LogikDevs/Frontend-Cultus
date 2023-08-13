@@ -49,15 +49,10 @@ import { FollowsService } from 'src/app/services/follows.service';
 	//	this.VotesColor();
 	//}
 	VotesColor(){
-		const voteColor:any = document.getElementById('VotesNumber_'+this.post.id_post);
-		if (this.post.votes < 0) voteColor.style.color = "red";
-		if (this.post.votes == 0) voteColor.style.color = "grey";
-		if (this.post.votes > 0) voteColor.style.color = "green";
-	}
-	PostData() {
-		this.userService.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
-			this.author = res;
-		});
+		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
+		if (this.post.post.votes < 0) voteColor.style.color = "red";
+		if (this.post.post.votes == 0) voteColor.style.color = "grey";
+		if (this.post.post.votes > 0) voteColor.style.color = "green";
 	}
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
@@ -99,18 +94,20 @@ import { FollowsService } from 'src/app/services/follows.service';
 	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
+			
 		})
 	}
 	DeleteVote(voteId:any){
 		this.voteService.voteDelete(voteId).subscribe((res:any)=>{
 			this.updateVotes();
+			
 		})
 	}
 
 	updateVotes() {
 		this.voteService.updateVotes(this.post.post.id_post).subscribe((res: any) => {
 			this.post.post.votes = res.votes;
-			//this.VotesColor();
+			this.VotesColor();
 		});
 	}
 
