@@ -22,7 +22,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
-
+	@Input() defaultUrl:string = "http://localhost:8001/"
 	Followable:boolean = false;
 	userFollows:any[] = [];
 	userFollowsAccount:any;
@@ -66,12 +66,16 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
-				console.log(CreatedComment);
 				const NewComment: Comment = {
 					id_comment: CreatedComment.id_comment,
-					user: CreatedComment.fk_id_user,
-					text: CreatedComment.text
+					user:{
+						id:	CreatedComment.fk_id_user,
+						name: CreatedComment.name,
+						surname: CreatedComment.surname
+					}, 
+					text: bodyComment.text
 				}
+				console.log(NewComment);
 				this.post.commentsPublished.push(NewComment);
 				this.updateComments();
 			});

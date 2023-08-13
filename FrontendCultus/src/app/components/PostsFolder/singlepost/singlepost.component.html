@@ -40,8 +40,8 @@
 		<div class="LocationPostDesktop">
 			<p></p>
 		</div>
-		<div class="Interest">
-			<p>{{post.interests}}</p>
+		<div class="Interest" *ngFor="let interest of post.interests">
+			<p>{{interest}}</p>
 		</div>
 		<div class="PostDescription">
 			<p>{{ post.post.text }}</p>
@@ -99,7 +99,7 @@
 
 			<div class="PostContentImageAndInteractions">
 				<div class="ImagePostDesktop">
-					<img src="" alt="">
+					<img src={{defaultUrl}}{{post.multimedia}} alt="">
 				</div>
 				<div class="InteractionsPostDesktop">
 					<div class="IconUpvote">
