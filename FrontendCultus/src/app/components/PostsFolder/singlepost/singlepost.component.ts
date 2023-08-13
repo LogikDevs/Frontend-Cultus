@@ -21,21 +21,18 @@ import { FollowsService } from 'src/app/services/follows.service';
   })
 
   export class SinglepostComponent implements OnInit {
-  	@Input() author: any;
 	@Input() post: Post;
-	@Input() postInterests:any;
 
 	Followable:boolean = false;
 	userFollows:any[] = [];
 	userFollowsAccount:any;
 
   	userId:any = localStorage.getItem("IdUser");
+	UserData:any = this.userService.getUserData;
   	username:any;
-  	comments: Comment[];
 	
   	AddComment:string = '';
 
-	userVotes:any[] = [];;
 	vote:any;
 
   	scrollOffset: number = 0;
@@ -45,11 +42,8 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
-		this.PostData();
 		this.IsFollowable();
-		this.CheckFollowValue()
-		this.getPostsInterests();
-		this.getComments();
+		this.CheckFollowValue();
 	}
 	//ngAfterContentInit(){
 	//	this.VotesColor();
@@ -66,55 +60,44 @@ import { FollowsService } from 'src/app/services/follows.service';
 		});
 	}
 	IsFollowable(){
-		if (this.post.fk_id_user != this.userId) this.Followable = true;
+		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
 	}
 	sendComment(){
 		const bodyComment = {
 			fk_id_user: this.userId,
-			fk_id_post: this.post.id_post,
+			fk_id_post: this.post.post.id_post,
 			text: this.AddComment
 		}
 
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
+				console.log(CreatedComment);
 				const NewComment: Comment = {
 					id_comment: CreatedComment.id_comment,
-					fk_id_user: CreatedComment.fk_id_user,
+					user: CreatedComment.fk_id_user,
 					text: CreatedComment.text
 				}
-				this.comments.push(NewComment);
+				this.post.commentsPublished.push(NewComment);
 				this.updateComments();
 			});
 			this.AddComment = '';
 		}
-		
 	}	
-	getComments() {
-        this.commentsService.getComment(this.post.id_post).subscribe((res: any) => {
-            this.comments = res;
-        })
-  	}
-	getPostsInterests(){
-		this.postService.getPostsInterests(this.post.id_post).subscribe((res: any) => {
-            this.postInterests = res;
-        })
-	}
 
 	ClickVote(votetype:any){
 		this.voteService.checkUserVotes(this.userId).subscribe((res:any)=>{
-			this.userVotes = res;	
-			this.vote = this.userVotes.find(vote => vote.fk_id_post === this.post.id_post);
+			this.vote = res.find((vote:any) => vote.fk_id_post === this.post.post.id_post);
 			this.CheckVote(votetype);
 		})
 	}	
 	CheckVote(votetype:any) {
 		if (this.vote && this.vote.vote == votetype) this.DeleteVote(this.vote.id_vote);
-		
+
 		if (!this.vote || this.vote.vote != votetype) this.CreateVote(votetype);
 	}
 
 	CreateVote(votetype:any){
-		this.voteService.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
+		this.voteService.voteCreate(this.post.post.id_post, this.userId, votetype).subscribe((res: any) => {
 			this.updateVotes();
 		})
 	}
@@ -125,42 +108,38 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 
 	updateVotes() {
-		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
-			this.post.votes = res.votes;
-			this.VotesColor();
+		this.voteService.updateVotes(this.post.post.id_post).subscribe((res: any) => {
+			this.post.post.votes = res.votes;
+			//this.VotesColor();
 		});
 	}
 
 	updateComments(){
-		this.postService.updatePostComments(this.post.id_post).subscribe((res:any)=>{
-			this.post.comments = res.comments;
+		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
+			this.post.post.comments = res.comments;
 		});
 	}
-
 	CheckFollowValue(){
-		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
-			this.userFollows = Object.values(res);
-			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.fk_id_user);
-			if (this.userFollowsAccount) console.log("USER " + this.userId + " FOLLOWS USER " + this.post.fk_id_user);
-		})
+			this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+				this.userFollows = Object.values(res);
+				this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.post.fk_id_user);
+			})
 	}
+	
 	CheckFollowOrUnfollow(){
-		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
-			this.userFollows = Object.values(res);
-			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.fk_id_user);
-			
 			if (this.userFollowsAccount) this.UnfollowAction();
 			if (!this.userFollowsAccount) this.FollowAction();
-		})
 	}
 	FollowAction(){
-		this.followService.sendFollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
-			console.log("followed");
+		this.followService.sendFollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
+			this.CheckFollowValue();
+			console.log("Followed");
 		})
 	}
 	UnfollowAction(){
-		this.followService.Unfollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
-			console.log("unfollowed");
+		this.followService.Unfollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
+			this.CheckFollowValue();
+			console.log("Unfollowed");
 		})
 	}
 	mostrarComentarios() {

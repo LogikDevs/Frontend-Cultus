@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from '../posts/post.model';
-import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
   selector: 'app-comment',
@@ -8,9 +7,10 @@ import { GetUserService } from 'src/app/services/get-user.service';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit{
+@Input() comment: Comment;
   @Input() author: any;
-	@Input() comment: Comment;
-
+  commentVisibility:boolean = true;
+  commentId:any;
   userId:any = localStorage.getItem("IdUser");
   
   commentId:any;
@@ -18,23 +18,16 @@ export class CommentComponent implements OnInit{
 
   commentVisibility:boolean = true;
   displayedOptions:boolean = false;
-
-  constructor(private userService: GetUserService) { }
+ 
+  constructor() { }
 
     ngOnInit(){
-        this.getWriter();
         this.checkAuthor();
         this.commentId = this.comment.id_comment;
     }
-  
-    getWriter() {
-		this.userService.getUserFromId(this.comment.fk_id_user).subscribe((res: any) => {
-			this.author = res.name + " " + res.surname;
-		});
-	}
-
     checkAuthor(){
-        if (this.comment.fk_id_user == this.userId) this.ownComment = true;
+        const idToNum = Number(this.userId);
+        if (this.comment.user.id == idToNum) this.ownComment = true;
     }
 
     displayOptions(event: Event){

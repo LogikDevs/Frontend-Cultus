@@ -13,7 +13,6 @@ export class ClickOutDirectiveDirective {
     const clickedInside = this.elementRef.nativeElement.contains(target);
     if (!clickedInside) {
       this.appClickOutside.emit(); 
-      console.log("emit: " + this.appClickOutside.emit());
     }
   }
 }
