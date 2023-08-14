@@ -8,6 +8,7 @@ export class FollowsService {
   private urlSendFollow = "http://localhost:8000/api/v1/follow";
   private urlUnfollow = "http://localhost:8000/api/v1/unfollow";
   private urlUserFollowed = "http://localhost:8000/api/v1/followeds/"
+
   constructor(private http: HttpClient) { }
 
   sendFollow(idUser:any, idFollowed:any) {

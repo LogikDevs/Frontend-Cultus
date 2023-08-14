@@ -18,7 +18,7 @@ export class ModalOptionCommentComponent {
       	this.commentService.deleteComment(this.commentId).subscribe((res:any)=>{
     		this.CommentRemoved.emit(true);
 			this.optionVisibility = false;
-      	});
+      	})
   	}
   	reportComment(){
 		console.log("Reported.");
@@ -26,6 +26,5 @@ export class ModalOptionCommentComponent {
   	}
 	hideComponent(){
 		this.optionVisibility = false;
-		console.log(this.optionVisibility);
 	}
 }

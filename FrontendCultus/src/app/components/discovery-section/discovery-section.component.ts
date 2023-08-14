@@ -21,6 +21,7 @@ export class DiscoverySectionComponent {
   getPosts() {
       this.postService.getPostsDiscoverySection(this.userId).subscribe((res: any) => {
           this.posts = res;
+          console.log(this.posts);
       })
   }
 }
