@@ -22,6 +22,13 @@ import { FollowsService } from 'src/app/services/follows.service';
 
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
+	@Input() defaultUrl:string = "http://localhost:8001/"
+
+    postVisibility:boolean = true;
+    postId:any;
+	ownPost:boolean = false;
+    displayedOptions:boolean = false;
+
 
 	Followable:boolean = false;
 	userFollows:any[] = [];
@@ -44,10 +51,26 @@ import { FollowsService } from 'src/app/services/follows.service';
 	ngOnInit() {
 		this.IsFollowable();
 		this.CheckFollowValue();
+		this.checkAuthor();
+        this.postId = this.post.post.id_post;
 	}
-	//ngAfterContentInit(){
-	//	this.VotesColor();
-	//}
+    checkAuthor(){
+        const idToNum = Number(this.userId);
+        if (this.post.post.fk_id_user == idToNum) this.ownPost = true;
+    }
+    displayOptions(event: Event){
+        event.stopPropagation(); 
+        this.displayedOptions = !this.displayedOptions;
+		console.log(this.displayedOptions);
+    }	
+	onRemoving(){
+		this.postVisibility=false;
+	}
+
+
+
+
+
 	VotesColor(){
 		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
 		if (this.post.post.votes < 0) voteColor.style.color = "red";
@@ -66,12 +89,16 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
-				console.log(CreatedComment);
 				const NewComment: Comment = {
 					id_comment: CreatedComment.id_comment,
-					user: CreatedComment.fk_id_user,
-					text: CreatedComment.text
+					user:{
+						id:	CreatedComment.fk_id_user,
+						name: CreatedComment.name,
+						surname: CreatedComment.surname
+					}, 
+					text: bodyComment.text
 				}
+				console.log(NewComment);
 				this.post.commentsPublished.push(NewComment);
 				this.updateComments();
 			});
