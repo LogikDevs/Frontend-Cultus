@@ -11,7 +11,7 @@ export class CreatePostService {
 
 	postCreate(postDataReceived: any, UserIdReceived: any) {
 		const body = {
-			id_user: UserIdReceived,
+			fk_id_user: UserIdReceived,
 			text: postDataReceived.text,
 			latitud: postDataReceived.latitud,
 			longitud:postDataReceived.longitud
@@ -24,17 +24,16 @@ export class CreatePostService {
 		}
 		return this.http.post(this.urlCreatePost, body, httpOptions);
 	}
-	postMultimedia(MultimediaReceived: File, PostIdReceived: any){
-		const MultimediaBody = {
-			fk_id_post: PostIdReceived,
-			multimedia_file: MultimediaReceived
-		}
+	postMultimedia(MultimediaReceived: File, PostIdReceived: any) {
+		const formData = new FormData();
+		formData.append('fk_id_post', PostIdReceived);
+		formData.append('multimedia_file', MultimediaReceived);
+	
 		const httpOptions = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
-			})
-		}
-		return this.http.post(this.urlCreateMultimedia, MultimediaBody, httpOptions);
+				'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+			}),
+		};
+		return this.http.post(this.urlCreateMultimedia, formData, httpOptions);
 	}
 }

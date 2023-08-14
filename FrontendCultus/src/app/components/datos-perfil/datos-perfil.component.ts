@@ -15,8 +15,10 @@ export class DatosPerfilComponent {
 	selectedImage: string | undefined;
 
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+
 	ProfilePictureMultimedia: File;
-	constructor(private api: EditUserService, private countries: GetCountriesService, private userService: GetUserService) { };
+	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService) { };
+
 	
 	ngOnInit() {
 		this.getUser();
@@ -42,8 +44,7 @@ export class DatosPerfilComponent {
   			}
 		}
 		console.log(NonNullData);
-		this.api.getEditUser(this.UserData, NonNullData);
-		
+		this.EditService.getEditUser(this.UserData, NonNullData);
 	}
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();

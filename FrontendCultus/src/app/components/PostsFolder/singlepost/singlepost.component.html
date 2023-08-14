@@ -1,4 +1,4 @@
-<div class="ContainerPost" *ngIf="author">
+<div class="ContainerPost" *ngIf="postVisibility">
 	<div class="ContainerPostMobile">
 		<div class="ContainerAllComments" [ngClass]="{'slide-up': showComments}">
 			<div class="HeaderComments">
@@ -8,9 +8,8 @@
 				</div>
 			</div>
 			<div class="ScrollableContent">
-				<div class="AllCommentsPost" *ngFor="let comment of comments">
+				<div class="AllCommentsPost" *ngFor="let comment of post.commentsPublished">
 					<app-comment [comment]="comment"></app-comment>
-					<!-- <app-modal-option-comment></app-modal-option-comment> -->
 				</div>
 			</div>
 			<ng-template #noCommentsTemplate>
@@ -25,27 +24,27 @@
 				</div>
 				<div class="NameAndDate">
 					<div class="UsernamePost">
-						<p>{{ author.name }} {{ author.surname }}</p>
+						<p>{{ post.user.name }} {{ post.user.surname }}</p>
 					</div>
 					<div class="PostUploadDate">
-						<p>{{post.date.slice(2,-3)}}</p>
+						<p>{{post.post.date.slice(2,-3)}}</p>
 					</div>
 
 				</div>
 
 				<div class="OptionsPost">
-					<img src="assets/menu-logo.png" alt="">
+					<img src="assets/menu-logo.png" alt="" (click)="displayOptions($event)">
 				</div>
 			</div>
 		</div>
 		<div class="LocationPostDesktop">
-			<p>{{post.location}}</p>
+			<p></p>
 		</div>
-		<div class="Interest" *ngFor="let interest of postInterests">
-			<p>{{interest.fk_id_label}}</p>
+		<div class="Interest" *ngFor="let interest of post.interests">
+			<p>{{interest}}</p>
 		</div>
 		<div class="PostDescription">
-			<p>{{ post.text }}</p>
+			<p>{{ post.post.text }}</p>
 		</div>
 
 
@@ -56,8 +55,7 @@
 						<img src="assets/post-images/like.svg" alt="">
 					</div>
 					<div class="AmountUpvotesPost">
-
-						<p id="VotesNumber">{{ post.votes }}</p>
+						<p id=VotesNumber_{{post.post.id_post}}>{{ post.post.votes }}</p>
 					</div>
 					<div class="IconUpvotesPost" (click)="ClickVote(0)">
 						<img src="assets/post-images/disgusto.svg" alt="">
@@ -68,7 +66,7 @@
 						<img src="assets/chat.png" alt="">
 					</div>
 					<div class="AmountCommentPost">
-						<p>{{post.comments}}</p>
+						<p>{{post.post.comments}}</p>
 					</div>
 				</div>
 			</div>
@@ -101,7 +99,7 @@
 
 			<div class="PostContentImageAndInteractions">
 				<div class="ImagePostDesktop">
-					<img src="" alt="">
+					<img src={{defaultUrl}}{{post.multimedia}} alt="">
 				</div>
 				<div class="InteractionsPostDesktop">
 					<div class="IconUpvote">
@@ -119,13 +117,13 @@
 				<img src="/assets/post-images/profile_def.jpg" alt="">
 			</div>
 			<div class="UsernameProfile">
-				<p>{{ author.name }} {{ author.surname }}</p>
+				<p>{{ post.user.name }} {{ post.user.surname }}</p>
 			</div>
 			<div class="DataProfile">
-				<div class="Follow" ngIf="Followable">
-					<img src="/assets/follow.png" alt="">
+				<div class="Follow" *ngIf="Followable">
+					<img src="/assets/follow.png" alt="" (click)="CheckFollowOrUnfollow()">
 				</div>
-				<div class="SendMessage">
+				<div class="SendMessage" *ngIf="Followable">
 					<img src="/assets/charlando.png" alt="">
 				</div>
 				<div class="Country">
@@ -136,4 +134,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div *ngIf="displayedOptions">
+		<app-modal-option-post [optionVisibility]="displayedOptions" [postId]="postId" [ownPost]="ownPost" (PostRemoved)="onRemoving()"></app-modal-option-post>
 	</div>

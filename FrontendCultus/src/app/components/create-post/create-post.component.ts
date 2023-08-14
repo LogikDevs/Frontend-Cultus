@@ -32,7 +32,7 @@ export class CreatePostComponent {
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
 		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{
-			console.log("sendPostMultimedia: ", res);
+			console.log("Created: ", res);
 		})
 	}
 	onFileChange(event: any) {
@@ -48,5 +48,6 @@ export class CreatePostComponent {
 		for (let i = 0; i < InterestsArray.length; i++){
 			this.interestService.sendPostInterests(postId, InterestsArray[i]).subscribe((res:any)=>{})
 		}
+		this.interestService.NewUserInterestsArray = [];
 	}
 }

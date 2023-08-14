@@ -30,6 +30,9 @@
         <div class="CountryMyProfile">
             <p *ngIf="userData"> {{userCountries.homelandName}}</p>
         </div>
+        <div class="FollowOption" >
+            <button> Follow</button>
+        </div>
     </div>
     <div class="MyInterestProfile">
         <div class="TittleInterest">
@@ -53,7 +56,7 @@
     </div>
 </div>
 
-<div class="ContainerImagePost"  *ngFor="let post of posts.reverse()">
+<div class="ContainerImagePost"  *ngFor="let post of posts">
     <app-singlepost *ngIf="post" [post]="post"></app-singlepost>
 </div>
 
