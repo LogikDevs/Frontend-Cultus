@@ -21,8 +21,6 @@ export class InterestComponent {
 			this.interestService.NewUserInterestsArray = removedElementArray;
 		}
 		if (!isInterestAlreadyAdded) this.interestService.NewUserInterestsArray.push(insertId);
-		
-		console.log(this.interestService.NewUserInterestsArray);
  	}
 }
 

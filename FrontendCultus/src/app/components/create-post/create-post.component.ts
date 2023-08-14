@@ -48,5 +48,6 @@ export class CreatePostComponent {
 		for (let i = 0; i < InterestsArray.length; i++){
 			this.interestService.sendPostInterests(postId, InterestsArray[i]).subscribe((res:any)=>{})
 		}
+		this.interestService.NewUserInterestsArray = [];
 	}
 }

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Post, Comment } from '../posts/post.model';
 import { VoteService } from 'src/app/services/vote.service';
-import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { FollowsService } from 'src/app/services/follows.service';
@@ -29,14 +28,11 @@ import { FollowsService } from 'src/app/services/follows.service';
 	ownPost:boolean = false;
     displayedOptions:boolean = false;
 
-
 	Followable:boolean = false;
 	userFollows:any[] = [];
 	userFollowsAccount:any;
 
   	userId:any = localStorage.getItem("IdUser");
-	UserData:any = this.userService.getUserData;
-  	username:any;
 	
   	AddComment:string = '';
 
@@ -47,35 +43,19 @@ import { FollowsService } from 'src/app/services/follows.service';
   	showComments: boolean = false;
 	noCommentsTemplate: any;
 
-	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
+	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
 		this.IsFollowable();
 		this.CheckFollowValue();
 		this.checkAuthor();
         this.postId = this.post.post.id_post;
 	}
-    checkAuthor(){
-        const idToNum = Number(this.userId);
-        if (this.post.post.fk_id_user == idToNum) this.ownPost = true;
-    }
-    displayOptions(event: Event){
-        event.stopPropagation(); 
-        this.displayedOptions = !this.displayedOptions;
-		console.log(this.displayedOptions);
-    }	
-	onRemoving(){
-		this.postVisibility=false;
-	}
-
-
-
-
 
 	VotesColor(){
 		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
-		if (this.post.post.votes < 0) voteColor.style.color = "red";
+		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
 		if (this.post.post.votes == 0) voteColor.style.color = "grey";
-		if (this.post.post.votes > 0) voteColor.style.color = "green";
+		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
 	}
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
@@ -86,32 +66,34 @@ import { FollowsService } from 'src/app/services/follows.service';
 			fk_id_post: this.post.post.id_post,
 			text: this.AddComment
 		}
-
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
-				const NewComment: Comment = {
-					id_comment: CreatedComment.id_comment,
-					user:{
-						id:	CreatedComment.fk_id_user,
-						name: CreatedComment.name,
-						surname: CreatedComment.surname
-					}, 
-					text: bodyComment.text
-				}
-				console.log(NewComment);
-				this.post.commentsPublished.push(NewComment);
-				this.updateComments();
+				this.showCommentLocally(CreatedComment);
 			});
 			this.AddComment = '';
 		}
 	}	
+	showCommentLocally(CreatedComment:any){
+		const NewComment: Comment = {
+			id_comment: CreatedComment.comment.id_comment,
+			user:{
+				id:	CreatedComment.comment.fk_id_user,
+				name: CreatedComment.user.name,
+				surname: CreatedComment.user.surname
+			}, 
+			text: CreatedComment.comment.text
+		}
+		this.post.commentsPublished.push(NewComment);
+		this.updateComments();
+	}
+
 
 	ClickVote(votetype:any){
 		this.voteService.checkUserVotes(this.userId).subscribe((res:any)=>{
 			this.vote = res.find((vote:any) => vote.fk_id_post === this.post.post.id_post);
 			this.CheckVote(votetype);
 		})
-	}	
+	}
 	CheckVote(votetype:any) {
 		if (this.vote && this.vote.vote == votetype) this.DeleteVote(this.vote.id_vote);
 
@@ -119,16 +101,10 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 
 	CreateVote(votetype:any){
-		this.voteService.voteCreate(this.post.post.id_post, this.userId, votetype).subscribe((res: any) => {
-			this.updateVotes();
-			
-		})
+		this.voteService.voteCreate(this.post.post.id_post, this.userId, votetype).subscribe((res) => {this.updateVotes()})
 	}
 	DeleteVote(voteId:any){
-		this.voteService.voteDelete(voteId).subscribe((res:any)=>{
-			this.updateVotes();
-			
-		})
+		this.voteService.voteDelete(voteId).subscribe((res)=>{this.updateVotes()})
 	}
 
 	updateVotes() {
@@ -143,11 +119,12 @@ import { FollowsService } from 'src/app/services/follows.service';
 			this.post.post.comments = res.comments;
 		});
 	}
+
 	CheckFollowValue(){
-			this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
-				this.userFollows = Object.values(res);
-				this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.post.fk_id_user);
-			})
+		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+			this.userFollows = Object.values(res);
+			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.post.fk_id_user);
+		})
 	}
 	
 	CheckFollowOrUnfollow(){
@@ -166,6 +143,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 			console.log("Unfollowed");
 		})
 	}
+
 	mostrarComentarios() {
 		this.showComments = true;
 	}
@@ -174,5 +152,16 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 	toggleComments() {
 	  this.showComments = !this.showComments;
+	}    
+	
+	checkAuthor(){
+        if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
+    }
+    displayOptions(event: Event){
+        event.stopPropagation(); 
+        this.displayedOptions = !this.displayedOptions;
+    }	
+	onRemoving(){
+		this.postVisibility=false;
 	}
 } 
