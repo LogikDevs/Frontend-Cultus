@@ -7,16 +7,17 @@ import { Comment } from '../posts/post.model';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit{
-@Input() comment: Comment;
-  @Input() author: any;
-  commentVisibility:boolean = true;
-  commentId:any;
-  userId:any = localStorage.getItem("IdUser");
-  ownComment:boolean = false;
-
-  displayedOptions:boolean = false;
+    @Input() comment: Comment;
+    @Input() author: any;
+    
+    userId:any = localStorage.getItem("IdUser");
+    
+    commentVisibility:boolean = true;
+    commentId:any;
+    ownComment:boolean = false;
+    displayedOptions:boolean = false;
  
-  constructor() { }
+    constructor() { }
 
     ngOnInit(){
         this.checkAuthor();
