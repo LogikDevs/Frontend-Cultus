@@ -7,7 +7,7 @@
     <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)"> 
     <button type="button" name="PostInterests"(click)="showPostInterestSelection()">Select Post interests</button>
     <div *ngIf="interestService.displaySelectInterest">
-        <app-select-interest [postInterestType]="true" [WindowVisibility]="true"></app-select-interest>
+        <app-select-interest [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
     </div>
    
     <button type="submit" name="CreatePost">Publish Post</button>
