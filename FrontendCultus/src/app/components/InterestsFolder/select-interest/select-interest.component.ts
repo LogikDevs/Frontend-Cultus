@@ -43,11 +43,9 @@ export class SelectInterestComponent {
 	}
 	onInterestsSearch(data:Event){
 		const ReceivedText = (data.target as HTMLInputElement).value.toLowerCase();
-		if (ReceivedText.length >= 2) {
-			this.filterInterests(ReceivedText);
-		} else {
-			this.filteredInterests = this.interests;
-	  	}
+		
+		if (ReceivedText.length >= 2) this.filterInterests(ReceivedText);
+		else this.filteredInterests = this.interests;
 	}
 	filterInterests(dataReceived: string) {
 		this.filteredInterests = this.interests.filter(interest =>

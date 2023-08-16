@@ -33,6 +33,8 @@ import { ClickOutDirectiveDirective } from './directives/click-out-directive.dir
 import { DiscoverySectionComponent } from './components/discovery-section/discovery-section.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
+import { ModalOptionPostComponent } from './components/modal-option-post/modal-option-post.component';
+
 
 
 
@@ -66,7 +68,8 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
     ClickOutDirectiveDirective,
     DiscoverySectionComponent,
     CreateEventComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    ModalOptionPostComponent
   ],
   imports: [
     BrowserModule,
