@@ -19,7 +19,7 @@
                 <input class="input" type="text" (input)="onInterestsSearch($event)" placeholder="Busca tus intereses...">
             </form>
             <div class="SkipSearchInterest">
-                <button routerLink="/home" *ngIf="!postInterestType">Omitir</button>
+                <button routerLink="/home" *ngIf="SelectInterestType === 'user'">Omitir</button>
             </div>
         </div>
 
