@@ -52,6 +52,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 
 	VotesColor(){
+		console.log(this.defaultUrl + this.post.multimedia.multimediaLink);
 		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
 		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
 		if (this.post.post.votes == 0) voteColor.style.color = "grey";
