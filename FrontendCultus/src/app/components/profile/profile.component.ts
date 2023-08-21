@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
 		homelandName: "", 
 		residenceName: ""
 	}
-
+	publicUrl:string="http://localhost:8000/";
 	userInterests: any[] = [];
 	userId = localStorage.getItem("IdUser");
 	posts: Post[];
