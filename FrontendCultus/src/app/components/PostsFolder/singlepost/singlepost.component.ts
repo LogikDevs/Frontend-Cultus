@@ -46,9 +46,8 @@ import { FollowsService } from 'src/app/services/follows.service';
 	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
 		this.IsFollowable();
-		this.CheckFollowValue();
-		this.checkAuthor();
-        this.postId = this.post.post.id_post;
+		this.CheckFollowOrUnfollow(false)
+    this.postId = this.post.post.id_post;
 	}
 
 	VotesColor(){
@@ -120,27 +119,29 @@ import { FollowsService } from 'src/app/services/follows.service';
 		});
 	}
 
-	CheckFollowValue(){
+	CheckFollowOrUnfollow(click:boolean){
 		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
-			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.post.fk_id_user);
+			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.post.post.fk_id_user));
+			if (userFollowsAccount) {
+				//CAMBIAR IMAGEN A DEJAR DE SEGUIR
+				if (click === true) this.UnfollowAction();
+			}
+			if (!userFollowsAccount) {
+				//CAMBIAR IMAGEN A SEGUIR
+				if (click === true) this.FollowAction();
+			}			
 		})
-	}
-	
-	CheckFollowOrUnfollow(){
-			if (this.userFollowsAccount) this.UnfollowAction();
-			if (!this.userFollowsAccount) this.FollowAction();
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
-			this.CheckFollowValue();
-			console.log("Followed");
+			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
+			//CAMBIAR IMAGEN A DEJAR DE SEGUIR
 		})
 	}
 	UnfollowAction(){
 		this.followService.Unfollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
-			this.CheckFollowValue();
-			console.log("Unfollowed");
+			//CAMBIAR IMAGEN A SEGUIR
 		})
 	}
 

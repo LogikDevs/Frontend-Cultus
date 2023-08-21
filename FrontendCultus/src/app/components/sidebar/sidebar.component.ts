@@ -29,7 +29,9 @@ export class SidebarComponent implements OnInit {
         });
         
     }
-
+    ToOwnProfile(){
+        this.router.navigateByUrl("/profile/"+this.userId);
+    }
     logout() {
         this.api.sendLogout().subscribe();
         localStorage.removeItem("accessToken");
