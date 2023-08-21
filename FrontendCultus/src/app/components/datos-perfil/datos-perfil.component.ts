@@ -3,6 +3,7 @@ import { EditUserService } from '../../services/edit-user.service';
 import { GetCountriesService } from '../../services/get-countries.service';
 import { UserEditedData } from './datos-perfil.model';
 import { GetUserService } from 'src/app/services/get-user.service';
+import { NonNullableFormBuilder } from '@angular/forms';
 
 @Component({
 	selector: 'app-datos-perfil',
@@ -37,14 +38,8 @@ export class DatosPerfilComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: ProfileEditData.residenceCountry
 		}
-		const NonNullData: Partial<UserEditedData> = {};
-		for (const key of Object.keys(DataToEdit)) {
-  			if (DataToEdit[key] !== null && DataToEdit[key] !== undefined && DataToEdit[key] !== "") {
-    			NonNullData[key] = DataToEdit[key];
-  			}
-		}
-		console.log(NonNullData);
-		this.EditService.getEditUser(this.UserData, NonNullData);
+		console.log(ProfileEditData);
+		this.EditService.getEditUser(DataToEdit);
 	}
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
