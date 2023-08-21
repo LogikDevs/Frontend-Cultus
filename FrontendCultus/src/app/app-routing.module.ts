@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent, canActivate: [GuardAuthentication] },
   { path: 'posts', component: PostsComponent, canActivate: [GuardAuthentication] },
-  { path: 'profile', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
+  { path: 'profile/:id', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
   { path: 'optionsdata', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
