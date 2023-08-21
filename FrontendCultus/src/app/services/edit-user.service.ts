@@ -8,40 +8,27 @@ import { Router } from '@angular/router';
 })
 export class EditUserService {
 	userId:any = localStorage.getItem("IdUser");
-	UserData:any;
 
 	private urlApiEditUser = "http://localhost:8000/api/v1/user/";
-	constructor(private http: HttpClient, private userService: GetUserService, private router: Router) {}
+	constructor(private http: HttpClient, private router: Router) {}
 	
-	getEditUser(UserData:any, EditUserData: any) {
-		const body:any = {
-			email: UserData.email,
-			name: UserData.name,
-			surname: UserData.surname,
-			age: UserData.age,
-			password: UserData.password
-		}
-		const FinalBodyEditedInfo = Object.assign({}, body, EditUserData);
-		console.log(FinalBodyEditedInfo);
+	getEditUser(EditUserData: any) {
+		console.log('EditUserData: ',EditUserData);
+		const formData = new FormData();
+		formData.append('profile_pic', EditUserData.profile_pic);
+		formData.append('homeland', EditUserData.homeland);
+		formData.append('residence', EditUserData.residence_country);
+		formData.append('gender', EditUserData.gender);
+		formData.append('description', EditUserData.description);
+		console.log('formData', formData);
 		const httpOptions = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		this.http.put(this.urlApiEditUser + this.userId, FinalBodyEditedInfo, httpOptions).subscribe((res: any) => {
+		this.http.post(this.urlApiEditUser + this.userId, formData, httpOptions).subscribe((res: any) => {
 			console.log(res);
 		});
-		//this.router.navigateByUrl('/SelectInterest');
-	}
-	sendEditUser(body: any) {
-		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
-			})
-		}
-		this.http.put(this.urlApiEditUser + body.id, body, httpOptions).subscribe((res: any) => { });
 		this.router.navigateByUrl('/SelectInterest');
 	}
 }

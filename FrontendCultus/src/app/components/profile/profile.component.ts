@@ -19,7 +19,6 @@ export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 	@Input() userData:User;
-
 	userInterests: any[] = [];
 	
 	userFollows:any;
