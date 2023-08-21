@@ -122,7 +122,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	CheckFollowOrUnfollow(click:boolean){
 		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
-			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.post.fk_id_user));
+			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.post.post.fk_id_user));
 			if (userFollowsAccount) {
 				//CAMBIAR IMAGEN A DEJAR DE SEGUIR
 				if (click === true) this.UnfollowAction();
@@ -134,13 +134,13 @@ import { FollowsService } from 'src/app/services/follows.service';
 		})
 	}
 	FollowAction(){
-		this.followService.sendFollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+		this.followService.sendFollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
 			//CAMBIAR IMAGEN A DEJAR DE SEGUIR
 		})
 	}
 	UnfollowAction(){
-		this.followService.Unfollow(this.userId, this.post.fk_id_user).subscribe((res:any)=>{
+		this.followService.Unfollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
 			//CAMBIAR IMAGEN A SEGUIR
 		})
 	}
