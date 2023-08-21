@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GetPostsService } from '../../../services/get-posts.service';
 import { Post } from './post.model';
+import { GetUserService } from 'src/app/services/get-user.service';
+import { FollowsService } from 'src/app/services/follows.service';
 
 @Component({
     selector: 'app-posts',
@@ -10,16 +12,10 @@ import { Post } from './post.model';
 })
 export class PostsComponent implements OnInit {    
     posts: Post[];
-
-    constructor(private api: GetPostsService) { }
+    userId = localStorage.getItem("IdUser");
+    
+    constructor(private postService: GetPostsService, private followService: FollowsService) { }
 
     ngOnInit() {
-        this.getPosts();
-    }
-
-    getPosts() {
-        this.api.getPosts().subscribe((res: any) => {
-            this.posts = res;
-        })
     }
 }

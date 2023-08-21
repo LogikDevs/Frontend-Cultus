@@ -23,12 +23,12 @@ export class CreatePostComponent {
 			latitud: FormData.latitud,
 			longitud: FormData.longitud,
 			multimedia_file: this.postMultimedia
-		};
+		}
 		this.createPostService.postCreate(postData, this.userId).subscribe((res:any)=>{
 			const newPostId = res.id_post;
 			this.sendPostInterests(newPostId);
 			if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
-		});
+		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
 		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{
@@ -48,5 +48,6 @@ export class CreatePostComponent {
 		for (let i = 0; i < InterestsArray.length; i++){
 			this.interestService.sendPostInterests(postId, InterestsArray[i]).subscribe((res:any)=>{})
 		}
+		this.interestService.NewUserInterestsArray = [];
 	}
 }

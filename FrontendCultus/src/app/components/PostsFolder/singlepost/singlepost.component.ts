@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Post, Comment } from '../posts/post.model';
 import { VoteService } from 'src/app/services/vote.service';
-import { GetUserService } from 'src/app/services/get-user.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { FollowsService } from 'src/app/services/follows.service';
@@ -21,21 +20,22 @@ import { FollowsService } from 'src/app/services/follows.service';
   })
 
   export class SinglepostComponent implements OnInit {
-  	@Input() author: any;
 	@Input() post: Post;
-	@Input() postInterests:any;
+	@Input() defaultUrl:string = "http://localhost:8001/"
+
+    postVisibility:boolean = true;
+    postId:any;
+	ownPost:boolean = false;
+    displayedOptions:boolean = false;
 
 	Followable:boolean = false;
 	userFollows:any[] = [];
 	userFollowsAccount:any;
 
   	userId:any = localStorage.getItem("IdUser");
-  	username:any;
-  	comments: Comment[];
 	
   	AddComment:string = '';
 
-	userVotes:any[] = [];;
 	vote:any;
 
   	scrollOffset: number = 0;
@@ -43,97 +43,79 @@ import { FollowsService } from 'src/app/services/follows.service';
   	showComments: boolean = false;
 	noCommentsTemplate: any;
 
-	constructor(private userService: GetUserService, private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
+	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
-		this.PostData();
 		this.IsFollowable();
 		this.CheckFollowOrUnfollow(false)
-		this.getPostsInterests();
-		this.getComments();
+    this.postId = this.post.post.id_post;
 	}
-	//ngAfterContentInit(){
-	//	this.VotesColor();
-	//}
+
 	VotesColor(){
-		const voteColor:any = document.getElementById('VotesNumber_'+this.post.id_post);
-		if (this.post.votes < 0) voteColor.style.color = "red";
-		if (this.post.votes == 0) voteColor.style.color = "grey";
-		if (this.post.votes > 0) voteColor.style.color = "green";
-	}
-	PostData() {
-		this.userService.getUserFromId(this.post.fk_id_user).subscribe((res: any) => {
-			this.author = res;
-		});
+		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
+		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
+		if (this.post.post.votes == 0) voteColor.style.color = "grey";
+		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
 	}
 	IsFollowable(){
-		if (this.post.fk_id_user != this.userId) this.Followable = true;
+		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
 	}
 	sendComment(){
 		const bodyComment = {
 			fk_id_user: this.userId,
-			fk_id_post: this.post.id_post,
+			fk_id_post: this.post.post.id_post,
 			text: this.AddComment
 		}
-
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
-				const NewComment: Comment = {
-					id_comment: CreatedComment.id_comment,
-					fk_id_user: CreatedComment.fk_id_user,
-					text: CreatedComment.text
-				}
-				this.comments.push(NewComment);
-				this.updateComments();
+				this.showCommentLocally(CreatedComment);
 			});
 			this.AddComment = '';
 		}
-		
 	}	
-	getComments() {
-        this.commentsService.getComment(this.post.id_post).subscribe((res: any) => {
-            this.comments = res;
-        })
-  	}
-	getPostsInterests(){
-		this.postService.getPostsInterests(this.post.id_post).subscribe((res: any) => {
-            this.postInterests = res;
-        })
+	showCommentLocally(CreatedComment:any){
+		const NewComment: Comment = {
+			id_comment: CreatedComment.comment.id_comment,
+			user:{
+				id:	CreatedComment.comment.fk_id_user,
+				name: CreatedComment.user.name,
+				surname: CreatedComment.user.surname
+			}, 
+			text: CreatedComment.comment.text
+		}
+		this.post.commentsPublished.push(NewComment);
+		this.updateComments();
 	}
+
 
 	ClickVote(votetype:any){
 		this.voteService.checkUserVotes(this.userId).subscribe((res:any)=>{
-			this.userVotes = res;	
-			this.vote = this.userVotes.find(vote => vote.fk_id_post === this.post.id_post);
+			this.vote = res.find((vote:any) => vote.fk_id_post === this.post.post.id_post);
 			this.CheckVote(votetype);
 		})
-	}	
+	}
 	CheckVote(votetype:any) {
 		if (this.vote && this.vote.vote == votetype) this.DeleteVote(this.vote.id_vote);
-		
+
 		if (!this.vote || this.vote.vote != votetype) this.CreateVote(votetype);
 	}
 
 	CreateVote(votetype:any){
-		this.voteService.voteCreate(this.post.id_post, this.userId, votetype).subscribe((res: any) => {
-			this.updateVotes();
-		})
+		this.voteService.voteCreate(this.post.post.id_post, this.userId, votetype).subscribe((res) => {this.updateVotes()})
 	}
 	DeleteVote(voteId:any){
-		this.voteService.voteDelete(voteId).subscribe((res:any)=>{
-			this.updateVotes();
-		})
+		this.voteService.voteDelete(voteId).subscribe((res)=>{this.updateVotes()})
 	}
 
 	updateVotes() {
-		this.voteService.updateVotes(this.post.id_post).subscribe((res: any) => {
-			this.post.votes = res.votes;
+		this.voteService.updateVotes(this.post.post.id_post).subscribe((res: any) => {
+			this.post.post.votes = res.votes;
 			this.VotesColor();
 		});
 	}
 
 	updateComments(){
-		this.postService.updatePostComments(this.post.id_post).subscribe((res:any)=>{
-			this.post.comments = res.comments;
+		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
+			this.post.post.comments = res.comments;
 		});
 	}
 
@@ -162,6 +144,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 			//CAMBIAR IMAGEN A SEGUIR
 		})
 	}
+
 	mostrarComentarios() {
 		this.showComments = true;
 	}
@@ -170,5 +153,16 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 	toggleComments() {
 	  this.showComments = !this.showComments;
+	}    
+	
+	checkAuthor(){
+        if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
+    }
+    displayOptions(event: Event){
+        event.stopPropagation(); 
+        this.displayedOptions = !this.displayedOptions;
+    }	
+	onRemoving(){
+		this.postVisibility=false;
 	}
 } 
