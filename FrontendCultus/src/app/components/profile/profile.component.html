@@ -29,9 +29,10 @@
         </div>
         <div class="CountryMyProfile">
             <p *ngIf="userData"> {{userData.homeland}}</p>
+            <p *ngIf="userData"> {{userData.residence}}</p>
         </div>
         <div class="FollowOption" *ngIf="!ownProfile">
-            <button>Follow</button>
+            <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
         </div>
     </div>
     <div class="MyInterestProfile">
