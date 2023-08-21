@@ -10,7 +10,3 @@ export interface User {
 	description: string,
 	profile_pic: string
 }
-export interface UserCountries {
-    homelandName: string,
-	residenceName: string
-}

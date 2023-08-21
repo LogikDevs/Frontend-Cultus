@@ -1,10 +1,10 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { GetUserService } from '../../services/get-user.service';
-import { User, UserCountries } from './profile.model';
+import { User } from './profile.model';
 import { Post } from '../PostsFolder/posts/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'app-profile',
 	templateUrl: './profile.component.html',
@@ -12,64 +12,47 @@ import { GetInterestsService } from 'src/app/services/get-interests.service';
 })
 
 export class ProfileComponent implements OnInit {
+	@Input() ProfileId:any = this.route.snapshot.params['id'];;
+	userId = localStorage.getItem("IdUser");
+	ownProfile:boolean = false;
+
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 	@Input() userData:User;
-	@Input() userCountries:UserCountries = {
-		homelandName: "", 
-		residenceName: ""
-	}
 
 	userInterests: any[] = [];
-	userId = localStorage.getItem("IdUser");
+	
 	posts: Post[];
 	
 	selectedImage: string | undefined;
 	
-	constructor(private userService: GetUserService, private postsService: GetPostsService, private interestService: GetInterestsService) { }
+	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService) { }
 
 	ngOnInit() {
-		this.userData = this.userService.getUserData();
-		this.getCountries();
-		this.getUserInterests();
-		this.getUserPosts();
+		this.checkProfileType();
+		this.getProfile();
 	}
-
-	getCountries(){
-		this.getUserCountryInfo(this.userData.homeland, "homeland");
-		this.getUserCountryInfo(this.userData.residence, "residence");
+	checkProfileType(){
+		if (this.ProfileId === this.userId) this.ownProfile = true;
 	}
-	
-	getUserCountryInfo(idCountry: any, countryType: 'homeland' | 'residence') {
-		this.userService.getUserCountry(idCountry).subscribe(
-			(res: any) => {
-				const countryName = res.country_name;
-				
-				this.setUserCountryName(countryType, countryName);
-			},
-			(error: any) => {
-				this.setUserCountryName(countryType, 'Not specified');
-			}
-		);
+	getProfile(){
+		this.userService.getProfile(this.ProfileId).subscribe((res:any)=>{
+			this.userData = res;
+			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
+			this.checkCountries();
+		});
 	}
-	setUserCountryName(countryType: 'homeland' | 'residence', countryName: string) {
-		if (countryType === 'homeland') this.userCountries.homelandName = countryName;
-		if (countryType === 'residence') this.userCountries.residenceName = countryName;
+	checkCountries(){
+		if (this.userData.homeland == undefined) this.userData.homeland = 'Not Specified.';
+		if (this.userData.residence == undefined) this.userData.residence = 'Not Specified.';
 	}
 
 	getUserPosts(){
-		this.postsService.getUserPosts(this.userId).subscribe((res:any)=>{
+		this.postsService.getUserPosts(this.ProfileId).subscribe((res:any)=>{
 			this.posts = res;
 		})
 	}
-
-	getUserInterests(){
-		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
-			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
-		})
-	}
 	
-
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
 	}
