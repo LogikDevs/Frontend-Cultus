@@ -3,7 +3,7 @@ import { EditUserService } from '../../services/edit-user.service';
 import { GetCountriesService } from '../../services/get-countries.service';
 import { UserEditedData } from './datos-perfil.model';
 import { GetUserService } from 'src/app/services/get-user.service';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-datos-perfil',
@@ -18,19 +18,21 @@ export class DatosPerfilComponent {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 	ProfilePictureMultimedia: File;
-	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService) { };
+	constructor(private router: Router,private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService) { };
 
-	
 	ngOnInit() {
 		this.getUser();
 		this.countriesDropbox();
 	}
+
 	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.UserData = res;
 		})
 	}
+	
 	sendProfileData(ProfileEditData: any) {
+
 		const DataToEdit: UserEditedData = {
 			description: ProfileEditData.description,
 			gender: ProfileEditData.gender,
@@ -38,9 +40,12 @@ export class DatosPerfilComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: ProfileEditData.residenceCountry
 		}
-		console.log(ProfileEditData);
-		this.EditService.getEditUser(DataToEdit);
+		this.EditService.getEditUser(DataToEdit).subscribe((res)=>{
+			console.log(res);
+		})
+		this.router.navigateByUrl('/SelectInterest');
 	}
+	
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
 	}
