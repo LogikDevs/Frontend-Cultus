@@ -14,9 +14,6 @@ export class CreatePostComponent {
 
 	constructor(private createPostService: CreatePostService, public interestService: GetInterestsService) { }
 
-	sendCreatedPost(FormData:any){
-		this.sendPostData(FormData);
-	}
 	sendPostData(FormData: any) {
 		const postData: NewPostData = {
 			text: FormData.text,
