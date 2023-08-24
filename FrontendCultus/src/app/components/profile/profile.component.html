@@ -13,8 +13,8 @@
 <div class="ContainerMyProfile">
     <div class="BackgroundProfile">
            <div class="ImageProfile">
-        <img src="assets/post-images/profile_def.jpg" alt="">
-        <div class="EditProfile">
+        <img src={{pfpUrl}} alt="">
+        <div class="EditProfile" *ngIf="ownProfile">
             <img src="assets/Profile-Image/Pencil Drawing.svg" alt="">
         </div>
     </div> 
