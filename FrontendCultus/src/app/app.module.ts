@@ -34,7 +34,6 @@ import { DiscoverySectionComponent } from './components/discovery-section/discov
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { ModalOptionPostComponent } from './components/modal-option-post/modal-option-post.component';
-import { CreateGroupsComponent } from './components/create-groups/create-groups.component';
 
 
 
@@ -70,8 +69,7 @@ import { CreateGroupsComponent } from './components/create-groups/create-groups.
     DiscoverySectionComponent,
     CreateEventComponent,
     CreateGroupComponent,
-    ModalOptionPostComponent,
-    CreateGroupsComponent
+    ModalOptionPostComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.com
 import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { BackofficeComponent } from './components/backoffice/backoffice.component';
-
+import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { SidebarBackofficeComponent } from './components/sidebar-backoffice/sidebar-backoffice.component';
 import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
 import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
@@ -43,8 +43,8 @@ const routes: Routes = [
   { path: 'backoffice-users', component: BackofficeUsersComponent, canActivate: [GuardAuthentication]},
   { path: 'sidebar-backoffice', component: SidebarBackofficeComponent, canActivate: [GuardAuthentication] },
   { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
-  { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] }
-
+  { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
+  { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] }
 ];
 
 
