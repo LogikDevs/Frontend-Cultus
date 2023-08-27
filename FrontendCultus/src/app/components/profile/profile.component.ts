@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
 	ownProfile:boolean = false;
 
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+	@Input() pfpUrl:string="http://localhost:8000/storage/profile_pic/";
 
 	@Input() userData:User;
 	userInterests: any[] = [];
@@ -32,7 +33,12 @@ export class ProfileComponent implements OnInit {
 	ngOnInit() {
 		this.checkProfileType();
 		this.getProfile();
+		
 		this.CheckFollowOrUnfollow(false);
+	}
+	checkProfilePic(){
+		if (this.userData.profile_pic != null) this.pfpUrl = this.pfpUrl + this.userData.profile_pic;
+		if (this.userData.profile_pic === null) this.pfpUrl= "assets/post-images/profile_def.jpg"
 	}
 	checkProfileType(){
 		if (this.ProfileId === this.userId) this.ownProfile = true;
@@ -42,6 +48,7 @@ export class ProfileComponent implements OnInit {
 			this.userData = res;
 			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
 			this.checkCountries();
+			this.checkProfilePic();
 		});
 	}
 	checkCountries(){

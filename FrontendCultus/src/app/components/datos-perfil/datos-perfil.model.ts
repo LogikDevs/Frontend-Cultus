@@ -1,8 +1,7 @@
 export interface UserEditedData {
-    description: string  | undefined,
-    gender: string  | undefined,
-    homeland: number  | undefined,
-    profile_pic: File  | undefined,
-    residence_country: number  | undefined,
-    [key: string]: string | number | File | undefined
+    description: string  | null,
+    gender: string  | null,
+    homeland: number  | null,
+    profile_pic: File  | null,
+    residence_country: number  | null
 }

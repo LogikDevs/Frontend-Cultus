@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
 	providedIn: 'root'
 })
 export class EditUserService {
-
 	private urlApiEditUser = "http://localhost:8000/api/v1/user/";
+  
 	constructor(private http: HttpClient) {}
 	
 	getEditUser(EditUserData: any) {

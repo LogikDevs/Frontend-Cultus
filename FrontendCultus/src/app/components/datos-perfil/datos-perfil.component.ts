@@ -19,20 +19,23 @@ export class DatosPerfilComponent {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 	ProfilePictureMultimedia: File;
+
 	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { };
 
-	
 	ngOnInit() {
 		this.getUser();
 		this.countriesDropbox();
 	}
+
 	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.UserData = res;
 			console.log(this.UserData);
 		})
 	}
+	
 	sendProfileData(ProfileEditData: any) {
+
 		const DataToEdit: UserEditedData = {
 			description: ProfileEditData.description,
 			gender: ProfileEditData.gender,
@@ -41,9 +44,10 @@ export class DatosPerfilComponent {
 			residence_country: ProfileEditData.residenceCountry
 		}
 		this.EditService.getEditUser(DataToEdit).subscribe((res: HttpResponse<any>) => {
-			if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
+        if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
 		})
 	}
+	
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
 	}
