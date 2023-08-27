@@ -42,7 +42,7 @@ export class RegisterComponent {
 		})
 	}
 	handleErrorResponse(response: HttpResponse<any>) {
-		clearTimeout(this.ErrorResetTimeout);
+		//clearTimeout(this.ErrorResetTimeout);
 
 		if (response.body) {
 			const Errors = {
@@ -71,8 +71,6 @@ export class RegisterComponent {
 			
 			if (Errors.ageError) this.InputAgeError = Errors.ageError;
 			else this.InputAgeError = '';
-			
-			this.ErrorReset(); 
 		}
 	}
 	private ErrorReset(): void {
