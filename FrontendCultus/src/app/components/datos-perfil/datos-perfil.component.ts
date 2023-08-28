@@ -4,6 +4,7 @@ import { GetCountriesService } from '../../services/get-countries.service';
 import { UserEditedData } from './datos-perfil.model';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
 	selector: 'app-datos-perfil',
@@ -12,13 +13,14 @@ import { Router } from '@angular/router';
 })
 export class DatosPerfilComponent {
 	UserData:any;
-
+	userId = localStorage.getItem("IdUser");
 	selectedImage: string | undefined;
 
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 	ProfilePictureMultimedia: File;
-	constructor(private router: Router,private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService) { };
+
+	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { };
 
 	ngOnInit() {
 		this.getUser();
@@ -28,6 +30,7 @@ export class DatosPerfilComponent {
 	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.UserData = res;
+			console.log(this.UserData);
 		})
 	}
 	
@@ -40,10 +43,9 @@ export class DatosPerfilComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: ProfileEditData.residenceCountry
 		}
-		this.EditService.getEditUser(DataToEdit).subscribe((res)=>{
-			console.log(res);
+		this.EditService.getEditUser(DataToEdit).subscribe((res: HttpResponse<any>) => {
+        if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
 		})
-		this.router.navigateByUrl('/SelectInterest');
 	}
 	
 	triggerFileInput() {
