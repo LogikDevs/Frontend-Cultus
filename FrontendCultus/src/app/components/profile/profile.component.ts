@@ -33,7 +33,6 @@ export class ProfileComponent implements OnInit {
 	ngOnInit() {
 		this.checkProfileType();
 		this.getProfile();
-		
 		this.CheckFollowOrUnfollow(false);
 	}
 	checkProfilePic(){
@@ -52,8 +51,8 @@ export class ProfileComponent implements OnInit {
 		});
 	}
 	checkCountries(){
-		if (this.userData.homeland == undefined) this.userData.homeland = 'No especificado.';
-		if (this.userData.residence == undefined) this.userData.residence = 'No especificado.';
+		if (this.userData.homeland.country_name == undefined) this.userData.homeland.country_name = 'No especificado.';
+		if (this.userData.residence.country_name == undefined) this.userData.residence.country_name = 'No especificado.';
 	}
 
 	getUserPosts(){

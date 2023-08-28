@@ -28,8 +28,8 @@
             <p #HtmlAge *ngIf="userData">, {{userData.age}} </p>
         </div>
         <div class="CountryMyProfile">
-            <p *ngIf="userData"> {{userData.homeland}}</p>
-            <p *ngIf="userData"> {{userData.residence}}</p>
+            <p *ngIf="userData"> {{userData.homeland.country_name}}</p>
+            <p *ngIf="userData"> {{userData.residence.country_name}}</p>
         </div>
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
