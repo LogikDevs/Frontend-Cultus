@@ -58,7 +58,6 @@ export class SelectInterestComponent {
 			this.interestService.displaySelectInterest = false;
 			this.WindowVisibility = false;
 		}
-
 		if (this.SelectInterestType == "user") this.sendUserInterests();
  	}
 	
