@@ -22,7 +22,7 @@ import { FollowsService } from 'src/app/services/follows.service';
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
 	@Input() defaultUrl:string = "http://localhost:8001/";
-
+	@Input() ProfilePosts:boolean = false;
     postVisibility:boolean = true;
     postId:any;
 	ownPost:boolean = false;
@@ -45,20 +45,19 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
+		this.checkAuthor();
 		this.insertMultimedia();
 		this.IsFollowable();
 		this.CheckFollowOrUnfollow(false)
     	this.postId = this.post.post.id_post;
-	}
+	}	
+	checkAuthor(){
+        if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
+    }
 	insertMultimedia(){
 		if (this.post.multimedia[0]) this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
 	}
-	VotesColor(){
-		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
-		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
-		if (this.post.post.votes == 0) voteColor.style.color = "grey";
-		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
-	}
+
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
 	}
@@ -115,7 +114,12 @@ import { FollowsService } from 'src/app/services/follows.service';
 			this.VotesColor();
 		});
 	}
-
+	VotesColor(){
+		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
+		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
+		if (this.post.post.votes == 0) voteColor.style.color = "grey";
+		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
+	}
 	updateComments(){
 		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
 			this.post.post.comments = res.comments;
@@ -158,9 +162,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	  this.showComments = !this.showComments;
 	}    
 	
-	checkAuthor(){
-        if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
-    }
+
     displayOptions(event: Event){
         event.stopPropagation(); 
         this.displayedOptions = !this.displayedOptions;

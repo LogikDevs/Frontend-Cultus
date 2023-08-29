@@ -89,14 +89,12 @@
 
 	</div>
 
-</div>	<div class="ContainerPostDesktop">
-		<div class="PostDesktop">
-			<div class="HeaderPostDesktop">
-
-				<div class="OptionPostDesktop">
+</div>	<div class="ContainerPostDesktop" *ngIf="!ProfilePosts">
+			<div class="PostDesktop">
+				<div class="HeaderPostDesktop">
+					<div class="OptionPostDesktop">
+					</div>
 				</div>
-			</div>
-
 			<div class="PostContentImageAndInteractions">
 				<div class="ImagePostDesktop">
 					<img src={{defaultUrl}} alt="">
