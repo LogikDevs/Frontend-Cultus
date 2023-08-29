@@ -21,7 +21,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
-	@Input() defaultUrl:string = "http://localhost:8001/"
+	@Input() defaultUrl:string = "http://localhost:8001/";
 
     postVisibility:boolean = true;
     postId:any;
@@ -45,11 +45,14 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
+		this.insertMultimedia();
 		this.IsFollowable();
 		this.CheckFollowOrUnfollow(false)
-    this.postId = this.post.post.id_post;
+    	this.postId = this.post.post.id_post;
 	}
-
+	insertMultimedia(){
+		if (this.post.multimedia[0]) this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
+	}
 	VotesColor(){
 		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
 		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
