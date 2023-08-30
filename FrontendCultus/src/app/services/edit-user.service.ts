@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class EditUserService {
-	private urlApiEditUser = "http://localhost:8000/api/v1/user/";
+	private urlApiEditUser = "http://localhost:8000/api/v1/user/2";
   
 	constructor(private http: HttpClient) {}
 	
@@ -23,6 +23,12 @@ export class EditUserService {
 
 		if(EditUserData.profile_pic != undefined) formData.append('profile_pic', EditUserData.profile_pic);
 		
-		return this.http.post(this.urlApiEditUser + userId, formData, { observe: 'response' });
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+			})
+		}
+		
+		return this.http.post(this.urlApiEditUser, formData, httpOptions);
 	}
 }

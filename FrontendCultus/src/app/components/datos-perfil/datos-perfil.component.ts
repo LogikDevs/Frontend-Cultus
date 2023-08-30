@@ -43,8 +43,9 @@ export class DatosPerfilComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: ProfileEditData.residenceCountry
 		}
-		this.EditService.getEditUser(DataToEdit).subscribe((res: HttpResponse<any>) => {
-        if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
+		this.EditService.getEditUser(DataToEdit).subscribe((res: any) => {
+			console.log(res);
+        	if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
 		})
 	}
 	
