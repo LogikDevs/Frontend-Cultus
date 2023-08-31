@@ -26,6 +26,7 @@ export class EditProfileComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: DataReceived.residenceCountry
 		}
+		console.log(DataToEdit);
   	}
 
 
