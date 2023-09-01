@@ -1,3 +1,8 @@
+#InputError {
+  color: rgb(182, 47, 47);
+  font-size: 12px;
+}
+
 .DataLogin {
   background-color: rgba(35, 39, 35, 0.862745098);
   border-radius: 15px;
