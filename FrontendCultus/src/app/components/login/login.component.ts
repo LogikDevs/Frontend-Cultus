@@ -22,6 +22,7 @@ export class LoginComponent {
 	constructor(private api: AuthenticationService, private router: Router, private status: StatusService, private UserService: GetUserService) { }
 	sendLogin(credentials: any) {
 		this.api.sendLogin(credentials).subscribe((res: any) => {
+			this.InputLoginError = '';
 			localStorage.setItem('accessToken', (res["access_token"]));
 			this.status.isLoggedIn = true;
 			this.UserService.UserIdIntoStorage();
@@ -29,15 +30,8 @@ export class LoginComponent {
 			this.router.navigateByUrl('/home');
 
 		},(error: any)=>{
-			clearTimeout(this.ErrorResetTimeout);
-			this.InputLoginError = error.error.error_description;
-
-			this.ErrorReset();
+			this.InputLoginError = error.error.error_description ;
 		})
 	}
-	private ErrorReset(): void {
-		this.ErrorResetTimeout = setTimeout(() => {
-		  this.InputLoginError = '';
-		}, this.secondsToReset);
-	}
+
 }

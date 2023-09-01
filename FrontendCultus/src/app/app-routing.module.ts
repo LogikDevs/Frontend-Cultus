@@ -21,6 +21,7 @@ import { SidebarBackofficeComponent } from './components/sidebar-backoffice/side
 import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
 import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
 import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -32,7 +33,7 @@ const routes: Routes = [
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent, canActivate: [GuardAuthentication] },
   { path: 'posts', component: PostsComponent, canActivate: [GuardAuthentication] },
-  { path: 'profile', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
+  { path: 'profile/:id', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
   { path: 'optionsdata', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'backoffice-post', component: BackofficePostComponent, canActivate: [GuardAuthentication] },
   { path: 'backoffice-users', component: BackofficeUsersComponent, canActivate: [GuardAuthentication]},
   { path: 'sidebar-backoffice', component: SidebarBackofficeComponent, canActivate: [GuardAuthentication] },
-  { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] }
+  { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
+  { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] }
 
 ];
 

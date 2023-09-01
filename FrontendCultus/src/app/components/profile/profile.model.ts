@@ -5,12 +5,11 @@ export interface User {
 	surname: string,
     age: number,
 	gender: string,
-	homeland: number|string,
-	residence: number|string,
+	homeland: Country,
+	residence: Country,
 	description: string,
 	profile_pic: string
 }
-export interface UserCountries {
-    homelandName: string,
-	residenceName: string
+export interface Country {
+	country_name: any
 }
