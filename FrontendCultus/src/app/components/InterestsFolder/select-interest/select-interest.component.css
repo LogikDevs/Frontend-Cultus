@@ -58,10 +58,12 @@
 }
 
 .ContainerResultsSearch {
-  width: 100%;
+  width: 90%;
   margin: auto;
   margin-top: 30px;
+  max-height: 400px;
   text-align: center;
+  overflow-y: scroll;
 }
 
 .Interest {
@@ -110,6 +112,7 @@
 .FinishSelectInterest {
   width: 100%;
   margin: auto;
+  text-align: center;
 }
 
 .SkipSearchInterest {
