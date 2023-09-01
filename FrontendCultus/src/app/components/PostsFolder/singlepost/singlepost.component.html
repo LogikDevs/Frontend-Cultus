@@ -89,17 +89,15 @@
 
 	</div>
 
-</div>	<div class="ContainerPostDesktop">
-		<div class="PostDesktop">
-			<div class="HeaderPostDesktop">
-
-				<div class="OptionPostDesktop">
+</div>	<div class="ContainerPostDesktop" *ngIf="!ProfilePosts">
+			<div class="PostDesktop">
+				<div class="HeaderPostDesktop">
+					<div class="OptionPostDesktop">
+					</div>
 				</div>
-			</div>
-
 			<div class="PostContentImageAndInteractions">
 				<div class="ImagePostDesktop">
-					<img src={{defaultUrl}}{{post.multimedia}} alt="">
+					<img src={{defaultUrl}} alt="">
 				</div>
 				<div class="InteractionsPostDesktop">
 					<div class="IconUpvote">
@@ -121,7 +119,7 @@
 			</div>
 			<div class="DataProfile">
 				<div class="Follow" *ngIf="Followable">
-					<img src="/assets/follow.png" alt="" (click)="CheckFollowOrUnfollow()">
+					<img src="/assets/follow.png" alt="" (click)="CheckFollowOrUnfollow(true)">
 				</div>
 				<div class="SendMessage" *ngIf="Followable">
 					<img src="/assets/charlando.png" alt="">

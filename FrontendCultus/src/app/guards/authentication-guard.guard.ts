@@ -2,7 +2,6 @@ import { CanActivateFn } from '@angular/router';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
 
-
 export const GuardAuthentication: CanActivateFn = (route, state) => {
 	if (localStorage.getItem("accessToken") === null) {
 		const router = inject(Router);
@@ -10,4 +9,4 @@ export const GuardAuthentication: CanActivateFn = (route, state) => {
 		return false;
 	}
 	return true;
-};
+}

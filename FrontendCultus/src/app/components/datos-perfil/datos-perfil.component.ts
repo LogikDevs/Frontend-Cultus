@@ -3,6 +3,8 @@ import { EditUserService } from '../../services/edit-user.service';
 import { GetCountriesService } from '../../services/get-countries.service';
 import { UserEditedData } from './datos-perfil.model';
 import { GetUserService } from 'src/app/services/get-user.service';
+import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
 	selector: 'app-datos-perfil',
@@ -11,25 +13,29 @@ import { GetUserService } from 'src/app/services/get-user.service';
 })
 export class DatosPerfilComponent {
 	UserData:any;
-
+	userId = localStorage.getItem("IdUser");
 	selectedImage: string | undefined;
 
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 	ProfilePictureMultimedia: File;
-	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService) { };
 
-	
+	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { };
+
 	ngOnInit() {
 		this.getUser();
 		this.countriesDropbox();
 	}
+
 	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.UserData = res;
+			console.log(this.UserData);
 		})
 	}
+	
 	sendProfileData(ProfileEditData: any) {
+
 		const DataToEdit: UserEditedData = {
 			description: ProfileEditData.description,
 			gender: ProfileEditData.gender,
@@ -37,15 +43,11 @@ export class DatosPerfilComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: ProfileEditData.residenceCountry
 		}
-		const NonNullData: Partial<UserEditedData> = {};
-		for (const key of Object.keys(DataToEdit)) {
-  			if (DataToEdit[key] !== null && DataToEdit[key] !== undefined && DataToEdit[key] !== "") {
-    			NonNullData[key] = DataToEdit[key];
-  			}
-		}
-		console.log(NonNullData);
-		this.EditService.getEditUser(this.UserData, NonNullData);
+		this.EditService.getEditUser(DataToEdit).subscribe((res: HttpResponse<any>) => {
+        if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
+		})
 	}
+	
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
 	}
