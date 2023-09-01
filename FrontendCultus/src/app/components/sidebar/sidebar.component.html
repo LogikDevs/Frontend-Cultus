@@ -22,27 +22,6 @@
             <span class="tooltip">Search</span>
         </li>
         <li>
-            <a href="#">
-                <img src="assets/sidebar-images/SMS.svg" alt="">
-                <span class="LinkName">Message</span>
-            </a>
-            <span class="tooltip">Message</span>
-        </li>
-        <li>
-            <a href="#">
-                <img src="assets/sidebar-images/grupos.svg" alt="">
-                <span class="LinkName"> Groups</span>
-            </a>
-            <span class="tooltip">Groups</span>
-        </li>
-        <li>
-            <a href="#">
-                <img src="assets/sidebar-images/eventos.svg" alt="">
-                <span class="LinkName">Events</span>
-            </a>
-            <span class="tooltip">Events</span>
-        </li>
-        <li>
             <a routerLink="/createpost">
                 <img src="assets/sidebar-images/create.svg" alt="">
                 <span class="LinkName">Create</span>
@@ -51,11 +30,35 @@
         </li>
         <li>
             <a href="#">
+                <img src="assets/sidebar-images/SMS.svg" alt="">
+                <span class="LinkName">Message</span>
+            </a>
+            <span class="tooltip">Message</span>
+        </li>
+        <li id="Off">
+            <a href="#">
+                <img src="assets/sidebar-images/grupos.svg" alt="">
+                <span class="LinkName"> Groups</span>
+            </a>
+            <span class="tooltip">Groups</span>
+        </li>
+        <li id="Off">
+            <a href="#">
+                <img src="assets/sidebar-images/eventos.svg" alt="">
+                <span class="LinkName">Events</span>
+            </a>
+            <span class="tooltip">Events</span>
+        </li>
+       
+        <li id="Off">
+            <a href="#">
                 <img src="assets/sidebar-images/Settings.svg" alt="">
                 <span class="LinkName">Settings</span>
             </a>
-            <span class="tooltip">Settings</span>
-        <li>
+            <span class="tooltip">Settings</span> 
+        </li>
+        <li id="Off">
+       
             <a href="#" (click)="logout()">
 
                 <img src="assets/sidebar-images/Logout.svg" alt="">

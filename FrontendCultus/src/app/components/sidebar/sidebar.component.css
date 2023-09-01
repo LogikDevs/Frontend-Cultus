@@ -297,4 +297,10 @@ a {
 
 .ProfileContent {
   margin-left: 10px;
+}
+
+@media (max-width: 500px) {
+  #Off {
+    display: none;
+  }
 }/*# sourceMappingURL=sidebar.component.css.map */
