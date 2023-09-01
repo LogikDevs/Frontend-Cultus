@@ -3,7 +3,7 @@ import { GetUserService } from '../../services/get-user.service';
 import { User } from './profile.model';
 import { Post } from '../PostsFolder/posts/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FollowsService } from 'src/app/services/follows.service';
 @Component({
 	selector: 'app-profile',
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
 	
 	selectedImage: string | undefined;
 	
-	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService, private followService: FollowsService) { }
+	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService, private followService: FollowsService, private router: Router) { }
 
 	ngOnInit() {
 		this.checkProfileType();
@@ -108,5 +108,8 @@ export class ProfileComponent implements OnInit {
 			this.selectedImage = e.target.result;
 		};
 		reader.readAsDataURL(file);
+	}
+	ToEditProfile(){
+		this.router.navigateByUrl('/EditProfile');
 	}
 }

@@ -26,7 +26,8 @@ export class EditUserService {
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
-			})
+			}), 
+			observe: "response" as 'body'
 		}
 		
 		return this.http.post(this.urlApiRegisterOptionalData, formData, httpOptions);
@@ -35,6 +36,13 @@ export class EditUserService {
 	ProfileEditUser(EditUserData: any) {
 		
 		const formData = new FormData();
+		
+		formData.append('name', EditUserData.name);
+		formData.append('surname', EditUserData.surname);
+		formData.append('email', EditUserData.email);
+		formData.append('age', EditUserData.age);
+		formData.append('password', EditUserData.password);
+
 		if(EditUserData.homeland != "") formData.append('homeland', EditUserData.homeland);
 
 		if(EditUserData.residence_country != "") formData.append('residence', EditUserData.residence_country);
@@ -50,7 +58,6 @@ export class EditUserService {
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
 			})
 		}
-		
 		return this.http.put(this.urlApiEditUser, formData, httpOptions);
 	}
 }

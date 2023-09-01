@@ -30,7 +30,6 @@ export class DatosPerfilComponent {
 	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.UserData = res;
-			console.log(this.UserData);
 		})
 	}
 	
@@ -44,7 +43,6 @@ export class DatosPerfilComponent {
 			residence_country: ProfileEditData.residenceCountry
 		}
 		this.EditService.getEditUser(DataToEdit).subscribe((res: any) => {
-			console.log(res);
         	if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
 		})
 	}

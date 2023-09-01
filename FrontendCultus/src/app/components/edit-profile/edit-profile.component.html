@@ -5,9 +5,7 @@
             <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
                 [style.background-size]="'cover'" [style.background-position]="'center'"
                 [class.hideImage]="!selectedImage" [class.showEdit]="selectedImage" (click)="triggerFileInput()">
-                <img *ngIf="!selectedImage"
-                    src="https://i.ibb.co/Fh9yqwz/add-profile-picture-icon-upload-photo-of-social-media-user-vector-removebg-preview.png"
-                    alt="">
+                <img id="UserPfp"*ngIf="!selectedImage" src="https://i.ibb.co/Fh9yqwz/add-profile-picture-icon-upload-photo-of-social-media-user-vector-removebg-preview.png"alt="">
                     <p *ngIf="!selectedImage" class="hideImage">Agregar imagen</p>
 
                 <span class="editText">Editar imagen</span>
@@ -45,7 +43,7 @@
         </select>
     </div>
     <div class="AddResidenceCountry">
-        <select ngModel="residenceCountry" id="UserResidence" name="residenceCountry">
+        <select ngModel="{{residence}}" id="UserResidence" name="residence">
             <option disabled selected ></option>
         </select>
     </div>

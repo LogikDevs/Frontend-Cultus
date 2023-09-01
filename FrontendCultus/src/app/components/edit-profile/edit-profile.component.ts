@@ -22,7 +22,7 @@ export class EditProfileComponent {
 	description: string;
 	gender: string;
 	homeland: number;
-	residenceCountry: number;
+	residence: number;
 
   	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { 
 
@@ -30,25 +30,33 @@ export class EditProfileComponent {
 	ngOnInit(){
 		this.countriesDropbox();
 		this.getUserData();
-		
 	}
 	getUserData(){
-		this.userService.getUser().subscribe((res:any)=>{
+		this.userService.getUserFromId(this.userId).subscribe((res:any)=>{
 			this.userData = res;
+			console.log(this.userData);
 			this.bringUserData();
 		})
 	}
 	bringUserData(){
-		this.profile_pic_url = this.PublicUrl+this.userData.profile_pic || "";
-		console.log(this.profile_pic_url);
+		this.profile_pic_url = this.PublicUrl + this.userData.profile_pic;
+		this.checkProfilePic();
 		this.description = this.userData.description || '';
 		this.gender = this.userData.gender || 'No seleccionado';
 		this.homeland = this.userData.homeland || "No seleccionado";
-		this.residenceCountry = this.userData.residence || "No seleccionado";
+		this.residence = this.userData.residence || "No seleccionado";
+		
 	}
-
+	checkProfilePic(){
+		const ProfilePicSrc:any = document.getElementById("UserPfp");
+		if (this.userData.profile_pic) ProfilePicSrc.setAttribute("src", this.profile_pic_url);
+	}
   	saveProfileData(DataReceived:any){
-		const DataToEdit: UserEditedData = {
+		const DataToEdit = {
+			name: this.userData.name,
+			surname: this.userData.surname,
+			email: this.userData.email,
+			age: this.userData.age,
 			description: DataReceived.description,
 			gender: DataReceived.gender,
 			homeland: DataReceived.homeland,
@@ -56,6 +64,9 @@ export class EditProfileComponent {
 			residence_country: DataReceived.residence
 		}
 		console.log(DataToEdit);
+		this.EditService.ProfileEditUser(DataToEdit).subscribe((res:any)=>{
+			console.log(res);
+		});
   	}
 
 
