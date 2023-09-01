@@ -11,12 +11,41 @@ import { UserEditedData } from '../datos-perfil/datos-perfil.model';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent {
-  selectedImage: string | undefined;
-
+    selectedImage: string | undefined;
+	userId=localStorage.getItem("IdUser");
+	PublicUrl:string = "http://localhost:8000/storage/profile_pic/";
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-
+	userData:any;
 	ProfilePictureMultimedia: File;
-  	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { };
+
+	profile_pic_url: any;
+	description: string;
+	gender: string;
+	homeland: number;
+	residenceCountry: number;
+
+  	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { 
+
+	};
+	ngOnInit(){
+		this.countriesDropbox();
+		this.getUserData();
+		
+	}
+	getUserData(){
+		this.userService.getUser().subscribe((res:any)=>{
+			this.userData = res;
+			this.bringUserData();
+		})
+	}
+	bringUserData(){
+		this.profile_pic_url = this.PublicUrl+this.userData.profile_pic || "";
+		console.log(this.profile_pic_url);
+		this.description = this.userData.description || '';
+		this.gender = this.userData.gender || 'No seleccionado';
+		this.homeland = this.userData.homeland || "No seleccionado";
+		this.residenceCountry = this.userData.residence || "No seleccionado";
+	}
 
   	saveProfileData(DataReceived:any){
 		const DataToEdit: UserEditedData = {
@@ -24,7 +53,7 @@ export class EditProfileComponent {
 			gender: DataReceived.gender,
 			homeland: DataReceived.homeland,
 			profile_pic: this.ProfilePictureMultimedia,
-			residence_country: DataReceived.residenceCountry
+			residence_country: DataReceived.residence
 		}
 		console.log(DataToEdit);
   	}
@@ -44,8 +73,8 @@ export class EditProfileComponent {
 	}
 
 	countriesDropbox() {
-		const selecthomeland: any = document.getElementById("homeland");
-		const selectresidence: any = document.getElementById("residenceCountry");
+		const selecthomeland: any = document.getElementById("UserHomeland");
+		const selectresidence: any = document.getElementById("UserResidence");
 		
 		this.countries.getCountries().subscribe((res: any) => {
 			this.countriesIntoDropbox(selecthomeland, res);
