@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <div class="LogoDetails">
+    <div class="LogoDetails" id="Off">
         <img src="assets/sidebar-images/Menu.svg" class="menu" alt="">
         <img src="assets/sidebar-images/cultus.svg" class="logoCultus" alt="">
         <div class="LogoName">Cultus</div>
@@ -10,37 +10,17 @@
         <li>
             <a routerLink="/home">
                 <img src="assets/sidebar-images/home.svg" class="ImageSidebar custom-size">
+            
                 <span class="LinkName">Home</span>
-            </a>
+            </a>   
             <span class="tooltip">Home</span>
-        </li>
+        </li> 
         <li>
             <a href="#">
                 <img src="assets/sidebar-images/Search.svg" alt="">
                 <span class="LinkName">Search</span>
             </a>
             <span class="tooltip">Search</span>
-        </li>
-        <li>
-            <a href="#">
-                <img src="assets/sidebar-images/SMS.svg" alt="">
-                <span class="LinkName">Message</span>
-            </a>
-            <span class="tooltip">Message</span>
-        </li>
-        <li>
-            <a href="#">
-                <img src="assets/sidebar-images/grupos.svg" alt="">
-                <span class="LinkName"> Groups</span>
-            </a>
-            <span class="tooltip">Groups</span>
-        </li>
-        <li>
-            <a href="#">
-                <img src="assets/sidebar-images/eventos.svg" alt="">
-                <span class="LinkName">Events</span>
-            </a>
-            <span class="tooltip">Events</span>
         </li>
         <li>
             <a routerLink="/createpost">
@@ -51,11 +31,35 @@
         </li>
         <li>
             <a href="#">
+                <img src="assets/sidebar-images/SMS.svg" alt="">
+                <span class="LinkName">Message</span>
+            </a>
+            <span class="tooltip">Message</span>
+        </li>
+        <li id="Off">
+            <a href="#">
+                <img src="assets/sidebar-images/grupos.svg" alt="">
+                <span class="LinkName"> Groups</span>
+            </a>
+            <span class="tooltip">Groups</span>
+        </li>
+        <li id="Off">
+            <a href="#">
+                <img src="assets/sidebar-images/eventos.svg" alt="">
+                <span class="LinkName">Events</span>
+            </a>
+            <span class="tooltip">Events</span>
+        </li>
+       
+        <li id="Off">
+            <a href="#">
                 <img src="assets/sidebar-images/Settings.svg" alt="">
                 <span class="LinkName">Settings</span>
             </a>
-            <span class="tooltip">Settings</span>
-        <li>
+            <span class="tooltip">Settings</span> 
+        </li>
+        <li id="Off">
+       
             <a href="#" (click)="logout()">
 
                 <img src="assets/sidebar-images/Logout.svg" alt="">
@@ -64,10 +68,10 @@
             <span class="tooltip">Logout</span>
         </li>
         <div class="ProfileUser">
-            <li class="profile">
+            <li class="profile" id="mobile" >
                 <div class="ProfileDetails" (click)="ToOwnProfile()">
                     <img src="assets/post-images/profile_def.jpg" class="fotoperfil" alt="profile image">
-                    <div class="ProfileContent">
+                    <div class="ProfileContent" id="Off">
                             <div class="name">
                                 <p id="username">{{Username}}</p>
                             </div>
