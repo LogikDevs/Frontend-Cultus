@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <div class="LogoDetails">
+    <div class="LogoDetails" id="Off">
         <img src="assets/sidebar-images/Menu.svg" class="menu" alt="">
         <img src="assets/sidebar-images/cultus.svg" class="logoCultus" alt="">
         <div class="LogoName">Cultus</div>
@@ -10,10 +10,11 @@
         <li>
             <a routerLink="/home">
                 <img src="assets/sidebar-images/home.svg" class="ImageSidebar custom-size">
+            
                 <span class="LinkName">Home</span>
-            </a>
+            </a>   
             <span class="tooltip">Home</span>
-        </li>
+        </li> 
         <li>
             <a href="#">
                 <img src="assets/sidebar-images/Search.svg" alt="">
@@ -67,10 +68,10 @@
             <span class="tooltip">Logout</span>
         </li>
         <div class="ProfileUser">
-            <li class="profile">
+            <li class="profile" id="mobile" >
                 <div class="ProfileDetails" (click)="ToOwnProfile()">
                     <img src="assets/post-images/profile_def.jpg" class="fotoperfil" alt="profile image">
-                    <div class="ProfileContent">
+                    <div class="ProfileContent" id="Off">
                             <div class="name">
                                 <p id="username">{{Username}}</p>
                             </div>
