@@ -1,5 +1,16 @@
-<form #postCreateForm="ngForm" (ngSubmit)="sendCreatedPost(postCreateForm.value)">
+
+<app-sidebar></app-sidebar>
+<form #postCreateForm="ngForm" (ngSubmit)="sendPostData(postCreateForm.value)">
     <input ngModel name="text" type="text" placeholder="text" required>
-    <input ngModel name="location" type="text" placeholder="location" required >
-    <button name="CreatePost">Publish Post</button>
+    <input ngModel name="latitud" type="number" placeholder="latitud" required >
+    <input ngModel name="longitud" type="number" placeholder="longitud" required >
+    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)"> 
+    <button type="button" name="PostInterests"(click)="showPostInterestSelection()">Select Post interests</button>
+    <div *ngIf="interestService.displaySelectInterest">
+        <app-select-interest [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+    </div>
+   
+    <button type="submit" name="CreatePost">Publish Post</button>
 </form>
+
+

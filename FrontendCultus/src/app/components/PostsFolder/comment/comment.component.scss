@@ -1,0 +1,54 @@
+.TextPostDesktop{
+    display: flex;
+    margin: 10px;
+    background-color: #181918;
+    align-items: center;
+    border-radius: 10px;
+   position: relative;
+}
+.PhotoComment img{
+    width: 25px;
+    height: 25px;
+
+    border-radius: 40px;
+
+
+}
+.PhotoComment{
+    cursor: pointer;
+    margin-right:10px ;
+    margin-left: 10px;
+}
+.CommentText{
+    font-weight: normal;
+
+
+
+
+
+}
+
+
+.Button{
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    background-color: #59625900;
+    border: none;
+    margin-left: 3px;
+    border-radius: 20px;
+position: absolute;
+right: 0px;
+
+
+}
+
+.Button img{
+width: 100%;
+height: 100%;
+float: right;
+}
+.author{
+    min-width: 25%;
+
+}

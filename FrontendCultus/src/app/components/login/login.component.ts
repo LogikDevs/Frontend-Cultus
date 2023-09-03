@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { StatusService } from 'src/app/services/status.service';
@@ -14,17 +14,24 @@ export class LoginComponent {
 	public loginError: boolean = false;
 	public loginStatus: boolean = false;
 
-	constructor(private api: AuthenticationService, private router: Router, private status: StatusService, private api2: GetUserService) { }
+	@Input() InputLoginError:any;
 
+	ErrorResetTimeout:any;
+	secondsToReset:number = 8000;
+
+	constructor(private api: AuthenticationService, private router: Router, private status: StatusService, private UserService: GetUserService) { }
 	sendLogin(credentials: any) {
-		return this.api.sendLogin(credentials).subscribe(
-			(res: any) => {
-				localStorage.setItem('accessToken', (res["access_token"]));
-				this.status.isLoggedIn = true;
-				this.router.navigateByUrl('/home');
-				console.log("IsLoggedIn: " + this.status.isLoggedIn);
-				this.api2.UserIdIntoStorage();
-			}
-		);
+		this.api.sendLogin(credentials).subscribe((res: any) => {
+			this.InputLoginError = '';
+			localStorage.setItem('accessToken', (res["access_token"]));
+			this.status.isLoggedIn = true;
+			this.UserService.UserIdIntoStorage();
+			
+			this.router.navigateByUrl('/home');
+
+		},(error: any)=>{
+			this.InputLoginError = error.error.error_description ;
+		})
 	}
+
 }
