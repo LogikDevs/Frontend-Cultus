@@ -1,9 +1,5 @@
 * {
-  transition: all 300 ms ease-in-out;
-}
-
-#MenuMobile {
-  display: none;
+  transition: all 0.5s ease;
 }
 
 .ContainerMyProfile {
@@ -11,6 +7,7 @@
   border-top-right-radius: 20px;
   width: 100%;
   background-color: #181818;
+  transition: all 0.5s ease;
 }
 
 .ImageProfile {
@@ -135,7 +132,7 @@
      object-fit: cover;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 501px) {
   .Profile {
     margin-top: 20px;
   }
@@ -158,9 +155,10 @@
 @media (min-width: 630px) {
   .ContainerData {
     border: 0px solid;
+    margin-left: -200px;
   }
   .ContainerMyProfile {
-    width: 100%;
+    width: 300%;
     float: none;
     margin: auto;
     max-width: 500px;
@@ -184,7 +182,20 @@
     margin-top: 20px;
   }
 }
+@media (min-width: 900px) {
+  .ContainerData {
+    border: 0px solid;
+    margin-left: 0px;
+  }
+  .ContainerMyProfile {
+    min-width: 650px;
+  }
+}
 @media (min-width: 1100px) {
+  .ContainerData {
+    border: 0px solid;
+    margin-left: 0px;
+  }
   .ContainerMyProfile {
     min-width: 850px;
   }
