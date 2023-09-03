@@ -8,7 +8,7 @@ export class AuthenticationService {
 	private loginUrl = "http://localhost:8000/oauth/token";
 	private logoutUrl = "http://localhost:8000/api/v1/logout";
 	private client = "101";
-	private secret = "sT4qZMCQO5L1vMjUnb1vumWV67gTIaw6dKNqgEJx";
+	private secret = "azM81XDvsT6cguZeWxFcaBuI2hlKEWZFNqBNyTZA";
 
 	constructor(private http: HttpClient) { }
 
