@@ -13,17 +13,14 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 export class ProfileComponent implements OnInit {
 	@Input() ProfileId:any = this.route.snapshot.params['id'];
-	userId = localStorage.getItem("IdUser");
 	ownProfile:boolean = false;
-
+	
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-	@Input() pfpUrl:string="http://localhost:8000/storage/profile_pic/";
+	Url_profile_pic:string="http://localhost:8000/storage/profile_pic/";
+	@Input() pfpUrl:string;
 
 	@Input() userData:User;
-	@Input() userCountries:any = {
-		homeland: 'No especificado.',
-		residence: 'No especificado.'
-	}
+	
 	userInterests: any[] = [];
 	
 	userFollows:any;
@@ -32,6 +29,12 @@ export class ProfileComponent implements OnInit {
 	
 	selectedImage: string | undefined;
 	
+	msgNoCountry:string = "No especificado.";
+	@Input() userCountries:any = {
+		homeland: this.msgNoCountry,
+		residence: this.msgNoCountry
+	}
+
 	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService, private followService: FollowsService) { }
 
 	ngOnInit() {
@@ -42,7 +45,9 @@ export class ProfileComponent implements OnInit {
 	}
 	
 	checkProfileType(){
-		if (this.ProfileId === this.userId) this.ownProfile = true;
+		this.userService.getUser().subscribe((res:any)=>{
+			if (this.ProfileId === res.id) this.ownProfile = true;
+		})
 	}	
 	
 	getProfile(){
@@ -55,7 +60,7 @@ export class ProfileComponent implements OnInit {
 	}	
 
 	checkProfilePic(){
-		if (this.userData.profile_pic != null) this.pfpUrl = this.pfpUrl + this.userData.profile_pic;
+		if (this.userData.profile_pic != null) this.pfpUrl = this.Url_profile_pic + this.userData.profile_pic;
 		if (this.userData.profile_pic === null) this.pfpUrl= "assets/post-images/profile_def.jpg"
 	}
 
@@ -72,7 +77,7 @@ export class ProfileComponent implements OnInit {
 	}
 	
 	CheckFollowOrUnfollow(click:boolean){
-		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+		this.followService.getUserFollowedAccounts().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
 			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.ProfileId));
 			if (userFollowsAccount) {
@@ -86,13 +91,13 @@ export class ProfileComponent implements OnInit {
 		})
 	}
 	FollowAction(){
-		this.followService.sendFollow(this.userId, this.ProfileId).subscribe((res:any)=>{
+		this.followService.sendFollow(this.ProfileId).subscribe((res:any)=>{
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
 			else this.isFollowing = "Unfollow";
 		})
 	}
 	UnfollowAction(){
-		this.followService.Unfollow(this.userId, this.ProfileId).subscribe((res:any)=>{
+		this.followService.Unfollow(this.ProfileId).subscribe((res:any)=>{
 			this.isFollowing = "Follow";
 		})
 	}
