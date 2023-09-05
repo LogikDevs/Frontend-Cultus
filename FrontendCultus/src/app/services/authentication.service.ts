@@ -20,10 +20,7 @@ export class AuthenticationService {
 			username: credentials.email,
 			password: credentials.password
 		}
-		const httpOptions = {
-			headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-		}
-		return this.http.post(this.loginUrl, body, httpOptions);
+		return this.http.post(this.loginUrl, body);
 	}
 	sendLogout() {
 		const httpOptions = {

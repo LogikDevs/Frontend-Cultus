@@ -1,21 +1,18 @@
 <app-header id="header"></app-header>
 
-<app-menu-mobile id="MenuMobile"></app-menu-mobile>
 
-<div id="SidebarOff">
+
     <app-sidebar></app-sidebar>
-</div>
+
 <div class="Profile">
 <div class="ContainerData">
-
-
 
 <div class="ContainerMyProfile">
     <div class="BackgroundProfile">
            <div class="ImageProfile">
         <img src={{pfpUrl}} alt="">
         <div class="EditProfile" *ngIf="ownProfile">
-            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="">
+            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="" (click)="ToEditProfile()">
         </div>
     </div> 
     </div>

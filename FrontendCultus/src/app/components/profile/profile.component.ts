@@ -3,7 +3,7 @@ import { GetUserService } from '../../services/get-user.service';
 import { User } from './profile.model';
 import { Post } from '../PostsFolder/posts/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FollowsService } from 'src/app/services/follows.service';
 @Component({
 	selector: 'app-profile',
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
 	posts: Post[];
 	
 	selectedImage: string | undefined;
-	
+
 	msgNoCountry:string = "No especificado.";
 	@Input() userCountries:any = {
 		homeland: this.msgNoCountry,
@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService, private followService: FollowsService) { }
+
 
 	ngOnInit() {
 		this.checkProfileType();
@@ -113,5 +114,8 @@ export class ProfileComponent implements OnInit {
 			this.selectedImage = e.target.result;
 		};
 		reader.readAsDataURL(file);
+	}
+	ToEditProfile(){
+		this.router.navigateByUrl('/EditProfile');
 	}
 }

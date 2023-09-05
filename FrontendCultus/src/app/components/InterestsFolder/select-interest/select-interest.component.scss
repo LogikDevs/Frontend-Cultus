@@ -11,21 +11,24 @@ margin: auto;
     
 }
 .ContainerSearchInterest{
-
+    display: flex;
+    justify-content: space-around;
 }
 .Search {
-    display: flex;
+   
+  
     line-height: 28px;
     align-items: center;
     position: relative;
-    width: 80%;
+    width: 100%;
     margin:auto ;
-    
+   margin-left: 20px;
+   
 
    }
    
    .input {
-    width: 100%;
+    width: 80%;
     height: 40px;
     line-height: 28px;
     padding: 0 1rem;
@@ -56,20 +59,34 @@ color: $ColorFuente;
     fill: $ColorFuente;
     width: 1rem;
     height: 1rem;
-    margin-top: 20px;
+    margin-top: 35px;
     cursor: pointer;
    }
    
    .ContainerResultsSearch{
-    width: 100%;
+    width: 90%;
 margin: auto;
     margin-top: 30px;
 
-
+max-height: 400px;
 text-align: center;
-
+overflow-y: scroll;
 
    }
+   .ContainerResultsSearch::-webkit-scrollbar {
+    width: 10px; 
+    
+}
+   .ContainerResultsSearch::-webkit-scrollbar-thumb {
+    background-color: #262525;
+    border-radius: 5px;
+}
+
+
+.ContainerResultsSearch::-webkit-scrollbar-track {
+    background-color: #343333; 
+    border-radius: 5px;
+}
    .Interest{
     margin: auto;
     margin-top: 20px;
@@ -112,7 +129,8 @@ margin: 8px;
 }
 .FinishSelectInterest{
     width: 100%;
-    margin: auto;
+
+    text-align: center;
 }
  
 .SkipSearchInterest{
@@ -122,7 +140,7 @@ margin: 8px;
 .SkipSearchInterest button{
     
     margin: 10px;
-    margin-top: 30px;
+    margin-top: 20px;
     background-color: #252725;
     width: 50px;
     height: 30px;

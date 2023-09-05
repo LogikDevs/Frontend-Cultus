@@ -18,20 +18,21 @@
             <form>
                 <input class="input" type="text" (input)="onInterestsSearch($event)" placeholder="Busca tus intereses...">
             </form>
-            <div class="SkipSearchInterest">
+           
+        </div>
+ <div class="SkipSearchInterest">
                 <button routerLink="/home" *ngIf="SelectInterestType === 'user'">Omitir</button>
             </div>
-        </div>
-
     </div>
     <div class="ContainerResultsSearch">
         <div class="ContainerInterest" *ngFor="let interest of filteredInterests">
             <app-interest *ngIf="interest" [interest]="interest"></app-interest>
         </div>
-        <div class="FinishSelectInterest">
+       
+    </div>
+     <div class="FinishSelectInterest">
             <button (click)="sendInterests()">Continuar</button>
         </div>
-    </div>
 
 </div>
 <app-menu-mobile id="MenuMobile"></app-menu-mobile>
