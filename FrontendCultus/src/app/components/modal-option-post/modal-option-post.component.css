@@ -1,0 +1,16 @@
+.Modal {
+  width: 150px;
+  height: 100px;
+  background-color: rgb(137, 12, 12);
+}
+
+.ReportPost, .DeletePost {
+  margin: 5px;
+  margin-top: 10px;
+  background-color: aqua;
+}
+
+.ReportPost p, .DeletePost p {
+  margin: 5px;
+  margin-top: 10px;
+}/*# sourceMappingURL=modal-option-post.component.css.map */

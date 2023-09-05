@@ -21,8 +21,8 @@ import { FollowsService } from 'src/app/services/follows.service';
 
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
-	@Input() defaultUrl:string = "http://localhost:8001/"
-
+	@Input() defaultUrl:string = "http://localhost:8001/";
+	@Input() ProfilePosts:boolean = false;
     postVisibility:boolean = true;
     postId:any;
 	ownPost:boolean = false;
@@ -45,18 +45,17 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
 	ngOnInit() {
-		this.IsFollowable();
-		this.CheckFollowValue();
 		this.checkAuthor();
-        this.postId = this.post.post.id_post;
-	}
-
-	VotesColor(){
-		console.log(this.defaultUrl + this.post.multimedia.multimediaLink);
-		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
-		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
-		if (this.post.post.votes == 0) voteColor.style.color = "grey";
-		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
+		this.insertMultimedia();
+		this.IsFollowable();
+		this.CheckFollowOrUnfollow(false)
+    	this.postId = this.post.post.id_post;
+	}	
+	checkAuthor(){
+        if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
+    }
+	insertMultimedia(){
+		if (this.post.multimedia[0]) this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
 	}
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
@@ -114,34 +113,41 @@ import { FollowsService } from 'src/app/services/follows.service';
 			this.VotesColor();
 		});
 	}
-
+	VotesColor(){
+		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
+		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
+		if (this.post.post.votes == 0) voteColor.style.color = "grey";
+		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
+	}
 	updateComments(){
 		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
 			this.post.post.comments = res.comments;
 		});
 	}
 
-	CheckFollowValue(){
+	CheckFollowOrUnfollow(click:boolean){
 		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
-			this.userFollowsAccount = this.userFollows.find(follow => follow.id_followed === this.post.post.fk_id_user);
+			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.post.post.fk_id_user));
+			if (userFollowsAccount) {
+				//CAMBIAR IMAGEN A DEJAR DE SEGUIR
+				if (click === true) this.UnfollowAction();
+			}
+			if (!userFollowsAccount) {
+				//CAMBIAR IMAGEN A SEGUIR
+				if (click === true) this.FollowAction();
+			}			
 		})
-	}
-	
-	CheckFollowOrUnfollow(){
-			if (this.userFollowsAccount) this.UnfollowAction();
-			if (!this.userFollowsAccount) this.FollowAction();
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
-			this.CheckFollowValue();
-			console.log("Followed");
+			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
+			//CAMBIAR IMAGEN A DEJAR DE SEGUIR
 		})
 	}
 	UnfollowAction(){
 		this.followService.Unfollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
-			this.CheckFollowValue();
-			console.log("Unfollowed");
+			//CAMBIAR IMAGEN A SEGUIR
 		})
 	}
 
@@ -155,9 +161,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	  this.showComments = !this.showComments;
 	}    
 	
-	checkAuthor(){
-        if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
-    }
+
     displayOptions(event: Event){
         event.stopPropagation(); 
         this.displayedOptions = !this.displayedOptions;

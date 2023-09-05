@@ -7,7 +7,7 @@ input:-webkit-autofill:focus {
 
 #InputError {
   color: rgb(182, 47, 47);
-  font-size: 10;
+  font-size: 12px;
 }
 
 .DataRegister {

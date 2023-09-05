@@ -5,6 +5,7 @@ import { StatusService } from '../../services/status.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { HttpResponse } from '@angular/common/http';
+import { resetFakeAsyncZone } from '@angular/core/testing';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class RegisterComponent {
 	constructor(private getUser: GetUserService, private registerService: PostRegisterService, private router: Router, private status: StatusService, private apiauth: AuthenticationService) { };
 
 	PostRegister(inputdata: any) {
-		this.registerService.PostRegister(inputdata).subscribe((res: HttpResponse<Object>) => {
+		this.registerService.PostRegister(inputdata).subscribe((res: any) => {
 			if (res.status === 201) this.RegisterLogin(inputdata);
 
 			if (res.status !== 201) this.handleErrorResponse(res);
@@ -37,13 +38,10 @@ export class RegisterComponent {
 			localStorage.setItem('accessToken', (res["access_token"]));
 			this.status.isLoggedIn = true;
 			this.getUser.UserIdIntoStorage();
-			
-			this.router.navigateByUrl('/optionsdata');
+			this.router.navigateByUrl('/SelectUserData');
 		})
 	}
 	handleErrorResponse(response: HttpResponse<any>) {
-		clearTimeout(this.ErrorResetTimeout);
-
 		if (response.body) {
 			const Errors = {
 				emailError: response.body.email,
@@ -52,36 +50,11 @@ export class RegisterComponent {
 				surnameError: response.body.surname,
 				ageError: response.body.age,
 			}
-
-		  	if (Errors.emailError){ 
-				if(Errors.emailError[0]) this.InputEmailError = Errors.emailError[0];
-				
-				if((Errors.emailError[0])&&(Errors.emailError[1])) this.InputEmailError =  Errors.emailError[1];
-			}else this.InputEmailError = '';
-		  	
-			
-			if(Errors.passwordError[0]) this.InputPasswordError = Errors.passwordError[0];
-			else this.InputPasswordError = '';
-			
-			if (Errors.nameError) this.InputNameError = Errors.nameError;
-			else this.InputNameError = '';
-			
-			if (Errors.surnameError) this.InputSurnameError = Errors.surnameError;
-			else this.InputSurnameError = '';
-			
-			if (Errors.ageError) this.InputAgeError = Errors.ageError;
-			else this.InputAgeError = '';
-			
-			this.ErrorReset(); 
+			this.InputEmailError = Errors.emailError && (Errors.emailError[1] || Errors.emailError[0]) || '';
+			this.InputPasswordError = Errors.passwordError && Errors.passwordError[0] || '';
+			this.InputNameError = Errors.nameError || '';
+			this.InputSurnameError = Errors.surnameError || '';
+			this.InputAgeError = Errors.ageError || '';
 		}
-	}
-	private ErrorReset(): void {
-		this.ErrorResetTimeout = setTimeout(() => {
-		  this.InputEmailError = '';
-		  this.InputPasswordError = '';
-		  this.InputNameError = '';
-		  this.InputSurnameError = '';
-		  this.InputAgeError = '';
-		}, this.secondsToReset);
 	}
 }

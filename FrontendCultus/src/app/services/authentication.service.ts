@@ -8,7 +8,8 @@ export class AuthenticationService {
 	private loginUrl = "http://localhost:8000/oauth/token";
 	private logoutUrl = "http://localhost:8000/api/v1/logout";
 	private client = "101";
-	private secret = "cpWQ5njBWGHFRKiTSjBi7KlzcOlULWyZsJWWcyRN";
+	private secret = "azM81XDvsT6cguZeWxFcaBuI2hlKEWZFNqBNyTZA";
+
 
 	constructor(private http: HttpClient) { }
 
@@ -20,10 +21,7 @@ export class AuthenticationService {
 			username: credentials.email,
 			password: credentials.password
 		}
-		const httpOptions = {
-			headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-		}
-		return this.http.post(this.loginUrl, body, httpOptions);
+		return this.http.post(this.loginUrl, body);
 	}
 	sendLogout() {
 		const httpOptions = {

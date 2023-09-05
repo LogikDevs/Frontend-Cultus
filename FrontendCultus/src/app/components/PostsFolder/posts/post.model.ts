@@ -1,7 +1,7 @@
 export interface Post {
 	commentsPublished: Comment[];
 	interests: any;
-	multimedia: MultimediaLink;
+	multimedia: [0];
 	post: PostData;
 	user: UserOnPost;
   }
