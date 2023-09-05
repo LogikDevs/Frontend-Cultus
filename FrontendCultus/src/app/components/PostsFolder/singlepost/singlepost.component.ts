@@ -57,7 +57,6 @@ import { FollowsService } from 'src/app/services/follows.service';
 	insertMultimedia(){
 		if (this.post.multimedia[0]) this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
 	}
-
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
 	}
