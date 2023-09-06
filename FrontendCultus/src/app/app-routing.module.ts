@@ -22,6 +22,7 @@ import { BackofficePostComponent } from './components/backoffice-post/backoffice
 import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
 import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
+import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'backoffice-users', component: BackofficeUsersComponent, canActivate: [GuardAuthentication]},
   { path: 'sidebar-backoffice', component: SidebarBackofficeComponent, canActivate: [GuardAuthentication] },
   { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
-  { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] }
+  { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
+  { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] }
 
 ];
 
