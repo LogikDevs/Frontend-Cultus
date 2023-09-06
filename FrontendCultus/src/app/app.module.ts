@@ -34,7 +34,11 @@ import { DiscoverySectionComponent } from './components/discovery-section/discov
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { ModalOptionPostComponent } from './components/modal-option-post/modal-option-post.component';
+
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
+
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+
 
 
 
@@ -71,7 +75,8 @@ import { CrearMenuComponent } from './components/crear-menu/crear-menu.component
     CreateEventComponent,
     CreateGroupComponent,
     ModalOptionPostComponent,
-    CrearMenuComponent
+    CrearMenuComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

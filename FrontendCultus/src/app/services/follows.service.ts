@@ -11,9 +11,8 @@ export class FollowsService {
 
   constructor(private http: HttpClient) { }
 
-  sendFollow(idUser:any, idFollowed:any) {
+  sendFollow(idFollowed:any) {
     const body = {
-      id_follower: idUser,
       id_followed: idFollowed
     }
 		const httpOptions = {
@@ -24,9 +23,8 @@ export class FollowsService {
 		};
 		return this.http.post(this.urlSendFollow, body, httpOptions);
 	}
-  Unfollow(idUser:any, idFollowed:any) {
+  Unfollow(idFollowed:any) {
     const body = {
-      id_follower: idUser,
       id_followed: idFollowed
     }
 		const httpOptions = {
@@ -37,13 +35,13 @@ export class FollowsService {
 		}
 		return this.http.post(this.urlUnfollow, body, httpOptions);
 	}
-  getUserFollowedAccounts(userId:any){
+  getUserFollowedAccounts(){
     const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-    return this.http.get(this.urlUserFollowed+userId, httpOptions);
+    return this.http.get(this.urlUserFollowed, httpOptions);
   }
 }
