@@ -12,7 +12,6 @@ import { UserEditedData } from '../datos-perfil/datos-perfil.model';
 })
 export class EditProfileComponent {
     selectedImage: string | undefined;
-	userId=localStorage.getItem("IdUser");
 	PublicUrl:string = "http://localhost:8000/storage/profile_pic/";
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 	userData:any;
@@ -32,9 +31,8 @@ export class EditProfileComponent {
 		this.getUserData();
 	}
 	getUserData(){
-		this.userService.getUserFromId(this.userId).subscribe((res:any)=>{
+		this.userService.getUser().subscribe((res:any)=>{
 			this.userData = res;
-			console.log(this.userData);
 			this.bringUserData();
 		})
 	}

@@ -9,7 +9,9 @@ import { NewEventData } from './create-event.model';
 })
 export class CreateEventComponent {
     eventMultimedia:File;
+    
     constructor(public interestService: GetInterestsService) { }
+
     sendCreatedEvent(FormData:any){
 		const eventData: NewEventData = {
 			name: FormData.EventName,

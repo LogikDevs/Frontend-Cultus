@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
 		residence: this.msgNoCountry
 	}
 
-	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService, private followService: FollowsService) { }
+	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService, private followService: FollowsService, private router: Router) { }
 
 
 	ngOnInit() {

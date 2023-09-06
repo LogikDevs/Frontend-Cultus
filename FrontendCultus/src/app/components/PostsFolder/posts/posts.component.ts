@@ -12,7 +12,6 @@ import { FollowsService } from 'src/app/services/follows.service';
 })
 export class PostsComponent implements OnInit {    
     posts: Post[];
-    userId = localStorage.getItem("IdUser");
     
     constructor(private postService: GetPostsService, private followService: FollowsService) { }
 
