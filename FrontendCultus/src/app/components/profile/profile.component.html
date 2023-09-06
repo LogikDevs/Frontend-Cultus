@@ -27,8 +27,8 @@
             <p #HtmlAge *ngIf="userData">, {{userData.age}} </p>
         </div>
         <div class="CountryMyProfile">
-            <p *ngIf="userData"> {{userCountries.homeland}}</p>
-            <p *ngIf="userData"> {{userCountries.residence}}</p>
+       
+          
         </div>
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
@@ -96,6 +96,8 @@
 
 <div class="ContainerImagePost"  *ngFor="let post of posts">
     <app-singlepost *ngIf="post" [post]="post" [ProfilePosts]=true></app-singlepost>
+    <app-singlepost></app-singlepost>
+    
 </div>
 
 <div class="ContainerTextPost">
@@ -111,7 +113,7 @@
             <img src="assets/sidebar-images/home.svg" alt="">
         </div>
         <div class="TextData">
-            <p>Live in Buenos Aires</p>
+            <p *ngIf="userData"> Live in {{userCountries.homeland}}</p>
         </div>
     </div>
     <div class="Data">
@@ -119,7 +121,7 @@
             <img src="assets/Profile-Image/planeta.svg" alt="">
         </div>
         <div class="TextData">
-            <p>From Argentina</p>
+    <p *ngIf="userData"> From {{userCountries.residence}}</p>
         </div>
     </div>
     <div class="Data">
