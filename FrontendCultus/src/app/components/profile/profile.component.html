@@ -25,8 +25,8 @@
             <p #HtmlAge *ngIf="userData">, {{userData.age}} </p>
         </div>
         <div class="CountryMyProfile">
-            <p *ngIf="userData"> {{userCountries.homeland}}</p>
-            <p *ngIf="userData"> {{userCountries.residence}}</p>
+       
+          
         </div>
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
@@ -34,12 +34,50 @@
     </div>
     <div class="MyInterestProfile">
         <div class="TittleInterest">
-            <p>Intereses:</p>
+    <p>     </p>
         </div>
-
+<div class="ContainerInterest" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" [ngClass]="{'dragging': isDragging}">
+         <div class="Interest">
+            <!-- <p *ngFor="let interest of userInterests">{{ interest }}</p> -->
+        </div>
         <div class="Interest">
-            <p *ngFor="let interest of userInterests">{{ interest }}</p>
+            Futbol
         </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+        <div class="Interest">
+            Futbol
+        </div>
+</div>
+   
     </div>
 
     <div class="PostMyProfile">
@@ -47,19 +85,69 @@
             <div class="ImagePost">
                 <p>Publicaciones</p>
             </div>
-            <div class="TextPost">
-                <p>Textos</p>
-            </div>
+           
         </div>
     </div>
+    
 </div>
+
 
 <div class="ContainerImagePost"  *ngFor="let post of posts">
     <app-singlepost *ngIf="post" [post]="post" [ProfilePosts]=true></app-singlepost>
+    <app-singlepost></app-singlepost>
+    
 </div>
 
 <div class="ContainerTextPost">
 
 </div>
+
+<div class="DataUser">
+    <div class="HeaderDataUser">
+        <p>About</p>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/sidebar-images/home.svg" alt="">
+        </div>
+        <div class="TextData">
+            <p *ngIf="userData"> Live in {{userCountries.homeland}}</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/Profile-Image/planeta.svg" alt="">
+        </div>
+        <div class="TextData">
+    <p *ngIf="userData"> From {{userCountries.residence}}</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/sidebar-images/grupos.svg" alt="">
+        </div>
+        <div class="TextData">
+            <p>23 Friends</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/Profile-Image/Account (1).svg" alt="">
+        </div>
+        <div class="TextData">
+            <p>Male</p>
+        </div>
+    </div>
+    <div class="DescriptionData">
+      <div class="TittleDescription">
+        <p>Description:</p>
+      </div>  
+      <div class="Description">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt debitis animi tempora ad, temporibus officia aperiam ratione minus fuga placeat.</p>
+      </div>
+
+    </div>
 </div>
+</div>
+
 </div>
