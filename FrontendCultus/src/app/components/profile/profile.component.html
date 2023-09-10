@@ -19,14 +19,14 @@
 
     <div class="DataMyProfile">
         <div class="NameMyProfile">
-            <p #HtmlNameSurname *ngIf="userData"> {{userData.name}} {{userData.surname}} </p>
+            <p #HtmlNameSurname *ngIf="ProfileData"> {{ProfileData.name}} {{ProfileData.surname}} </p>
         </div>
         <div class="Age">
-            <p #HtmlAge *ngIf="userData">, {{userData.age}} </p>
+            <p #HtmlAge *ngIf="ProfileData">, {{ProfileData.age}} </p>
         </div>
         <div class="CountryMyProfile">
-            <p *ngIf="userData"> {{userCountries.homeland}}</p>
-            <p *ngIf="userData"> {{userCountries.residence}}</p>
+            <p *ngIf="ProfileData"> {{userCountries.homeland}}</p>
+            <p *ngIf="ProfileData"> {{userCountries.residence}}</p>
         </div>
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
@@ -34,7 +34,7 @@
     </div>
     <div class="MyInterestProfile">
         <div class="TittleInterest">
-            <p>Intereses:</p>
+            <p>Interests:</p>
         </div>
 
         <div class="Interest">

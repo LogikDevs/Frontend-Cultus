@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
 	Url_profile_pic:string="http://localhost:8000/storage/profile_pic/";
 	@Input() pfpUrl:string;
 
-	@Input() userData:User;
+	@Input() ProfileData:User;
 	
 	userInterests: any[] = [];
 	
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
 	
 	selectedImage: string | undefined;
 
-	msgNoCountry:string = "No especificado.";
+	msgNoCountry:string = "Not Specified.";
 	@Input() userCountries:any = {
 		homeland: this.msgNoCountry,
 		residence: this.msgNoCountry
@@ -47,13 +47,15 @@ export class ProfileComponent implements OnInit {
 	
 	checkProfileType(){
 		this.userService.getUser().subscribe((res:any)=>{
-			if (this.ProfileId === res.id) this.ownProfile = true;
+			if (Number(this.ProfileId) === res.id) this.ownProfile = true;
 		})
 	}	
 	
 	getProfile(){
+		console.log(this.ProfileId);
 		this.userService.getProfile(this.ProfileId).subscribe((res:any)=>{
-			this.userData = res;
+			console.log(res);
+			this.ProfileData = res;
 			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
 			this.checkProfilePic();
 			this.checkCountries();
@@ -61,19 +63,18 @@ export class ProfileComponent implements OnInit {
 	}	
 
 	checkProfilePic(){
-		if (this.userData.profile_pic != null) this.pfpUrl = this.Url_profile_pic + this.userData.profile_pic;
-		if (this.userData.profile_pic === null) this.pfpUrl= "assets/post-images/profile_def.jpg"
+		if (this.ProfileData.profile_pic != null) this.pfpUrl = this.Url_profile_pic + this.ProfileData.profile_pic;
+		if (this.ProfileData.profile_pic === null) this.pfpUrl= "assets/post-images/profile_def.jpg"
 	}
 
 	checkCountries(){
-		if (this.userData.homeland.country_name) this.userCountries.homeland = this.userData.homeland.country_name;
-		if (this.userData.residence.country_name) this.userCountries.residence = this.userData.residence.country_name;
+		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = this.ProfileData.homeland.country_name;
+		if (this.ProfileData.residence.country_name) this.userCountries.residence = this.ProfileData.residence.country_name;
 	}
 
 	getUserPosts(){
 		this.postsService.getUserPosts(this.ProfileId).subscribe((res:any)=>{
 			this.posts = res;
-			console.log(this.posts);
 		})
 	}
 	
