@@ -96,12 +96,9 @@ margin-top: 20px;
  display: block;
     
     }
-    // .sidebar li a .ImageSidebar.custom-size {
-    //     width: 20px;
-    //     height: 20px;
-    //     object-fit: cover;
-    //   }
-      
+    #Crear{
+  display: none;
+    }
       
       
 
@@ -339,12 +336,19 @@ position:absolute;
   #Off{
     display: none;
   }
+  #Crear{
+    display: block !important; 
+    
+  }
   .nav-list{
     display: flex;
  justify-content: center;
-margin-left: 15px;
+margin-left: 0px;
 margin-top: 50px;
 
+  }
+  #ImgMessage{
+    margin-right: 30px;
   }
 
 
@@ -362,8 +366,8 @@ margin-top: auto;
 
   }
   .sidebar li a{
-    width: 50%;
-    margin: -10px;
+    width: 0%;
+    margin: 7px;
     margin-top: -20px;
   }
   .sidebar li a::after{
@@ -380,8 +384,9 @@ margin-left: 10px;
   }
   .sidebar li{
     position: relative;
-    margin:8px 0;
+    margin:0px;
     list-style: none;
+    width: 25%;
   }
   .sidebar li.profile{
 margin-top: -15px;
@@ -391,8 +396,8 @@ margin-left: -60px;
 
 @media(max-width:400px){
   .sidebar li a{
-    width: 50%;
-    margin: -15px ;
+    width: 0%;
+    margin: -7px ;
     margin-top: -20px;
   }
   .nav-list{
@@ -406,8 +411,8 @@ margin-top: 50px;
 }
 @media(max-width:350px){
   .sidebar li a{
-    width: 50%;
-    margin: -22px;
+    width: 0%;
+    margin: -15px;
     margin-top: -20px;
 
   }
@@ -422,10 +427,13 @@ margin-top: 50px;
 
 @media(max-width:300px){
   .sidebar li a{
-    width: 50%;
-    margin: -32px;
+    width: 0%;
+    margin: -22px;
     margin-top: -20px;
 
+  }
+  #Crear{
+    padding: 0px;
   }
   .nav-list{
     display: flex;
