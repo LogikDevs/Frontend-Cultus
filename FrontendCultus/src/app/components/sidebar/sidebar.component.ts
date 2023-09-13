@@ -12,13 +12,14 @@ export class SidebarComponent implements OnInit {
     sidebar!: HTMLElement;
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
+
     userId:any;
     userData:any;
     @Input() Username:any;
     constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public userService: GetUserService) { }
     
     ngOnInit() {
-        this.userId = localStorage.getItem("IdUser");
+        this.getUser();
         this.userData = this.userService.getUserData();
         this.Username = this.userData.name + " " + this.userData.surname;
         this.sidebar = document.querySelector(".sidebar")!;
@@ -30,6 +31,11 @@ export class SidebarComponent implements OnInit {
             this.menuBtnChange();
         });
         
+    }
+    getUser(){
+        this.userService.getUser().subscribe((res:any)=>{
+            this.userId = res.id;
+        })
     }
     ToOwnProfile(){
         this.router.navigateByUrl("/profile/"+this.userId);

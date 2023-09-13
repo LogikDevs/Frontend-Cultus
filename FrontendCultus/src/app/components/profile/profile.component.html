@@ -7,85 +7,41 @@
 <div class="Profile">
 <div class="ContainerData">
 
-
-
 <div class="ContainerMyProfile">
     <div class="BackgroundProfile">
            <div class="ImageProfile">
         <img src={{pfpUrl}} alt="">
         <div class="EditProfile" *ngIf="ownProfile">
-            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="">
+            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="" (click)="ToEditProfile()">
         </div>
     </div> 
     </div>
 
     <div class="DataMyProfile">
         <div class="NameMyProfile">
-            <p #HtmlNameSurname *ngIf="userData"> {{userData.name}} {{userData.surname}} </p>
+            <p #HtmlNameSurname *ngIf="ProfileData">{{ProfileData.name}} {{ProfileData.surname}}</p>
         </div>
         <div class="Age">
-            <p #HtmlAge *ngIf="userData">, {{userData.age}} </p>
+            <p #HtmlAge *ngIf="ProfileData">, {{ProfileData.age}} </p>
         </div>
-        <div class="CountryMyProfile">
-       
-          
-        </div>
+
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
         </div>
     </div>
     <div class="MyInterestProfile">
         <div class="TittleInterest">
-    <p>     </p>
+            <p>Interests:</p>
         </div>
-<div class="ContainerInterest" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" [ngClass]="{'dragging': isDragging}">
-         <div class="Interest">
-            <!-- <p *ngFor="let interest of userInterests">{{ interest }}</p> -->
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-        <div class="Interest">
-            Futbol
-        </div>
-</div>
-   
+      <div class="ContainerInterest" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" [ngClass]="{'dragging': isDragging}">
+            <p class="Interest" *ngFor="let interest of userInterests">{{ interest }}</p>
+      </div> 
     </div>
 
     <div class="PostMyProfile">
         <div class="PostTypes">
             <div class="ImagePost">
-                <p>Publicaciones</p>
+                <p>Posts:</p>
             </div>
            
         </div>
@@ -96,8 +52,6 @@
 
 <div class="ContainerImagePost"  *ngFor="let post of posts">
     <app-singlepost *ngIf="post" [post]="post" [ProfilePosts]=true></app-singlepost>
-    <app-singlepost></app-singlepost>
-    
 </div>
 
 <div class="ContainerTextPost">
@@ -113,7 +67,7 @@
             <img src="assets/sidebar-images/home.svg" alt="">
         </div>
         <div class="TextData">
-            <p *ngIf="userData"> Live in {{userCountries.homeland}}</p>
+            <p *ngIf="ProfileData">{{userCountries.homeland}}</p>
         </div>
     </div>
     <div class="Data">
@@ -121,7 +75,7 @@
             <img src="assets/Profile-Image/planeta.svg" alt="">
         </div>
         <div class="TextData">
-    <p *ngIf="userData"> From {{userCountries.residence}}</p>
+            <p *ngIf="ProfileData">{{userCountries.residence}}</p>
         </div>
     </div>
     <div class="Data">
@@ -137,7 +91,7 @@
             <img src="assets/Profile-Image/Account (1).svg" alt="">
         </div>
         <div class="TextData">
-            <p>Male</p>
+            <p> {{ProfileData.gender}} </p>
         </div>
     </div>
     <div class="DescriptionData">
@@ -145,7 +99,7 @@
         <p>Description:</p>
       </div>  
       <div class="Description">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt debitis animi tempora ad, temporibus officia aperiam ratione minus fuga placeat.</p>
+        <p> {{ProfileData.description}} </p>
       </div>
 
     </div>

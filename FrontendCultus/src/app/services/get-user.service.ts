@@ -7,9 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 export class GetUserService {
 	private urlgetUser = 'http://localhost:8000/api/v1/validate';
 	private urlUserProfile = 'http://localhost:8000/api/v1/user/profile/'
-	private urlUserInterests = "http://localhost:8000/api/v1/likes/user/";
-	private urlUserFromId = 'http://localhost:8000/api/v1/user/'
-	private urlUserCountries = 'http://localhost:8000/api/v1/country/'
 	
 	user:any = "IdUser";
 	profileKey:any = "userData";
@@ -43,20 +40,5 @@ export class GetUserService {
 			})
 		}
 		return this.http.get(this.urlgetUser, httpOptions);
-	}
-	getUserFromId(userId: any) {
-		return this.http.get(this.urlUserFromId + userId);
-	}
-	getUserCountry(idCountry:any){
-		return this.http.get(this.urlUserCountries+idCountry);
-	}
-	getUserInterests(IDinserted: any) {
-		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
-			})
-		};
-		return this.http.get(this.urlUserInterests + IDinserted, httpOptions);
 	}
 }

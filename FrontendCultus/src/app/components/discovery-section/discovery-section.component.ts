@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { Post } from '../PostsFolder/posts/post.model';
+import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
   selector: 'app-discovery-section',
@@ -8,20 +9,23 @@ import { Post } from '../PostsFolder/posts/post.model';
   styleUrls: ['./discovery-section.component.scss']
 })
 export class DiscoverySectionComponent {
-
-  userId:any = localStorage.getItem("IdUser");
-  posts: Post[];
+  	userId:any;
+  	posts: Post[];
   
-  constructor(private postService: GetPostsService) { }
+  	constructor(private postService: GetPostsService, private userService: GetUserService) { }
 
-  ngOnInit() {
-      this.getPosts();
-  }
-
-  getPosts() {
-      this.postService.getPostsDiscoverySection(this.userId).subscribe((res: any) => {
-          this.posts = res;
-          console.log(this.posts);
-      })
-  }
+  	ngOnInit() {
+      	this.getPosts();
+  	}
+  	getUser(){
+    	this.userService.getUser().subscribe((res:any)=>{
+      		this.userId = res.id;
+    	})
+  	}
+  	getPosts() {
+      	this.postService.getPostsDiscoverySection().subscribe((res: any) => {
+          	this.posts = res;
+          	console.log(this.posts);
+      	})
+  	}
 }

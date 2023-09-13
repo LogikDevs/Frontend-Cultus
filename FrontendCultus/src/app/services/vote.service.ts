@@ -11,9 +11,8 @@ export class VoteService {
 	private urlUserVotes= 'http://localhost:8001/api/votes/listUser/';
 	constructor(private http: HttpClient) { }
 
-	voteCreate(postIdReceived: any, UserIdReceived: any, votetype: any) {
+	voteCreate(postIdReceived: any, votetype: any) {
 		const body = {
-			fk_id_user: UserIdReceived,
 			fk_id_post: postIdReceived,
 			vote: votetype
 		}
@@ -37,13 +36,13 @@ export class VoteService {
 	updateVotes(fk_id_post:any){
 		return this.http.get(this.urlUpdateVotes+fk_id_post);
 	}
-	checkUserVotes(userId:any){
+	checkUserVotes(){
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.get(this.urlUserVotes+userId, httpOptions);
+		return this.http.get(this.urlUserVotes, httpOptions);
 	}
 }

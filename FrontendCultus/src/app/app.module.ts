@@ -33,10 +33,14 @@ import { DiscoverySectionComponent } from './components/discovery-section/discov
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { ModalOptionPostComponent } from './components/modal-option-post/modal-option-post.component';
+
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { SliderGruposComponent } from './components/slider-grupos/slider-grupos.component';
+
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+
 
 
 
@@ -74,7 +78,9 @@ import { SliderGruposComponent } from './components/slider-grupos/slider-grupos.
     ModalOptionPostComponent,
     CrearMenuComponent,
     GruposComponent,
-    SliderGruposComponent
+    SliderGruposComponent,
+    EditProfileComponent
+
   ],
   imports: [
     BrowserModule,

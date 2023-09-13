@@ -26,7 +26,7 @@ export class RegisterComponent {
 	constructor(private getUser: GetUserService, private registerService: PostRegisterService, private router: Router, private status: StatusService, private apiauth: AuthenticationService) { };
 
 	PostRegister(inputdata: any) {
-		this.registerService.PostRegister(inputdata).subscribe((res: HttpResponse<Object>) => {
+		this.registerService.PostRegister(inputdata).subscribe((res: any) => {
 			if (res.status === 201) this.RegisterLogin(inputdata);
 
 			if (res.status !== 201) this.handleErrorResponse(res);
@@ -37,8 +37,7 @@ export class RegisterComponent {
 			localStorage.setItem('accessToken', (res["access_token"]));
 			this.status.isLoggedIn = true;
 			this.getUser.UserIdIntoStorage();
-			
-			this.router.navigateByUrl('/optionsdata');
+			this.router.navigateByUrl('/SelectUserData');
 		})
 	}
 	handleErrorResponse(response: HttpResponse<any>) {

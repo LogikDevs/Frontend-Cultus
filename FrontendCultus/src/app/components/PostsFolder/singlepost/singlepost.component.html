@@ -9,7 +9,7 @@
 			</div>
 			<div class="ScrollableContent">
 				<div class="AllCommentsPost" *ngFor="let comment of post.commentsPublished">
-					<app-comment [comment]="comment"></app-comment>
+					<app-comment [comment]="comment" [userId]="userId"></app-comment>
 				</div>
 			</div>
 			<ng-template #noCommentsTemplate>

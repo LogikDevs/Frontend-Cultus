@@ -9,8 +9,7 @@ import { Comment } from '../posts/post.model';
 export class CommentComponent implements OnInit{
     @Input() comment: Comment;
     @Input() author: any;
-    
-    userId:any = localStorage.getItem("IdUser");
+    @Input() userId:any;
     
     commentVisibility:boolean = true;
     commentId:any;

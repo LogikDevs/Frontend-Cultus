@@ -22,6 +22,8 @@ import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.compon
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 import { GruposComponent } from './components/grupos/grupos.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -34,7 +36,7 @@ const routes: Routes = [
   { path: 'sidebar', component: SidebarComponent, canActivate: [GuardAuthentication] },
   { path: 'posts', component: PostsComponent, canActivate: [GuardAuthentication] },
   { path: 'profile/:id', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
-  { path: 'optionsdata', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
+  { path: 'SelectUserData', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
@@ -45,7 +47,9 @@ const routes: Routes = [
   { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
   { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] },
-  { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] }
+  { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
+  { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] }
+  
 
 ];
 

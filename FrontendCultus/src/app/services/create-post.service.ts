@@ -9,9 +9,8 @@ export class CreatePostService {
 	private urlCreateMultimedia = 'http://localhost:8001/api/multimedia/create';
 	constructor(private http: HttpClient) { }
 
-	postCreate(postDataReceived: any, UserIdReceived: any) {
+	postCreate(postDataReceived: any) {
 		const body = {
-			fk_id_user: UserIdReceived,
 			text: postDataReceived.text,
 			latitud: postDataReceived.latitud,
 			longitud:postDataReceived.longitud

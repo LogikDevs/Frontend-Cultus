@@ -23,6 +23,8 @@ import { FollowsService } from 'src/app/services/follows.service';
 	@Input() post: Post;
 	@Input() defaultUrl:string = "http://localhost:8001/";
 	@Input() ProfilePosts:boolean = false;
+	@Input() userId:any;
+	
     postVisibility:boolean = true;
     postId:any;
 	ownPost:boolean = false;
@@ -32,7 +34,6 @@ import { FollowsService } from 'src/app/services/follows.service';
 	userFollows:any[] = [];
 	userFollowsAccount:any;
 
-  	userId:any = localStorage.getItem("IdUser");
 	
   	AddComment:string = '';
 
@@ -50,20 +51,18 @@ import { FollowsService } from 'src/app/services/follows.service';
 		this.IsFollowable();
 		this.CheckFollowOrUnfollow(false)
     	this.postId = this.post.post.id_post;
-	}	
+	}
 	checkAuthor(){
         if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
     }
 	insertMultimedia(){
 		if (this.post.multimedia[0]) this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
 	}
-
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
 	}
 	sendComment(){
 		const bodyComment = {
-			fk_id_user: this.userId,
 			fk_id_post: this.post.post.id_post,
 			text: this.AddComment
 		}
@@ -90,7 +89,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 
 	ClickVote(votetype:any){
-		this.voteService.checkUserVotes(this.userId).subscribe((res:any)=>{
+		this.voteService.checkUserVotes().subscribe((res:any)=>{
 			this.vote = res.find((vote:any) => vote.fk_id_post === this.post.post.id_post);
 			this.CheckVote(votetype);
 		})
@@ -102,7 +101,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 
 	CreateVote(votetype:any){
-		this.voteService.voteCreate(this.post.post.id_post, this.userId, votetype).subscribe((res) => {this.updateVotes()})
+		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res) => {this.updateVotes()})
 	}
 	DeleteVote(voteId:any){
 		this.voteService.voteDelete(voteId).subscribe((res)=>{this.updateVotes()})
@@ -127,7 +126,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 
 	CheckFollowOrUnfollow(click:boolean){
-		this.followService.getUserFollowedAccounts(this.userId).subscribe((res:any)=>{
+		this.followService.getUserFollowedAccounts().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
 			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.post.post.fk_id_user));
 			if (userFollowsAccount) {
@@ -141,13 +140,13 @@ import { FollowsService } from 'src/app/services/follows.service';
 		})
 	}
 	FollowAction(){
-		this.followService.sendFollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
+		this.followService.sendFollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
 			//CAMBIAR IMAGEN A DEJAR DE SEGUIR
 		})
 	}
 	UnfollowAction(){
-		this.followService.Unfollow(this.userId, this.post.post.fk_id_user).subscribe((res:any)=>{
+		this.followService.Unfollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			//CAMBIAR IMAGEN A SEGUIR
 		})
 	}

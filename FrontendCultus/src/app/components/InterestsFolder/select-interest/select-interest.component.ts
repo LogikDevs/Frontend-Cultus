@@ -64,7 +64,7 @@ export class SelectInterestComponent {
 	
 	
 	getUserInterests(){
-		this.interestService.getUserInterests(this.userId).subscribe((res: any) => {
+		this.interestService.getUserInterests().subscribe((res: any) => {
 
 			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item.id_label);
 			
@@ -85,12 +85,12 @@ export class SelectInterestComponent {
 	}
 	AddUserInterests(interest:any){
 		interest.forEach((item: any) => {
-			this.interestService.sendUserInterests(this.userId, item).subscribe(res => {});
+			this.interestService.sendUserInterests(item).subscribe(res => {});
 		});
 	}
 	DeleteUserInterests(interest:any){
 		interest.forEach((item: any) => {
-			this.interestService.deleteInterest(item, this.userId).subscribe(res => {})
+			this.interestService.deleteInterest(item).subscribe(res => {})
 		})
 	}
 }

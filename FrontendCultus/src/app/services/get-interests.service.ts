@@ -27,30 +27,47 @@ export class GetInterestsService {
 		}
 		return this.http.get<Interest[]>(this.urlGetInterests, httpOptions);
 	}
-	sendUserInterests(User:any, Interests:any){
+	sendUserInterests(Interests:any){
 		const body = {
-			id_interest: Interests,
-			id_user: User
+			id_interest: Interests
 		}
-		return this.http.post<UserInterests[]>(this.urlSendInterests, body);
-	}
-	sendPostInterests(Post:any, Interests:any){
-		const body = {
-			fk_id_label: Interests,
-			fk_id_post: Post
-		}
-		return this.http.post(this.urlSendPostInterests, body);
-	}
-	deleteInterest(IdInterest:any, userId:any){
-		return this.http.delete(this.urlSendInterests+userId+"/"+IdInterest);
-	}
-	getUserInterests(userId:any){
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.get(this.urlGetUserInterests+userId, httpOptions);
+		return this.http.post<UserInterests[]>(this.urlSendInterests, body, httpOptions);
+	}
+	sendPostInterests(Post:any, Interests:any){
+		const body = {
+			fk_id_label: Interests,
+			fk_id_post: Post
+		}
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.post(this.urlSendPostInterests, body, httpOptions);
+	}
+	deleteInterest(IdInterest:any){
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.delete(this.urlSendInterests+IdInterest, httpOptions);
+	}
+	getUserInterests(){
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get(this.urlGetUserInterests, httpOptions);
 	}
 }
