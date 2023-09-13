@@ -19,15 +19,12 @@
 
     <div class="DataMyProfile">
         <div class="NameMyProfile">
-            <p #HtmlNameSurname *ngIf="ProfileData"> {{ProfileData.name}} {{ProfileData.surname}} </p>
+            <p #HtmlNameSurname *ngIf="ProfileData">{{ProfileData.name}} {{ProfileData.surname}}</p>
         </div>
         <div class="Age">
             <p #HtmlAge *ngIf="ProfileData">, {{ProfileData.age}} </p>
         </div>
-        <div class="CountryMyProfile">
-            <p *ngIf="ProfileData"> {{userCountries.homeland}}</p>
-            <p *ngIf="ProfileData"> {{userCountries.residence}}</p>
-        </div>
+
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
         </div>
@@ -70,7 +67,7 @@
             <img src="assets/sidebar-images/home.svg" alt="">
         </div>
         <div class="TextData">
-            <p *ngIf="userData"> Live in {{userCountries.homeland}}</p>
+            <p *ngIf="ProfileData">{{userCountries.homeland}}</p>
         </div>
     </div>
     <div class="Data">
@@ -78,7 +75,7 @@
             <img src="assets/Profile-Image/planeta.svg" alt="">
         </div>
         <div class="TextData">
-    <p *ngIf="userData"> From {{userCountries.residence}}</p>
+            <p *ngIf="ProfileData">{{userCountries.residence}}</p>
         </div>
     </div>
     <div class="Data">
@@ -94,7 +91,7 @@
             <img src="assets/Profile-Image/Account (1).svg" alt="">
         </div>
         <div class="TextData">
-            <p>Male</p>
+            <p> {{ProfileData.gender}} </p>
         </div>
     </div>
     <div class="DescriptionData">
@@ -102,7 +99,7 @@
         <p>Description:</p>
       </div>  
       <div class="Description">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt debitis animi tempora ad, temporibus officia aperiam ratione minus fuga placeat.</p>
+        <p> {{ProfileData.description}} </p>
       </div>
 
     </div>

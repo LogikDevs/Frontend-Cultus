@@ -3,7 +3,7 @@ import { GetUserService } from '../../services/get-user.service';
 import { User } from './profile.model';
 import { Post } from '../PostsFolder/posts/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FollowsService } from 'src/app/services/follows.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
 	@Input() ProfileId:any = this.route.snapshot.params['id'];
 	ownProfile:boolean = false;
 	
-	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+	
 	Url_profile_pic:string="http://localhost:8000/storage/profile_pic/";
 	@Input() pfpUrl:string;
 
@@ -35,9 +35,8 @@ export class ProfileComponent implements OnInit {
 		homeland: this.msgNoCountry,
 		residence: this.msgNoCountry
 	}
-
-  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-  @ViewChild('ContainerInterest', { static: true }) ContainerInterest!: ElementRef<HTMLDivElement>;
+	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  	@ViewChild('ContainerInterest', { static: true }) ContainerInterest!: ElementRef<HTMLDivElement>;
   
 	constructor(
     private route: ActivatedRoute, 
@@ -79,8 +78,8 @@ export class ProfileComponent implements OnInit {
 	}
 
 	checkCountries(){
-		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = this.ProfileData.homeland.country_name;
-		if (this.ProfileData.residence.country_name) this.userCountries.residence = this.ProfileData.residence.country_name;
+		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = "From "+this.ProfileData.homeland.country_name;
+		if (this.ProfileData.residence.country_name) this.userCountries.residence = "Lives in "+this.ProfileData.residence.country_name;
 	}
 
 	getUserPosts(){
@@ -136,13 +135,11 @@ export class ProfileComponent implements OnInit {
     this.isDragging = true;
   }
 
-  // Evento de finalización de arrastre
   onDragEnd(event: DragEvent) {
     this.renderer.setStyle(event.currentTarget, 'opacity', '1');
     this.isDragging = false;
   }
 
-  // Evento de arrastre sobre el elemento contenedor
   onDragOver(event: DragEvent) {
     event.preventDefault();
     if (this.isDragging) {
