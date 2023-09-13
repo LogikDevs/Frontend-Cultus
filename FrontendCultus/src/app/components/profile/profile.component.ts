@@ -31,6 +31,10 @@ export class ProfileComponent implements OnInit {
   isDragging: boolean = false;
 
 	msgNoCountry:string = "Not Specified.";
+	textHomelandOrResidence:any = {
+		homeland: "From ",
+		residence: "Lives in "
+	}
 	@Input() userCountries:any = {
 		homeland: this.msgNoCountry,
 		residence: this.msgNoCountry
@@ -78,8 +82,8 @@ export class ProfileComponent implements OnInit {
 	}
 
 	checkCountries(){
-		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = "From "+this.ProfileData.homeland.country_name;
-		if (this.ProfileData.residence.country_name) this.userCountries.residence = "Lives in "+this.ProfileData.residence.country_name;
+		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = this.textHomelandOrResidence.homeland+this.ProfileData.homeland.country_name;
+		if (this.ProfileData.residence.country_name) this.userCountries.residence = this.textHomelandOrResidence.residence+this.ProfileData.residence.country_name;
 	}
 
 	getUserPosts(){
