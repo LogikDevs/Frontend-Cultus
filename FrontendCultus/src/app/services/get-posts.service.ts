@@ -22,14 +22,14 @@ export class GetPostsService {
 		}
 		return this.http.get<Post[]>(this.urlGetPosts, httpOptions);
 	}
-	getPostsDiscoverySection(userId:any): Observable<Post[]> {
+	getPostsDiscoverySection(): Observable<Post[]> {
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.get<Post[]>(this.urlGetPostsFromInterests+userId, httpOptions);
+		return this.http.get<Post[]>(this.urlGetPostsFromInterests, httpOptions);
 	}
 	getPostsInterests(IdPost:any) {
 		const httpOptions = {
@@ -40,14 +40,14 @@ export class GetPostsService {
 		}
 		return this.http.get(this.urlGetPostsInterests+IdPost, httpOptions);
 	}
-	getUserPosts(userId:any): Observable<Post[]> {
+	getUserPosts(ProfileId:any): Observable<Post[]> {
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.get<Post[]>(this.urlUserPosts+userId, httpOptions);
+		return this.http.get<Post[]>(this.urlUserPosts+ProfileId, httpOptions);
 	}
 	updatePostComments(fk_id_post:any){
 		const httpOptions = {

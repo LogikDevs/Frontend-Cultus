@@ -70,13 +70,4 @@ export class GetInterestsService {
 		}
 		return this.http.get(this.urlGetUserInterests, httpOptions);
 	}
-	getProfileInterests(ProfileId:any){
-		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
-			})
-		}
-		return this.http.get(this.urlGetUserInterests+ProfileId, httpOptions);
-	}
 }

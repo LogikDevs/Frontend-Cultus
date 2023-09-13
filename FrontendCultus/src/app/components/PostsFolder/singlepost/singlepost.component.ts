@@ -24,6 +24,7 @@ import { FollowsService } from 'src/app/services/follows.service';
 	@Input() defaultUrl:string = "http://localhost:8001/";
 	@Input() ProfilePosts:boolean = false;
 	@Input() userId:any;
+	
     postVisibility:boolean = true;
     postId:any;
 	ownPost:boolean = false;

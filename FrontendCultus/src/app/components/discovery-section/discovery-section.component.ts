@@ -9,7 +9,6 @@ import { GetUserService } from 'src/app/services/get-user.service';
   styleUrls: ['./discovery-section.component.scss']
 })
 export class DiscoverySectionComponent {
-
   	userId:any;
   	posts: Post[];
   
@@ -24,7 +23,7 @@ export class DiscoverySectionComponent {
     	})
   	}
   	getPosts() {
-      	this.postService.getPostsDiscoverySection(this.userId).subscribe((res: any) => {
+      	this.postService.getPostsDiscoverySection().subscribe((res: any) => {
           	this.posts = res;
           	console.log(this.posts);
       	})

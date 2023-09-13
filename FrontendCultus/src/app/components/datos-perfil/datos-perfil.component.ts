@@ -13,7 +13,6 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class DatosPerfilComponent {
 	UserData:any;
-	userId = localStorage.getItem("IdUser");
 	selectedImage: string | undefined;
 
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;

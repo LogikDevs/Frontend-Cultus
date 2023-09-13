@@ -8,7 +8,6 @@ import { GetInterestsService } from 'src/app/services/get-interests.service';
 	styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent {
-	userId = localStorage.getItem("IdUser");
 	
 	postMultimedia: File;
 
@@ -21,7 +20,7 @@ export class CreatePostComponent {
 			longitud: FormData.longitud,
 			multimedia_file: this.postMultimedia
 		}
-		this.createPostService.postCreate(postData, this.userId).subscribe((res:any)=>{
+		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			const newPostId = res.id_post;
 			this.sendPostInterests(newPostId);
 			if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
