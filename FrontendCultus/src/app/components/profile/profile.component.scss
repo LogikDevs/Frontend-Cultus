@@ -1,18 +1,17 @@
 $ColorFuente:#4A5C45;
 $ColorSecundario:#282928;
 *{
-    transition: all 300 ms ease-in-out;
+
+    transition: all .5s ease;
 }
-#MenuMobile{
-    display: none;
- }
+
 
 .ContainerMyProfile{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width: 100%;
     background-color: #181818;
-
+    transition: all .5s ease;
 }
 .ImageProfile{
    background-color: $ColorFuente;
@@ -57,7 +56,8 @@ margin-top: 5px;
   color: $ColorFuente;
   font-weight: bold;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 .DataMyProfile p{
     margin: 2px;
@@ -67,19 +67,46 @@ margin-top: 5px;
 .MyInterestProfile{
 color: $ColorFuente;
 font-weight: bold;
+
+width: 100%;
+display: flex;
+align-items: center;
 }
+.ContainerInterest {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+   
+ cursor:grab;
+  }
+  .ContainerInterest.dragging {
+    opacity: 0;
+ 
+
+  }
+  
+  .dragging {
+      visibility: hidden;
+  }
+
+  
+  .ContainerInterest::-webkit-scrollbar {
+    display: none; 
+  }
 .Interest{
  margin-left: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(80px, 1fr));
+background-color: #111111;
+border-radius: 15px;
+padding: 10px;
 }
 .Interest p{
 background-color: $ColorSecundario;
-margin: 5px;
-padding: 10px;
-border-radius: 20px;
-font-size: 10px;
-max-width: 80px;
+
+
 text-align: center;
 }
 .TittleInterest p{
@@ -88,10 +115,9 @@ margin-top: 20px;
 font-size: 15px;
 }
 .PostTypes{
-    display: flex;
-    justify-content: space-evenly;
+    
     margin-top: 20px;
-    text-align: center;
+    text-align: start;
 }
 .PostTypes p{
     
@@ -130,7 +156,7 @@ background-color:  #111111;
     object-fit: cover;
 }
 
-@media(min-width:500px){
+@media(min-width:501px){
 
     .Profile{
         margin-top: 20px;
@@ -143,7 +169,7 @@ background-color:  #111111;
 
 }
 .MyInterestProfile{
-    max-width: 450px;
+   
 }
 .ContainerImagePost{
     width: 80%;
@@ -155,9 +181,10 @@ background-color:  #111111;
 @media(min-width:630px){
     .ContainerData{
         border: 0px solid;
+        margin-left: -200px;
     }
     .ContainerMyProfile{
-        width: 100%;
+        width: 300%;
  float: none;
  margin: auto;
 
@@ -175,7 +202,7 @@ background-color:  #111111;
             
     }
     .MyInterestProfile{
-        max-width: 500px;
+       
     }  .Profile{
  
 margin: auto;
@@ -188,9 +215,21 @@ margin-left: 70px;
     margin-top: 20px;
 }
     }
-    @media(min-width:1100px){
+    @media(min-width:900px){
+        .ContainerData{
+            border: 0px solid;
+            margin-left: 0px;
+        }
   .ContainerMyProfile{
- min-width: 850px;
+ min-width: 650px;
+  }}
+    @media(min-width:1100px){
+        .ContainerData{
+            border: 0px solid;
+            margin-left: 0px;
+        }
+  .ContainerMyProfile{
+ min-width: 950px;
   }
       .ContainerImagePost{
         width: 100%;
@@ -259,4 +298,62 @@ margin-top: 20px;
      .ContainerImagePost{
         margin-top: 10px;
      }
+     
+
+}
+
+.DataUser{
+    width: 250px;
+    background-color: #181818;
+    margin: 20px;
+    border-radius: 15px;
+    margin-left: auto;
+    padding: 20px;
+}
+.HeaderDataUser p{
+    color: $ColorFuente;
+    font-weight: bold;
+    margin-left: 15px;
+    font-size: 20px;
+
+}
+.Data{
+    width: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 10px;
+    color: $ColorFuente;
+}
+.LogoData{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(21, 21, 20);
+    border-radius: 20px;
+}
+.LogoData img{
+    width: 80%;
+    height: 80%;
+    margin: 3px;
+}
+.TextData p{
+    font-weight: bold;
+    margin-left: 10px;
+}
+.DescriptionData{
+    font-weight: bold;
+    color: $ColorFuente;
+}
+.Description {
+    background-color: #100f0f;
+    border-radius: 10px;
+    margin: 10px;
+}
+.Description p{
+    padding: 20px;
+    font-size: 12px;
+}
+.TittleDescription p{
+    margin-left: 20px;
 }

@@ -1,16 +1,16 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { GetUserService } from '../../services/get-user.service';
 import { User } from './profile.model';
 import { Post } from '../PostsFolder/posts/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FollowsService } from 'src/app/services/follows.service';
-@Component({
-	selector: 'app-profile',
-	templateUrl: './profile.component.html',
-	styleUrls: ['./profile.component.scss']
-})
 
+@Component({
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
+})
 export class ProfileComponent implements OnInit {
 	@Input() ProfileId:any = this.route.snapshot.params['id'];
 	ownProfile:boolean = false;
@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
 	posts: Post[];
 	
 	selectedImage: string | undefined;
+  isDragging: boolean = false;
 
 	msgNoCountry:string = "Not Specified.";
 	@Input() userCountries:any = {
@@ -35,7 +36,17 @@ export class ProfileComponent implements OnInit {
 		residence: this.msgNoCountry
 	}
 
-	constructor(private route: ActivatedRoute, private userService: GetUserService, private postsService: GetPostsService, private followService: FollowsService, private router: Router) { }
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('ContainerInterest', { static: true }) ContainerInterest!: ElementRef<HTMLDivElement>;
+  
+	constructor(
+    private route: ActivatedRoute, 
+    private userService: GetUserService, 
+    private postsService: GetPostsService, 
+    private followService: FollowsService, 
+    private router: Router,
+    private renderer: Renderer2 
+  ) { }
 
 
 	ngOnInit() {
@@ -119,4 +130,27 @@ export class ProfileComponent implements OnInit {
 	ToEditProfile(){
 		this.router.navigateByUrl('/EditProfile');
 	}
+  onDragStart(event: DragEvent) {
+    event.dataTransfer?.setData('text/plain', ''); 
+    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    this.isDragging = true;
+  }
+
+  // Evento de finalización de arrastre
+  onDragEnd(event: DragEvent) {
+    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    this.isDragging = false;
+  }
+
+  // Evento de arrastre sobre el elemento contenedor
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    if (this.isDragging) {
+      const container = event.currentTarget as HTMLElement;
+      const offsetX = event.clientX - container.getBoundingClientRect().left;
+      const containerWidth = container.clientWidth;
+      const scrollLeft = (offsetX / containerWidth) * (container.scrollWidth - containerWidth);
+      container.scrollLeft = scrollLeft;
+    }
+  }
 }
