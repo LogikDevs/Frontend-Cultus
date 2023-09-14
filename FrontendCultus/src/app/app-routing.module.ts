@@ -15,9 +15,6 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
 import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { BackofficeComponent } from './components/backoffice/backoffice.component';
-import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
-import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
 import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
@@ -40,9 +37,7 @@ const routes: Routes = [
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
-  { path: 'backoffice', component: BackofficeComponent, canActivate: [GuardAuthentication] } ,
-  { path: 'backoffice-post', component: BackofficePostComponent, canActivate: [GuardAuthentication] },
-  { path: 'backoffice-users', component: BackofficeUsersComponent, canActivate: [GuardAuthentication]},
+
  
   { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
