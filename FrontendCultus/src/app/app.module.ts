@@ -19,7 +19,6 @@ import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.com
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { SinglepostComponent } from './components/PostsFolder/singlepost/singlepost.component';
 import { CommentComponent } from './components/PostsFolder/comment/comment.component';
 
@@ -59,8 +58,6 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     CreatePostComponent,
     SelectInterestComponent,
     ForgotPasswordComponent,
-
-    MenuMobileComponent,
     SinglepostComponent,
     CommentComponent,
     ModalOptionCommentComponent,

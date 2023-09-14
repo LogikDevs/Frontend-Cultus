@@ -15,7 +15,6 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
 import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 import { GruposComponent } from './components/grupos/grupos.component';
@@ -37,9 +36,6 @@ const routes: Routes = [
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
-
- 
-  { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
   { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] },
   { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
