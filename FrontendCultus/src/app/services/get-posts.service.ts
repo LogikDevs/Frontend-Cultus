@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 	providedIn: 'root'
 })
 export class GetPostsService {
-	private urlGetPosts = 'http://localhost:8001/api/post/listAll';
-	private urlGetPostsFromInterests = 'http://localhost:8001/api/post/interested/';
-	private urlUserPosts = 'http://localhost:8001/api/post/listUser/';
-	private urlUpdateComments='http://localhost:8001/api/post/listPost/'
-	private urlGetPostsInterests='http://localhost:8001/api/characterizes/listPost/'
-	private urlDeletePost='http://localhost:8001/api/post/delete/'
+	private urlGetPosts = 'http://localhost:8001/api/v1/posts/listAll';
+	private urlGetPostsFromInterests = 'http://localhost:8001/api/v1/posts/interested/';
+	private urlUserPosts = 'http://localhost:8001/api/v1/posts/user/';
+	private urlUpdateComments='http://localhost:8001/api/v1/posts/listPost/'
+	private urlGetPostsInterests='http://localhost:8001/api/v1/characterizes/listPost/'
+	private urlDeletePost='http://localhost:8001/api/v1/posts/delete/'
 	constructor(private http: HttpClient) { }
 	getPosts(): Observable<Post[]> {
 		const httpOptions = {
@@ -47,7 +47,7 @@ export class GetPostsService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.get<Post[]>(this.urlUserPosts+ProfileId, httpOptions);
+		return this.http.get<Post[]>(this.urlUserPosts, httpOptions);
 	}
 	updatePostComments(fk_id_post:any){
 		const httpOptions = {

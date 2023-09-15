@@ -19,6 +19,7 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { TypeSearchComponent } from './components/type-search/type-search.component';
 
 
 const routes: Routes = [ 
@@ -37,10 +38,10 @@ const routes: Routes = [
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
+  { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] },
+  { path: 'Search', component: TypeSearchComponent, canActivate: [GuardAuthentication] }
   { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] },
   { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
-  { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] }
-  
 
 ];
 
