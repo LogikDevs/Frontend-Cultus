@@ -9,16 +9,21 @@
 
 <body>
     <app-header></app-header>
+
     <div class="ContainerHome">
-        <div id="SidebarOff">
+        <div id="Sidebar">
             <app-sidebar></app-sidebar>
         </div>
 
+       
         <div class="PostHome">
+             <div class="SliderUsuarios ">
+            <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
+        </div>
             <app-discovery-section class="Post"></app-discovery-section>  <!--Seccion Discovery-->
            <!--<app-posts class="Post"></app-posts>-->                                 <!--Todos los Posts (Sin seccion)-->
         </div>
-        
+      
     </div>
   
 
