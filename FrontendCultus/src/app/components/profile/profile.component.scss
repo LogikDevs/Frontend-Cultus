@@ -138,8 +138,13 @@ background-color:  #111111;
     align-items: center;
     grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
     margin-bottom:100px;
-    // display: none;
+ 
 
+
+}
+.ContainerProfile{
+    display: flex;
+    justify-content: space-around;
 }
 .PostImage{
     background-color: $ColorSecundario;
@@ -148,6 +153,13 @@ background-color:  #111111;
     margin: 10px;
     border-radius: 10px;
     
+}
+.ContainerPost{
+    margin: auto;
+  
+}
+.Posts{
+    flex-direction: column;
 }
 .PostImage img{
     border-radius: 10px;
@@ -168,9 +180,7 @@ background-color:  #111111;
     max-width: 500px;
 
 }
-.MyInterestProfile{
-   
-}
+
 .ContainerImagePost{
     width: 80%;
     float: right;
@@ -201,9 +211,7 @@ background-color:  #111111;
                max-width: 500px;
             
     }
-    .MyInterestProfile{
-       
-    }  .Profile{
+   .Profile{
  
 margin: auto;
 display: flex;
@@ -220,6 +228,7 @@ margin-left: 70px;
             border: 0px solid;
             margin-left: 0px;
         }
+     
   .ContainerMyProfile{
  min-width: 650px;
   }}
@@ -272,12 +281,18 @@ margin-top: 20px;
     }
  
 @media(max-width:499px){
-    #SidebarOff{
-       display: none;
-    }
-    #MenuMobile{
-       display: block;
-    }
+.ContainerProfile{
+    flex-direction: column-reverse;
+}
+.DataUser{
+    margin: auto;
+}
+.ContainerPost{
+    width: 100%;
+}
+.ContainerPostMobile{
+    width: 100%;
+}
     #header {
         display: none;
     }
@@ -304,6 +319,7 @@ margin-top: 20px;
 
 .DataUser{
     width: 250px;
+    height: fit-content;
     background-color: #181818;
     margin: 20px;
     border-radius: 15px;

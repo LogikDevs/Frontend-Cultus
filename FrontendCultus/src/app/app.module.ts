@@ -70,7 +70,7 @@ import { TypeSearchComponent } from './components/type-search/type-search.compon
     ModalOptionPostComponent,
     CrearMenuComponent,
     EditProfileComponent,
-    TypeSearchComponent
+    TypeSearchComponent,
     GruposComponent,
     SliderGruposComponent,
   ],

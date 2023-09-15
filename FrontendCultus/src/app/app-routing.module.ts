@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
   { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] },
-  { path: 'Search', component: TypeSearchComponent, canActivate: [GuardAuthentication] }
+  { path: 'Search', component: TypeSearchComponent, canActivate: [GuardAuthentication] },
   { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] },
   { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
 

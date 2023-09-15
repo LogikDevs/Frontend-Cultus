@@ -284,7 +284,7 @@ margin-left: 1px;
   position: absolute;
   top: 0;
   width: 100%;
-    /* Estilos para el div sin mostrar */
+
     max-height: 0;
 height: 260px;
 max-width: 100%;
@@ -298,11 +298,11 @@ max-width: 100%;
 
   .slide-up {
 
-    /* Estilos para el div cuando está mostrado */
-    max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+
+    max-height: 300px; 
     opacity: 1;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Agrega la propiedad de transición */
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out; 
         height: 200;
         border-bottom: 1px solid rgba(4, 171, 74, 0.234);
 
@@ -370,7 +370,7 @@ max-width: 100%;
 
 
 .ScrollableContent::-webkit-scrollbar-track {
-    background-color: #1b1a1a; /* Color del fondo de la barra de desplazamiento */
+    background-color: #1b1a1a; 
 }
 
 
