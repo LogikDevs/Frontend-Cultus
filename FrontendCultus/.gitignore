@@ -6,6 +6,10 @@
 /out-tsc
 /bazel-out
 
+# Ignorar archivos .css y .css.map
+*.css
+*.css.map
+
 # Node
 /node_modules
 npm-debug.log

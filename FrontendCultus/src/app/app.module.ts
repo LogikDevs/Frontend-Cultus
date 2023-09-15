@@ -19,14 +19,9 @@ import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.com
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { BackofficeComponent } from './components/backoffice/backoffice.component';
-import { SidebarBackofficeComponent } from './components/sidebar-backoffice/sidebar-backoffice.component';
-import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
-import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
-import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { SinglepostComponent } from './components/PostsFolder/singlepost/singlepost.component';
 import { CommentComponent } from './components/PostsFolder/comment/comment.component';
-import { AgenProfileComponent } from './agen-profile/agen-profile.component';
+
 import { ModalOptionCommentComponent } from './components/modal-option-comment/modal-option-comment.component';
 import { InterestComponent } from './components/InterestsFolder/interest/interest.component';
 import { ClickOutDirectiveDirective } from './directives/click-out-directive.directive';
@@ -36,6 +31,9 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
 import { ModalOptionPostComponent } from './components/modal-option-post/modal-option-post.component';
 
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
+import { GruposComponent } from './components/grupos/grupos.component';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { SliderGruposComponent } from './components/slider-grupos/slider-grupos.component';
 
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
@@ -60,14 +58,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     CreatePostComponent,
     SelectInterestComponent,
     ForgotPasswordComponent,
-    BackofficeComponent,
-    SidebarBackofficeComponent,
-    BackofficePostComponent,
-    BackofficeUsersComponent,
-    MenuMobileComponent,
     SinglepostComponent,
     CommentComponent,
-    AgenProfileComponent,
     ModalOptionCommentComponent,
     InterestComponent,
     ClickOutDirectiveDirective,
@@ -76,13 +68,18 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     CreateGroupComponent,
     ModalOptionPostComponent,
     CrearMenuComponent,
+    GruposComponent,
+    SliderGruposComponent,
     EditProfileComponent
+
   ],
   imports: [
     BrowserModule,
+    NgImageSliderModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule
+    
   ],
 
   bootstrap: [AppComponent]

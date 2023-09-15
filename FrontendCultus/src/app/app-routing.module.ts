@@ -15,14 +15,11 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
 import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { BackofficeComponent } from './components/backoffice/backoffice.component';
-
-import { SidebarBackofficeComponent } from './components/sidebar-backoffice/sidebar-backoffice.component';
-import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
-import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
-import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
+import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
+import { GruposComponent } from './components/grupos/grupos.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -39,12 +36,9 @@ const routes: Routes = [
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
-  { path: 'backoffice', component: BackofficeComponent, canActivate: [GuardAuthentication] } ,
-  { path: 'backoffice-post', component: BackofficePostComponent, canActivate: [GuardAuthentication] },
-  { path: 'backoffice-users', component: BackofficeUsersComponent, canActivate: [GuardAuthentication]},
-  { path: 'sidebar-backoffice', component: SidebarBackofficeComponent, canActivate: [GuardAuthentication] },
-  { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
+  { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] },
+  { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
   { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] }
   
 
