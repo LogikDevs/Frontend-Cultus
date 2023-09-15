@@ -10,7 +10,7 @@ export class GetInterestsService {
   	private urlGetInterests = 'http://localhost:8000/api/v1/interest';
   	private urlSendInterests = 'http://localhost:8000/api/v1/likes/';
 	private urlGetUserInterests = 'http://localhost:8000/api/v1/likes/user/'
-	private urlSendPostInterests = 'http://localhost:8001/api/characterizes/create';
+	private urlSendPostInterests = 'http://localhost:8001/api/v1/characterizes/create';
 
 	public displaySelectInterest:boolean = false;
 
