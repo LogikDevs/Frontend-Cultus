@@ -174,3 +174,14 @@ cursor: pointer;
 .AddImage label {
     cursor: pointer;
 }
+@media(min-width:500px){
+    .ContainerModalCreatePost{
+        margin: auto;
+    }
+}
+.ContainerInterest{
+  width: 600px;
+  display: block;
+  margin-top: 100px;
+  margin: auto;
+}
