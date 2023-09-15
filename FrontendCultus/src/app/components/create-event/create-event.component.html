@@ -1,4 +1,4 @@
-<!--<app-sidebar></app-sidebar>-->
+
 <form #eventCreateForm="ngForm" (ngSubmit)="sendCreatedEvent(eventCreateForm.value)">
     <input ngModel name="EventName" type="text" placeholder="Event Name" required>
     <input ngModel name="EventDescription" type="text" placeholder="Event Description" required>
