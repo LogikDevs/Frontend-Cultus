@@ -140,6 +140,11 @@ background-color:  #111111;
     margin-bottom:100px;
     // display: none;
 
+
+}
+.ContainerProfile{
+    display: flex;
+    justify-content: space-around;
 }
 .PostImage{
     background-color: $ColorSecundario;
@@ -148,6 +153,13 @@ background-color:  #111111;
     margin: 10px;
     border-radius: 10px;
     
+}
+.ContainerPost{
+    margin: auto;
+  
+}
+.Posts{
+    flex-direction: column;
 }
 .PostImage img{
     border-radius: 10px;
@@ -220,6 +232,7 @@ margin-left: 70px;
             border: 0px solid;
             margin-left: 0px;
         }
+     
   .ContainerMyProfile{
  min-width: 650px;
   }}
@@ -304,6 +317,7 @@ margin-top: 20px;
 
 .DataUser{
     width: 250px;
+    height: fit-content;
     background-color: #181818;
     margin: 20px;
     border-radius: 15px;
