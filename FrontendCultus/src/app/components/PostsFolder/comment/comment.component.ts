@@ -28,7 +28,7 @@ export class CommentComponent implements OnInit{
         this.commentId = this.comment.id_comment;
     }
     checkProfilePic(){
-        if (this.comment.user) this.userPfp = this.urlPfp + this.comment.user;
+        if (this.comment.user) this.userPfp = this.urlPfp + this.comment.user.profile_pic;
     }
     checkAuthor(){
         const idToNum = Number(this.userId);

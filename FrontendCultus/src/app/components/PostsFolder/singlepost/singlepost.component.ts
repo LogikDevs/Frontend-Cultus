@@ -88,12 +88,14 @@ import { Router } from '@angular/router';
 		}
 	}	
 	showCommentLocally(CreatedComment:any){
+		console.log(CreatedComment);
 		const NewComment: Comment = {
 			id_comment: CreatedComment.comment.id_comment,
 			user:{
 				id:	CreatedComment.comment.fk_id_user,
 				name: CreatedComment.user.name,
-				surname: CreatedComment.user.surname
+				surname: CreatedComment.user.surname,
+				profile_pic: CreatedComment.user.profile_pic
 			}, 
 			text: CreatedComment.comment.text
 		}

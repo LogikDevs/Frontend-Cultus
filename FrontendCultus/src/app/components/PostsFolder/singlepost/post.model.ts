@@ -35,9 +35,10 @@ export interface Post {
 	id: number;
 	name: string;
 	surname: string;
+	profile_pic: string;
   }
   export interface UserOnPost {
 	name: string;
 	surname: string;
-	profile_pic:string;
+	profile_pic: string;
   }
