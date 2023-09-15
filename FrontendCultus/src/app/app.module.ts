@@ -11,7 +11,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { PostsComponent } from './components/PostsFolder/posts/posts.component';
 import { ComienzoComponent } from './components/comienzo/comienzo.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -51,7 +50,6 @@ import { TypeSearchComponent } from './components/type-search/type-search.compon
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    PostsComponent,
     ComienzoComponent,
     SidebarComponent,
     ProfileComponent,
@@ -70,9 +68,9 @@ import { TypeSearchComponent } from './components/type-search/type-search.compon
     ModalOptionPostComponent,
     CrearMenuComponent,
     EditProfileComponent,
-    TypeSearchComponent
+    TypeSearchComponent,
     GruposComponent,
-    SliderGruposComponent,
+    SliderGruposComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +78,6 @@ import { TypeSearchComponent } from './components/type-search/type-search.compon
     HttpClientModule,
     FormsModule,
     AppRoutingModule
-    
   ],
 
   bootstrap: [AppComponent]

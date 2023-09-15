@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Post, Comment } from '../posts/post.model';
+import { Post, Comment } from './post.model';
 import { VoteService } from 'src/app/services/vote.service';
 import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { FollowsService } from 'src/app/services/follows.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-singlepost',
@@ -21,7 +22,10 @@ import { FollowsService } from 'src/app/services/follows.service';
 
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
-	@Input() defaultUrl:string = "http://localhost:8001/";
+	@Input() defaultUrl:string = "http://localhost:8001/storage/multimedia_post/";
+	urlPfp:any="http://localhost:8000/storage/profile_pic/";
+	userPfp:any="/assets/post-images/profile_def.jpg";
+	
 	@Input() ProfilePosts:boolean = false;
 	@Input() userId:any;
 	
@@ -44,13 +48,20 @@ import { FollowsService } from 'src/app/services/follows.service';
   	showComments: boolean = false;
 	noCommentsTemplate: any;
 
-	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService) { }
+	
+
+	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService, private router: Router) { }
 	ngOnInit() {
+		this.postId = this.post.post.id_post;
 		this.checkAuthor();
+		this.checkProfilePic();
 		this.insertMultimedia();
 		this.IsFollowable();
 		this.CheckFollowOrUnfollow(false)
-    	this.postId = this.post.post.id_post;
+
+	}
+	checkProfilePic(){
+		if (this.post.user.profile_pic) this.userPfp = this.urlPfp + this.post.user.profile_pic;
 	}
 	checkAuthor(){
         if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
@@ -60,6 +71,9 @@ import { FollowsService } from 'src/app/services/follows.service';
 	}
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
+	}
+	clickedProfile(){
+		this.router.navigateByUrl('/profile/'+this.post.post.fk_id_user);
 	}
 	sendComment(){
 		const bodyComment = {
@@ -89,22 +103,12 @@ import { FollowsService } from 'src/app/services/follows.service';
 
 
 	ClickVote(votetype:any){
-		this.voteService.checkUserVotes().subscribe((res:any)=>{
-			this.vote = res.find((vote:any) => vote.fk_id_post === this.post.post.id_post);
-			this.CheckVote(votetype);
-		})
-	}
-	CheckVote(votetype:any) {
-		if (this.vote && this.vote.vote == votetype) this.DeleteVote(this.vote.id_vote);
-
-		if (!this.vote || this.vote.vote != votetype) this.CreateVote(votetype);
+		if (votetype == 1) this.CreateVote(1);
+		if (votetype == 0) this.CreateVote(0);
 	}
 
 	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res) => {this.updateVotes()})
-	}
-	DeleteVote(voteId:any){
-		this.voteService.voteDelete(voteId).subscribe((res)=>{this.updateVotes()})
 	}
 
 	updateVotes() {
@@ -161,7 +165,6 @@ import { FollowsService } from 'src/app/services/follows.service';
 	  this.showComments = !this.showComments;
 	}    
 	
-
     displayOptions(event: Event){
         event.stopPropagation(); 
         this.displayedOptions = !this.displayedOptions;

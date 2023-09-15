@@ -13,15 +13,17 @@ export class SidebarComponent implements OnInit {
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
 
+    showProfilePic:any = false;
     userId:any;
     userData:any;
     @Input() Username:any;
+
+    urlPfp:any="http://localhost:8000/storage/profile_pic/";
+	userPfp:any="/assets/post-images/profile_def.jpg";
     constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public userService: GetUserService) { }
     
     ngOnInit() {
         this.getUser();
-        this.userData = this.userService.getUserData();
-        this.Username = this.userData.name + " " + this.userData.surname;
         this.sidebar = document.querySelector(".sidebar")!;
         this.closeBtn = document.querySelector("#btn")!;
         this.searchBtn = document.querySelector(".bx-search")!;
@@ -30,21 +32,24 @@ export class SidebarComponent implements OnInit {
             this.sidebar.classList.toggle("open");
             this.menuBtnChange();
         });
-        
     }
     getUser(){
         this.userService.getUser().subscribe((res:any)=>{
-            this.userId = res.id;
+            this.userData = res;
+            this.Username = this.userData.name + " " + this.userData.surname;
+            this.checkProfilePic();
         })
     }
+    checkProfilePic(){
+        if (this.userData.profile_pic) this.userPfp = this.urlPfp + this.userData.profile_pic;
+        this.showProfilePic = true;
+    }
     ToOwnProfile(){
-        this.router.navigateByUrl("/profile/"+this.userId);
+        this.router.navigateByUrl("/profile/"+this.userData.id);
     }
     logout() {
         this.api.sendLogout().subscribe();
         localStorage.removeItem("accessToken");
-        localStorage.removeItem("IdUser");
-        localStorage.removeItem("userData");
         this.status.isLoggedIn = false;
         this.router.navigateByUrl("/login");
     }

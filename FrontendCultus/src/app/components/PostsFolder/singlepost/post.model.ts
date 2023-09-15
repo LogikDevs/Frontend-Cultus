@@ -39,4 +39,5 @@ export interface Post {
   export interface UserOnPost {
 	name: string;
 	surname: string;
+	profile_pic:string;
   }

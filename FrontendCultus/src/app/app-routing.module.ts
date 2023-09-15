@@ -8,7 +8,6 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ComienzoComponent } from './components/comienzo/comienzo.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { PostsComponent } from './components/PostsFolder/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
 import { CreatePostComponent } from './components/create-post/create-post.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent, canActivate: [GuardAuthentication] },
-  { path: 'posts', component: PostsComponent, canActivate: [GuardAuthentication] },
   { path: 'profile/:id', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
   { path: 'SelectUserData', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
@@ -39,9 +37,9 @@ const routes: Routes = [
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
   { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] },
-  { path: 'Search', component: TypeSearchComponent, canActivate: [GuardAuthentication] }
+  { path: 'Search', component: TypeSearchComponent, canActivate: [GuardAuthentication] },
   { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] },
-  { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
+  { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] }
 
 ];
 

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Comment } from '../posts/post.model';
+import { Comment } from '../singlepost/post.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comment',
@@ -15,18 +16,28 @@ export class CommentComponent implements OnInit{
     commentId:any;
     ownComment:boolean = false;
     displayedOptions:boolean = false;
- 
-    constructor() { }
+    
+    urlPfp:any="http://localhost:8000/storage/profile_pic/";
+    userPfp:any="/assets/post-images/profile_def.jpg";
+
+    constructor(private router: Router) { }
 
     ngOnInit(){
         this.checkAuthor();
+        this.checkProfilePic();
         this.commentId = this.comment.id_comment;
+    }
+    checkProfilePic(){
+        if (this.comment.user) this.userPfp = this.urlPfp + this.comment.user;
     }
     checkAuthor(){
         const idToNum = Number(this.userId);
         if (this.comment.user.id == idToNum) this.ownComment = true;
     }
-
+	clickedProfile(){
+		this.router.navigateByUrl('/profile/'+this.comment.user.id);
+	}
+    
     displayOptions(event: Event){
         event.stopPropagation(); 
         this.displayedOptions = !this.displayedOptions;
