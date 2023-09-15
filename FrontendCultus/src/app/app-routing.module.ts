@@ -23,6 +23,7 @@ import { BackofficeUsersComponent } from './components/backoffice-users/backoffi
 import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { TypeSearchComponent } from './components/type-search/type-search.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -45,9 +46,8 @@ const routes: Routes = [
   { path: 'sidebar-backoffice', component: SidebarBackofficeComponent, canActivate: [GuardAuthentication] },
   { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] },
   { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
-  { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] }
-  
-
+  { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] },
+  { path: 'Search', component: TypeSearchComponent, canActivate: [GuardAuthentication] }
 ];
 
 

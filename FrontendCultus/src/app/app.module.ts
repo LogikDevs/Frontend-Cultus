@@ -38,6 +38,7 @@ import { ModalOptionPostComponent } from './components/modal-option-post/modal-o
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { TypeSearchComponent } from './components/type-search/type-search.component';
 
 
 
@@ -76,7 +77,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     CreateGroupComponent,
     ModalOptionPostComponent,
     CrearMenuComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    TypeSearchComponent
   ],
   imports: [
     BrowserModule,
