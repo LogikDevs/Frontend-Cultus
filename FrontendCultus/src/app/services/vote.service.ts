@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class VoteService {
 	private urlCreateVote = 'http://localhost:8001/api/v1/votes/create';
-	private urlUpdateVotes = 'http://localhost:8001/api/v1/posts/listPost/';
+	private urlUpdateVotes = 'http://localhost:8001/api/v1/posts/list/';
 	private urlDeleteVote = 'http://localhost:8001/api/v1/votes/delete/';
 	private urlUserVotes= 'http://localhost:8001/api/v1/votes/listUser/';
 	constructor(private http: HttpClient) { }

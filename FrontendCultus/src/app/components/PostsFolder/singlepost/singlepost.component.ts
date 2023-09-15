@@ -115,7 +115,7 @@ import { Router } from '@angular/router';
 
 	updateVotes() {
 		this.voteService.updateVotes(this.post.post.id_post).subscribe((res: any) => {
-			this.post.post.votes = res.votes;
+			this.post.post.votes = res[0].post.votes;
 			this.VotesColor();
 		});
 	}
