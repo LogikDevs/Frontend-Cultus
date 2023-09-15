@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GetPostsService } from 'src/app/services/get-posts.service';
-import { Post } from '../PostsFolder/posts/post.model';
+import { Post } from '../PostsFolder/singlepost/post.model';
 import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class DiscoverySectionComponent {
   	constructor(private postService: GetPostsService, private userService: GetUserService) { }
 
   	ngOnInit() {
+		this.getUser();
       	this.getPosts();
   	}
   	getUser(){

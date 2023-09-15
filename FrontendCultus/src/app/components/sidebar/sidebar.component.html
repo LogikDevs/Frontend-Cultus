@@ -24,7 +24,7 @@
         </li>
         <li>
             <div class="Crear-menu">
-                 <a id="Crear">
+                <a id="Crear">
                 <app-crear-menu ></app-crear-menu>
             </a>
             </div>
@@ -76,7 +76,7 @@
         <div class="ProfileUser">
             <li class="profile" id="mobile" >
                 <div class="ProfileDetails" (click)="ToOwnProfile()">
-                    <img src="assets/post-images/profile_def.jpg" class="fotoperfil" alt="profile image">
+                    <img *ngIf="showProfilePic" src={{userPfp}} class="fotoperfil" alt="profile image">
                     <div class="ProfileContent" id="Off">
                             <div class="name">
                                 <p id="username">{{Username}}</p>

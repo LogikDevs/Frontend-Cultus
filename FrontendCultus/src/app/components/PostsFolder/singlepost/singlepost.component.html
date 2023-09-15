@@ -20,11 +20,11 @@
 		
 			<div class="UserPost">
 				<div class="UserLogo">
-					<img src="/assets/post-images/profile_def.jpg" alt="">
+					<img (click)="clickedProfile()" src={{userPfp}} alt="">
 				</div>
 				<div class="NameAndDate">
 					<div class="UsernamePost">
-						<p>{{ post.user.name }} {{ post.user.surname }}</p>
+						<p (click)="clickedProfile()">{{ post.user.name }} {{ post.user.surname }}</p>
 					</div>
 					<div class="PostUploadDate">
 						<p>{{post.post.date.slice(2,-3)}}</p>
@@ -112,7 +112,7 @@
 		</div>
 		<div class="ProfilePostDesktop">
 			<div class="PerfilImage">
-				<img src="/assets/post-images/profile_def.jpg" alt="">
+				<img src={{userPfp}} alt="">
 			</div>
 			<div class="UsernameProfile">
 				<p>{{ post.user.name }} {{ post.user.surname }}</p>

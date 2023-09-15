@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { GetUserService } from '../../services/get-user.service';
 import { User } from './profile.model';
-import { Post } from '../PostsFolder/posts/post.model';
+import { Post } from '../PostsFolder/singlepost/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FollowsService } from 'src/app/services/follows.service';
@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 	
 	Url_profile_pic:string="http://localhost:8000/storage/profile_pic/";
 	@Input() pfpUrl:string;
-
+	@Input() userId:any;
 	@Input() ProfileData:User;
 	
 	userInterests: any[] = [];
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
 	posts: Post[];
 	
 	selectedImage: string | undefined;
-  isDragging: boolean = false;
+  	isDragging: boolean = false;
 
 	msgNoCountry:string = "Not Specified.";
 	textHomelandOrResidence:any = {
@@ -61,7 +61,8 @@ export class ProfileComponent implements OnInit {
 	
 	checkProfileType(){
 		this.userService.getUser().subscribe((res:any)=>{
-			if (Number(this.ProfileId) === res.id) this.ownProfile = true;
+			this.userId = res.id;
+			if (Number(this.ProfileId) === this.userId) this.ownProfile = true;
 		})
 	}	
 	

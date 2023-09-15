@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CreatePostService } from '../../services/create-post.service';
 import { NewPostData } from './create-post.model';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
+import { GetUserService } from 'src/app/services/get-user.service';
 @Component({
 	selector: 'app-create-post',
 	templateUrl: './create-post.component.html',
@@ -10,9 +11,13 @@ import { GetInterestsService } from 'src/app/services/get-interests.service';
 export class CreatePostComponent {
 	
 	postMultimedia: File;
-
-	constructor(private createPostService: CreatePostService, public interestService: GetInterestsService) { }
-
+	userData:any;
+	constructor(private userService: GetUserService, private createPostService: CreatePostService, public interestService: GetInterestsService) { }
+	ngOnInit(){
+		this.userService.getUser().subscribe((res:any)=>{
+			this.userData = res;
+		})
+	}
 	sendPostData(FormData: any) {
 		const postData: NewPostData = {
 			text: FormData.text,

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 
@@ -19,17 +18,19 @@ export class TypeSearchComponent {
 	AllPosts:any;
 	AllInterests:any;
 	filteredResults:any;
-    constructor(private interestService: GetInterestsService, private postService: GetPostsService, private router: Router) { }
+    constructor(private interestService: GetInterestsService, private postService: GetPostsService) { }
 
 	ngOnInit(){
-		//Request Users
+		this.RequestInformation();
+	};
+	RequestInformation(){
 		this.postService.getPosts().subscribe((res:any)=>{
 			this.AllPosts = res;
 		})
 		this.interestService.getInterests().subscribe((res:any)=>{
 			this.AllInterests = res;
 		});
-	};
+	}
     filterType(type:any = "users" || "posts" || "interests"){
 		this.typeSearchVariable = type;
     }
@@ -47,7 +48,7 @@ export class TypeSearchComponent {
 		}
 		if (this.typeSearchVariable == "posts") {
 			this.filteredResults = this.AllPosts.filter((result:any) =>
-				result.post.text.toLowerCase().startsWith(dataReceived.toLowerCase())
+				result.text.toLowerCase().startsWith(dataReceived.toLowerCase())
 			)
 		}
 		if (this.typeSearchVariable == "interests") {

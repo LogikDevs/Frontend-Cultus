@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GetCommentsService {
-  	private URLCreateComment = "http://localhost:8001/api/comments/create";
-  	private URLGetComment = "http://localhost:8001/api/comments/listPost/";
-	private URLDeleteComment = "http://localhost:8001/api/comments/delete/";
+  	private URLCreateComment = "http://localhost:8001/api/v1/comments/create";
+  	private URLGetComment = "http://localhost:8001/api/v1/comments/listPost/";
+	private URLDeleteComment = "http://localhost:8001/api/v1/comments/delete/";
   	constructor(private http: HttpClient) { }
   
  	 getComment(PostId:number): Observable<Comment[]>{

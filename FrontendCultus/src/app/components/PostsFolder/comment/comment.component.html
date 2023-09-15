@@ -1,8 +1,9 @@
 <div class="TextPostDesktop" *ngIf="commentVisibility">
     <div class="PhotoComment">
-        <img src="assets/post-images/profile_def.jpg" alt="">
+        <img (click)="clickedProfile()" src={{userPfp}} alt="">
     </div>
-    <p class="author">{{comment.user.name}} {{comment.user.surname}} :</p><p class="CommentText"> {{comment.text}}</p> <button class="Button"><img src="assets/post-images/navegacion.png" alt="" (click)="displayOptions($event)"></button>
+    <p class="author" (click)="clickedProfile()">{{comment.user.name}} {{comment.user.surname}}:</p>
+    <p class="CommentText">{{comment.text}}</p> <button class="Button"><img src="assets/post-images/navegacion.png" alt="" (click)="displayOptions($event)"></button>
 
 </div>
 <div *ngIf="displayedOptions">

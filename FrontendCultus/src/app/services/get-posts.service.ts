@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Post } from '../components/PostsFolder/posts/post.model';
+import { Post } from '../components/PostsFolder/singlepost/post.model';
 import { Observable } from 'rxjs';
 @Injectable({
 	providedIn: 'root'
 })
 export class GetPostsService {
-	private urlGetPosts = 'http://localhost:8001/api/v1/posts/listAll';
+	private urlGetPosts = 'http://localhost:8001/api/v1/posts/';
 	private urlGetPostsFromInterests = 'http://localhost:8001/api/v1/posts/interested/';
 	private urlUserPosts = 'http://localhost:8001/api/v1/posts/user/';
 	private urlUpdateComments='http://localhost:8001/api/v1/posts/listPost/'
