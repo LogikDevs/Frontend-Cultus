@@ -18,7 +18,10 @@ export class TypeSearchComponent {
 	AllPosts:any;
 	AllInterests:any;
 	filteredResults:any;
-    constructor(private interestService: GetInterestsService, private postService: GetPostsService) { }
+    constructor(
+		private interestService: GetInterestsService, 
+		private postService: GetPostsService
+	) { }
 
 	ngOnInit(){
 		this.RequestInformation();

@@ -8,9 +8,10 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
 })
 export class ModalOptionPostComponent {
   @Input() ownPost:boolean;
-  @Input() postId:any;
-  @Output() PostRemoved = new EventEmitter<boolean>();
+  @Input() postId:any;  
   @Input() optionVisibility:boolean;
+
+  @Output() PostRemoved = new EventEmitter<boolean>();
 
   constructor(private postService: GetPostsService){}
     removePost(){
@@ -20,7 +21,6 @@ export class ModalOptionPostComponent {
         })
     }
     reportPost(){
-        console.log("Reported.");
         this.optionVisibility = false;
     }
     hideComponent(){

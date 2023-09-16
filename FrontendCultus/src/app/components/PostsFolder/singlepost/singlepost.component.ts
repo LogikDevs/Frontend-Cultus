@@ -22,23 +22,24 @@ import { Router } from '@angular/router';
 
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
-	@Input() defaultUrl:string = "http://localhost:8001/storage/multimedia_post/";
+
+	defaultUrl:string = "http://localhost:8001/storage/multimedia_post/";
+
 	urlPfp:any="http://localhost:8000/storage/profile_pic/";
 	userPfp:any="/assets/post-images/profile_def.jpg";
 	
 	@Input() ProfilePosts:boolean = false;
 	@Input() userId:any;
 	
+	displayedOptions:boolean = false;
     postVisibility:boolean = true;
     postId:any;
 	ownPost:boolean = false;
-    displayedOptions:boolean = false;
 
 	Followable:boolean = false;
 	userFollows:any[] = [];
 	userFollowsAccount:any;
 
-	
   	AddComment:string = '';
 
 	vote:any;
@@ -48,17 +49,21 @@ import { Router } from '@angular/router';
   	showComments: boolean = false;
 	noCommentsTemplate: any;
 
-	
-
-	constructor(private voteService: VoteService, private commentsService: GetCommentsService, private postService: GetPostsService, private followService: FollowsService, private router: Router) { }
+	constructor(
+		private voteService: VoteService, 
+		private commentsService: GetCommentsService, 
+		private postService: GetPostsService, 
+		private followService: FollowsService, 
+		private router: Router
+	) { }
 	ngOnInit() {
 		this.postId = this.post.post.id_post;
+
 		this.checkAuthor();
 		this.checkProfilePic();
 		this.insertMultimedia();
 		this.IsFollowable();
 		this.CheckFollowOrUnfollow(false)
-
 	}
 	checkProfilePic(){
 		if (this.post.user.profile_pic) this.userPfp = this.urlPfp + this.post.user.profile_pic;
@@ -88,7 +93,7 @@ import { Router } from '@angular/router';
 		}
 	}	
 	showCommentLocally(CreatedComment:any){
-		console.log(CreatedComment);
+
 		const NewComment: Comment = {
 			id_comment: CreatedComment.comment.id_comment,
 			user:{
@@ -103,12 +108,10 @@ import { Router } from '@angular/router';
 		this.updateComments();
 	}
 
-
 	ClickVote(votetype:any){
 		if (votetype == 1) this.CreateVote(1);
 		if (votetype == 0) this.CreateVote(0);
 	}
-
 	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res) => {this.updateVotes()})
 	}
@@ -125,22 +128,20 @@ import { Router } from '@angular/router';
 		if (this.post.post.votes == 0) voteColor.style.color = "grey";
 		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
 	}
+
 	updateComments(){
 		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
 			this.post.post.comments = res.comments;
 		});
 	}
-
 	CheckFollowOrUnfollow(click:boolean){
 		this.followService.getUserFollowedAccounts().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
 			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.post.post.fk_id_user));
 			if (userFollowsAccount) {
-				//CAMBIAR IMAGEN A DEJAR DE SEGUIR
 				if (click === true) this.UnfollowAction();
 			}
 			if (!userFollowsAccount) {
-				//CAMBIAR IMAGEN A SEGUIR
 				if (click === true) this.FollowAction();
 			}			
 		})
@@ -148,13 +149,10 @@ import { Router } from '@angular/router';
 	FollowAction(){
 		this.followService.sendFollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
-			//CAMBIAR IMAGEN A DEJAR DE SEGUIR
 		})
 	}
 	UnfollowAction(){
-		this.followService.Unfollow(this.post.post.fk_id_user).subscribe((res:any)=>{
-			//CAMBIAR IMAGEN A SEGUIR
-		})
+		this.followService.Unfollow(this.post.post.fk_id_user).subscribe((res:any)=>{})
 	}
 
 	mostrarComentarios() {

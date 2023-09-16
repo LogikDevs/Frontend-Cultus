@@ -9,6 +9,8 @@ import { GetUserService } from '../../services/get-user.service';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+    @Input() Username:any;
+    
     sidebar!: HTMLElement;
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
@@ -16,11 +18,15 @@ export class SidebarComponent implements OnInit {
     showProfilePic:any = false;
     userId:any;
     userData:any;
-    @Input() Username:any;
 
     urlPfp:any="http://localhost:8000/storage/profile_pic/";
 	userPfp:any="/assets/post-images/profile_def.jpg";
-    constructor(private api: AuthenticationService, private router: Router, public status: StatusService, public userService: GetUserService) { }
+    constructor(
+        private api: AuthenticationService, 
+        private router: Router, 
+        public status: StatusService, 
+        public userService: GetUserService
+    ) { }
     
     ngOnInit() {
         this.getUser();

@@ -12,23 +12,24 @@ import { FollowsService } from 'src/app/services/follows.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-	@Input() ProfileId:any = this.route.snapshot.params['id'];
-	ownProfile:boolean = false;
-	
-	
-	Url_profile_pic:string="http://localhost:8000/storage/profile_pic/";
+	@Input() ProfileId:any = Number(this.route.snapshot.params['id']);
 	@Input() pfpUrl:string;
 	@Input() userId:any;
 	@Input() ProfileData:User;
+	@Input() isFollowing:string;
+
+	ownProfile:boolean = false;
+	
+	Url_profile_pic:string="http://localhost:8000/storage/profile_pic/";
 	
 	userInterests: any[] = [];
 	
 	userFollows:any;
-	@Input() isFollowing:string;
+
+	
 	posts: Post[];
 	
-	selectedImage: string | undefined;
-  	isDragging: boolean = false;
+	
 
 	msgNoCountry:string = "Not Specified.";
 	textHomelandOrResidence:any = {
@@ -39,17 +40,21 @@ export class ProfileComponent implements OnInit {
 		homeland: this.msgNoCountry,
 		residence: this.msgNoCountry
 	}
+
+	selectedImage: string | undefined;
+  	isDragging: boolean = false;
+
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   	@ViewChild('ContainerInterest', { static: true }) ContainerInterest!: ElementRef<HTMLDivElement>;
   
 	constructor(
-    private route: ActivatedRoute, 
-    private userService: GetUserService, 
-    private postsService: GetPostsService, 
-    private followService: FollowsService, 
-    private router: Router,
-    private renderer: Renderer2 
-  ) { }
+    	private route: ActivatedRoute, 
+    	private userService: GetUserService, 
+    	private postsService: GetPostsService, 
+    	private followService: FollowsService, 
+    	private router: Router,
+    	private renderer: Renderer2 
+  	) { }
 
 
 	ngOnInit() {
@@ -62,16 +67,16 @@ export class ProfileComponent implements OnInit {
 	checkProfileType(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.userId = res.id;
-			if (Number(this.ProfileId) === this.userId) this.ownProfile = true;
+			if (this.ProfileId === this.userId) this.ownProfile = true;
 		})
 	}	
 	
 	getProfile(){
-		console.log(this.ProfileId);
 		this.userService.getProfile(this.ProfileId).subscribe((res:any)=>{
-			console.log(res);
+
 			this.ProfileData = res;
 			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
+			
 			this.checkProfilePic();
 			this.checkCountries();
 		});
@@ -79,11 +84,13 @@ export class ProfileComponent implements OnInit {
 
 	checkProfilePic(){
 		if (this.ProfileData.profile_pic != null) this.pfpUrl = this.Url_profile_pic + this.ProfileData.profile_pic;
+		
 		if (this.ProfileData.profile_pic === null) this.pfpUrl= "assets/post-images/profile_def.jpg"
 	}
 
 	checkCountries(){
 		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = this.textHomelandOrResidence.homeland+this.ProfileData.homeland.country_name;
+		
 		if (this.ProfileData.residence.country_name) this.userCountries.residence = this.textHomelandOrResidence.residence+this.ProfileData.residence.country_name;
 	}
 
@@ -96,7 +103,7 @@ export class ProfileComponent implements OnInit {
 	CheckFollowOrUnfollow(click:boolean){
 		this.followService.getUserFollowedAccounts().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
-			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.ProfileId));
+			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === this.ProfileId);
 			if (userFollowsAccount) {
 				this.isFollowing = "Unfollow";
 				if (click === true) this.UnfollowAction();
@@ -126,6 +133,7 @@ export class ProfileComponent implements OnInit {
 	onFileSelected(event: any) {
 		const file: File = event.target.files[0];
 		const reader = new FileReader();
+		
 		reader.onload = (e: any) => {
 			this.selectedImage = e.target.result;
 		};

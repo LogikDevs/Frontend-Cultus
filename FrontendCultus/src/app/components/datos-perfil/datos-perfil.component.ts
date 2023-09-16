@@ -4,7 +4,6 @@ import { GetCountriesService } from '../../services/get-countries.service';
 import { UserEditedData } from './datos-perfil.model';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { Router } from '@angular/router';
-import { HttpResponse } from '@angular/common/http';
 
 @Component({
 	selector: 'app-datos-perfil',
@@ -12,6 +11,7 @@ import { HttpResponse } from '@angular/common/http';
 	styleUrls: ['./datos-perfil.component.scss']
 })
 export class DatosPerfilComponent {
+
 	UserData:any;
 	selectedImage: string | undefined;
 
@@ -19,7 +19,12 @@ export class DatosPerfilComponent {
 
 	ProfilePictureMultimedia: File;
 
-	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { };
+	constructor(
+		private EditService: EditUserService, 
+		private countries: GetCountriesService, 
+		private userService: GetUserService, 
+		private router: Router
+	) { };
 
 	ngOnInit() {
 		this.getUser();
@@ -41,6 +46,7 @@ export class DatosPerfilComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: ProfileEditData.residenceCountry
 		}
+
 		this.EditService.getEditUser(DataToEdit).subscribe((res: any) => {
         	if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
 		})

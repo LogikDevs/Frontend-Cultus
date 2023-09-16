@@ -24,7 +24,10 @@ export class SelectInterestComponent {
 	@Input() SelectInterestType: string = "user";
 	@Input() WindowVisibility: boolean = true;
 
-	constructor(private interestService: GetInterestsService, private router: Router) { }
+	constructor(
+		private interestService: GetInterestsService, 
+		private router: Router
+	) { }
 
 	ngOnInit(){
 		
@@ -61,8 +64,6 @@ export class SelectInterestComponent {
 		if (this.SelectInterestType == "user") this.sendUserInterests();
  	}
 	
-	
-	
 	getUserInterests(){
 		this.interestService.getUserInterests().subscribe((res: any) => {
 
@@ -79,10 +80,13 @@ export class SelectInterestComponent {
 
 		this.AddUserInterests(this.InterestsToAdd); 
 		this.DeleteUserInterests(this.InterestsToDelete);
+
 		this.interestService.NewUserInterestsArray = [];
 		this.DataBaseInterests=[];
+
 		this.router.navigateByUrl('/home');
 	}
+	
 	AddUserInterests(interest:any){
 		interest.forEach((item: any) => {
 			this.interestService.sendUserInterests(item).subscribe(res => {});

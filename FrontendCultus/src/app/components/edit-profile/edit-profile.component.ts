@@ -1,9 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { EditUserService } from 'src/app/services/edit-user.service';
 import { GetCountriesService } from 'src/app/services/get-countries.service';
 import { GetUserService } from 'src/app/services/get-user.service';
-import { UserEditedData } from '../datos-perfil/datos-perfil.model';
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,9 +9,11 @@ import { UserEditedData } from '../datos-perfil/datos-perfil.model';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent {
-    selectedImage: string | undefined;
 	PublicUrl:string = "http://localhost:8000/storage/profile_pic/";
+	
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+	selectedImage: string | undefined;
+	
 	userData:any;
 	ProfilePictureMultimedia: File;
 
@@ -23,9 +23,10 @@ export class EditProfileComponent {
 	homeland: number;
 	residence: number;
 
-  	constructor(private EditService: EditUserService, private countries: GetCountriesService, private userService: GetUserService, private router: Router) { 
-
-	};
+  	constructor(private EditService: EditUserService, 
+		private countries: GetCountriesService, 
+		private userService: GetUserService, 
+	) {}
 	ngOnInit(){
 		this.countriesDropbox();
 		this.getUserData();
@@ -61,10 +62,8 @@ export class EditProfileComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: DataReceived.residence
 		}
-		console.log(DataToEdit);
-		this.EditService.ProfileEditUser(DataToEdit).subscribe((res:any)=>{
-			console.log(res);
-		});
+
+		this.EditService.ProfileEditUser(DataToEdit).subscribe((res:any)=>{});
   	}
 
 

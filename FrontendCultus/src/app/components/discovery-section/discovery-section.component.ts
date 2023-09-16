@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { Post } from '../PostsFolder/singlepost/post.model';
 import { GetUserService } from 'src/app/services/get-user.service';
@@ -12,7 +12,10 @@ export class DiscoverySectionComponent {
   	userId:any;
   	posts: Post[];
   
-  	constructor(private postService: GetPostsService, private userService: GetUserService) { }
+  	constructor(
+		private postService: GetPostsService, 
+		private userService: GetUserService
+	) { }
 
   	ngOnInit() {
 		this.getUser();
@@ -26,7 +29,6 @@ export class DiscoverySectionComponent {
   	getPosts() {
       	this.postService.getPostsDiscoverySection().subscribe((res: any) => {
           	this.posts = res;
-          	console.log(this.posts);
       	})
   	}
 }

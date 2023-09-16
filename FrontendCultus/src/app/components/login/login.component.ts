@@ -19,16 +19,21 @@ export class LoginComponent {
 	ErrorResetTimeout:any;
 	secondsToReset:number = 8000;
 
-	constructor(private api: AuthenticationService, private router: Router, private status: StatusService, private UserService: GetUserService) { }
+	constructor(
+		private api: AuthenticationService, 
+		private router: Router, 
+		private status: StatusService, 
+		private UserService: GetUserService
+	) { }
+
 	sendLogin(credentials: any) {
 		this.api.sendLogin(credentials).subscribe((res: any) => {
 			this.InputLoginError = '';
 			localStorage.setItem('accessToken', (res["access_token"]));
 			this.status.isLoggedIn = true;
-			this.UserService.UserIdIntoStorage();
 			
 			this.router.navigateByUrl('/home');
-
+			
 		},(error: any)=>{
 			this.InputLoginError = error.error.error_description ;
 		})

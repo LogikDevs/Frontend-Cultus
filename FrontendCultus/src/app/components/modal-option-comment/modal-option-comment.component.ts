@@ -9,8 +9,9 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 export class ModalOptionCommentComponent {
   	@Input() ownComment:boolean;
   	@Input() commentId:any;
+	@Input() optionVisibility:boolean;
+
   	@Output() CommentRemoved = new EventEmitter<boolean>();
-  	@Input() optionVisibility:boolean;
   	
 	constructor(private commentService: GetCommentsService){}
 
@@ -21,7 +22,6 @@ export class ModalOptionCommentComponent {
       	})
   	}
   	reportComment(){
-		console.log("Reported.");
 		this.optionVisibility = false;
   	}
 	hideComponent(){
