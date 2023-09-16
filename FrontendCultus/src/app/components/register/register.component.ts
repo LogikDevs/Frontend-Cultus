@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PostRegisterService } from '../../services/post-register.service';
+import { PostRegisterService } from '../../services/register.service';
 import { Router } from '@angular/router';
 import { StatusService } from '../../services/status.service';
 import { AuthenticationService } from '../../services/authentication.service';
