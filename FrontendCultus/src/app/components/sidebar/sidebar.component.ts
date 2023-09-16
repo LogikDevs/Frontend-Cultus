@@ -53,13 +53,13 @@ export class SidebarComponent implements OnInit {
     ToOwnProfile(){
         this.router.navigateByUrl("/profile/"+this.userData.id);
     }
+
     logout() {
         this.api.sendLogout().subscribe();
         localStorage.removeItem("accessToken");
         this.status.isLoggedIn = false;
         this.router.navigateByUrl("/login");
     }
-
 
     menuBtnChange() {
         if (this.sidebar.classList.contains("open")) {

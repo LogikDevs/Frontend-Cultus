@@ -7,8 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 export class GetUserService {
 	private urlgetUser = 'http://localhost:8000/api/v1/validate';
 	private urlUserProfile = 'http://localhost:8000/api/v1/user/profile/'
-	
-
 
 	private constructor(private http: HttpClient) {  }
 
