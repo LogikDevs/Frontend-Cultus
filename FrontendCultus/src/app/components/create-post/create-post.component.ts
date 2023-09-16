@@ -12,7 +12,11 @@ export class CreatePostComponent {
 	
 	postMultimedia: File;
 	userData:any;
-	constructor(private userService: GetUserService, private createPostService: CreatePostService, public interestService: GetInterestsService) { }
+	constructor(
+		private userService: GetUserService, 
+		private createPostService: CreatePostService, 
+		public interestService: GetInterestsService
+	) { }
 	ngOnInit(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.userData = res;
@@ -32,9 +36,7 @@ export class CreatePostComponent {
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
-		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{
-			console.log("Created: ", res);
-		})
+		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{})
 	}
 	onFileChange(event: any) {
 		this.postMultimedia = event.target.files[0];

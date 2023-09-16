@@ -12,20 +12,22 @@ export class CommentComponent implements OnInit{
     @Input() author: any;
     @Input() userId:any;
     
+    displayedOptions:boolean = false;
     commentVisibility:boolean = true;
     commentId:any;
     ownComment:boolean = false;
-    displayedOptions:boolean = false;
     
     urlPfp:any="http://localhost:8000/storage/profile_pic/";
     userPfp:any="/assets/post-images/profile_def.jpg";
 
-    constructor(private router: Router) { }
+    constructor(
+        private router: Router
+    ) { }
 
     ngOnInit(){
+        this.commentId = this.comment.id_comment;
         this.checkAuthor();
         this.checkProfilePic();
-        this.commentId = this.comment.id_comment;
     }
     checkProfilePic(){
         if (this.comment.user) this.userPfp = this.urlPfp + this.comment.user.profile_pic;

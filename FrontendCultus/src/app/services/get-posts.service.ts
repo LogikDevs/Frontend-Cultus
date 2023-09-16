@@ -9,7 +9,7 @@ export class GetPostsService {
 	private urlGetPosts = 'http://localhost:8001/api/v1/posts/';
 	private urlGetPostsFromInterests = 'http://localhost:8001/api/v1/posts/interested/';
 	private urlUserPosts = 'http://localhost:8001/api/v1/posts/user/';
-	private urlUpdateComments='http://localhost:8001/api/v1/posts/listPost/'
+	private urlUpdateComments='http://localhost:8001/api/v1/posts/list/'
 	private urlGetPostsInterests='http://localhost:8001/api/v1/characterizes/listPost/'
 	private urlDeletePost='http://localhost:8001/api/v1/posts/delete/'
 	constructor(private http: HttpClient) { }
@@ -47,7 +47,7 @@ export class GetPostsService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.get<Post[]>(this.urlUserPosts, httpOptions);
+		return this.http.get<Post[]>(this.urlUserPosts+ProfileId, httpOptions);
 	}
 	updatePostComments(fk_id_post:any){
 		const httpOptions = {

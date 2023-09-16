@@ -6,6 +6,7 @@ export const GuardAuthentication: CanActivateFn = (route, state) => {
 	if (localStorage.getItem("accessToken") === null) {
 		const router = inject(Router);
 		router.navigate(["/login"]);
+		
 		return false;
 	}
 	return true;

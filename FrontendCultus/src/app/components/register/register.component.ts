@@ -23,7 +23,13 @@ export class RegisterComponent {
 	ErrorResetTimeout:any;
 	secondsToReset:number = 8000;
 	
-	constructor(private getUser: GetUserService, private registerService: PostRegisterService, private router: Router, private status: StatusService, private apiauth: AuthenticationService) { };
+	constructor(
+		private getUser: GetUserService, 
+		private registerService: PostRegisterService, 
+		private router: Router, 
+		private status: StatusService, 
+		private apiauth: AuthenticationService
+	) { };
 
 	PostRegister(inputdata: any) {
 		this.registerService.PostRegister(inputdata).subscribe((res: any) => {
@@ -36,7 +42,6 @@ export class RegisterComponent {
 		this.apiauth.sendLogin(inputdata).subscribe((res: any) => {
 			localStorage.setItem('accessToken', (res["access_token"]));
 			this.status.isLoggedIn = true;
-			this.getUser.UserIdIntoStorage();
 			this.router.navigateByUrl('/SelectUserData');
 		})
 	}
