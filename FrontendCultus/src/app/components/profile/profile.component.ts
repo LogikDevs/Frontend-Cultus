@@ -1,50 +1,166 @@
-import { Component , ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { GetUserService } from '../../services/get-user.service';
-var userData: any;
-var userInterests: any;
- @Component({
+import { User } from './profile.model';
+import { Post } from '../PostsFolder/singlepost/post.model';
+import { GetPostsService } from 'src/app/services/get-posts.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FollowsService } from 'src/app/services/follows.service';
+
+@Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
+export class ProfileComponent implements OnInit {
+	@Input() ProfileId:any = Number(this.route.snapshot.params['id']);
+	@Input() pfpUrl:string;
+	@Input() userId:any;
+	@Input() ProfileData:User;
+	@Input() isFollowing:string;
 
-export class ProfileComponent implements OnInit{
-  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-  selectedImage: string | undefined;
-  User: any[] = [];
-  constructor(private api: GetUserService) { }
+	ownProfile:boolean = false;
+	
+	Url_profile_pic:string="http://localhost:8000/storage/profile_pic/";
+	
+	userInterests: any[] = [];
+	
+	userFollows:any;
 
-  ngOnInit():void {
-    this.getUser();
+	
+	posts: Post[];
+	
+	
+
+	msgNoCountry:string = "Not Specified.";
+	textHomelandOrResidence:any = {
+		homeland: "From ",
+		residence: "Lives in "
+	}
+	@Input() userCountries:any = {
+		homeland: this.msgNoCountry,
+		residence: this.msgNoCountry
+	}
+
+	selectedImage: string | undefined;
+  	isDragging: boolean = false;
+
+	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  	@ViewChild('ContainerInterest', { static: true }) ContainerInterest!: ElementRef<HTMLDivElement>;
+  
+	constructor(
+    	private route: ActivatedRoute, 
+    	private userService: GetUserService, 
+    	private postsService: GetPostsService, 
+    	private followService: FollowsService, 
+    	private router: Router,
+    	private renderer: Renderer2 
+  	) { }
+
+
+	ngOnInit() {
+		this.checkProfileType();
+		this.getProfile();
+		this.CheckFollowOrUnfollow(false);
+		this.getUserPosts();
+	}
+	
+	checkProfileType(){
+		this.userService.getUser().subscribe((res:any)=>{
+			this.userId = res.id;
+			if (this.ProfileId === this.userId) this.ownProfile = true;
+		})
+	}	
+	
+	getProfile(){
+		this.userService.getProfile(this.ProfileId).subscribe((res:any)=>{
+
+			this.ProfileData = res;
+			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
+			
+			this.checkProfilePic();
+			this.checkCountries();
+		});
+	}	
+
+	checkProfilePic(){
+		if (this.ProfileData.profile_pic != null) this.pfpUrl = this.Url_profile_pic + this.ProfileData.profile_pic;
+		
+		if (this.ProfileData.profile_pic === null) this.pfpUrl= "assets/post-images/profile_def.jpg"
+	}
+
+	checkCountries(){
+		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = this.textHomelandOrResidence.homeland+this.ProfileData.homeland.country_name;
+		
+		if (this.ProfileData.residence.country_name) this.userCountries.residence = this.textHomelandOrResidence.residence+this.ProfileData.residence.country_name;
+	}
+
+	getUserPosts(){
+		this.postsService.getUserPosts(this.ProfileId).subscribe((res:any)=>{
+			this.posts = res;
+		})
+	}
+	
+	CheckFollowOrUnfollow(click:boolean){
+		this.followService.getUserFollowedAccounts().subscribe((res:any)=>{
+			this.userFollows = Object.values(res);
+			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === this.ProfileId);
+			if (userFollowsAccount) {
+				this.isFollowing = "Unfollow";
+				if (click === true) this.UnfollowAction();
+			}
+			if (!userFollowsAccount) {
+				this.isFollowing = "Follow";
+				if (click === true) this.FollowAction();
+			}			
+		})
+	}
+	FollowAction(){
+		this.followService.sendFollow(this.ProfileId).subscribe((res:any)=>{
+			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
+			else this.isFollowing = "Unfollow";
+		})
+	}
+	UnfollowAction(){
+		this.followService.Unfollow(this.ProfileId).subscribe((res:any)=>{
+			this.isFollowing = "Follow";
+		})
+	}
+
+
+	triggerFileInput() {
+		this.fileInput.nativeElement.click();
+	}
+	onFileSelected(event: any) {
+		const file: File = event.target.files[0];
+		const reader = new FileReader();
+		
+		reader.onload = (e: any) => {
+			this.selectedImage = e.target.result;
+		};
+		reader.readAsDataURL(file);
+	}
+	ToEditProfile(){
+		this.router.navigateByUrl('/EditProfile');
+	}
+  onDragStart(event: DragEvent) {
+    event.dataTransfer?.setData('text/plain', ''); 
+    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    this.isDragging = true;
   }
-  getUser(){
-    this.api.getUser().subscribe((res:any) => {
-      this.User.push({
-        id: res.id,
-        email: res.email,
-        name: res.name,
-        surname: res.surname,
-        age: res.age,
-        gender: res.gender,
-        homeland: res.homeland,
-        residence: res.residence,
-        description: res.description,
-        profile_pic: res.profile_pic
-    }); 
-    this.api.getUserInterests(res.id).subscribe((res2:any) => {
-      userInterests = res2;
-      })
-    })
+
+  onDragEnd(event: DragEvent) {
+    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    this.isDragging = false;
   }
-  triggerFileInput() {
-    this.fileInput.nativeElement.click();
-  }
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.selectedImage = e.target.result;
-    };
-    reader.readAsDataURL(file);
+
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    if (this.isDragging) {
+      const container = event.currentTarget as HTMLElement;
+      const offsetX = event.clientX - container.getBoundingClientRect().left;
+      const containerWidth = container.clientWidth;
+      const scrollLeft = (offsetX / containerWidth) * (container.scrollWidth - containerWidth);
+      container.scrollLeft = scrollLeft;
+    }
   }
 }

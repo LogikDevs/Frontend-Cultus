@@ -1,3 +1,375 @@
+$ColorFuente:#4A5C45;
+$ColorSecundario:#282928;
 *{
-    color: white;
+
+    transition: all .5s ease;
+}
+
+
+.ContainerMyProfile{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    background-color: #181818;
+    transition: all .5s ease;
+}
+.ImageProfile{
+   background-color: $ColorFuente;
+   border: solid 10px $ColorSecundario;
+   position: relative;
+top: 80px;
+   margin: auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+
+
+}
+.ImageProfile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.EditProfile{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color:#333131;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+float: right;
+margin: 0px;
+
+    text-align: center;
+    cursor: pointer;
+}
+.EditProfile img{
+width: 80%;
+height: 80%;
+margin-top: 5px;
+}
+
+.DataMyProfile{
+    display: flex;
+    justify-content: center;
+  color: $ColorFuente;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.DataMyProfile p{
+    margin: 2px;
+    margin-top:20px ;
+  
+}
+.MyInterestProfile{
+color: $ColorFuente;
+font-weight: bold;
+
+width: 100%;
+display: flex;
+align-items: center;
+}
+.ContainerInterest {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+   
+ cursor:grab;
+  }
+  .ContainerInterest.dragging {
+    opacity: 0;
+ 
+
+  }
+  
+  .dragging {
+      visibility: hidden;
+  }
+
+  
+  .ContainerInterest::-webkit-scrollbar {
+    display: none; 
+  }
+.Interest{
+ margin-left: 10px;
+background-color: #111111;
+border-radius: 15px;
+padding: 10px;
+}
+.Interest p{
+background-color: $ColorSecundario;
+
+
+text-align: center;
+}
+.TittleInterest p{
+margin-left: 20px;
+margin-top: 20px;
+font-size: 15px;
+}
+.PostTypes{
+    
+    margin-top: 20px;
+    text-align: start;
+}
+.PostTypes p{
+    
+    
+    color: $ColorFuente;
+    font-weight: bold;
+    font-size: 15px;
+}
+.PostMyProfile{
+    border-bottom: 1px solid rgba(36, 78, 36, 0.328);
+    width: 90%;
+    margin: auto;
+}
+.ContainerImagePost{
+background-color:  #111111;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+    margin-bottom:100px;
+ 
+
+
+}
+.ContainerProfile{
+    display: flex;
+    justify-content: space-around;
+}
+.PostImage{
+    background-color: $ColorSecundario;
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+    border-radius: 10px;
+    
+}
+.ContainerPost{
+    margin: auto;
+  
+}
+.Posts{
+    flex-direction: column;
+}
+.PostImage img{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media(min-width:501px){
+
+    .Profile{
+        margin-top: 20px;
+    }
+.ContainerMyProfile{
+    width: 80%;
+    float: right;
+    margin-right: 15px;
+    max-width: 500px;
+
+}
+
+.ContainerImagePost{
+    width: 80%;
+    float: right;
+    margin-right: 15px;
+    max-width: 500px;
+}
+}
+@media(min-width:630px){
+    .ContainerData{
+        border: 0px solid;
+        margin-left: -200px;
+    }
+    .ContainerMyProfile{
+        width: 300%;
+ float: none;
+ margin: auto;
+
+        max-width: 500px;
+     
+
+
+    }
+    .ContainerImagePost{
+        width: 100%;
+        float: none;
+        margin: auto;
+
+               max-width: 500px;
+            
+    }
+   .Profile{
+ 
+margin: auto;
+display: flex;
+justify-content: center;
+margin-left: 70px;
+  }
+
+  .Profile{
+    margin-top: 20px;
+}
+    }
+    @media(min-width:900px){
+        .ContainerData{
+            border: 0px solid;
+            margin-left: 0px;
+        }
+     
+  .ContainerMyProfile{
+ min-width: 650px;
+  }}
+    @media(min-width:1100px){
+        .ContainerData{
+            border: 0px solid;
+            margin-left: 0px;
+        }
+  .ContainerMyProfile{
+ min-width: 950px;
+  }
+      .ContainerImagePost{
+        width: 100%;
+    
+
+margin-top: 20px;
+               max-width: 800px;
+            
+    }
+    .PostImage{
+ 
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+}
+.PostImage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    .Profile{
+        margin: auto;
+        margin-top: 20px;
+  max-width: 80%;
+
+  }
+    }
+    .ContainerData{
+        border-radius: 20px;
+        border-left: 1px solid rgba(9, 114, 32, 0.25);
+        border-right: 1px solid rgba(9, 114, 32, 0.25);
+        border-bottom: 1px solid rgba(9, 114, 32, 0.25);
+    }
+    .BackgroundProfile{
+        background: url('https://thumbs.dreamstime.com/b/hojas-de-oto%C3%B1o-en-el-camino-lluvioso-127151896.jpg');
+ background-size: cover;
+ height: 250px;
+ border-top-left-radius: 20px;
+ border-top-right-radius: 20px;
+    }
+ 
+@media(max-width:499px){
+.ContainerProfile{
+    flex-direction: column-reverse;
+}
+.DataUser{
+    margin: auto;
+}
+.ContainerPost{
+    width: 100%;
+}
+.ContainerPostMobile{
+    width: 100%;
+}
+    #header {
+        display: none;
+    }
+    .ImageProfile{
+
+        position: relative;
+     top: 80px;
+        margin: auto;
+         width: 120px;
+         height: 120px;
+         border-radius: 50%;
+     
+     
+     }
+     .BackgroundProfile{
+        height: 200px;
+     }
+     .ContainerImagePost{
+        margin-top: 10px;
+     }
+     
+
+}
+
+.DataUser{
+    width: 250px;
+    height: fit-content;
+    background-color: #181818;
+    margin: 20px;
+    border-radius: 15px;
+    margin-left: auto;
+    padding: 20px;
+}
+.HeaderDataUser p{
+    color: $ColorFuente;
+    font-weight: bold;
+    margin-left: 15px;
+    font-size: 20px;
+
+}
+.Data{
+    width: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 10px;
+    color: $ColorFuente;
+}
+.LogoData{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(21, 21, 20);
+    border-radius: 20px;
+}
+.LogoData img{
+    width: 80%;
+    height: 80%;
+    margin: 3px;
+}
+.TextData p{
+    font-weight: bold;
+    margin-left: 10px;
+}
+.DescriptionData{
+    font-weight: bold;
+    color: $ColorFuente;
+}
+.Description {
+    background-color: #100f0f;
+    border-radius: 10px;
+    margin: 10px;
+}
+.Description p{
+    padding: 20px;
+    font-size: 12px;
+}
+.TittleDescription p{
+    margin-left: 20px;
 }

@@ -1,0 +1,18 @@
+
+<form #eventCreateForm="ngForm" (ngSubmit)="sendCreatedEvent(eventCreateForm.value)">
+    <input ngModel name="EventName" type="text" placeholder="Event Name" required>
+    <input ngModel name="EventDescription" type="text" placeholder="Event Description" required>
+    <input ngModel type="date" id="InitDate" name="InitDate">
+    <input ngModel type="date" id="CloseDate" name="CloseDate">
+    <select ngModel name ="EventType">
+        <option value="private">Private</option>
+        <option value="public">Public</option>
+    </select>
+    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
+    <button type="button" name="EventInterests"(click)="showEventInterestSelection()">Select Event interests</button>
+    <div *ngIf="interestService.displaySelectInterest">
+        <app-select-interest [SelectInterestType]="'event'" [WindowVisibility]="true"></app-select-interest>
+    </div>
+   
+    <button type="submit" name="CreateEvent">Create Event</button>
+</form>

@@ -1,69 +1,114 @@
-<p #HtmlNameSurname *ngFor="let userData of User;">Name: {{ userData.name }} {{ userData.surname }}</p>
-<p #HtmlAge *ngFor="let userData of User;">Age: {{ userData.age }}</p>
-<p #HtmlGender *ngFor="let userData of User;">Gender: {{ userData.gender }}</p>
-<p #HtmlHomeland *ngFor="let userData of User;">Homeland: {{ userData.homeland }}</p>
-<p #HtmlResidence *ngFor="let userData of User;">Residence: {{ userData.residence }}</p>
-<p #HtmlDescription *ngFor="let userData of User;">Description: {{ userData.description }}</p>
-<p #HtmlProfile_Pic *ngFor="let userData of User;">Pfp: {{ userData.profile_pic }}</p>
-
-<div class="ContainerDatosPerfil">
-    <form action="">
+<app-header id="header"></app-header>
 
 
-        <div class="BackgroundAddImage">
-            <div class="AddImage">
-                <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
-                    [style.background-size]="'cover'" [style.background-position]="'center'"
-                    (click)="triggerFileInput()"></div>
-                <div class="AddImageInput">
-                    <label for="pfp" class="InputContainer">
-                        <input ngModel type="file" (change)="onFileSelected($event)" accept="image/*" id="pfp"
-                            name="profile_pic" #fileInput>
-                    </label>
-                </div>
+
+    <app-sidebar></app-sidebar>
+
+<div class="Profile">
+<div class="ContainerData">
+
+<div class="ContainerMyProfile">
+    <div class="BackgroundProfile">
+           <div class="ImageProfile">
+        <img src={{pfpUrl}} alt="">
+        <div class="EditProfile" *ngIf="ownProfile">
+            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="" (click)="ToEditProfile()">
+        </div>
+    </div> 
+    </div>
+
+    <div class="DataMyProfile">
+        <div class="NameMyProfile">
+            <p #HtmlNameSurname *ngIf="ProfileData">{{ProfileData.name}} {{ProfileData.surname}}</p>
+        </div>
+        <div class="Age">
+            <p #HtmlAge *ngIf="ProfileData">, {{ProfileData.age}} </p>
+        </div>
+
+        <div class="FollowOption" *ngIf="!ownProfile">
+            <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
+        </div>
+    </div>
+    <div class="MyInterestProfile">
+        <div class="TittleInterest">
+            <p>Interests:</p>
+        </div>
+      <div class="ContainerInterest" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" [ngClass]="{'dragging': isDragging}">
+            <p class="Interest" *ngFor="let interest of userInterests">{{ interest }}</p>
+      </div> 
+    </div>
+
+    <div class="PostMyProfile">
+        <div class="PostTypes">
+            <div class="ImagePost">
+                <p>Posts:</p>
             </div>
+           
         </div>
-        <div class="AddDescription">
-            <div class="TittleDescription">
-                <p>Agrega una descripcion:</p>
-            </div>
+    </div>
+    
+</div>
 
-            <textarea ngModel *ngFor="let userData of User;" name="description" id="description"
-                placeholder="">{{userData.description}}</textarea>
-        </div>
+<div class="ContainerProfile">
+    
+<div class="ContainerPost">
+    <div class="ContainerImagePost"  *ngFor="let post of posts">
+        <app-singlepost *ngIf="post" [userId]="userId" [post]="post" [ProfilePosts]=true></app-singlepost>
+    </div>
+</div>
 
-        <div class="AddGender">
-            <select *ngFor="let userData of User;" ngModel id="gender" name="gender" required>
-                <option disabled selected value="">Gender: {{userData.gender}}</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="non-binary">Non-Binary</option>
-                <option value="other">Other</option>
-            </select>
+<div class="DataUser">
+    <div class="HeaderDataUser">
+        <p>About</p>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/sidebar-images/home.svg" alt="">
         </div>
+        <div class="TextData">
+            <p *ngIf="ProfileData">{{userCountries.homeland}}</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/Profile-Image/planeta.svg" alt="">
+        </div>
+        <div class="TextData">
+            <p *ngIf="ProfileData">{{userCountries.residence}}</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/sidebar-images/grupos.svg" alt="">
+        </div>
+        <div class="TextData">
+            <p>0 Friends</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/Profile-Image/Account (1).svg" alt="">
+        </div>
+        <div class="TextData">
+            <p> {{ProfileData.gender}} </p>
+        </div>
+    </div>
+    <div class="DescriptionData">
+      <div class="TittleDescription">
+        <p>Description:</p>
+      </div>  
+      <div class="Description">
+        <p> {{ProfileData.description}} </p>
+      </div>
 
-        <div class="AddCountry">
-            <select ngModel id="homeland" name="homeland">
-                <option disabled selected value="">Selecciona tu pais</option>
-                <option value="1">Uruguay</option>
-                <option value="2">Mexico</option>
-                <option value="3">Brazil</option>
-                <option value="4">Japan</option>
-            </select>
-        </div>
-        <div class="AddResidenceCountry">
-            <select ngModel id="residenceCountry" name="residanceCountry">
-                <option disabled selected value="">Selecciona tu pais de residencia</option>
-                <option value="1">Uruguay</option>
-                <option value="2">Uganda</option>
-                <option value="3">Argentina</option>
-            </select>
-        </div>
+    </div>
+</div>
+</div>
+<div class="ContainerTextPost">
 
-        <div class="FinishProfileData">
-            <button id="FinishRegister">Guardar datos</button>
-        </div>
+</div>
 
-    </form>
+
+</div>
 
 </div>

@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthenticationService {
-  private loginUrl = "http://localhost:8000/oauth/token";
-  private logoutUrl = "http://localhost:8000/api/v1/logout";
-  
-  constructor(private http: HttpClient) {}
+	private loginUrl = "http://localhost:8000/oauth/token";
+	private logoutUrl = "http://localhost:8000/api/v1/logout";
+	private client = "101";
+	private secret = "tvuE6hkPAuOHdyoTEjLu1oUHrm7UZAaZ7SIqvVlY";
 
-  sendLogin(credentials: any){
-    const body = {
-      grant_type: "password",
-      client_id: "101",
-      client_secret: "qkeN0x1AuvNVo4pJGU3HE52x2c81L0uKGj22WIxL",
-      username: credentials.email,
-      password: credentials.password
-    }
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    }
-    return this.http.post(this.loginUrl, body, httpOptions);
-  }
-  sendLogout(){
-    const httpOptions = {
-      headers: new HttpHeaders({ 
-        'Content-Type': 'application/json',
-        'Authorization' : 'Bearer ' + localStorage.getItem("accessToken") 
-      })
-    }
-    return this.http.get(this.logoutUrl, httpOptions);
-  }
+	constructor(private http: HttpClient) { }
+
+	sendLogin(credentials: any) {
+		const body = {
+			grant_type: "password",
+			client_id: this.client,
+			client_secret: this.secret,
+			username: credentials.email,
+			password: credentials.password
+		}
+		return this.http.post(this.loginUrl, body);
+	}
+	sendLogout() {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get(this.logoutUrl, httpOptions);
+	}
 }

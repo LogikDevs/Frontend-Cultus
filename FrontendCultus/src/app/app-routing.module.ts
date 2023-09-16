@@ -8,40 +8,38 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ComienzoComponent } from './components/comienzo/comienzo.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GuardAuthentication } from './guards/authentication-guard.guard';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { DatosPerfilComponent } from './components/datos-perfil/datos-perfil.component';
-import { SelectInterestComponent } from './components/select-interest/select-interest.component';
+import { SelectInterestComponent } from './components/InterestsFolder/select-interest/select-interest.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { BackofficeComponent } from './components/backoffice/backoffice.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
+import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
+import { GruposComponent } from './components/grupos/grupos.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { TypeSearchComponent } from './components/type-search/type-search.component';
 
-import { SidebarBackofficeComponent } from './components/sidebar-backoffice/sidebar-backoffice.component';
-import { BackofficePostComponent } from './components/backoffice-post/backoffice-post.component';
-import { BackofficeUsersComponent } from './components/backoffice-users/backoffice-users.component';
-import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
-  { path: 'home', component: HomeComponent, canActivate: [GuardAuthentication]},
+  { path: 'home', component: HomeComponent, canActivate: [GuardAuthentication] },
   { path: 'login', component: LoginComponent },
   { path: 'header', component: HeaderComponent, canActivate: [GuardAuthentication] },
   { path: 'footer', component: FooterComponent, canActivate: [GuardAuthentication] },
   { path: 'register', component: RegisterComponent },
   { path: 'comienzo', component: ComienzoComponent },
   { path: 'sidebar', component: SidebarComponent, canActivate: [GuardAuthentication] },
-  { path: 'posts', component: PostsComponent, canActivate: [GuardAuthentication] },
-  { path: 'profile', component: ProfileComponent, canActivate: [GuardAuthentication] } ,
-  { path: 'optionsdata', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
+  { path: 'profile/:id', component: ProfileComponent,  canActivate: [GuardAuthentication] } ,
+  { path: 'SelectUserData', component: DatosPerfilComponent, canActivate: [GuardAuthentication] },
   { path: 'createpost', component: CreatePostComponent, canActivate: [GuardAuthentication] } ,
   { path: 'SelectInterest', component: SelectInterestComponent, canActivate: [GuardAuthentication] } ,
   { path: 'ForgotPassword', component: ForgotPasswordComponent } ,
-  { path: 'backoffice', component: BackofficeComponent, canActivate: [GuardAuthentication] } ,
-  { path: 'backoffice-post', component: BackofficePostComponent, canActivate: [GuardAuthentication] },
-  { path: 'backoffice-users', component: BackofficeUsersComponent, canActivate: [GuardAuthentication]},
-  { path: 'sidebar-backoffice', component: SidebarBackofficeComponent, canActivate: [GuardAuthentication] },
-  { path: 'Menu-Mobile', component: MenuMobileComponent, canActivate: [GuardAuthentication] }
+  { path: 'createEvent', component: CreateEventComponent, canActivate: [GuardAuthentication] },
+  { path: 'EditProfile', component: EditProfileComponent, canActivate: [GuardAuthentication] },
+  { path: 'Search', component: TypeSearchComponent, canActivate: [GuardAuthentication] },
+  { path: 'crear-menu', component: CrearMenuComponent, canActivate: [GuardAuthentication] },
+  { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] }
 
 ];
 

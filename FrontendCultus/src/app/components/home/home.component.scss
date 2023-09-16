@@ -24,9 +24,7 @@
 
 }
 @media(max-width:499px){
- #SidebarOff{
-    display: none;
- }
+
  #MenuMobile{
     display: block;
  }
@@ -54,3 +52,13 @@
 
 }
 
+#Sidebar {
+    z-index: 1;
+  }
+  
+  .Crear {
+    z-index: 2;
+  }
+  .SliderUsuarios{
+    margin-top: 100px;
+  }
