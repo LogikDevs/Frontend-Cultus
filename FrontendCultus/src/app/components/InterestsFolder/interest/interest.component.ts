@@ -11,16 +11,31 @@ export class InterestComponent {
 	@Input() interest: Interest;
 
 	constructor(private interestService: GetInterestsService) { }
- 	
+
+	ngDoCheck(){
+		const VisualInterest = document.getElementById("InterestVisual_"+this.interest.id_label);
+		const insertId = this.interest.id_label;
+
+		if (this.interestService.NewUserInterestsArray.includes(insertId)){
+			if (VisualInterest) VisualInterest.style.backgroundColor = "#1a1919";
+			
+		}
+	}
 	AddInterestFunction() {
+		const VisualInterest = document.getElementById("InterestVisual_"+this.interest.id_label);
 		const insertId = this.interest.id_label;
 		const isInterestAlreadyAdded = this.interestService.NewUserInterestsArray.includes(insertId);
-		
+	
 		if (isInterestAlreadyAdded) {
 			const removedElementArray = this.interestService.NewUserInterestsArray.filter(item => item !== insertId);
 			this.interestService.NewUserInterestsArray = removedElementArray;
+			
+			if (VisualInterest) VisualInterest.style.backgroundColor = "#27272b";
 		}
-		if (!isInterestAlreadyAdded) this.interestService.NewUserInterestsArray.push(insertId);
+		if (!isInterestAlreadyAdded){
+			this.interestService.NewUserInterestsArray.push(insertId);
+			if (VisualInterest) VisualInterest.style.backgroundColor = "#1a1919";
+		}
  	}
 }
 
