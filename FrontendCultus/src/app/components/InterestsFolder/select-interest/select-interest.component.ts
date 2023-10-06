@@ -70,6 +70,7 @@ export class SelectInterestComponent {
 			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item.id_label);
 			
 			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item.id_label);
+			
 		})
 	}
 	sendUserInterests(){
