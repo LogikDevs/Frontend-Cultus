@@ -36,6 +36,8 @@ import { SliderGruposComponent } from './components/slider-grupos/slider-grupos.
 
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TypeSearchComponent } from './components/type-search/type-search.component';
+import { AlertErrorComponent } from './components/alert-error/alert-error.component';
+import { AlertCompleteComponent } from './components/alert-complete/alert-complete.component';
 
 
 
@@ -70,7 +72,9 @@ import { TypeSearchComponent } from './components/type-search/type-search.compon
     EditProfileComponent,
     TypeSearchComponent,
     GruposComponent,
-    SliderGruposComponent
+    SliderGruposComponent,
+    AlertErrorComponent,
+    AlertCompleteComponent
   ],
   imports: [
     BrowserModule,
