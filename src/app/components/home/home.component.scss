@@ -1,5 +1,7 @@
+$ColorFuente:#4A5C45;
+$ColorSecundario:#282928;
 .ContainerHome {
-    display: flex;
+
     
 }
 
@@ -46,10 +48,32 @@
     display: block;
 }
 .PostHome {
-    margin-left: 50px;
+    margin-left: 110px;
     width: 90%;
 }
 
+
+}
+@media(min-width:501px){
+    .SubHeaderHome{
+        margin-left: 120px;
+    }
+    .Discovery,.Followed{
+
+     background-color: $ColorSecundario;
+     width: 200px;
+     height: 40px;
+ text-align: center;   
+ border-radius: 30px;    
+ cursor: pointer;
+      }
+      .Discovery{
+        border-bottom: 3px solid $ColorFuente;
+      }
+      .Discovery p,.Followed p{
+margin-top: 10px;
+        
+      }
 }
 
 #Sidebar {
@@ -61,4 +85,23 @@
   }
   .SliderUsuarios{
     margin-top: 100px;
+  }
+
+  .SubHeaderHome{
+display: flex;
+justify-content: start;
+align-items: center;
+margin-top: 20px;
+  }
+  .Discovery,.Followed{
+
+    margin: 8px;
+    margin-left: 15px;
+    color: $ColorFuente;
+    font-weight: bold;
+    
+  }
+  .Discovery p,.Followed p{
+padding: 2px;
+    
   }

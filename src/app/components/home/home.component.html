@@ -11,21 +11,32 @@
 
 
     <div class="ContainerHome">
+
+        <div class="SubHeaderHome">
+            <div class="Discovery">
+                <p>Discovery</p>
+            </div>
+            <div class="Followed">
+                <p>Seguidos</p>
+            </div>
+
+
+        </div>
         <div id="Sidebar">
             <app-sidebar></app-sidebar>
         </div>
 
-       
+
         <div class="PostHome">
-             <div class="SliderUsuarios ">
-            <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
-        </div>
-            <app-discovery-section class="Post"></app-discovery-section> 
+            <div class="SliderUsuarios ">
+                <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
+            </div>
+            <app-discovery-section class="Post"></app-discovery-section>
 
         </div>
-      
+
     </div>
-  
+
 
 </body>
 
