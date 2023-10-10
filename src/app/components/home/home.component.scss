@@ -1,5 +1,7 @@
+$ColorFuente:#4A5C45;
+$ColorSecundario:#282928;
 .ContainerHome {
-    display: flex;
+
     
 }
 
@@ -46,10 +48,16 @@
     display: block;
 }
 .PostHome {
-    margin-left: 50px;
+    margin-left: 110px;
     width: 90%;
 }
 
+
+}
+@media(min-width:501px){
+    .SubHeaderHome{
+        margin-left: 100px;
+    }
 }
 
 #Sidebar {
@@ -61,4 +69,22 @@
   }
   .SliderUsuarios{
     margin-top: 100px;
+  }
+
+  .SubHeaderHome{
+display: flex;
+justify-content: start;
+align-items: center;
+  }
+  .Discovery,.Followed{
+
+    margin: 8px;
+    margin-left: 15px;
+    color: $ColorFuente;
+    font-weight: bold;
+    
+  }
+  .Discovery p,.Followed p{
+padding: 2px;
+    
   }
