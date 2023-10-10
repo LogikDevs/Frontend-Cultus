@@ -22,6 +22,7 @@
         <div class="Interest">
             <p>Deportes</p>
         </div>
+    
     </div>
     <div class="PublicationSpace">
     
@@ -66,7 +67,7 @@
 
 </div>
 <div *ngIf="interestService.displaySelectInterest">
-    <app-select-interest class="ContainerInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+    <app-select-interest class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
 </div>
 </form>
 

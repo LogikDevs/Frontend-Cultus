@@ -175,24 +175,48 @@ cursor: pointer;
 .AddImage label {
     cursor: pointer;
 }
-@media(min-width:500px){
-    .ContainerModalCreatePost{
-        margin: auto;
-        margin-top: -60px;
-    }
-}
-.ContainerInterest{
+.ContainerModalCreatePost{
+    margin: auto;
+    margin-top: -60px;
 
 }
+@media(min-width:500px){
+    .ContainerModalCreatePost{
+width: 70%;
+margin-left: 100px;
+
+    }
+    .ContainerSelectInterest{
+        margin-top: -50px;
+    }
+}
+@media(min-width:700px){
+    .ContainerModalCreatePost{
+
+margin: auto;
+margin-top: -60px;
+
+    }
+}
+.ContainerSelectInterest{
+position: relative;
+top: -300px;
+}
+.ContainerInterest{
+    display: flex;
+    margin-top: 10px;
+}
 .Interest{
-    margin-left: 10px;
+    margin-left: 20px;
    background-color: #111111;
    border-radius: 15px;
-   padding: 10px;
+   padding: 5px;
+   height: 25px;
    }
    .Interest p{
-   background-color: $ColorSecundario;
-   
-   
+color: $ColorFuente;
+font-weight: bold;
+   font-size: 12px;
+   margin-top: 5px;
    text-align: center;
-   }
+   } 

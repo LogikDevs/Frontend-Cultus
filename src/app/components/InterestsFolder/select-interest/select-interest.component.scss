@@ -163,7 +163,8 @@ margin: 8px;
 @media (max-width:800px){
     .ContainerSelectInterest{
  width: 70%;
-      margin-left: 110px;
+ margin:auto ;
+ background-color: #537D57;
      
         
       }
@@ -171,24 +172,44 @@ margin: 8px;
 @media (max-width:600px){
     .ContainerSelectInterest{
  width: 70%;
-      margin-left: 110px;
+ margin-top: 20px;
+margin-left: 110px;
     
         
       }
 }
-@media(max-width:499px){
-    #SidebarOff{
-       display: none;
-    }
-    #MenuMobile{
-       display: block;
-    }
+@media(max-width:501px){
+
     .ContainerSelectInterest{
-        margin: auto;
-        margin-top: -20px;
+    width: 70%;
+
+margin: auto;
+
     }
 }
 
+@media(max-height:699px){
+    .ContainerResultsSearch{
+
+        margin-top: 30px;
+    
+    max-height: 300px;
+    text-align: center;
+    overflow-y: scroll;
+    
+       }
+       .ContainerSelectInterest{
+        background-color: #111111;
+
+      height: 500px;
+
+
+        box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
+        margin-top: -30px;
+    
+        
+    }
+}
 
   
    
