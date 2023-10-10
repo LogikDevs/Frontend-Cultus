@@ -56,8 +56,24 @@ $ColorSecundario:#282928;
 }
 @media(min-width:501px){
     .SubHeaderHome{
-        margin-left: 100px;
+        margin-left: 120px;
     }
+    .Discovery,.Followed{
+
+     background-color: $ColorSecundario;
+     width: 200px;
+     height: 40px;
+ text-align: center;   
+ border-radius: 30px;    
+ cursor: pointer;
+      }
+      .Discovery{
+        border-bottom: 3px solid $ColorFuente;
+      }
+      .Discovery p,.Followed p{
+margin-top: 10px;
+        
+      }
 }
 
 #Sidebar {
@@ -75,6 +91,7 @@ $ColorSecundario:#282928;
 display: flex;
 justify-content: start;
 align-items: center;
+margin-top: 20px;
   }
   .Discovery,.Followed{
 
