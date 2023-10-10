@@ -1,9 +1,10 @@
 $ColorFuente:#4A5C45;
 $ColorSecundario:#282928;
 .ContainerModalCreatePost{
+
     width: 100%;
 max-width: 500px;
-
+box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
     background-color: #1D1D1D;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -174,14 +175,48 @@ cursor: pointer;
 .AddImage label {
     cursor: pointer;
 }
+.ContainerModalCreatePost{
+    margin: auto;
+    margin-top: -60px;
+
+}
 @media(min-width:500px){
     .ContainerModalCreatePost{
-        margin: auto;
+width: 70%;
+margin-left: 100px;
+
+    }
+    .ContainerSelectInterest{
+        margin-top: -50px;
     }
 }
-.ContainerInterest{
-  width: 600px;
-  display: block;
-  margin-top: 100px;
-  margin: auto;
+@media(min-width:700px){
+    .ContainerModalCreatePost{
+
+margin: auto;
+margin-top: -60px;
+
+    }
 }
+.ContainerSelectInterest{
+position: relative;
+top: -300px;
+}
+.ContainerInterest{
+    display: flex;
+    margin-top: 10px;
+}
+.Interest{
+    margin-left: 20px;
+   background-color: #111111;
+   border-radius: 15px;
+   padding: 5px;
+   height: 25px;
+   }
+   .Interest p{
+color: $ColorFuente;
+font-weight: bold;
+   font-size: 12px;
+   margin-top: 5px;
+   text-align: center;
+   } 
