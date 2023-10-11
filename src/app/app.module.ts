@@ -39,6 +39,7 @@ import { TypeSearchComponent } from './components/type-search/type-search.compon
 import { AlertErrorComponent } from './components/alert-error/alert-error.component';
 import { AlertCompleteComponent } from './components/alert-complete/alert-complete.component';
 import { CreateComponent } from './components/create/create.component';
+import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
 
 
 
@@ -76,7 +77,8 @@ import { CreateComponent } from './components/create/create.component';
     SliderGruposComponent,
     AlertErrorComponent,
     AlertCompleteComponent,
-    CreateComponent
+    CreateComponent,
+    FollowedSectionComponent
   ],
   imports: [
     BrowserModule,
