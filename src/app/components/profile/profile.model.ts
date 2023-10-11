@@ -11,5 +11,5 @@ export interface User {
 	profile_pic: string
 }
 export interface Country {
-	country_name: any
+country_name: any
 }

@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
 
-	defaultUrl:string = "http://localhost:8001/storage/multimedia_post/";
+	defaultUrl:string = "http://localhost:8001/multimedia_post/";
 
 	urlPfp:any="http://localhost:8000/storage/profile_pic/";
 	userPfp:any="/assets/post-images/profile_def.jpg";
@@ -72,7 +72,10 @@ import { Router } from '@angular/router';
         if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
     }
 	insertMultimedia(){
-		if (this.post.multimedia[0]) this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
+		if (this.post.multimedia[0]) {
+			this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
+			console.log(this.defaultUrl);
+		}
 	}
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;

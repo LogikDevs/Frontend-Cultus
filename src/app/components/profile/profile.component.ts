@@ -31,15 +31,16 @@ export class ProfileComponent implements OnInit {
 	
 	
 
-	msgNoCountry:string = "Not Specified.";
+	msgNoData:string = "Not Specified.";
 	textHomelandOrResidence:any = {
 		homeland: "From ",
 		residence: "Lives in "
 	}
 	@Input() userCountries:any = {
-		homeland: this.msgNoCountry,
-		residence: this.msgNoCountry
+		homeland: this.msgNoData,
+		residence: this.msgNoData
 	}
+	@Input() userGender:any = this.msgNoData;
 
 	selectedImage: string | undefined;
   	isDragging: boolean = false;
@@ -92,6 +93,8 @@ export class ProfileComponent implements OnInit {
 		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = this.textHomelandOrResidence.homeland+this.ProfileData.homeland.country_name;
 		
 		if (this.ProfileData.residence.country_name) this.userCountries.residence = this.textHomelandOrResidence.residence+this.ProfileData.residence.country_name;
+	
+		if (this.ProfileData.gender) this.userGender = this.ProfileData.gender;
 	}
 
 	getUserPosts(){
@@ -111,11 +114,12 @@ export class ProfileComponent implements OnInit {
 			if (!userFollowsAccount) {
 				this.isFollowing = "Follow";
 				if (click === true) this.FollowAction();
-			}			
+			}
 		})
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.ProfileId).subscribe((res:any)=>{
+			console.log(res);
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
 			else this.isFollowing = "Unfollow";
 		})
