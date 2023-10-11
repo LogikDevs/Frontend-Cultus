@@ -11,6 +11,7 @@ export class GetPostsService {
 	private urlUserPosts = 'http://localhost:8001/api/v1/posts/user/';
 	private urlUpdateComments='http://localhost:8001/api/v1/posts/list/'
 	private urlGetPostsInterests='http://localhost:8001/api/v1/characterizes/listPost/'
+	private urlGetPostsFromFolloweds='http://localhost:8001/api/v1/posts/followed';
 	private urlDeletePost='http://localhost:8001/api/v1/posts/delete/'
 	constructor(private http: HttpClient) { }
 	getPosts(): Observable<Post[]> {
@@ -30,6 +31,15 @@ export class GetPostsService {
 			})
 		}
 		return this.http.get<Post[]>(this.urlGetPostsFromInterests, httpOptions);
+	}
+	getPostsFollowedsSection(): Observable<Post[]> {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get<Post[]>(this.urlGetPostsFromFolloweds, httpOptions);
 	}
 	getPostsInterests(IdPost:any) {
 		const httpOptions = {
