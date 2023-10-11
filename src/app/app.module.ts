@@ -38,6 +38,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { TypeSearchComponent } from './components/type-search/type-search.component';
 import { AlertErrorComponent } from './components/alert-error/alert-error.component';
 import { AlertCompleteComponent } from './components/alert-complete/alert-complete.component';
+import { CreateComponent } from './components/create/create.component';
 
 
 
@@ -74,7 +75,8 @@ import { AlertCompleteComponent } from './components/alert-complete/alert-comple
     GruposComponent,
     SliderGruposComponent,
     AlertErrorComponent,
-    AlertCompleteComponent
+    AlertCompleteComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
