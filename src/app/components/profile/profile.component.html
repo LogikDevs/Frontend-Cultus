@@ -1,0 +1,110 @@
+<app-sidebar></app-sidebar>
+
+<div class="Profile">
+<div class="ContainerData">
+
+<div class="ContainerMyProfile">
+    <div class="BackgroundProfile">
+           <div class="ImageProfile">
+        <img src={{pfpUrl}} alt="">
+        <div class="EditProfile" *ngIf="ownProfile">
+            <img src="assets/Profile-Image/Pencil Drawing.svg" alt="" (click)="ToEditProfile()">
+        </div>
+    </div> 
+    </div>
+
+    <div class="DataMyProfile">
+        <div class="NameMyProfile">
+            <p #HtmlNameSurname *ngIf="ProfileData">{{ProfileData.name}} {{ProfileData.surname}}</p>
+        </div>
+        <div class="Age">
+            <p #HtmlAge *ngIf="ProfileData">, {{ProfileData.age}} </p>
+        </div>
+
+        <div class="FollowOption" *ngIf="!ownProfile">
+            <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
+        </div>
+    </div>
+    <div class="MyInterestProfile">
+        <div class="TittleInterest">
+            <p>Interests:</p>
+        </div>
+      <div class="ContainerInterest" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" [ngClass]="{'dragging': isDragging}">
+            <p class="Interest" *ngFor="let interest of userInterests">{{ interest }}</p>
+      </div> 
+    </div>
+
+    <div class="PostMyProfile">
+        <div class="PostTypes">
+            <div class="ImagePost">
+                <p>Posts:</p>
+            </div>
+           
+        </div>
+    </div>
+    
+</div>
+
+<div class="ContainerProfile">
+    
+<div class="ContainerPost">
+    <div class="ContainerImagePost"  *ngFor="let post of posts">
+        <app-singlepost *ngIf="post" [userId]="userId" [post]="post" [ProfilePosts]=true></app-singlepost>
+    </div>
+</div>
+
+<div class="DataUser">
+    <div class="HeaderDataUser">
+        <p>About</p>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/sidebar-images/home.svg" alt="">
+        </div>
+        <div class="TextData">
+            <p *ngIf="ProfileData">{{userCountries.homeland}}</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/Profile-Image/planeta.svg" alt="">
+        </div>
+        <div class="TextData">
+            <p *ngIf="ProfileData">{{userCountries.residence}}</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/sidebar-images/grupos.svg" alt="">
+        </div>
+        <div class="TextData">
+            <p>0 Friends</p>
+        </div>
+    </div>
+    <div class="Data">
+        <div class="LogoData">
+            <img src="assets/Profile-Image/Account (1).svg" alt="">
+        </div>
+        <div class="TextData">
+            <p> {{userGender}} </p>
+        </div>
+    </div>
+    <div class="DescriptionData">
+      <div class="TittleDescription">
+        <p>Description:</p>
+      </div>  
+      <div class="Description">
+        <p> {{ProfileData.description}} </p>
+      </div>
+
+    </div>
+</div>
+</div>
+<div class="ContainerTextPost">
+
+</div>
+
+
+</div>
+
+</div>
