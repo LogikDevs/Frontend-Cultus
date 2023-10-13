@@ -18,7 +18,6 @@ export class InterestComponent {
 
 		if (this.interestService.NewUserInterestsArray.includes(insertId)){
 			if (VisualInterest) VisualInterest.style.backgroundColor = "#1a1919";
-			
 		}
 	}
 	AddInterestFunction() {
