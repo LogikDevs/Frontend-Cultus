@@ -1,0 +1,73 @@
+
+<app-sidebar></app-sidebar>
+
+
+<form #postCreateForm="ngForm" (ngSubmit)="sendPostData(postCreateForm.value)">
+<div class="ContainerModalCreatePost">
+    <div class="Header">
+<div class="Close">
+    <img src="assets/post-images/close.svg" alt="">
+</div>
+    </div>
+    <div class="User">
+        <div class="Photo">
+                <img src="assets/post-images/profile_def.jpg" alt="">
+        </div>
+    <div class="Name">
+        <p>{{userData.name}} {{userData.surname}}</p>
+    </div>
+
+    </div>
+    <div class="ContainerInterest">
+        <div class="Interest">
+            <p>Deportes</p>
+        </div>
+    
+    </div>
+    <div class="PublicationSpace">
+    
+        <input ngModel name="text" type="text"  required placeholder="¿Què estas pensando?">
+   
+        <div class="SpacePhoto">
+    
+        </div>
+    </div>
+    <div class="AddPost">
+        <div class="AddLocate">
+            <img src="assets/post-images/Location.svg" alt="">
+            <p>Agregar ubicacion</p>
+        </div>
+        <div class="AddInterest">
+           
+            <img (click)="showPostInterestSelection()" src="assets/interest-images/interes.svg" alt="">
+            <p (click)="showPostInterestSelection()">Agregar Interes</p>
+        </div>
+       
+        
+    </div>
+
+    <div class="FooterCreatePost">
+    <div class="AddPostImages">
+        <div class="OpenCamara">
+            <img src="assets/interest-images/camara.svg" alt="">
+        </div>
+        <div class="AddImage">
+            <input id="fileInput" name="multimedia_file" type="file" (change)="onFileChange($event)" style="display: none;">
+            <label for="fileInput">
+                <img src="assets/interest-images/AddImage.svg" alt="">
+            </label>
+        </div>
+        
+    </div>
+    <div class="ShareCreatePost">
+        <button type="submit" name="CreatePost">Share</button>
+    </div>
+    
+</div>
+
+</div>
+<div *ngIf="interestService.displaySelectInterest">
+    <app-select-interest class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+</div>
+</form>
+
