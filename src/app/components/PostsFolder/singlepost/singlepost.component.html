@@ -110,9 +110,9 @@
 		</div>
 		<div class="ProfilePostDesktop">
 			<div class="PerfilImage">
-				<img src={{userPfp}} alt="">
+				<img (click)="clickedProfile()" src={{userPfp}} alt="">
 			</div>
-			<div class="UsernameProfile">
+			<div (click)="clickedProfile()" class="UsernameProfile">
 				<p>{{ post.user.name }} {{ post.user.surname }}</p>
 			</div>
 			<div class="DataProfile">

@@ -32,15 +32,17 @@ export class ProfileComponent implements OnInit {
 	
 
 	msgNoData:string = "Not Specified.";
+
 	textHomelandOrResidence:any = {
 		homeland: "From ",
 		residence: "Lives in "
 	}
-	@Input() userCountries:any = {
+	@Input() userDataVariable:any = {
 		homeland: this.msgNoData,
-		residence: this.msgNoData
+		residence: this.msgNoData,
+		userGender: this.msgNoData,
+		description: ""
 	}
-	@Input() userGender:any = this.msgNoData;
 
 	selectedImage: string | undefined;
   	isDragging: boolean = false;
@@ -77,9 +79,8 @@ export class ProfileComponent implements OnInit {
 
 			this.ProfileData = res;
 			this.userInterests = Object.values(res.interests).map((item:any) => item.interest);
-			
 			this.checkProfilePic();
-			this.checkCountries();
+			this.checkUserData();
 		});
 	}	
 
@@ -89,12 +90,14 @@ export class ProfileComponent implements OnInit {
 		if (this.ProfileData.profile_pic === null) this.pfpUrl= "assets/post-images/profile_def.jpg"
 	}
 
-	checkCountries(){
-		if (this.ProfileData.homeland.country_name) this.userCountries.homeland = this.textHomelandOrResidence.homeland+this.ProfileData.homeland.country_name;
+	checkUserData(){
+		if (this.ProfileData.homeland) this.userDataVariable.homeland = this.textHomelandOrResidence.homeland+this.ProfileData.homeland.country_name;
 		
-		if (this.ProfileData.residence.country_name) this.userCountries.residence = this.textHomelandOrResidence.residence+this.ProfileData.residence.country_name;
+		if (this.ProfileData.residence) this.userDataVariable.residence = this.textHomelandOrResidence.residence+this.ProfileData.residence.country_name;
 	
-		if (this.ProfileData.gender) this.userGender = this.ProfileData.gender;
+		if (this.ProfileData.description) this.userDataVariable.description = this.ProfileData.description;
+		
+		if (this.ProfileData.gender) this.userDataVariable.gender = this.ProfileData.gender;
 	}
 
 	getUserPosts(){
@@ -119,7 +122,6 @@ export class ProfileComponent implements OnInit {
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.ProfileId).subscribe((res:any)=>{
-			console.log(res);
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
 			else this.isFollowing = "Unfollow";
 		})

@@ -18,7 +18,7 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { TypeSearchComponent } from './components/type-search/type-search.component';
+import { TypeSearchComponent } from './components/Search/type-search/type-search.component';
 import { AlertErrorComponent } from './components/alert-error/alert-error.component';
 import { AlertCompleteComponent } from './components/alert-complete/alert-complete.component';
 import { CreateComponent } from './components/create/create.component';
