@@ -5,8 +5,8 @@
     <input ngModel type="date" id="InitDate" name="InitDate">
     <input ngModel type="date" id="CloseDate" name="CloseDate">
     <select ngModel name ="EventType">
-        <option value="private">Private</option>
-        <option value="public">Public</option>
+        <option value="true">Private</option>
+        <option value="false">Public</option>
     </select>
     <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
     <button type="button" name="EventInterests"(click)="showEventInterestSelection()">Select Event interests</button>
