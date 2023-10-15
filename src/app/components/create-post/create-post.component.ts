@@ -30,9 +30,13 @@ export class CreatePostComponent {
 			multimedia_file: this.postMultimedia
 		}
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
-			const newPostId = res.id_post;
-			this.sendPostInterests(newPostId);
-			if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
+			if (res.status === 201){
+				const newPostId = res.id_post;
+				this.sendPostInterests(newPostId);
+				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
+			}
+		}, (error:any)=>{
+			console.log("Mostrar mensaje de Error al crear Post");
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
