@@ -24,7 +24,6 @@ export class RegisterComponent {
 	secondsToReset:number = 8000;
 	
 	constructor(
-		private getUser: GetUserService, 
 		private registerService: PostRegisterService, 
 		private router: Router, 
 		private status: StatusService, 
