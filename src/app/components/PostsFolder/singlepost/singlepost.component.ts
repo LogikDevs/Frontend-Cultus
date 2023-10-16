@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
   export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
 
-	defaultUrl:string = "http://localhost:8001/storage/multimedia_post/";
+	defaultUrl:string = "http://localhost:8001/multimedia_post/";
 
 	urlPfp:any="http://localhost:8000/storage/profile_pic/";
 	userPfp:any="/assets/post-images/profile_def.jpg";
@@ -39,6 +39,8 @@ import { Router } from '@angular/router';
 	Followable:boolean = false;
 	userFollows:any[] = [];
 	userFollowsAccount:any;
+
+	isFollowing:any;
 
   	AddComment:string = '';
 
@@ -72,7 +74,9 @@ import { Router } from '@angular/router';
         if (this.post.post.fk_id_user == Number(this.userId)) this.ownPost = true;
     }
 	insertMultimedia(){
-		if (this.post.multimedia[0]) this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
+		if (this.post.multimedia[0]) {
+			this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
+		}
 	}
 	IsFollowable(){
 		if (this.post.post.fk_id_user != this.userId) this.Followable = true;
@@ -137,23 +141,30 @@ import { Router } from '@angular/router';
 	CheckFollowOrUnfollow(click:boolean){
 		this.followService.getUserFollowedAccounts().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
-			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === Number(this.post.post.fk_id_user));
+			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === this.post.post.fk_id_user);
 			if (userFollowsAccount) {
+				this.isFollowing = "Unfollow";
 				if (click === true) this.UnfollowAction();
 			}
 			if (!userFollowsAccount) {
+				this.isFollowing = "Follow";
 				if (click === true) this.FollowAction();
-			}			
+			}
 		})
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
+			else this.isFollowing = "Unfollow";
 		})
 	}
 	UnfollowAction(){
-		this.followService.Unfollow(this.post.post.fk_id_user).subscribe((res:any)=>{})
+		this.followService.Unfollow(this.post.post.fk_id_user).subscribe((res:any)=>{
+			this.isFollowing = "Follow";
+		})
 	}
+
+	
 
 	mostrarComentarios() {
 		this.showComments = true;

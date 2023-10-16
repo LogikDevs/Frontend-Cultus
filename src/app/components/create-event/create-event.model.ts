@@ -4,5 +4,5 @@ export interface NewEventData{
     description: string,
     InitDate: Date,
     CloseDate: Date,
-    Type: "Private" | "Public"
+    Type: any
 }

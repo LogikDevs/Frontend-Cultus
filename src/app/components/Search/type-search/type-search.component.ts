@@ -17,7 +17,8 @@ export class TypeSearchComponent {
 	AllUsers:any;
 	AllPosts:any;
 	AllInterests:any;
-	filteredResults:any;
+	filteredUsers:any;
+	filteredInterests:any;
     constructor(
 		private interestService: GetInterestsService, 
 		private postService: GetPostsService
@@ -34,31 +35,24 @@ export class TypeSearchComponent {
 			this.AllInterests = res;
 		});
 	}
-    filterType(type:any = "users" || "posts" || "interests"){
+    filterType(type:any = "users" || "interests"){
 		this.typeSearchVariable = type;
     }
     onSearch(data:Event){
 	  	const ReceivedText = (data.target as HTMLInputElement).value.toLowerCase();
     
-	  	if (ReceivedText.length >= 2) this.typeData(ReceivedText);
-	  }
+	  		if (ReceivedText.length >= 2) this.typeData(ReceivedText);
+	  	}
     typeData(dataReceived: string) {
-		console.log(this.typeSearchVariable);
 		if (this.typeSearchVariable == "users") {
-			this.filteredResults = this.AllUsers.filter((result:any) =>
-			result.name.toLowerCase().startsWith(dataReceived.toLowerCase())
-		)
-		}
-		if (this.typeSearchVariable == "posts") {
-			this.filteredResults = this.AllPosts.filter((result:any) =>
-				result.text.toLowerCase().startsWith(dataReceived.toLowerCase())
+			this.filteredUsers = this.AllUsers.filter((result:any) =>
+				result.name.toLowerCase().startsWith(dataReceived.toLowerCase())
 			)
 		}
 		if (this.typeSearchVariable == "interests") {
-			this.filteredResults = this.AllInterests.filter((result:any) =>
+			this.filteredInterests = this.AllInterests.filter((result:any) =>
 				result.interest.toLowerCase().startsWith(dataReceived.toLowerCase())
 			)
 		}
 	}
-
 }
