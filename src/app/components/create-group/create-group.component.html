@@ -1,1 +1,15 @@
-<p>create-group works!</p>
+<form #groupCreateForm="ngForm" (ngSubmit)="sendCreatedGroup(groupCreateForm.value)">
+    <input ngModel name="GroupName" type="text" placeholder="Group Name" required>
+    <input ngModel name="GroupDescription" type="text" placeholder="Group Description" required>
+    <select ngModel name ="GroupType">
+        <option value="private">Private</option>
+        <option value="public">Public</option>
+    </select>
+    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
+    <button type="button" name="GroupInterests"(click)="showGroupInterestSelection()">Select Group interests</button>
+    <div *ngIf="interestService.displaySelectInterest">
+        <app-select-interest [SelectInterestType]="'group'" [WindowVisibility]="true"></app-select-interest>
+    </div>
+
+    <button type="submit" name="CreateGroup">Create Group</button>
+</form>

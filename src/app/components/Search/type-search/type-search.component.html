@@ -1,0 +1,9 @@
+<form>
+    <input class="input" type="text" (input)="onSearch($event)" placeholder="Search...">
+</form>
+<button id="btnUsers" (click)="filterType('users')">Users</button>
+<button id="btnInterests" (click)="filterType('interests')">Interests</button>
+
+<div class="ContainerInterest" *ngFor="let interest of filteredInterests">
+    <app-interests-search [interest]="interest"></app-interests-search>
+</div>

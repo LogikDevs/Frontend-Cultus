@@ -1,8 +1,9 @@
 export interface NewEventData{
     name: string,
-    multimedia_file: File,
+    cover: File,
     description: string,
-    InitDate: Date,
-    CloseDate: Date,
-    Type: "Private" | "Public"
+    text: string,
+    start_date: Date,
+    end_date: Date,
+    private: any
 }

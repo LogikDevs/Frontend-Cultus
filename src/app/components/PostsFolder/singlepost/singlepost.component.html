@@ -49,7 +49,9 @@
 		<div class="PostDescription">
 			<p>{{ post.post.text }}</p>
 		</div>
-
+		<div class="ImagePostDesktop">
+			<img src={{defaultUrl}} alt="">
+		</div>
 
 		<div class="FooterPost">
 			<div class="DataPost">
@@ -89,7 +91,6 @@
 			  </form>
 		  </div>
 
-
 	</div>
 
 </div>	<div class="ContainerPostDesktop" *ngIf="!ProfilePosts">
@@ -99,9 +100,6 @@
 					</div>
 				</div>
 			<div class="PostContentImageAndInteractions">
-				<div class="ImagePostDesktop">
-					<img src={{defaultUrl}} alt="">
-				</div>
 				<div class="InteractionsPostDesktop">
 					<div class="IconUpvote">
 					</div>
@@ -115,9 +113,9 @@
 		</div>
 		<div class="ProfilePostDesktop">
 			<div class="PerfilImage">
-				<img src={{userPfp}} alt="">
+				<img (click)="clickedProfile()" src={{userPfp}} alt="">
 			</div>
-			<div class="UsernameProfile">
+			<div (click)="clickedProfile()" class="UsernameProfile">
 				<p>{{ post.user.name }} {{ post.user.surname }}</p>
 			</div>
 			<div class="DataProfile">

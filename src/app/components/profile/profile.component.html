@@ -1,8 +1,4 @@
-
-
-
-
-    <app-sidebar></app-sidebar>
+<app-sidebar></app-sidebar>
 
 <div class="Profile">
 <div class="ContainerData">
@@ -66,7 +62,7 @@
             <img src="assets/sidebar-images/home.svg" alt="">
         </div>
         <div class="TextData">
-            <p *ngIf="ProfileData">{{userCountries.homeland}}</p>
+            <p *ngIf="ProfileData">{{userDataVariable.homeland}}</p>
         </div>
     </div>
     <div class="Data">
@@ -74,7 +70,7 @@
             <img src="assets/Profile-Image/planeta.svg" alt="">
         </div>
         <div class="TextData">
-            <p *ngIf="ProfileData">{{userCountries.residence}}</p>
+            <p *ngIf="ProfileData">{{userDataVariable.residence}}</p>
         </div>
     </div>
     <div class="Data">
@@ -90,7 +86,7 @@
             <img src="assets/Profile-Image/Account (1).svg" alt="">
         </div>
         <div class="TextData">
-            <p> {{ProfileData.gender}} </p>
+            <p> {{userDataVariable.gender}} </p>
         </div>
     </div>
     <div class="DescriptionData">
@@ -98,7 +94,7 @@
         <p>Description:</p>
       </div>  
       <div class="Description">
-        <p> {{ProfileData.description}} </p>
+        <p> {{userDataVariable.description}} </p>
       </div>
 
     </div>

@@ -18,10 +18,13 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { TypeSearchComponent } from './components/type-search/type-search.component';
+import { TypeSearchComponent } from './components/Search/type-search/type-search.component';
 import { AlertErrorComponent } from './components/alert-error/alert-error.component';
 import { AlertCompleteComponent } from './components/alert-complete/alert-complete.component';
 import { CreateComponent } from './components/create/create.component';
+import { CreateGroupComponent } from './components/create-group/create-group.component';
+import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
+
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -44,7 +47,9 @@ const routes: Routes = [
   { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
   { path: 'AlertComplete', component: AlertCompleteComponent, canActivate: [GuardAuthentication] },
   { path: 'AlertError', component: AlertErrorComponent, canActivate: [GuardAuthentication] },
-  { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] }
+  { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] },
+  { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] },
+  { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] }
 
 ];
 
