@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'AlertComplete', component: AlertCompleteComponent, canActivate: [GuardAuthentication] },
   { path: 'AlertError', component: AlertErrorComponent, canActivate: [GuardAuthentication] },
   { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] },
-  { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] }
+  { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] },
   { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] }
 
 ];

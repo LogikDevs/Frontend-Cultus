@@ -18,14 +18,16 @@ export class CreateEventComponent {
 
     sendCreatedEvent(FormData:any){
 		const eventData: NewEventData = {
-		  	name: FormData.EventName,
-		  	description: FormData.EventDescription,
-		  	InitDate: FormData.InitDate,
-		  	CloseDate: FormData.CloseDate,
-        multimedia_file: this.eventMultimedia,
+			name: FormData.EventName,
+			description: FormData.EventDescription,
+			text: FormData.EventText,
+			start_date: FormData.InitDate,
+			end_date: FormData.CloseDate,
+			cover: this.eventMultimedia,
+			private: FormData.EventType
 		}
-		if (eventData.Type == "true") eventData.Type = true;
-		if (eventData.Type == "false") eventData.Type = false;
+		if (eventData.private == "true") eventData.private = 1;
+		if (eventData.private == "false") eventData.private = 0;
 
 		this.eventService.createEvent(eventData).subscribe((res:any)=>{
 			if (res.status === 201) console.log("Mostrar mensaje de Evento Creado")

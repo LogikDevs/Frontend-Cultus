@@ -10,14 +10,16 @@ export class EventService {
   	constructor(private http: HttpClient) { }
   
   	createEvent(eventToCreate:any) {
-    	const body = {
-			name: eventToCreate.name,
-			text: eventToCreate.description,
-			start_date: eventToCreate.InitDate,
-			end_date: eventToCreate.CloseDate,
-			multimedia_file: eventToCreate.multimedia_file,
-			private: eventToCreate.Type,
-    	}
+		const formData = new FormData();
+
+		formData.append('name', eventToCreate.name);
+		formData.append('description', eventToCreate.description);
+		formData.append('text', eventToCreate.text);
+		formData.append('start_date', eventToCreate.start_date);
+		formData.append('end_date', eventToCreate.end_date);
+		formData.append('cover', eventToCreate.cover);
+		formData.append('private', eventToCreate.private);
+		
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
@@ -25,6 +27,6 @@ export class EventService {
 			observe: "response" as 'body'
 		}
 		
-		return this.http.post(this.urlCreateEvent, body, httpOptions);
+		return this.http.post(this.urlCreateEvent, formData, httpOptions);
 	}
 }

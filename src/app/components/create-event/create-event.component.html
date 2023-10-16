@@ -2,6 +2,7 @@
 <form #eventCreateForm="ngForm" (ngSubmit)="sendCreatedEvent(eventCreateForm.value)">
     <input ngModel name="EventName" type="text" placeholder="Event Name" required>
     <input ngModel name="EventDescription" type="text" placeholder="Event Description" required>
+    <input ngModel name="EventText" type="text" placeholder="Event Text" required>
     <input ngModel type="date" id="InitDate" name="InitDate">
     <input ngModel type="date" id="CloseDate" name="CloseDate">
     <select ngModel name ="EventType">

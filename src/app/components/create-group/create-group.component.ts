@@ -20,10 +20,11 @@ export class CreateGroupComponent {
     		multimedia_file: this.groupMultimedia,
     		Type: FormData.GroupType
  		}
-		console.log(groupData);
 		this.groupService.createGroup(groupData).subscribe((res:any)=>{
-			console.log(res);	
-		});
+			if (res.status === 201) console.log("Mostrar mensaje de Grupo Creado")
+		}, (error:any)=>{
+			console.log("Mostrar mensaje de Error al crear Grupo");
+		})
 	}
 
   	showGroupInterestSelection(){
