@@ -40,9 +40,12 @@
 		<div class="LocationPostDesktop">
 			<p></p>
 		</div>
-		<div class="Interest" *ngFor="let interest of post.interests">
+		<div class="ContainerInterestPosts">
+				<div class="Interest" *ngFor="let interest of post.interests">
 			<p>{{interest}}</p>
 		</div>
+		</div>
+	
 		<div class="PostDescription">
 			<p>{{ post.post.text }}</p>
 		</div>
