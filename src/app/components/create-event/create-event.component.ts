@@ -22,8 +22,7 @@ export class CreateEventComponent {
 		  	description: FormData.EventDescription,
 		  	InitDate: FormData.InitDate,
 		  	CloseDate: FormData.CloseDate,
-        	multimedia_file: FormData.multimedia_file,
-			Type: FormData.EventType
+        multimedia_file: this.eventMultimedia,
 		}
 		if (eventData.Type == "true") eventData.Type = true;
 		if (eventData.Type == "false") eventData.Type = false;
