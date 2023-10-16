@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root'   
 })
 export class AuthenticationService {
 	private loginUrl = "http://localhost:8000/oauth/token";
 	private logoutUrl = "http://localhost:8000/api/v1/logout";
 	private client = "101";
-	private secret = "nyQ8U8YdmRgdcPZHcXD38SuqJ7tcIUzYXAHALMm2";
+	private secret = "sJxM3hWqoEIOc5AanMXx7BkBMVSqj4TOFAvNSEWO";
 
 	constructor(private http: HttpClient) { }
 
