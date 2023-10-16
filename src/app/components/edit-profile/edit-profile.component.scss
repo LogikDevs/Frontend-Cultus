@@ -126,4 +126,83 @@ margin-top: 5px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 50px;
+}
+
+textarea {
+    resize: none;
+  }
+.AddImage{
+text-align: center;
+
+
+}  
+.AddImage img{
+margin-top: 10px;
+}
+
+
+.AddImageInput {
+background-color: #537D57;
+opacity: 0%;
+}
+#pfp-input{
+    background-color: #537D57;
+}
+.ImageSpace{
+    cursor: pointer;
+    margin: auto;
+position: relative;
+
+    border-radius: 50%;
+width: 180px;
+height: 180px;
+background-image: url('https://static.thenounproject.com/png/3465604-200.png');
+
+}.ImageSpace .editText {
+    display: none;
+    cursor: pointer;
+  }
+
+  
+  .ImageSpace.showEdit .editText {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    cursor: pointer;
+  }
+  
+  
+.ImageSpace img{
+    width: 100%;
+    height: 100%;
+}
+.hideImage {
+    background-image: none !important;
+  }
+  .EditableContent p{
+    color: $ColorFuente;
+    font-weight: bold;
+    font-size: 14px;
+  }
+textarea{
+    background-color: #1D1D1D;
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.Content option,.Content select{
+    background-color: $ColorSecundario;
+    color: $ColorFuente;
+    font-weight: bold;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
 }
