@@ -62,10 +62,20 @@ font-size: 15px;
 }
 .Interest{
     display: flex;
+    align-items: center;
+    height: 30px;
+    background-color:#161716;
+    margin: 5px;
+    border-radius: 12px;
+    text-align: center;
+}
+.ContainerInterestPosts{
+display: flex;
+margin-left: 10px;
 }
 .Interest p{
-    margin-left: 15px;
-    color: #B6F1CE;
+padding: 5px;
+    color: $ColorFuente;
     font-weight: bold;
     font-size: 12px;
 }
@@ -74,7 +84,7 @@ font-size: 15px;
     font-weight: bold;
     font-size: 12px;
     margin-left: 15px;
-    margin-top: 0px;
+    margin-top: 10px;
 }
 .PostImage{
    margin: auto;
