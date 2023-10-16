@@ -22,6 +22,7 @@ import { TypeSearchComponent } from './components/type-search/type-search.compon
 import { AlertErrorComponent } from './components/alert-error/alert-error.component';
 import { AlertCompleteComponent } from './components/alert-complete/alert-complete.component';
 import { CreateComponent } from './components/create/create.component';
+import { CreateGroupComponent } from './components/create-group/create-group.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: 'Groups', component: GruposComponent, canActivate: [GuardAuthentication] },
   { path: 'AlertComplete', component: AlertCompleteComponent, canActivate: [GuardAuthentication] },
   { path: 'AlertError', component: AlertErrorComponent, canActivate: [GuardAuthentication] },
-  { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] }
+  { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] },
+  { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] }
 
 ];
 

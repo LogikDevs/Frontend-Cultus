@@ -20,8 +20,8 @@ export class CreateEventComponent {
 		  	description: FormData.EventDescription,
 		  	InitDate: FormData.InitDate,
 		  	CloseDate: FormData.CloseDate,
-            multimedia_file: FormData.multimedia_file,
-          	Type: FormData.EventType
+        multimedia_file: this.eventMultimedia,
+      	Type: FormData.EventType
 		}
     }
     showEventInterestSelection(){
