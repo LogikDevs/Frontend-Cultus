@@ -3,7 +3,6 @@ import { PostRegisterService } from '../../services/register.service';
 import { Router } from '@angular/router';
 import { StatusService } from '../../services/status.service';
 import { AuthenticationService } from '../../services/authentication.service';
-import { GetUserService } from 'src/app/services/get-user.service';
 import { HttpResponse } from '@angular/common/http';
 
 
@@ -22,9 +21,10 @@ export class RegisterComponent {
 
 	ErrorResetTimeout:any;
 	secondsToReset:number = 8000;
+
+	DateToAge:any;
 	
 	constructor(
-		private getUser: GetUserService, 
 		private registerService: PostRegisterService, 
 		private router: Router, 
 		private status: StatusService, 
@@ -32,6 +32,9 @@ export class RegisterComponent {
 	) { };
 
 	PostRegister(inputdata: any) {
+		this.AgeCalculator(inputdata.age);
+		inputdata.age = this.DateToAge;
+
 		this.registerService.PostRegister(inputdata).subscribe((res: any) => {
 			if (res.status === 201) this.RegisterLogin(inputdata);
 
@@ -60,5 +63,16 @@ export class RegisterComponent {
 			this.InputSurnameError = Errors.surnameError || '';
 			this.InputAgeError = Errors.ageError || '';
 		}
+	}
+	AgeCalculator(dateInserted:any) {
+		var bornDate = new Date(dateInserted);
+		var actualDate = new Date();
+		var age = actualDate.getFullYear() - bornDate.getFullYear();
+
+		if (actualDate.getMonth() < bornDate.getMonth() ||
+			(actualDate.getMonth() === bornDate.getMonth() && actualDate.getDate() < bornDate.getDate())) {
+			age--;
+		}
+		this.DateToAge = age;
 	}
 }
