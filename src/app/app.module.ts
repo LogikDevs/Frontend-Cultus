@@ -42,6 +42,7 @@ import { CreateComponent } from './components/create/create.component';
 import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
 import { UserSearchComponent } from './components/Search/user-search/user-search.component';
 import { InterestsSearchComponent } from './components/Search/interests-search/interests-search.component';
+import { SingleeventComponent } from './components/EventsFolder/singleevent/singleevent.component';
 
 
 
@@ -82,7 +83,8 @@ import { InterestsSearchComponent } from './components/Search/interests-search/i
     CreateComponent,
     FollowedSectionComponent,
     UserSearchComponent,
-    InterestsSearchComponent
+    InterestsSearchComponent,
+    SingleeventComponent
   ],
   imports: [
     BrowserModule,
