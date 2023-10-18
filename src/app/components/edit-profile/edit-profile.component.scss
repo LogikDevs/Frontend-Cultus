@@ -194,15 +194,33 @@ background-image: url('https://static.thenounproject.com/png/3465604-200.png');
     font-size: 14px;
   }
 textarea{
-    background-color: #1D1D1D;
+    border: none;
+    border-radius: 8px;
+  background-color: #100F0F;
     color: $ColorFuente;
     font-weight: bold;
 }
 .Content option,.Content select{
-    background-color: $ColorSecundario;
+    background-color: #100F0F;
     color: $ColorFuente;
     font-weight: bold;
     height: 30px;
     border: none;
     border-radius: 6px;
+}
+.FinishProfileData{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+#FinishEditing{
+    margin-right: 60px;
+    margin-top: 50px;
+    background-color: #0B6886;
+color: #fff;
+border: none;
+padding: 12px;
+border-radius: 10px;
+cursor: pointer;
 }
