@@ -164,8 +164,8 @@ import { Router } from '@angular/router';
 		})
 	}
 
-	
 
+	
 	mostrarComentarios() {
 		this.showComments = true;
 	}

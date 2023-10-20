@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GroupService } from 'src/app/services/group.service';
 
 @Component({
   selector: 'app-grupos',
@@ -6,10 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./grupos.component.scss']
 })
 export class GruposComponent {
-
-  constructor() { }
-  ngOnInit(): void { }
-   
+	groups:any = []
+  	constructor(
+		private groupService: GroupService
+  	) { }
+  	ngOnInit(){
+		this.getGroups();
+	}
+	getGroups(){
+		this.groupService.getGroups().subscribe((res:any)=>{
+			this.groups = res;
+  	    })
+	}
   imgCollection: Array<object> = [
       {
         image: 'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt12dbddde5342ce4c/648866ff21a8556da61fa167/GOAL_-_Blank_WEB_-_Facebook_-_2023-06-13T135350.847.png?auto=webp&format=pjpg&width=3840&quality=60',

@@ -25,3 +25,6 @@
 <div class="SliderGroups">
     <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
 </div>
+<div *ngFor="let group of groups">
+    <app-singlegroup *ngIf="group" [group]="group"></app-singlegroup>
+</div>
