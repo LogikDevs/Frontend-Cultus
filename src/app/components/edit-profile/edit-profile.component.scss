@@ -184,6 +184,47 @@ background-image: url('https://static.thenounproject.com/png/3465604-200.png');
 .ImageSpace img{
     width: 100%;
     height: 100%;
+
+}
+.hideImage {
+    background-image: none !important;
+  }
+  .EditableContent p{
+    color: $ColorFuente;
+    font-weight: bold;
+    font-size: 14px;
+  }
+textarea{
+    border: none;
+    border-radius: 8px;
+  background-color: #100F0F;
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.Content option,.Content select{
+    background-color: #100F0F;
+    color: $ColorFuente;
+    font-weight: bold;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+}
+.FinishProfileData{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+#FinishEditing{
+    margin-right: 60px;
+    margin-top: 50px;
+    background-color: #0B6886;
+color: #fff;
+border: none;
+padding: 12px;
+border-radius: 10px;
+cursor: pointer;
+
 }
 .hideImage {
     background-image: none !important;
