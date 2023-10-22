@@ -23,6 +23,7 @@ import { AlertErrorComponent } from './components/alert-error/alert-error.compon
 import { AlertCompleteComponent } from './components/alert-complete/alert-complete.component';
 import { CreateComponent } from './components/create/create.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
+
 import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
 
 
