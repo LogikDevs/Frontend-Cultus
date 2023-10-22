@@ -25,6 +25,7 @@ import { CreateComponent } from './components/create/create.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 
 import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
+import { EventsComponent } from './components/events/events.component';
 
 
 const routes: Routes = [ 
@@ -50,7 +51,8 @@ const routes: Routes = [
   { path: 'AlertError', component: AlertErrorComponent, canActivate: [GuardAuthentication] },
   { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] },
   { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] },
-  { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] }
+  { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] },
+  { path: 'Events', component: EventsComponent, canActivate: [GuardAuthentication] }
 
 ];
 

@@ -1,1 +1,82 @@
-<p>events works!</p>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="HeaderGroups">
+
+    <p class="TittleGroups">Events</p>
+
+    <div class="ButtonCreateGroup">
+        <img src="assets/sidebar-images/create.svg" alt="">
+        <p>Create</p>
+    </div>
+
+</div>
+
+<div class="SubHeader">
+    <div class="Suggestions">
+        <p>Suggestions</p>
+
+    </div>
+    <div class="MyGroups">
+        <p>My Events</p>
+    </div>
+</div>
+
+<div class="SliderGroups">
+    <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
+</div>
+
+<div class="TittleCategories">
+    <h2>Categories</h2>
+</div>
+<div class="ContainerCategories">
+    <div class="Categories">
+        <div class="Image">
+            <img src="assets/grupos/deportes.jpeg" alt="">
+        </div>
+        <div class="Text">
+   <p>sport</p>
+        </div>
+    </div>
+    <div class="Categories">
+        <div class="Image">
+            <img src="assets/grupos/recetas.jpeg" alt="">
+        </div>
+        <div class="Text">
+           <p>recetas</p>
+        </div>
+    </div>
+    <div class="Categories">
+        <div class="Image">
+            <img src="assets/grupos/food.jpeg" alt="">
+        </div>
+        <div class="Text">
+            <p>food</p>
+        </div>
+    </div>
+    <div class="Categories">
+        <div class="Image">
+            <img src="assets/grupos/casan.jpeg" alt="">
+        </div>
+        <div class="Text">
+         <p>influencers</p>
+        </div>
+    </div>
+    <div class="Categories">
+        <div class="Image">
+            <img src="assets/grupos/ig.jpeg" alt="">
+        </div>
+        <div class="Text">
+            <p>Redes sociales</p>
+        </div>
+    </div>
+    <div class="Categories">
+        <div class="Image">
+            <img src="assets/grupos/paises.jpeg" alt="">
+        </div>
+        <div class="Text">
+          <p>Paises</p>
+        </div>
+    </div>
+    
+</div>
