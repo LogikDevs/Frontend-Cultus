@@ -49,6 +49,7 @@ import { EventsComponent } from './components/events/events.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,6 +94,7 @@ import { EventsComponent } from './components/events/events.component';
     FormsModule,
     AppRoutingModule
   ],
+
 
   bootstrap: [AppComponent]
 })
