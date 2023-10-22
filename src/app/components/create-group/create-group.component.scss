@@ -1,0 +1,119 @@
+$ColorFuente:#4A5C45;
+$ColorSecundario:#282928;
+.ContainerCreate{
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
+        background-color: #1D1D1D;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+   margin: auto;
+}
+.HeaderCreate{
+    width: 100%;
+    height: 60px;
+ 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+border-bottom: 1px solid $ColorFuente;
+}
+.Back{
+    height: 100%;
+
+width: 33%;
+}
+.Back img{
+    width: 35px;
+    height: 60%;
+    margin: 8px;
+}
+.Tittle{
+    color: $ColorFuente;
+    font-size: 10px;
+    width: 33%;
+    text-align: center;
+}
+.ButtonCreate{
+    width: 33%;
+text-align: end;
+margin-right: 15px;
+}
+.ButtonCreate button{
+
+
+background-color:#137695 ;
+border: none;
+color: white;
+padding: 5px;
+padding-left: 12px;
+padding-right: 12px;
+border-radius: 15px;
+cursor: pointer;
+
+}
+
+.ContainerImage{
+    
+width: 100%;
+text-align: center;
+}
+.Image{
+    margin: auto;
+    margin-top: 10px;
+width: 80%;
+height: 130px;
+background-color: #4A5C45;
+}
+.Group1,.Group2,.Group3{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.Data{
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 10px;
+}
+.Data input  {
+    width: 120px;
+    background-color: #282928;
+    resize: none;
+    color: $ColorFuente;
+    border: none;
+    font-size: 15px;
+    padding: 7px;
+}
+.Data select{
+    width: 120px;
+    background-color: #282928;
+    resize: none;
+    color: $ColorFuente;
+    border: none;
+    font-size: 15px;
+    padding: 7px;
+}
+.Data button{
+    width: 120px;
+    background-color: #282928;
+    resize: none;
+    color: $ColorFuente;
+    border: none;
+    font-size: 15px;
+    padding: 7px;
+}
+
+.DataCreate{
+
+}
+#Description input{
+height: 40px;
+
+}
+#ContainerInterest{
+    position: relative;
+    z-index: 1;
+    top: -450px;
+
+}
