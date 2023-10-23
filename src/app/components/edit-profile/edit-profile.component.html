@@ -1,5 +1,5 @@
-<!-- <form #ProfileDataForm="ngForm" action="" (ngSubmit)="saveProfileData(ProfileDataForm.value)"> -->
-    <!-- <div class="BackgroundAddImage">
+<form #ProfileDataForm="ngForm" action="" (ngSubmit)="saveProfileData(ProfileDataForm.value)">
+    <div class="BackgroundAddImage">
         <div class="AddImage">
 
             <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
@@ -20,7 +20,7 @@
                 </label>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- <div class="AddDescription">
         <div class="TittleDescription">
@@ -55,37 +55,19 @@
         <button id="FinishEditing">Guardar</button>
     </div> -->
 
-    <app-sidebar></app-sidebar>
+</form>
 
-<form #ProfileDataForm="ngForm" action="" (ngSubmit)="saveProfileData(ProfileDataForm.value)">
+
+
 
 <div class="ContainerEditProfile">
     <div class="ContainerMyProfile">
         <div class="BackgroundProfile">
             <div class="ImageProfile">
-                <div class="AddImage">
-
-                    <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
-                        [style.background-size]="'cover'" [style.background-position]="'center'"
-                        [class.hideImage]="!selectedImage" [class.showEdit]="selectedImage" (click)="triggerFileInput()">
-                        <img *ngIf="!selectedImage"
-                            src="https://i.ibb.co/Fh9yqwz/add-profile-picture-icon-upload-photo-of-social-media-user-vector-removebg-preview.png"
-                            alt="">
-                        <p *ngIf="!selectedImage" class="hideImage"></p>
-    
-                        <span class="editText">Editar imagen</span>
-    
-                    </div>
-    
-                    <div class="AddImageInput">
-                        <label for="pfp" class="InputContainer">
-                            <input ngModel type="file" (change)="onFileSelected($event)" accept="image/*" id="pfp"
-                                name="profile_pic" #fileInput>
-                        </label>
-                    </div>
-                </div>
                 <!-- <img src={{pfpUrl}} alt=""> -->
-          
+                <div class="EditProfile">
+                    <img src="assets/Profile-Image/Pencil Drawing.svg" alt="">
+                </div>
             </div>
         </div>
         <div class="EditableContent">
@@ -135,4 +117,3 @@
         </div>
     </div>
 </div>
-</form>

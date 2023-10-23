@@ -3,7 +3,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { StatusService } from 'src/app/services/status.service';
 import { GetUserService } from '../../services/get-user.service';
-import { ModalService } from '../../services/modal.service';
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
@@ -15,7 +14,7 @@ export class SidebarComponent implements OnInit {
     sidebar!: HTMLElement;
     closeBtn!: HTMLElement;
     searchBtn!: HTMLElement;
-    ModalVisibility:boolean = true;
+
     showProfilePic:any = false;
     userId:any;
     userData:any;
@@ -26,8 +25,7 @@ export class SidebarComponent implements OnInit {
         private api: AuthenticationService, 
         private router: Router, 
         public status: StatusService, 
-        public userService: GetUserService,
-        private modalService: ModalService
+        public userService: GetUserService
     ) { }
     
     ngOnInit() {
@@ -69,10 +67,6 @@ export class SidebarComponent implements OnInit {
         } else {
             this.closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
         }
-    }
-  
-    Close() {
-        this.ModalVisibility=false;
     }
 }
 
