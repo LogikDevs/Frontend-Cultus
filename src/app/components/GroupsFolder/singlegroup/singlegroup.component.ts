@@ -27,5 +27,5 @@ export class SinglegroupComponent {
 				this.joinButton = "Leave"
 			}
 		})
-	}
+	} 
 }
