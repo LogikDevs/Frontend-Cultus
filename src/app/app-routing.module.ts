@@ -50,7 +50,6 @@ const routes: Routes = [
   { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] },
   { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] },
   { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] }
-
 ];
 
 

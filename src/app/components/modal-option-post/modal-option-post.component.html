@@ -1,10 +1,10 @@
 <div class="Modal" *ngIf="optionVisibility" (appClickOutside)="hideComponent()">
     <div class="OptionsModal">
         <div class="ReportPost" *ngIf="!ownPost" (click)="reportPost()">
-            <p>Reportar Post</p>
+            <p>Report</p>
         </div>
         <div class="DeletePost" *ngIf="ownPost" (click)="removePost()">
-            <p>Eliminar Post</p>
+            <p>Delete</p>
         </div>
     </div>
 </div>
