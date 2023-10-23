@@ -44,7 +44,6 @@ export class EditProfileComponent {
 		this.gender = this.userData.gender || 'No seleccionado';
 		this.homeland = this.userData.homeland || "No seleccionado";
 		this.residence = this.userData.residence || "No seleccionado";
-		
 	}
 	checkProfilePic(){
 		const ProfilePicSrc:any = document.getElementById("UserPfp");
