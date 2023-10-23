@@ -48,7 +48,6 @@ import { InterestsSearchComponent } from './components/Search/interests-search/i
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +91,6 @@ import { InterestsSearchComponent } from './components/Search/interests-search/i
     FormsModule,
     AppRoutingModule
   ],
-
 
   bootstrap: [AppComponent]
 })
