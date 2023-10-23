@@ -1,4 +1,4 @@
-<!-- <form #groupCreateForm="ngForm" (ngSubmit)="sendCreatedGroup(groupCreateForm.value)">
+<form #groupCreateForm="ngForm" (ngSubmit)="sendCreatedGroup(groupCreateForm.value)">
     <input ngModel name="GroupName" type="text" placeholder="Group Name" required>
     <input ngModel name="GroupDescription" type="text" placeholder="Group Description" required>
     <select ngModel name ="GroupType">
@@ -11,65 +11,5 @@
         <app-select-interest [SelectInterestType]="'group'" [WindowVisibility]="true"></app-select-interest>
     </div>
 
-    <button type="submit" name="CreateGroup">Create Group</button> -->
-
-
-    <form #groupCreateForm="ngForm" (ngSubmit)="sendCreatedGroup(groupCreateForm.value)">
-    <div class="ContainerCreate">
-        <div class="HeaderCreate">
-            <div class="Back">
-                <img src="assets/Go Back.png" alt="">
-            </div>
-            <div class="Tittle">
-                <h2>Crear Grupo</h2>
-            </div>
-            <div class="ButtonCreate">
-                <button type="submit" name="CreateGroup">Create</button> 
-            </div>
-        </div>
-        <div class="ContainerImage">
-            <div class="Image">
-    
-            </div>
-            <!-- <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)"> -->
-        </div>
-    
-        <div class="DataCreate">
-            <div class="Group1">
-                  <div class="Data">
-                <p>Nombre del Grupo</p>
-                <input ngModel name="GroupName" type="text" placeholder="Group Name" required>
-            </div>
-            <div class="Data">
-                <p>Grupo privado?</p>
-                <select ngModel name ="GroupType">
-                    <option value="private">Private</option>
-                    <option value="public">Public</option>
-                </select>
-            </div>
-            </div>
-            <div class="Group2">
-                <div class="Data">
-                    <p>Elejir Intereses</p>
-                    <button type="button" name="GroupInterests"(click)="showGroupInterestSelection()">Select Group interests</button>
-                  
-                </div>
-               <div class="Data" id="Description">
-                    <p>Descripcion</p>
-                    <input ngModel name="GroupDescription" type="text" placeholder="Group Description" required>
-                </div>
-            </div>
-            <div class="Group3">
-             
-           
-            </div>
-          
-        </div>
-    </div>
-    
-
-    <div *ngIf="interestService.displaySelectInterest" id="ContainerInterest">
-        <app-select-interest [SelectInterestType]="'event'" [WindowVisibility]="true"></app-select-interest>
-    </div>
-    
-    </form>
+    <button type="submit" name="CreateGroup">Create Group</button>
+</form>

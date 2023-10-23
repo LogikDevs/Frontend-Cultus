@@ -42,7 +42,6 @@ import { CreateComponent } from './components/create/create.component';
 import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
 import { UserSearchComponent } from './components/Search/user-search/user-search.component';
 import { InterestsSearchComponent } from './components/Search/interests-search/interests-search.component';
-import { EventsComponent } from './components/events/events.component';
 
 
 
@@ -84,8 +83,7 @@ import { EventsComponent } from './components/events/events.component';
     CreateComponent,
     FollowedSectionComponent,
     UserSearchComponent,
-    InterestsSearchComponent,
-    EventsComponent
+    InterestsSearchComponent
   ],
   imports: [
     BrowserModule,
