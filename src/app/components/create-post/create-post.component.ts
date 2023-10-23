@@ -9,17 +9,26 @@ import { GetUserService } from 'src/app/services/get-user.service';
 	styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent {
-	
+		
 	postMultimedia: File;
+	imageUrl:any;
+	defaultUrl:string = "http://localhost:8000/storage/profile_pic/";
+	userPfp:string = "assets/post-images/profile_def.jpg";
 	userData:any;
+	username:string = "";
 	constructor(
 		private userService: GetUserService, 
 		private createPostService: CreatePostService, 
 		public interestService: GetInterestsService
 	) { }
 	ngOnInit(){
+		this.getUser();
+	}
+	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
 			this.userData = res;
+			this.username = this.userData.name + " " +this.userData.surname;
+			if (this.userData.profile_pic) this.userPfp = this.defaultUrl + this.userData.profile_pic;
 		})
 	}
 	sendPostData(FormData: any) {
@@ -31,7 +40,7 @@ export class CreatePostComponent {
 		}
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){
-				const newPostId = res.id_post;
+				const newPostId = res.body.id_post;
 				this.sendPostInterests(newPostId);
 				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
 			}
@@ -44,6 +53,13 @@ export class CreatePostComponent {
 	}
 	onFileChange(event: any) {
 		this.postMultimedia = event.target.files[0];
+		if (this.postMultimedia) {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				this.imageUrl = event.target?.result;
+			}
+			reader.readAsDataURL(this.postMultimedia);
+		  }
 	}
 
 	showPostInterestSelection(){

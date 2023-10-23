@@ -30,7 +30,7 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
 import { ModalOptionPostComponent } from './components/modal-option-post/modal-option-post.component';
 
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
-import { GruposComponent } from './components/grupos/grupos.component';
+import { GruposComponent } from './components/GroupsFolder/grupos/grupos.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { SliderGruposComponent } from './components/slider-grupos/slider-grupos.component';
 
@@ -42,7 +42,9 @@ import { CreateComponent } from './components/create/create.component';
 import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
 import { UserSearchComponent } from './components/Search/user-search/user-search.component';
 import { InterestsSearchComponent } from './components/Search/interests-search/interests-search.component';
+import { SinglegroupComponent } from './components/GroupsFolder/singlegroup/singlegroup.component';
 import { SingleeventComponent } from './components/EventsFolder/singleevent/singleevent.component';
+
 
 
 
@@ -84,7 +86,9 @@ import { SingleeventComponent } from './components/EventsFolder/singleevent/sing
     FollowedSectionComponent,
     UserSearchComponent,
     InterestsSearchComponent,
+    SinglegroupComponent,
     SingleeventComponent
+
   ],
   imports: [
     BrowserModule,

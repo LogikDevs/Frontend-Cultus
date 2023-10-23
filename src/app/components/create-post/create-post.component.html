@@ -11,36 +11,36 @@
     </div>
     <div class="User">
         <div class="Photo">
-                <img src="assets/post-images/profile_def.jpg" alt="">
+                <img src={{userPfp}} alt="">
         </div>
     <div class="Name">
-        <p>{{userData.name}} {{userData.surname}}</p>
+        <p>{{username}}</p>
     </div>
 
     </div>
     <div class="ContainerInterest">
         <div class="Interest">
-            <p>Deportes</p>
+            <p>Sports</p>
         </div>
-    
     </div>
     <div class="PublicationSpace">
     
         <input ngModel name="text" type="text"  required placeholder="¿Què estas pensando?">
    
         <div class="SpacePhoto">
-    
+            <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
         </div>
     </div>
+    
     <div class="AddPost">
         <div class="AddLocate">
             <img src="assets/post-images/Location.svg" alt="">
-            <p>Agregar ubicacion</p>
+            <p>Add Location</p>
         </div>
         <div class="AddInterest">
            
             <img (click)="showPostInterestSelection()" src="assets/interest-images/interes.svg" alt="">
-            <p (click)="showPostInterestSelection()">Agregar Interes</p>
+            <p (click)="showPostInterestSelection()">Add Interest</p>
         </div>
        
         

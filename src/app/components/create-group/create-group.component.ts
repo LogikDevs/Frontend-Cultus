@@ -21,7 +21,8 @@ export class CreateGroupComponent {
     		Type: FormData.GroupType
  		}
 		this.groupService.createGroup(groupData).subscribe((res:any)=>{
-			if (res.status === 201) console.log("Mostrar mensaje de Grupo Creado")
+			if (res.status === 201) console.log("Mostrar mensaje de Grupo Creado");
+			if (res.status !== 201) console.log(res);
 		}, (error:any)=>{
 			console.log("Mostrar mensaje de Error al crear Grupo");
 		})
