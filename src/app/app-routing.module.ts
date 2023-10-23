@@ -16,7 +16,7 @@ import { SelectInterestComponent } from './components/InterestsFolder/select-int
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
-import { GruposComponent } from './components/grupos/grupos.component';
+import { GruposComponent } from './components/GroupsFolder/grupos/grupos.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TypeSearchComponent } from './components/Search/type-search/type-search.component';
 import { AlertErrorComponent } from './components/alert-error/alert-error.component';
