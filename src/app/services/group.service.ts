@@ -23,7 +23,6 @@ export class GroupService {
 			}),
 			observe: "response" as 'body'
 		}
-		
 		return this.http.post(this.urlGroups, formData, httpOptions);
 	}
 	getGroups(){
