@@ -43,6 +43,8 @@ import { FollowedSectionComponent } from './components/followed-section/followed
 import { UserSearchComponent } from './components/Search/user-search/user-search.component';
 import { InterestsSearchComponent } from './components/Search/interests-search/interests-search.component';
 import { SinglegroupComponent } from './components/GroupsFolder/singlegroup/singlegroup.component';
+import { SingleeventComponent } from './components/EventsFolder/singleevent/singleevent.component';
+
 
 
 
@@ -84,7 +86,9 @@ import { SinglegroupComponent } from './components/GroupsFolder/singlegroup/sing
     FollowedSectionComponent,
     UserSearchComponent,
     InterestsSearchComponent,
-    SinglegroupComponent
+    SinglegroupComponent,
+    SingleeventComponent
+
   ],
   imports: [
     BrowserModule,
