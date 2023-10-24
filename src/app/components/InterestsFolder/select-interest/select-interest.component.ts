@@ -32,9 +32,6 @@ export class SelectInterestComponent {
 	ngOnInit(){
 		
 		if (this.SelectInterestType == "user") this.getUserInterests();
-		if (this.SelectInterestType == "post") console.log(this.SelectInterestType);
-		if (this.SelectInterestType == "group") console.log(this.SelectInterestType);
-		if (this.SelectInterestType == "event") console.log(this.SelectInterestType);
 		this.getInterests();
 	}
 
@@ -66,7 +63,7 @@ export class SelectInterestComponent {
 	
 	getUserInterests(){
 		this.interestService.getUserInterests().subscribe((res: any) => {
-
+			
 			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item.id_label);
 			
 			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item.id_label);

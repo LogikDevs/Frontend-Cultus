@@ -16,6 +16,9 @@ export class CreatePostComponent {
 	userPfp:string = "assets/post-images/profile_def.jpg";
 	userData:any;
 	username:string = "";
+
+	postInterests:any = this.interestService.NewUserInterestsArray;
+
 	constructor(
 		private userService: GetUserService, 
 		private createPostService: CreatePostService, 
