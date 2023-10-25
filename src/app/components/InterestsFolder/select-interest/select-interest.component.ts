@@ -75,7 +75,8 @@ export class SelectInterestComponent {
 		
 		this.InterestsToAdd = InterestsArray.filter((item:any) => !this.DataBaseInterests.includes(item));
 		this.InterestsToDelete = this.DataBaseInterests.filter((item: any) => !InterestsArray.includes(item));
-
+		console.log(this.InterestsToAdd);
+		console.log(this.InterestsToDelete);
 		this.AddUserInterests(this.InterestsToAdd); 
 		this.DeleteUserInterests(this.InterestsToDelete);
 
@@ -87,12 +88,12 @@ export class SelectInterestComponent {
 	
 	AddUserInterests(interest:any){
 		interest.forEach((item: any) => {
-			this.interestService.sendUserInterests(item).subscribe(res => {});
+			this.interestService.sendUserInterests(item.id_label).subscribe(res => {});
 		});
 	}
 	DeleteUserInterests(interest:any){
 		interest.forEach((item: any) => {
-			this.interestService.deleteInterest(item).subscribe(res => {})
+			this.interestService.deleteInterest(item.id_label).subscribe(res => {})
 		})
 	}
 }

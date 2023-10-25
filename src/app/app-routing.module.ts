@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -24,7 +23,7 @@ import { AlertCompleteComponent } from './components/alert-complete/alert-comple
 import { CreateComponent } from './components/create/create.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
-
+import { EventsComponent } from './components/EventsFolder/events/events.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -49,7 +48,8 @@ const routes: Routes = [
   { path: 'AlertError', component: AlertErrorComponent, canActivate: [GuardAuthentication] },
   { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] },
   { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] },
-  { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] }
+  { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] },
+  { path: 'events', component: EventsComponent, canActivate: [GuardAuthentication] }
 ];
 
 

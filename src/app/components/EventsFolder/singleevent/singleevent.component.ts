@@ -9,7 +9,7 @@ import { EventService } from 'src/app/services/event.service';
 export class SingleeventComponent {
     @Input() event:any;
 
-    Image:any = ""
+    Image:any = "";
     userFollows:any;
     isFollowing:any;
 
