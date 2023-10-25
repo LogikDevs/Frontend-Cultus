@@ -16,6 +16,9 @@ export class CreatePostComponent {
 	userPfp:string = "assets/post-images/profile_def.jpg";
 	userData:any;
 	username:string = "";
+
+	postInterests:any = this.interestService.NewUserInterestsArray;
+
 	constructor(
 		private userService: GetUserService, 
 		private createPostService: CreatePostService, 
@@ -49,7 +52,9 @@ export class CreatePostComponent {
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
-		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{})
+		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{
+			console.log(res)
+		})
 	}
 	onFileChange(event: any) {
 		this.postMultimedia = event.target.files[0];
@@ -69,7 +74,7 @@ export class CreatePostComponent {
 	sendPostInterests(postId:any){
 		const InterestsArray:any = this.interestService.NewUserInterestsArray;
 		for (let i = 0; i < InterestsArray.length; i++){
-			this.interestService.sendPostInterests(postId, InterestsArray[i]).subscribe((res:any)=>{})
+			this.interestService.sendPostInterests(postId, InterestsArray[i].id_label).subscribe((res:any)=>{})
 		}
 		this.interestService.NewUserInterestsArray = [];
 	}

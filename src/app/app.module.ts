@@ -33,7 +33,6 @@ import { CrearMenuComponent } from './components/crear-menu/crear-menu.component
 import { GruposComponent } from './components/GroupsFolder/grupos/grupos.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { SliderGruposComponent } from './components/slider-grupos/slider-grupos.component';
-
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TypeSearchComponent } from './components/Search/type-search/type-search.component';
 import { AlertErrorComponent } from './components/alert-error/alert-error.component';
@@ -44,6 +43,7 @@ import { UserSearchComponent } from './components/Search/user-search/user-search
 import { InterestsSearchComponent } from './components/Search/interests-search/interests-search.component';
 import { SinglegroupComponent } from './components/GroupsFolder/singlegroup/singlegroup.component';
 import { SingleeventComponent } from './components/EventsFolder/singleevent/singleevent.component';
+import { EventsComponent } from './components/EventsFolder/events/events.component';
 
 
 
@@ -87,8 +87,8 @@ import { SingleeventComponent } from './components/EventsFolder/singleevent/sing
     UserSearchComponent,
     InterestsSearchComponent,
     SinglegroupComponent,
-    SingleeventComponent
-
+    SingleeventComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,

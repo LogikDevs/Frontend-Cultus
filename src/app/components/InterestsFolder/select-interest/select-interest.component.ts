@@ -32,9 +32,6 @@ export class SelectInterestComponent {
 	ngOnInit(){
 		
 		if (this.SelectInterestType == "user") this.getUserInterests();
-		if (this.SelectInterestType == "post") console.log(this.SelectInterestType);
-		if (this.SelectInterestType == "group") console.log(this.SelectInterestType);
-		if (this.SelectInterestType == "event") console.log(this.SelectInterestType);
 		this.getInterests();
 	}
 
@@ -66,7 +63,7 @@ export class SelectInterestComponent {
 	
 	getUserInterests(){
 		this.interestService.getUserInterests().subscribe((res: any) => {
-
+			
 			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item.id_label);
 			
 			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item.id_label);
@@ -78,7 +75,8 @@ export class SelectInterestComponent {
 		
 		this.InterestsToAdd = InterestsArray.filter((item:any) => !this.DataBaseInterests.includes(item));
 		this.InterestsToDelete = this.DataBaseInterests.filter((item: any) => !InterestsArray.includes(item));
-
+		console.log(this.InterestsToAdd);
+		console.log(this.InterestsToDelete);
 		this.AddUserInterests(this.InterestsToAdd); 
 		this.DeleteUserInterests(this.InterestsToDelete);
 
@@ -90,12 +88,12 @@ export class SelectInterestComponent {
 	
 	AddUserInterests(interest:any){
 		interest.forEach((item: any) => {
-			this.interestService.sendUserInterests(item).subscribe(res => {});
+			this.interestService.sendUserInterests(item.id_label).subscribe(res => {});
 		});
 	}
 	DeleteUserInterests(interest:any){
 		interest.forEach((item: any) => {
-			this.interestService.deleteInterest(item).subscribe(res => {})
+			this.interestService.deleteInterest(item.id_label).subscribe(res => {})
 		})
 	}
 }

@@ -1,5 +1,4 @@
-
-    <app-sidebar></app-sidebar>
+<app-sidebar></app-sidebar>
 
 <form #ProfileDataForm="ngForm" action="" (ngSubmit)="saveProfileData(ProfileDataForm.value)">
 
@@ -12,12 +11,12 @@
                     <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
                         [style.background-size]="'cover'" [style.background-position]="'center'"
                         [class.hideImage]="!selectedImage" [class.showEdit]="selectedImage" (click)="triggerFileInput()">
-                        <img *ngIf="!selectedImage"
+                        <img id="UserPfp" *ngIf="!selectedImage"
                             src="https://i.ibb.co/Fh9yqwz/add-profile-picture-icon-upload-photo-of-social-media-user-vector-removebg-preview.png"
                             alt="">
                         <p *ngIf="!selectedImage" class="hideImage"></p>
     
-                        <span class="editText">Editar imagen</span>
+                        <span class="editText">Edit profile picture</span>
     
                     </div>
     
@@ -28,8 +27,6 @@
                         </label>
                     </div>
                 </div>
-                <!-- <img src={{pfpUrl}} alt=""> -->
-          
             </div>
         </div>
         <div class="EditableContent">

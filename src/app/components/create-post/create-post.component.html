@@ -20,12 +20,12 @@
     </div>
     <div class="ContainerInterest">
         <div class="Interest">
-            <p>Sports</p>
+            <p class="Interest" *ngFor="let interest of postInterests">{{ interest.interest }}</p>
         </div>
     </div>
     <div class="PublicationSpace">
     
-        <input ngModel name="text" type="text"  required placeholder="¿Què estas pensando?">
+        <input ngModel name="text" type="text"  required placeholder="What are you thinking of?">
    
         <div class="SpacePhoto">
             <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
