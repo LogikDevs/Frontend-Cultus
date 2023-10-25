@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-alert-error',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./alert-error.component.scss']
 })
 export class AlertErrorComponent {
-
+    @Input() Message:string;
+	visibility:boolean = true;
+	constructor(){}
+	
+	ngOnInit(){
+		setTimeout(() => {
+			this.hideComponent();
+		}, 4000);
+	}
+	hideComponent(){
+		this.visibility = false;
+	};
 }

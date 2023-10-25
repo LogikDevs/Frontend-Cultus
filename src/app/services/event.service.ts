@@ -10,6 +10,7 @@ export class EventService {
 	private urlGetFollowedEvents = "http://localhost:8003/api/v1/event/followed"
 	private urlFollowEvent = "http://localhost:8003/api/v1/participant/create";
 	private urlUnfollowEvent = "http://localhost:8003/api/v1/participant/delete";
+	private urlEventPosts = "";
 
   	constructor(private http: HttpClient) { }
 	
@@ -50,6 +51,15 @@ export class EventService {
 			})
 		}
 		return this.http.get(this.urlGetFollowedEvents, httpOptions);
+	}
+	getEventPosts(){
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get(this.urlEventPosts, httpOptions);
 	}
 	followEvent(){
 		const httpOptions = {

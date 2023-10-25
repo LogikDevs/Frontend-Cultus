@@ -17,6 +17,15 @@ export class CreatePostComponent {
 	userData:any;
 	username:string = "";
 
+	CompleteMessage = {
+		showMessage: false,
+		Message: "the Post has been published."
+	}
+	ErrorMessage = {
+		showMessage: false,
+		Message: "There was an error during the process."
+	}
+
 	postInterests:any = this.interestService.NewUserInterestsArray;
 
 	constructor(
@@ -44,11 +53,20 @@ export class CreatePostComponent {
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){
 				const newPostId = res.body.id_post;
+
 				this.sendPostInterests(newPostId);
 				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
+
+				this.ErrorMessage.showMessage = false;
+				this.CompleteMessage.showMessage = true;
+			}
+			if (res.status !== 201) {
+				this.ErrorMessage.showMessage = false;
+				this.CompleteMessage.showMessage = true;
 			}
 		}, (error:any)=>{
-			console.log("Mostrar mensaje de Error al crear Post");
+			this.CompleteMessage.showMessage = false;
+			this.ErrorMessage.showMessage = true;
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {

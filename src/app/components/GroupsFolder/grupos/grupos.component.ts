@@ -17,7 +17,7 @@ export class GruposComponent {
 	getGroups(){
 		this.groupService.getGroups().subscribe((res:any)=>{
 			this.groups = res;
-  	    })
+  	  })
 	}
   imgCollection: Array<object> = [
       {
