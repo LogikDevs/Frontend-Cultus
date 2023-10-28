@@ -7,16 +7,5 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class AlertCompleteComponent {
     @Input() Message:string;
-	visibility:boolean = true;
-	constructor(){}
-	
-	ngOnInit(){
-		setTimeout(() => {
-			this.hideComponent();
-		}, 4000);
-	}
-	hideComponent(){
-		this.visibility = false;
-	};
 }
 

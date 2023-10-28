@@ -18,12 +18,12 @@ export class CreatePostComponent {
 	username:string = "";
 
 	CompleteMessage = {
-		showMessage: false,
-		Message: "the Post has been published."
+		Message: "the Post has been published.",
+		visibility: false
 	}
 	ErrorMessage = {
-		showMessage: false,
-		Message: "There was an error during the process."
+		Message: "There was an error during the process.",
+		visibility: false
 	}
 
 	postInterests:any = this.interestService.NewUserInterestsArray;
@@ -57,16 +57,13 @@ export class CreatePostComponent {
 				this.sendPostInterests(newPostId);
 				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
 
-				this.ErrorMessage.showMessage = false;
-				this.CompleteMessage.showMessage = true;
+				this.OnCompleteAlert();
 			}
 			if (res.status !== 201) {
-				this.ErrorMessage.showMessage = false;
-				this.CompleteMessage.showMessage = true;
+				this.OnErrorAlert();
 			}
 		}, (error:any)=>{
-			this.CompleteMessage.showMessage = false;
-			this.ErrorMessage.showMessage = true;
+			this.OnErrorAlert();
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
@@ -95,5 +92,24 @@ export class CreatePostComponent {
 			this.interestService.sendPostInterests(postId, InterestsArray[i].id_label).subscribe((res:any)=>{})
 		}
 		this.interestService.NewUserInterestsArray = [];
+	}
+
+	OnCompleteAlert(){
+		this.CompleteMessage.visibility = true;
+		this.ErrorMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(true);
+		}, 4000);
+	}
+	OnErrorAlert(){
+		this.ErrorMessage.visibility = true;
+		this.CompleteMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(false);
+		}, 4000);
+	}
+	hideComponent(Complete:boolean){
+		if (Complete == true) this.CompleteMessage.visibility = false;
+		if (Complete == false) this.ErrorMessage.visibility = false;
 	}
 }

@@ -1,4 +1,4 @@
-<div class="ContainerAlert" *ngIf="visibility">
+<div class="ContainerAlert">
     <div class="ErrorAlert">
       <div class="flex">
         <div class="flex-shrink-0">
@@ -8,12 +8,8 @@
           </svg>
         </div>
         <div class="ErrorContainer">
-          <p class="ErrorTittle">No se pudo subir el post
-          </p><div class="Error">
-            <ul class="ListError" role="list">
-              <li>Aqui va el error</li>
-              <li>Aqui va otro error</li>
-            </ul>
+          <p class="ErrorTittle">{{Message}}</p>
+          <div class="Error">
         </div>
         </div>
       </div>

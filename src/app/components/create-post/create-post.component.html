@@ -72,11 +72,11 @@
 </form>
 
 <div> 
-    <div *ngIf="CompleteMessage.showMessage">
-        <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
-    </div>
-    <div *ngIf="ErrorMessage.showMessage">
+    <div *ngIf="ErrorMessage.visibility">
         <app-alert-error [Message]="ErrorMessage.Message"></app-alert-error>
+    </div>
+    <div *ngIf="CompleteMessage.visibility">
+        <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
     </div>
 </div>
 
