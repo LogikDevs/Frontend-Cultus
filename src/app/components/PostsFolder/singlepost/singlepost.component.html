@@ -57,13 +57,13 @@
 			<div class="DataPost">
 				<div class="UpvotesPost">
 					<div class="IconUpvotesPost" (click)="ClickVote(1)">
-						<img src="assets/post-images/like.svg" alt="">
+						<img name="likebutton"src="assets/post-images/like.svg" alt="">
 					</div>
 					<div class="AmountUpvotesPost">
-						<p id=VotesNumber_{{post.post.id_post}}>{{ post.post.votes }}</p>
+						<p id=LikeButton_{{post.post.id_post}}>{{ post.post.votes }}</p>
 					</div>
 					<div class="IconUpvotesPost" (click)="ClickVote(0)">
-						<img src="assets/post-images/disgusto.svg" alt="">
+						<img name="DislikeButton_{{post.post.id_post}}" src="assets/post-images/disgusto.svg" alt="">
 					</div>
 				</div>
 				<div class="CommentsPost">

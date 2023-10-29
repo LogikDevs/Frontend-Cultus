@@ -117,7 +117,12 @@ import { Router } from '@angular/router';
 		if (votetype == 0) this.CreateVote(0);
 	}
 	CreateVote(votetype:any){
-		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res) => {this.updateVotes()})
+		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res:any) => {
+			console.log(res);
+				this.updateVotes()
+				this.VotesButtonColor(true,votetype);
+		
+		})
 	}
 
 	updateVotes() {
@@ -131,6 +136,11 @@ import { Router } from '@angular/router';
 		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
 		if (this.post.post.votes == 0) voteColor.style.color = "grey";
 		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
+	}
+	VotesButtonColor(CreateVote:boolean ,typeOfLike:boolean){
+		const likeButton:any = document.getElementById('LikeButton_'+this.post.post.id_post);
+		const dislikeButton:any = document.getElementById('DislikeButton_'+this.post.post.id_post);
+		if ()
 	}
 
 	updateComments(){
