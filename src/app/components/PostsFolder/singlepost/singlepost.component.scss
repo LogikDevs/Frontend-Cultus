@@ -482,3 +482,11 @@ min-width: 360px;
                 margin-top: 20px;
             }
         }
+        .ImagePostDesktop{
+            max-height: 300px;
+
+        }
+        .ImagePostDesktop img{
+width: 100%;
+object-fit: cover;
+        }
