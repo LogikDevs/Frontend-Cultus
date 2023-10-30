@@ -1,9 +1,12 @@
+$ColorFuente:#4A5C45;
+$ColorSecundario:#282928;
+
 .group {
     display: flex;
     line-height: 28px;
     align-items: center;
     position: relative;
-    max-width: 590px;
+    max-width: 690px;
    }
    
    .input {
@@ -40,21 +43,98 @@
    }
 
    .ContainerSearch{
-    margin-left: 250px;
+    height: 100%;
+    margin-left: 50px;
     margin-top: 20px;
-    background-color: #4a4959;
+  
     width: 70%;
- 
+
   
    }
    .Form{
     width: 100%;
    }
-   .Search{
+  
    
+   .Categories{
+    margin-top: 10px;
+    border-bottom: 2px solid $ColorFuente;
+    margin-left: -70px;
    }
-   
-   
+   .Buttons{
+    margin-left: 60px;
+   }
+   .Categories button{
+    margin: 10px;
+    
+background-color: $ColorSecundario;
+color: $ColorFuente;
+border: none;
+padding: 8px;
+border-radius: 10px;
+font-size: 15px;
+cursor: pointer;
+height: 40px;
+width: 100px;
+transition: .3s ease;
+   }
+   .Categories button:hover{
+background-color: #303130;
+   }
+
+   .Result{
+    margin: 10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: $ColorSecundario;
+    width: 50%;
+    border-radius: 20px;
+
+    
+   }
+   .Tittle {
+    color: $ColorFuente;
+   }
+   .Image{
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: #696b6b;
+    border-radius: 50%;
+   }
+   .Image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
+   .Name {
+    color: $ColorFuente;
+    font-weight: bold;
+    margin-left: 10px;
+   }
+   .Option{
+    color: rgb(11, 109, 200);
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 20px;
+    cursor: pointer;
+
+   }
+   .Start{
+    display: flex;
+    align-items: center;
+   }
+   .GeneralContainer{
+    display: flex;
+   }
+   .BorderLeft{
+ border-left: 2px solid $ColorFuente;
+    margin-left: 250px;
+ width: 20px;
+ height: auto;
+   }
    
    
    
