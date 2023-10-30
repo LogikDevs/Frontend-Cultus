@@ -119,8 +119,8 @@
 				<p>{{ post.user.name }} {{ post.user.surname }}</p>
 			</div>
 			<div class="DataProfile">
-				<div class="Follow" *ngIf="Followable">
-					<img src="/assets/follow.png" alt="" (click)="CheckFollowOrUnfollow(true)">
+				<div id="FollowButton_{{post.post.id_post}}" class="Follow" *ngIf="Followable">
+					<img src={{followButtonSrc}} alt="" (click)="CheckFollowOrUnfollow(true)">
 				</div>
 				<div class="SendMessage" *ngIf="Followable">
 					<img src="/assets/charlando.png" alt="">

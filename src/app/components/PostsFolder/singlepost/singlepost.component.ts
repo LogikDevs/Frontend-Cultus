@@ -41,6 +41,7 @@ import { Router } from '@angular/router';
 	userFollowsAccount:any;
 
 	isFollowing:any;
+	followButtonSrc:string = "assets/follow.png";
 
   	AddComment:string = '';
 
@@ -118,10 +119,8 @@ import { Router } from '@angular/router';
 	}
 	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res:any) => {
-			console.log(res);
 				this.updateVotes()
 				this.VotesButtonColor(true,votetype);
-		
 		})
 	}
 
@@ -140,7 +139,6 @@ import { Router } from '@angular/router';
 	VotesButtonColor(CreateVote:boolean ,typeOfLike:boolean){
 		const likeButton:any = document.getElementById('LikeButton_'+this.post.post.id_post);
 		const dislikeButton:any = document.getElementById('DislikeButton_'+this.post.post.id_post);
-		if ()
 	}
 
 	updateComments(){
@@ -154,23 +152,29 @@ import { Router } from '@angular/router';
 			const userFollowsAccount = this.userFollows.find((follow:any) => Number(follow.id_followed) === this.post.post.fk_id_user);
 			if (userFollowsAccount) {
 				this.isFollowing = "Unfollow";
+				if (click === false) this.followButtonSrc = "assets/unfollow.png";
 				if (click === true) this.UnfollowAction();
 			}
 			if (!userFollowsAccount) {
 				this.isFollowing = "Follow";
+				if (click === false) this.followButtonSrc = "assets/follow.png";
 				if (click === true) this.FollowAction();
 			}
 		})
 	}
 	FollowAction(){
+		const FollowButton:any = document.getElementById("FollowButton_"+this.post.post.id_post);
 		this.followService.sendFollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
 			else this.isFollowing = "Unfollow";
+			this.followButtonSrc = "assets/unfollow.png";
 		})
 	}
 	UnfollowAction(){
+		const FollowButton:any = document.getElementById("FollowButton_"+this.post.post.id_post);
 		this.followService.Unfollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			this.isFollowing = "Follow";
+			this.followButtonSrc = "assets/follow.png";
 		})
 	}
 

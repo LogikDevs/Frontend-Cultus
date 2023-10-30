@@ -13,10 +13,10 @@
     <div class="ContainerHome">
 
         <div class="SubHeaderHome">
-            <div class="Discovery">
+            <div (click)="ChangeSection(true)" class="Discovery">
                 <p>Discovery</p>
             </div>
-            <div class="Followed">
+            <div (click)="ChangeSection(false)" class="Followed">
                 <p>Seguidos</p>
             </div>
 
@@ -31,7 +31,13 @@
             <div class="SliderUsuarios ">
                 <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
             </div>
-            <app-discovery-section class="Post"></app-discovery-section>
+
+            <div *ngIf="Section">
+                <app-discovery-section class="Post"></app-discovery-section>
+            </div>
+            <div *ngIf="!Section">
+                <app-followed-section class="Post"></app-followed-section>
+            </div>
 
         </div>
 
