@@ -6,7 +6,7 @@ $ColorSecundario:#282928;
     line-height: 28px;
     align-items: center;
     position: relative;
-    max-width: 690px;
+    max-width: 70%;
    }
    
    .input {
@@ -136,5 +136,25 @@ background-color: #303130;
  height: auto;
    }
    
+
+   @media (max-width:850px){
+
+.BorderLeft{
+    margin-left: 80px;
+}
+.Result{
+    min-width: 300px;
+}
+   }
+   @media (max-width:500px){
+    .BorderLeft{
+        margin-left: 20px;
+        border: none;
+    }
+    .GeneralContainer{
+        margin-left: -70px;
+    }
+ 
+       }
    
    
