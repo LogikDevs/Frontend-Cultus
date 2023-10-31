@@ -207,11 +207,16 @@ top: -300px;
     margin-top: 10px;
 }
 .Interest{
+    display: flex;
+    justify-content: start;
+    align-items: center;
     margin-left: 20px;
    background-color: #111111;
    border-radius: 15px;
    padding: 5px;
    height: 25px;
+   color: $ColorFuente;
+   font-weight: bold;
    }
    .Interest p{
 color: $ColorFuente;
@@ -219,4 +224,5 @@ font-weight: bold;
    font-size: 12px;
    margin-top: 5px;
    text-align: center;
+
    } 
