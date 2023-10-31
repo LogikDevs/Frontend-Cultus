@@ -83,3 +83,11 @@
     <div *ngIf="interestService.displaySelectInterest" id="ContainerInterest">
         <app-select-interest [SelectInterestType]="'event'" [WindowVisibility]="true"></app-select-interest>
     </div>
+<div>
+    <div *ngIf="ErrorMessage.visibility">
+        <app-alert-error [Message]="ErrorMessage.Message"></app-alert-error>
+    </div>
+    <div *ngIf="CompleteMessage.visibility">
+        <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
+    </div>
+</div>

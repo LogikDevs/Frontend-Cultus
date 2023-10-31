@@ -22,15 +22,17 @@
                     <p *ngIf="!selectedImage" class="hideImage">Agregar imagen</p>
 
                     <span class="editText">Editar imagen</span>
-
+                     
                 </div>
-
+           <p class="ErrorMessageProfilePic">{{errorMessageProfilePic}}</p>
                 <div class="AddImageInput">
                     <label for="pfp" class="InputContainer">
                         <input ngModel type="file" (change)="onFileSelected($event)" accept="image/*" id="pfp"
                             name="profile_pic" #fileInput>
                     </label>
+                    
                 </div>
+                
             </div>
         </div>
 

@@ -57,13 +57,13 @@
 			<div class="DataPost">
 				<div class="UpvotesPost">
 					<div class="IconUpvotesPost" (click)="ClickVote(1)">
-						<img src="assets/post-images/like.svg" alt="">
+						<img name="likebutton"src="assets/post-images/like.svg" alt="">
 					</div>
 					<div class="AmountUpvotesPost">
-						<p id=VotesNumber_{{post.post.id_post}}>{{ post.post.votes }}</p>
+						<p id=LikeButton_{{post.post.id_post}}>{{ post.post.votes }}</p>
 					</div>
 					<div class="IconUpvotesPost" (click)="ClickVote(0)">
-						<img src="assets/post-images/disgusto.svg" alt="">
+						<img name="DislikeButton_{{post.post.id_post}}" src="assets/post-images/disgusto.svg" alt="">
 					</div>
 				</div>
 				<div class="CommentsPost">
@@ -119,8 +119,8 @@
 				<p>{{ post.user.name }} {{ post.user.surname }}</p>
 			</div>
 			<div class="DataProfile">
-				<div class="Follow" *ngIf="Followable">
-					<img src="/assets/follow.png" alt="" (click)="CheckFollowOrUnfollow(true)">
+				<div id="FollowButton_{{post.post.id_post}}" class="Follow" *ngIf="Followable">
+					<img src={{followButtonSrc}} alt="" (click)="CheckFollowOrUnfollow(true)">
 				</div>
 				<div class="SendMessage" *ngIf="Followable">
 					<img src="/assets/charlando.png" alt="">

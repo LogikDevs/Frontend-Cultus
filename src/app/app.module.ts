@@ -44,6 +44,7 @@ import { InterestsSearchComponent } from './components/Search/interests-search/i
 import { SinglegroupComponent } from './components/GroupsFolder/singlegroup/singlegroup.component';
 import { SingleeventComponent } from './components/EventsFolder/singleevent/singleevent.component';
 import { EventsComponent } from './components/EventsFolder/events/events.component';
+import { EventComponent } from './components/EventsFolder/event/event.component';
 
 
 
@@ -88,7 +89,8 @@ import { EventsComponent } from './components/EventsFolder/events/events.compone
     InterestsSearchComponent,
     SinglegroupComponent,
     SingleeventComponent,
-    EventsComponent
+    EventsComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,

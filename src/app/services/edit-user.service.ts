@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class EditUserService {
 	private urlApiRegisterOptionalData = "http://localhost:8000/api/v1/user/2";
-	private urlApiEditUser = "http://localhost:8000/api/v1/user/";
+	private urlApiEditUser = "http://localhost:8000/api/v1/user/edit";
   
 	constructor(private http: HttpClient) {}
 	
@@ -29,7 +29,6 @@ export class EditUserService {
 			}), 
 			observe: "response" as 'body'
 		}
-		
 		return this.http.post(this.urlApiRegisterOptionalData, formData, httpOptions);
 	}
 
@@ -41,7 +40,6 @@ export class EditUserService {
 		formData.append('surname', EditUserData.surname);
 		formData.append('email', EditUserData.email);
 		formData.append('age', EditUserData.age);
-		formData.append('password', EditUserData.password);
 
 		if(EditUserData.homeland != "") formData.append('homeland', EditUserData.homeland);
 
@@ -56,8 +54,9 @@ export class EditUserService {
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
-			})
+			}),
+			observe: "response" as 'body'
 		}
-		return this.http.put(this.urlApiEditUser, formData, httpOptions);
+		return this.http.post(this.urlApiEditUser, formData, httpOptions);
 	}
 }

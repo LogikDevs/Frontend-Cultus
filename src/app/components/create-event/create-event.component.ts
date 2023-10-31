@@ -11,6 +11,15 @@ import { EventService } from 'src/app/services/event.service';
 export class CreateEventComponent {
     eventMultimedia:File;
     
+	CompleteMessage = {
+		Message: "the Event has been created.",
+		visibility: false
+	}
+	ErrorMessage = {
+		Message: "There was an error during the process.",
+		visibility: false
+	}
+
     constructor(
 		public interestService: GetInterestsService,
 		private eventService: EventService
@@ -30,9 +39,14 @@ export class CreateEventComponent {
 		if (eventData.private == "false") eventData.private = 0;
 
 		this.eventService.createEvent(eventData).subscribe((res:any)=>{
-			if (res.status === 201) console.log("Mostrar mensaje de Evento Creado")
+			if (res.status === 201) {
+				this.OnCompleteAlert();
+			}
+			if (res.status !== 201) {			
+				this.OnErrorAlert()
+			}
 		}, (error:any)=>{
-			console.log("Mostrar mensaje de Error al crear Evento");
+			this.OnErrorAlert()
 		})
     }
     showEventInterestSelection(){
@@ -40,5 +54,24 @@ export class CreateEventComponent {
     }
     onFileChange(event: any) {
 		this.eventMultimedia = event.target.files[0];
+	}
+
+	OnCompleteAlert(){
+		this.CompleteMessage.visibility = true;
+		this.ErrorMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(true);
+		}, 4000);
+	}
+	OnErrorAlert(){
+		this.ErrorMessage.visibility = true;
+		this.CompleteMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(false);
+		}, 4000);
+	}
+	hideComponent(Complete:boolean){
+		if (Complete == true) this.CompleteMessage.visibility = false;
+		if (Complete == false) this.ErrorMessage.visibility = false;
 	}
 }

@@ -17,6 +17,15 @@ export class CreatePostComponent {
 	userData:any;
 	username:string = "";
 
+	CompleteMessage = {
+		Message: "the Post has been published.",
+		visibility: false
+	}
+	ErrorMessage = {
+		Message: "There was an error during the process.",
+		visibility: false
+	}
+
 	postInterests:any = this.interestService.NewUserInterestsArray;
 
 	constructor(
@@ -44,11 +53,17 @@ export class CreatePostComponent {
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){
 				const newPostId = res.body.id_post;
+
 				this.sendPostInterests(newPostId);
 				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
+
+				this.OnCompleteAlert();
+			}
+			if (res.status !== 201) {
+				this.OnErrorAlert();
 			}
 		}, (error:any)=>{
-			console.log("Mostrar mensaje de Error al crear Post");
+			this.OnErrorAlert();
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
@@ -77,5 +92,24 @@ export class CreatePostComponent {
 			this.interestService.sendPostInterests(postId, InterestsArray[i].id_label).subscribe((res:any)=>{})
 		}
 		this.interestService.NewUserInterestsArray = [];
+	}
+
+	OnCompleteAlert(){
+		this.CompleteMessage.visibility = true;
+		this.ErrorMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(true);
+		}, 4000);
+	}
+	OnErrorAlert(){
+		this.ErrorMessage.visibility = true;
+		this.CompleteMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(false);
+		}, 4000);
+	}
+	hideComponent(Complete:boolean){
+		if (Complete == true) this.CompleteMessage.visibility = false;
+		if (Complete == false) this.ErrorMessage.visibility = false;
 	}
 }
