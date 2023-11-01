@@ -45,6 +45,8 @@ import { SinglegroupComponent } from './components/GroupsFolder/singlegroup/sing
 import { SingleeventComponent } from './components/EventsFolder/singleevent/singleevent.component';
 import { EventsComponent } from './components/EventsFolder/events/events.component';
 import { EventComponent } from './components/EventsFolder/event/event.component';
+import { ParticipantsComponent } from './components/EventsFolder/participants/participants.component';
+import { EventInterestsComponent } from './components/EventsFolder/event-interests/event-interests.component';
 
 
 
@@ -90,7 +92,9 @@ import { EventComponent } from './components/EventsFolder/event/event.component'
     SinglegroupComponent,
     SingleeventComponent,
     EventsComponent,
-    EventComponent
+    EventComponent,
+    ParticipantsComponent,
+    EventInterestsComponent
   ],
   imports: [
     BrowserModule,

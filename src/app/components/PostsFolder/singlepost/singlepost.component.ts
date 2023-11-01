@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Post, Comment } from './post.model';
 import { VoteService } from 'src/app/services/vote.service';
@@ -51,6 +51,8 @@ import { Router } from '@angular/router';
 	containerVisible: boolean = false;
   	showComments: boolean = false;
 	noCommentsTemplate: any;
+
+	@Output() PostRemoved = new EventEmitter<boolean>();
 
 	constructor(
 		private voteService: VoteService, 
@@ -143,7 +145,7 @@ import { Router } from '@angular/router';
 
 	updateComments(){
 		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
-			this.post.post.comments = res.comments;
+			this.post.post.comments = res[0].post.comments;
 		});
 	}
 	CheckFollowOrUnfollow(click:boolean){
@@ -163,7 +165,6 @@ import { Router } from '@angular/router';
 		})
 	}
 	FollowAction(){
-		const FollowButton:any = document.getElementById("FollowButton_"+this.post.post.id_post);
 		this.followService.sendFollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
 			else this.isFollowing = "Unfollow";
@@ -171,7 +172,6 @@ import { Router } from '@angular/router';
 		})
 	}
 	UnfollowAction(){
-		const FollowButton:any = document.getElementById("FollowButton_"+this.post.post.id_post);
 		this.followService.Unfollow(this.post.post.fk_id_user).subscribe((res:any)=>{
 			this.isFollowing = "Follow";
 			this.followButtonSrc = "assets/follow.png";

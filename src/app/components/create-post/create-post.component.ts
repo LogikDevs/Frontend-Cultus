@@ -17,6 +17,8 @@ export class CreatePostComponent {
 	userData:any;
 	username:string = "";
 
+	@Input() EventPost:any = null;
+
 	CompleteMessage = {
 		Message: "the Post has been published.",
 		visibility: false
@@ -48,7 +50,8 @@ export class CreatePostComponent {
 			text: FormData.text,
 			latitud: FormData.latitud,
 			longitud: FormData.longitud,
-			multimedia_file: this.postMultimedia
+			multimedia_file: this.postMultimedia,
+			fk_id_event: this.EventPost
 		}
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){

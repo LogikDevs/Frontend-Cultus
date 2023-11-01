@@ -1,1 +1,29 @@
-<p>event works!</p>
+<div id="eventData" *ngIf="eventData">
+    <p>Event Name: {{eventData[0].name}}</p>
+    <p>Event Description: {{eventData[0].description}}</p>
+    <p>Event Text: {{eventData[0].text}}</p>
+    <p>Event Type: {{eventType}}</p>
+</div>
+<div id="updates" *ngFor="let post of eventData.updates">
+    <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
+</div>
+<div id="eventParticipantsAndInterests">
+    <div>
+        <p>Event Interests:</p>
+        <div id="eventInterests" *ngFor="let interest of eventData.interests">
+            <app-event-interests *ngIf="interest" [interest]="interest"></app-event-interests>
+        </div>
+    </div>
+    <div>
+        <p>Event Participants:</p>
+        <div id="eventParticipants" *ngFor="let participant of eventData.participants">
+            <app-participants *ngIf="participant" [participant]="participant"></app-participants>
+        </div>
+    </div>
+</div>
+<div id="CreatePostForEvent">
+    <button (click)="ShowPostCreationComponent()"></button>
+    <div *ngIf="createPostComponentVisibility">
+        <app-create-post [EventPost]="eventData[0].id"></app-create-post>
+    </div>
+</div>

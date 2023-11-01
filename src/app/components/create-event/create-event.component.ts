@@ -10,7 +10,7 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class CreateEventComponent {
     eventMultimedia:File;
-    
+	
 	CompleteMessage = {
 		Message: "the Event has been created.",
 		visibility: false
@@ -40,6 +40,7 @@ export class CreateEventComponent {
 
 		this.eventService.createEvent(eventData).subscribe((res:any)=>{
 			if (res.status === 201) {
+				this.sendEventInterests(res.body.id_event);
 				this.OnCompleteAlert();
 			}
 			if (res.status !== 201) {			
@@ -49,6 +50,13 @@ export class CreateEventComponent {
 			this.OnErrorAlert()
 		})
     }
+
+	sendEventInterests(createdEventId:any){
+		this.interestService.NewUserInterestsArray.forEach(element => {
+			this.eventService.sendEventInterests(element.id_label, createdEventId).subscribe((res:any)=>{})
+		});
+	}
+
     showEventInterestSelection(){
         this.interestService.displaySelectInterest = true;
     }

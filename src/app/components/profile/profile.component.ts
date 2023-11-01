@@ -50,6 +50,11 @@ export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   	@ViewChild('ContainerInterest', { static: true }) ContainerInterest!: ElementRef<HTMLDivElement>;
   
+	CompleteMessage = {
+		Message: "the Post has been removed.",
+		visibility: false
+	}
+
 	constructor(
     	private route: ActivatedRoute, 
     	private userService: GetUserService, 
@@ -148,25 +153,35 @@ export class ProfileComponent implements OnInit {
 	ToEditProfile(){
 		this.router.navigateByUrl('/EditProfile');
 	}
-  onDragStart(event: DragEvent) {
-    event.dataTransfer?.setData('text/plain', ''); 
-    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
-    this.isDragging = true;
-  }
+  	onDragStart(event: DragEvent) {
+    	event.dataTransfer?.setData('text/plain', ''); 
+    	this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    	this.isDragging = true;
+  	}
 
-  onDragEnd(event: DragEvent) {
-    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
-    this.isDragging = false;
-  }
+  	onDragEnd(event: DragEvent) {
+    	this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    	this.isDragging = false;
+  	}
 
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-    if (this.isDragging) {
-      const container = event.currentTarget as HTMLElement;
-      const offsetX = event.clientX - container.getBoundingClientRect().left;
-      const containerWidth = container.clientWidth;
-      const scrollLeft = (offsetX / containerWidth) * (container.scrollWidth - containerWidth);
-      container.scrollLeft = scrollLeft;
-    }
-  }
+  	onDragOver(event: DragEvent) {
+    	event.preventDefault();
+    	if (this.isDragging) {
+    	  	const container = event.currentTarget as HTMLElement;
+    	  	const offsetX = event.clientX - container.getBoundingClientRect().left;
+    	  	const containerWidth = container.clientWidth;
+    	  	const scrollLeft = (offsetX / containerWidth) * (container.scrollWidth - containerWidth);
+    	  	container.scrollLeft = scrollLeft;
+    	}
+  	}
+
+	OnCompleteAlert(){
+		this.CompleteMessage.visibility = true;
+		setTimeout(() => {
+			this.hideComponent(true);
+		}, 4000);
+	}
+	hideComponent(Complete:boolean){
+		if (Complete == true) this.CompleteMessage.visibility = false;
+	}
 }
