@@ -23,6 +23,8 @@ export class CreateEventComponent {
 
 	@Output() ComponentRemoved = new EventEmitter<boolean>();
 
+	imageUrl:any;
+
 	createdEvent:any;
     constructor(
 		public interestService: GetInterestsService,
@@ -68,6 +70,13 @@ export class CreateEventComponent {
     }
     onFileChange(event: any) {
 		this.eventMultimedia = event.target.files[0];
+		if (this.eventMultimedia) {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				this.imageUrl = event.target?.result;
+			}
+			reader.readAsDataURL(this.eventMultimedia);
+		}
 	}
 
 	OnCompleteAlert(){

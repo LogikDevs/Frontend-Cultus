@@ -30,6 +30,7 @@
             <div class="ContainerImage">
                 <div class="Image">
                     <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
+                    <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
                 </div>
                 
             </div>

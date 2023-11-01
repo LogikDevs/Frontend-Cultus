@@ -19,6 +19,8 @@ export class CreateGroupComponent {
 		visibility: false
 	}
 
+	imageUrl:any;
+
 	@Output() ComponentRemoved = new EventEmitter<boolean>();
 
 	constructor(public interestService: GetInterestsService, private groupService: GroupService) { }
@@ -48,6 +50,13 @@ export class CreateGroupComponent {
   	}
   	onFileChange(event: any) {
   		this.groupMultimedia = event.target.files[0];
+		if (this.groupMultimedia) {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				this.imageUrl = event.target?.result;
+			}
+			reader.readAsDataURL(this.groupMultimedia);
+		}
 	}
 
 

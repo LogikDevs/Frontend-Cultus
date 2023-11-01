@@ -86,7 +86,7 @@ export class CreatePostComponent {
 				this.imageUrl = event.target?.result;
 			}
 			reader.readAsDataURL(this.postMultimedia);
-		  }
+		}
 	}
 
 	showPostInterestSelection(){
