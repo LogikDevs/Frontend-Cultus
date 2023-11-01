@@ -24,7 +24,7 @@
     <div class="ContainerCreate">
         <div class="HeaderCreate">
             <div class="Back">
-                <img src="assets/Go Back.png" alt="">
+                <img src="assets/Go Back.png" (click)="ComponentRemove()" alt="">
             </div>
             <div class="Tittle">
                 <h2>Create Event</h2>
@@ -35,9 +35,8 @@
         </div>
         <div class="ContainerImage">
             <div class="Image">
-    
+                <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
             </div>
-            <!-- <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)"> -->
         </div>
     
         <div class="DataCreate">

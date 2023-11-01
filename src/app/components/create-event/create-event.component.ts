@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { NewEventData } from './create-event.model';
 import { EventService } from 'src/app/services/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
@@ -20,9 +21,13 @@ export class CreateEventComponent {
 		visibility: false
 	}
 
+	@Output() ComponentRemoved = new EventEmitter<boolean>();
+
+	createdEvent:any;
     constructor(
 		public interestService: GetInterestsService,
-		private eventService: EventService
+		private eventService: EventService,
+		private router: Router
 	) { }
 
     sendCreatedEvent(FormData:any){
@@ -41,6 +46,7 @@ export class CreateEventComponent {
 		this.eventService.createEvent(eventData).subscribe((res:any)=>{
 			if (res.status === 201) {
 				this.sendEventInterests(res.body.id_event);
+				this.createdEvent = res.body;
 				this.OnCompleteAlert();
 			}
 			if (res.status !== 201) {			
@@ -68,6 +74,7 @@ export class CreateEventComponent {
 		this.CompleteMessage.visibility = true;
 		this.ErrorMessage.visibility = false;
 		setTimeout(() => {
+			this.router.navigateByUrl("/event/" + this.createdEvent.id_event);
 			this.hideComponent(true);
 		}, 4000);
 	}
@@ -81,5 +88,9 @@ export class CreateEventComponent {
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;
 		if (Complete == false) this.ErrorMessage.visibility = false;
+	}
+
+	ComponentRemove(){
+		this.ComponentRemoved.emit(true);
 	}
 }

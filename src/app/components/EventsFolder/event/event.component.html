@@ -2,6 +2,7 @@
     <p>Event Name: {{eventData[0].name}}</p>
     <p>Event Description: {{eventData[0].description}}</p>
     <p>Event Text: {{eventData[0].text}}</p>
+    <img src="{{eventCover}}" alt="">
     <p>Event Type: {{eventType}}</p>
 </div>
 <div id="updates" *ngFor="let post of eventData.updates">

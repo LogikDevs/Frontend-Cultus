@@ -7,9 +7,6 @@
             <div class="Create">
                 <h2>Create</h2>
             </div>
-            <div class="Close">
-                <img src="assets/post-images/close.svg" alt="">
-            </div>
         </div>
         <div class="Space">
             <div class="HeaderSpace">
@@ -55,11 +52,11 @@
 
 </form>
 <div *ngIf="ShowCreationComponent==1">
-    <app-create-post></app-create-post>
+    <app-create-post (ComponentRemoved)="QuitCreation()"></app-create-post>
 </div>
 <div *ngIf="ShowCreationComponent==2">
-    <app-create-group></app-create-group>
+    <app-create-group (ComponentRemoved)="QuitCreation()"></app-create-group>
 </div>
 <div *ngIf="ShowCreationComponent==3">
-    <app-create-event></app-create-event>
+    <app-create-event (ComponentRemoved)="QuitCreation()"></app-create-event>
 </div>

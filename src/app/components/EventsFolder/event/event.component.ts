@@ -13,6 +13,10 @@ export class EventComponent {
 
 	userId:any;
 
+	eventCover:string = "";
+	defaultUrlCover:string = "http://localhost:8003/cover_event/"
+
+
 	eventData:any = "";
 	eventType:any;
 
@@ -33,6 +37,9 @@ export class EventComponent {
 			this.checkEventType();
 			console.log(this.eventData);
 		})
+	}
+	checkCover(){
+		if (this.eventData[0].cover) this.eventCover = this.defaultUrlCover + this.eventData[0].cover;
 	}
 	getUser(){
     	this.userService.getUser().subscribe((res:any)=>{

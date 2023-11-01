@@ -18,7 +18,7 @@
         <div class="ContainerCreate">
             <div class="HeaderCreate">
                 <div class="Back">
-                    <img src="assets/Go Back.png" alt="">
+                    <img src="assets/Go Back.png" (click)="ComponentRemove()" alt="">
                 </div>
                 <div class="Tittle">
                     <h2>Create Group</h2>
@@ -29,9 +29,9 @@
             </div>
             <div class="ContainerImage">
                 <div class="Image">
-        
+                    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
                 </div>
-                <!-- <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)"> -->
+                
             </div>
         
             <div class="DataCreate">
@@ -49,11 +49,6 @@
                 </div>
                 </div>
                 <div class="Group2">
-                    <div class="Data">
-                        <p>Group Interests</p>
-                        <button type="button" name="GroupInterests"(click)="showGroupInterestSelection()">Select Group interests</button>
-                      
-                    </div>
                    <div class="Data" id="Description">
                         <p>Description</p>
                         <input ngModel name="GroupDescription" type="text" placeholder="Group Description" required>
@@ -65,11 +60,6 @@
                 </div>
               
             </div>
-        </div>
-        
-    
-        <div *ngIf="interestService.displaySelectInterest" id="ContainerInterest">
-            <app-select-interest [SelectInterestType]="'event'" [WindowVisibility]="true"></app-select-interest>
         </div>
         
         </form>
