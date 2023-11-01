@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { NewGroupData } from './create-group.model';
 import { GroupService } from 'src/app/services/group.service';
@@ -19,6 +19,10 @@ export class CreateGroupComponent {
 		visibility: false
 	}
 
+	imageUrl:any;
+
+	@Output() ComponentRemoved = new EventEmitter<boolean>();
+
 	constructor(public interestService: GetInterestsService, private groupService: GroupService) { }
 
   	sendCreatedGroup(FormData:any){
@@ -26,6 +30,7 @@ export class CreateGroupComponent {
     		name: FormData.GroupName,
     		description: FormData.GroupDescription,
     		multimedia_file: this.groupMultimedia,
+			cover: FormData.multimedia_file,
     		Type: FormData.GroupType
  		}
 		this.groupService.createGroup(groupData).subscribe((res:any)=>{
@@ -45,6 +50,13 @@ export class CreateGroupComponent {
   	}
   	onFileChange(event: any) {
   		this.groupMultimedia = event.target.files[0];
+		if (this.groupMultimedia) {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				this.imageUrl = event.target?.result;
+			}
+			reader.readAsDataURL(this.groupMultimedia);
+		}
 	}
 
 
@@ -65,5 +77,9 @@ export class CreateGroupComponent {
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;
 		if (Complete == false) this.ErrorMessage.visibility = false;
+	}
+	
+	ComponentRemove(){
+		this.ComponentRemoved.emit(true);
 	}
 }

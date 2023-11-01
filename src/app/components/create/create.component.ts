@@ -26,4 +26,8 @@ export class CreateComponent {
             this.interestService.NewUserInterestsArray = [];
         }
     }
+    QuitCreation(){
+        this.interestService.NewUserInterestsArray = [];
+        this.ShowCreationComponent = 0;
+    }
 }
