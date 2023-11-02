@@ -12,12 +12,13 @@ export class EventsComponent {
   constructor(private eventService: EventService){}
 
     ngOnInit(){
-		this.getEvents();
-	}
+		  this.getEvents();
+	  }
 	getEvents(){
 		this.eventService.getEventsFromInterests().subscribe((res:any)=>{
 		    this.events = res;
-  	    })
+        console.log(this.events);
+  	})
 	}
 
   imgCollection: Array<object> = [

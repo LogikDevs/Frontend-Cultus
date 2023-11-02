@@ -1,21 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CreatePostService } from '../../services/create-post.service';
 import { NewPostData } from './create-post.model';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetUserService } from 'src/app/services/get-user.service';
+import { Router } from '@angular/router';
 @Component({
 	selector: 'app-create-post',
 	templateUrl: './create-post.component.html',
 	styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent {
-		
+	
 	postMultimedia: File;
 	imageUrl:any;
 	defaultUrl:string = "http://localhost:8000/storage/profile_pic/";
 	userPfp:string = "assets/post-images/profile_def.jpg";
 	userData:any;
 	username:string = "";
+
+	@Input() EventPost:any = null;
+
+	@Output() ComponentRemoved = new EventEmitter<boolean>();
 
 	CompleteMessage = {
 		Message: "the Post has been published.",
@@ -31,7 +36,8 @@ export class CreatePostComponent {
 	constructor(
 		private userService: GetUserService, 
 		private createPostService: CreatePostService, 
-		public interestService: GetInterestsService
+		public interestService: GetInterestsService,
+		private router: Router
 	) { }
 	ngOnInit(){
 		this.getUser();
@@ -48,7 +54,8 @@ export class CreatePostComponent {
 			text: FormData.text,
 			latitud: FormData.latitud,
 			longitud: FormData.longitud,
-			multimedia_file: this.postMultimedia
+			multimedia_file: this.postMultimedia,
+			fk_id_event: this.EventPost
 		}
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){
@@ -79,7 +86,7 @@ export class CreatePostComponent {
 				this.imageUrl = event.target?.result;
 			}
 			reader.readAsDataURL(this.postMultimedia);
-		  }
+		}
 	}
 
 	showPostInterestSelection(){
@@ -98,6 +105,7 @@ export class CreatePostComponent {
 		this.CompleteMessage.visibility = true;
 		this.ErrorMessage.visibility = false;
 		setTimeout(() => {
+			this.router.navigateByUrl("/profile/" + this.userData.id);
 			this.hideComponent(true);
 		}, 4000);
 	}
@@ -111,5 +119,8 @@ export class CreatePostComponent {
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;
 		if (Complete == false) this.ErrorMessage.visibility = false;
+	}
+	ComponentRemove(){
+		this.ComponentRemoved.emit(true);
 	}
 }

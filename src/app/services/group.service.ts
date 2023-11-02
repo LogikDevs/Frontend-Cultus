@@ -15,7 +15,7 @@ export class GroupService {
 
 		formData.append('name', groupToCreate.name);
 		formData.append('description', groupToCreate.description);
-		formData.append('picture', groupToCreate.multimedia_file);
+		if (groupToCreate.multimedia_file) formData.append('picture', groupToCreate.multimedia_file);
 		formData.append('privacy', groupToCreate.Type);
 		const httpOptions = {
 			headers: new HttpHeaders({

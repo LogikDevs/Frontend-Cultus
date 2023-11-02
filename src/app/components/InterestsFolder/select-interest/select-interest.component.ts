@@ -54,7 +54,7 @@ export class SelectInterestComponent {
 	}
 
 	sendInterests(){
-		if (["post", "group", "event"].includes(this.SelectInterestType)) {
+		if (["post", "event"].includes(this.SelectInterestType)) {
 			this.interestService.displaySelectInterest = false;
 			this.WindowVisibility = false;
 		}

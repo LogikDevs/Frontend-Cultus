@@ -49,7 +49,7 @@
     
 <div class="ContainerPost">
     <div class="ContainerImagePost"  *ngFor="let post of posts">
-        <app-singlepost *ngIf="post" [userId]="userId" [post]="post" [ProfilePosts]=true></app-singlepost>
+        <app-singlepost *ngIf="post" [userId]="userId" [post]="post" [ProfilePosts]=true (PostRemoved)="OnCompleteAlert()"></app-singlepost>
     </div>
 </div>
 
@@ -101,6 +101,10 @@
 </div>
 </div>
 <div class="ContainerTextPost">
+
+    <div *ngIf="CompleteMessage.visibility">
+        <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
+    </div>
 
 </div>
 
