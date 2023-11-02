@@ -1,7 +1,8 @@
 $ColorFuente:#4A5C45;
 $ColorSecundario:#282928;
 .ContainerModalCreatePost{
-
+position: relative;
+top: -320px;
     width: 100%;
 max-width: 500px;
 box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
@@ -177,13 +178,15 @@ cursor: pointer;
 }
 .ContainerModalCreatePost{
     margin: auto;
-    margin-top: -60px;
+position: relative;
+
 
 }
 @media(min-width:500px){
     .ContainerModalCreatePost{
 width: 70%;
 margin-left: 100px;
+top: -320px;
 
     }
     .ContainerSelectInterest{
@@ -194,13 +197,14 @@ margin-left: 100px;
     .ContainerModalCreatePost{
 
 margin: auto;
-margin-top: -60px;
+
+top: -300px;
 
     }
 }
 .ContainerSelectInterest{
 position: relative;
-top: -300px;
+top: -600px;
 }
 .ContainerInterest{
     display: flex;
