@@ -1,0 +1,14 @@
+<div *ngIf="groupData">
+    <div class="groupBasicData">
+        <p>Group: {{groupData.name}}</p>
+        <img src={{eventCover}} alt="">
+        <p>Description: {{groupData.description}}</p>
+        <p>Type: {{groupData.privacy}}</p>
+    </div>
+    <div class="integrantes" *ngFor="let participant of groupParticipants">
+        <app-participants [type]="type" [participant]="participant"></app-participants>
+    </div>
+</div>
+<div *ngIf="groupData">
+    <app-chat [chatId]="groupData.id_chat"></app-chat>
+</div>

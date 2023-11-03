@@ -6,5 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./participants.component.scss']
 })
 export class ParticipantsComponent {
+    @Input() type:string = "event" || "group";
     @Input() participant:any;
 }

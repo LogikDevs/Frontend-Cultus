@@ -27,7 +27,8 @@ export class GetCommentsService {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
-			})
+			}),
+			observe: "response" as 'body'
 		}
 		return this.http.post(this.URLCreateComment, receivedPostData, httpOptions);
   	}

@@ -88,6 +88,7 @@
 			  <form (submit)="sendComment()">
 				  <textarea [(ngModel)]="AddComment" name="AddComment" placeholder="Agregar un comentario..."></textarea>
 				  <button type="submit"><img src="assets/post-images/enviar-mensaje.svg" alt=""></button>
+				  <p class="publishedComment">{{commentPublishedMessage}}</p>
 			  </form>
 		  </div>
 
