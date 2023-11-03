@@ -51,6 +51,7 @@ import { Router } from '@angular/router';
 	containerVisible: boolean = false;
   	showComments: boolean = false;
 	noCommentsTemplate: any;
+	commentPublishedMessage:string = "";
 
 	@Output() PostRemoved = new EventEmitter<boolean>();
 
@@ -94,11 +95,19 @@ import { Router } from '@angular/router';
 		}
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
-				this.showCommentLocally(CreatedComment);
+					this.publishedComment();
+					this.showCommentLocally(CreatedComment.body);
 			});
 			this.AddComment = '';
 		}
-	}	
+	}
+
+	publishedComment(){
+		this.commentPublishedMessage = "Published."
+		setTimeout(() => {
+			this.commentPublishedMessage = "";
+		}, 3000);
+	}
 	showCommentLocally(CreatedComment:any){
 
 		const NewComment: Comment = {

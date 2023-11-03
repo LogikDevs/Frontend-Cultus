@@ -47,6 +47,9 @@ import { EventsComponent } from './components/EventsFolder/events/events.compone
 import { EventComponent } from './components/EventsFolder/event/event.component';
 import { ParticipantsComponent } from './components/EventsFolder/participants/participants.component';
 import { EventInterestsComponent } from './components/EventsFolder/event-interests/event-interests.component';
+import { GroupComponent } from './components/GroupsFolder/group/group.component';
+import { ChatComponent } from './components/ChatsFolder/chat/chat.component';
+import { MessageComponent } from './components/ChatsFolder/message/message.component';
 
 
 
@@ -94,7 +97,10 @@ import { EventInterestsComponent } from './components/EventsFolder/event-interes
     EventsComponent,
     EventComponent,
     ParticipantsComponent,
-    EventInterestsComponent
+    EventInterestsComponent,
+    GroupComponent,
+    ChatComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
