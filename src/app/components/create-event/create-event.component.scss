@@ -8,6 +8,8 @@ $ColorSecundario:#282928;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
    margin: auto;
+   position: relative;
+   top: -310px;
 }
 .HeaderCreate{
     width: 100%;
@@ -53,22 +55,42 @@ cursor: pointer;
 
 }
 
+
 .ContainerImage{
     
-width: 100%;
-text-align: center;
-}
-.Image{
-    margin: auto;
-    margin-top: 10px;
-width: 80%;
-height: 130px;
-background-color: #4A5C45;
-}
+    width: 100%;
+    text-align: center;
+    }
+    .Image{
+        margin: auto;
+        margin-top: 10px;
+    width: 40%;
+    height: 130px;
+    background-color: #343534;
+    position: relative;
+    border-radius: 15px;
+    }
+    input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        z-index: -1;
+    }
+    .Image img{
+        margin-top: 6px;
+        width: 70%;
+        height: 90%;
+        cursor: pointer;
+        border-radius: 10px;
+    }
 .Group1,.Group2,.Group3{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 15px;
     
 }
 .Data{
@@ -84,6 +106,7 @@ background-color: #4A5C45;
     border: none;
     font-size: 15px;
     padding: 7px;
+    border-radius: 10px;
 }
 .Data select{
     width: 120px;
@@ -93,6 +116,7 @@ background-color: #4A5C45;
     border: none;
     font-size: 15px;
     padding: 7px;
+    border-radius: 10px;
 }
 .Data button{
     width: 120px;
@@ -102,15 +126,30 @@ background-color: #4A5C45;
     border: none;
     font-size: 15px;
     padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
 }
-
+option{
+    font-weight: bold;
+    font-size: 15px;
+}
 #Description input{
 height: 40px;
+width: 90%;
 
 }
+#Text input{
+    height: 40px;
+    width: 90%;
+    
+    }
+
 #ContainerInterest{
     position: relative;
     z-index: 1;
-    top: -450px;
+    top: -750px;
 
+}
+.Back{
+    cursor: pointer;
 }

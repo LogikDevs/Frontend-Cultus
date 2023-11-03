@@ -34,12 +34,14 @@
             </div>
         </div>
         <div class="ContainerImage">
-            
             <div class="Image">
-                <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
-                <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
+              <label for="fileInput">
+                <img *ngIf="!imageUrl" src="assets/Crear-imagenes/Agregar.png" alt="Agregar Imagen">
+                <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
+              </label>
+              <input id="fileInput" type="file" (change)="onFileChange($event)">
             </div>
-        </div>
+          </div>
     
         <div class="DataCreate">
             <div class="Group1">
@@ -54,16 +56,21 @@
                     <option value="false">Public</option>
                 </select>
             </div>
+            <div class="Data">
+                <p>Event Interests</p>
+                <button type="button" name="EventInterests"(click)="showEventInterestSelection()">Select interests</button>
+              
+            </div>
             </div>
             <div class="Group2">
-                <div class="Data">
-                    <p>Event Interests</p>
-                    <button type="button" name="EventInterests"(click)="showEventInterestSelection()">Select Event interests</button>
-                  
-                </div>
+      
                 <div class="Data" id="FechaInicio">
                     <p>Start Date</p>
                     <input ngModel type="date" id="InitDate" name="InitDate">
+                </div>
+                <div class="Data" id="FechaFinal">
+                    <p>Close Date</p>
+                    <input ngModel type="date" id="CloseDate" name="CloseDate">
                 </div>
             </div>
             <div class="Group3">
@@ -75,10 +82,7 @@
                     <p>Long Description</p>
                     <input ngModel name="EventText" type="text" placeholder="">
                 </div>
-                <div class="Data" id="FechaFinal">
-                    <p>Close Date</p>
-                    <input ngModel type="date" id="CloseDate" name="CloseDate">
-                </div>
+         
             </div>
           
         </div>
