@@ -19,8 +19,9 @@ $ColorSecundario:#282928;
     border-radius: 8px;
     outline: none;
     background-color: #2c2c2d;
-    color: #1a3f19;
+    color: #357d33;
     transition: .3s ease;
+    font-weight: bold;
    }
    
    .input::placeholder {
@@ -128,12 +129,13 @@ background-color: #303130;
    }
    .GeneralContainer{
     display: flex;
+    height: 800px;
    }
    .BorderLeft{
  border-left: 2px solid $ColorFuente;
     margin-left: 250px;
  width: 20px;
- height: auto;
+ height: 100% !important;
    }
    
 

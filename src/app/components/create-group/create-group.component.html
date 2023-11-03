@@ -29,11 +29,15 @@
             </div>
             <div class="ContainerImage">
                 <div class="Image">
-                    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
-                    <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
+                  <label for="fileInput">
+                    <img *ngIf="!imageUrl" src="assets/Crear-imagenes/Agregar.png" alt="Agregar Imagen">
+                    <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
+                  </label>
+                  <input id="fileInput" type="file" (change)="onFileChange($event)">
                 </div>
-                
-            </div>
+              </div>
+              
+            
         
             <div class="DataCreate">
                 <div class="Group1">
