@@ -1,0 +1,11 @@
+<div *ngIf="chatData">
+    <div class="chatArea">
+
+    </div>
+    <div>
+        <div class="writeArea">
+            <input type="text" [(ngModel)]="message" placeholder="Write your message...">
+            <button (click)="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>

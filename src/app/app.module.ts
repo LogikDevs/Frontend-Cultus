@@ -47,6 +47,12 @@ import { EventsComponent } from './components/EventsFolder/events/events.compone
 import { EventComponent } from './components/EventsFolder/event/event.component';
 import { ParticipantsComponent } from './components/EventsFolder/participants/participants.component';
 import { EventInterestsComponent } from './components/EventsFolder/event-interests/event-interests.component';
+import { GroupComponent } from './components/GroupsFolder/group/group.component';
+import { ChatComponent } from './components/ChatsFolder/chat/chat.component';
+import { MessageComponent } from './components/ChatsFolder/message/message.component';
+import { JoinedgroupComponent } from './components/GroupsFolder/joinedgroup/joinedgroup.component';
+import { MygroupsComponent } from './components/GroupsFolder/mygroups/mygroups.component';
+import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgroups/suggestedgroups.component';
 
 
 
@@ -94,7 +100,13 @@ import { EventInterestsComponent } from './components/EventsFolder/event-interes
     EventsComponent,
     EventComponent,
     ParticipantsComponent,
-    EventInterestsComponent
+    EventInterestsComponent,
+    GroupComponent,
+    ChatComponent,
+    MessageComponent,
+    JoinedgroupComponent,
+    MygroupsComponent,
+    SuggestedgroupsComponent
   ],
   imports: [
     BrowserModule,

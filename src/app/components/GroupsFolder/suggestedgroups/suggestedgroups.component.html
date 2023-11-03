@@ -1,0 +1,8 @@
+<div class="myGroups" *ngIf="alreadyJoinedGroups">
+    <div *ngFor="let group of groups">
+        <app-singlegroup *ngIf="group" [group]="group" [alreadyJoinedGroups]="alreadyJoinedGroups" (leftGroup)="OnCompleteAlert()"></app-singlegroup>
+    </div>
+</div>
+<div *ngIf="CompleteMessage.visibility">
+    <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
+</div>
