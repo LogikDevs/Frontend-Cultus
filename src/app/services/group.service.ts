@@ -7,8 +7,11 @@ import { Injectable } from '@angular/core';
 export class GroupService {
 
 	private urlGroups:string ="http://localhost:8002/api/v1/group/";
-	private urlJoinGroup:string="http://localhost:8002/api/v1/group/join";
+	private urlMyGroups:string ="http://localhost:8002/api/v1/chats/";
+	private urlJoinGroup:string="http://localhost:8002/api/v1/group/join/";
+	private urlLeaveGroup:string="http://localhost:8002/api/v1/leave/"
 	private urlGetParticipants:string="http://localhost:8002/api/v1/integrates/"
+	
   	constructor(private http: HttpClient) {}
 
 	createGroup(groupToCreate:any) {
@@ -37,7 +40,19 @@ export class GroupService {
 		}
 		return this.http.get(this.urlGroups, httpOptions);
 	}
-	joinGroup(){
+	getMyGroups(){
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.get(this.urlMyGroups, httpOptions);
+	}
+	joinGroup(id_group:any){
+		const body = {
+			id_group: id_group
+		}
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -45,7 +60,17 @@ export class GroupService {
 			}),
 			observe: "response" as 'body'
 		}
-		return this.http.post(this.urlJoinGroup, httpOptions)
+		return this.http.post(this.urlJoinGroup, body , httpOptions)
+	}
+	leaveGroup(id_group:any){
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+			}),
+			observe: "response" as 'body'
+		}
+		return this.http.get(this.urlLeaveGroup + id_group, httpOptions)
 	}
 	getGroupData(groupId:any){
 		const httpOptions = {

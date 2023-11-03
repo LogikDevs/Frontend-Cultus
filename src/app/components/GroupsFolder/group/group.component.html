@@ -5,8 +5,8 @@
         <p>Description: {{groupData.description}}</p>
         <p>Type: {{groupData.privacy}}</p>
     </div>
-    <div class="integrantes">
-        
+    <div class="integrantes" *ngFor="let participant of groupParticipants">
+        <app-participants [type]="type" [participant]="participant"></app-participants>
     </div>
 </div>
 <div *ngIf="groupData">

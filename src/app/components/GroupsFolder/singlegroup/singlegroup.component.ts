@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GroupService } from 'src/app/services/group.service';
 
 @Component({
@@ -8,24 +8,50 @@ import { GroupService } from 'src/app/services/group.service';
 })
 export class SinglegroupComponent {
 	pictureUrlDefault:string = "http://localhost:8002/picture/"
-	groupPicture:string = "/src/assets/Profile-Image/planeta.svg"
-	joinButton:string = "Join"
+	groupPicture:string = ""
+	joinButton:string = "Join";
+	joined:boolean = false;
 
-	@Input() group:any
+	@Input() group:any;
+	@Input() alreadyJoinedGroups:any;
+
+	@Output() leftGroup = new EventEmitter<void>();
+
     constructor(
 		private groupService: GroupService
 	){}
 	ngOnInit(){
+		this.checkIfAlreadyJoinedGroup();
 		this.checkPicture();
 	}
 	checkPicture(){
 		if (this.group.picture) this.groupPicture = this.pictureUrlDefault + this.group.picture
 	}
-	joinGroup(){
-		this.groupService.joinGroup().subscribe((res:any)=>{
-			if (res.status === 201){
+	checkIfAlreadyJoinedGroup(){
+		console.log(this.alreadyJoinedGroups);
+		this.alreadyJoinedGroups.forEach((joinedGroup:any) => {
+			if (this.group.id_group === joinedGroup.id_group){
+				this.joined = true
 				this.joinButton = "Leave"
-			}
-		})
-	} 
+			} 
+		});
+	}
+	joinGroup(join:boolean){
+		if (join === false) {
+			this.groupService.joinGroup(this.group.id_group).subscribe((res:any)=>{
+				console.log(res);
+				if (res.status === 201) {
+					this.joinButton = "Leave"
+					this.joined = true;
+				}
+			})
+		}
+		if (join === true){
+			this.groupService.leaveGroup(this.group.id_group).subscribe((res:any)=>{
+					this.leftGroup.emit();
+					this.joinButton = "Join"
+					this.joined = false;
+			})
+		}
+	}
 }

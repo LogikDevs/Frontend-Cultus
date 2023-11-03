@@ -1,3 +1,3 @@
 <div id="participant">
-    <p>{{participant.name}} {{participant.surname}}</p> <p>{{participant.rol}}</p>
+    <p>{{participant.name}} {{participant.surname}}</p> <p *ngIf="type == 'event'">{{participant.rol}}</p>
 </div>

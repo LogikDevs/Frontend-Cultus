@@ -14,7 +14,8 @@ export class GroupComponent {
 
     groupData:any;
 	groupParticipants:any;
-	userId:any;
+
+	type="group";
 
 	eventCover:string = "";
 	defaultUrlCover:string = "http://localhost:8002/public/picture/"
@@ -25,11 +26,15 @@ export class GroupComponent {
 	){}
 	ngOnInit(){
 		this.getEvent();
+		this.getParticipants();
+		this.checkCover();
 	}
 	getEvent(){
 		this.groupService.getGroupData(this.GroupId).subscribe((res:any)=>{
 			this.groupData = res;
 		})
+	}
+	getParticipants(){
 		this.groupService.getGroupParticipants(this.GroupId).subscribe((res:any)=>{
 			this.groupParticipants = res;
 		})

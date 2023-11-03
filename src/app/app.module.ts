@@ -50,6 +50,9 @@ import { EventInterestsComponent } from './components/EventsFolder/event-interes
 import { GroupComponent } from './components/GroupsFolder/group/group.component';
 import { ChatComponent } from './components/ChatsFolder/chat/chat.component';
 import { MessageComponent } from './components/ChatsFolder/message/message.component';
+import { JoinedgroupComponent } from './components/GroupsFolder/joinedgroup/joinedgroup.component';
+import { MygroupsComponent } from './components/GroupsFolder/mygroups/mygroups.component';
+import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgroups/suggestedgroups.component';
 
 
 
@@ -100,7 +103,10 @@ import { MessageComponent } from './components/ChatsFolder/message/message.compo
     EventInterestsComponent,
     GroupComponent,
     ChatComponent,
-    MessageComponent
+    MessageComponent,
+    JoinedgroupComponent,
+    MygroupsComponent,
+    SuggestedgroupsComponent
   ],
   imports: [
     BrowserModule,

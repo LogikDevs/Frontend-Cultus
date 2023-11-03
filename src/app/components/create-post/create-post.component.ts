@@ -23,7 +23,7 @@ export class CreatePostComponent {
 	@Output() ComponentRemoved = new EventEmitter<boolean>();
 
 	CompleteMessage = {
-		Message: "the Post has been published.",
+		Message: "The Post has been published.",
 		visibility: false
 	}
 	ErrorMessage = {
