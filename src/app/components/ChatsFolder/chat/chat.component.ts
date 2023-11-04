@@ -10,7 +10,9 @@ export class ChatComponent {
 
     @Input() chatId:any;
     chatData:any;
-        
+    chatMessages:any = [];
+
+
     message: string = '';
 
     constructor(
@@ -19,6 +21,7 @@ export class ChatComponent {
 
     ngOnInit(){
         this.bringGroupChat(this.chatId);
+        this.bringChatMessages(this.chatId);
     }
     
     bringGroupChat(id_chat:any){
@@ -26,8 +29,19 @@ export class ChatComponent {
 			this.chatData = res;
 			console.log(this.chatData);
 		})
-	}    
-    sendMessage(){
+	}
 
+    bringChatMessages(id_chat:any){
+        this.chatService.BringChatMessages(id_chat).subscribe((res:any)=>{
+            this.chatMessages = res;
+        })
+    }
+
+    sendMessage(){
+        const messageToSend = this.message;
+
+        this.chatService.SendMessage(this.message, this.chatId).subscribe((res:any)=>{
+            console.log(res);
+        })
     }
 }
