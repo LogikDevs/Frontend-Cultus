@@ -25,99 +25,17 @@
         <button id="btnInterests" (click)="filterType('interests')">Interests</button> 
         </div>
       
-        <div class="ContainerInterest" *ngFor="let interest of filteredInterests">
-            <app-interests-search [interest]="interest"></app-interests-search>
-        </div> 
+     
     </div>
 
     <div class="ContainerResult">
+        
         <div class="Tittle">
             <h2>Result</h2>
         </div>
-        <div class="Result">
-            <div class="Start">
-            <div class="Image">
-                <img src="" alt="">
-            </div>
-            <div class="Name">
-                <p>Usuario</p>
-            </div>
-            </div>
-
-            <div class="Option">
-                <p>See profile</p>
-            </div>
-        </div>
-        <div class="Result">
-            <div class="Start">
-            <div class="Image">
-                <img src="" alt="">
-            </div>
-            <div class="Name">
-                <p>Usuario</p>
-            </div>
-            </div>
-            
-            <div class="Option">
-                <p>See profile</p>
-            </div>
-        </div>
-        <div class="Result">
-            <div class="Start">
-            <div class="Image">
-                <img src="" alt="">
-            </div>
-            <div class="Name">
-                <p>Usuario</p>
-            </div>
-            </div>
-            
-            <div class="Option">
-                <p>See profile</p>
-            </div>
-        </div>
-        <div class="Result">
-            <div class="Start">
-            <div class="Image">
-                <img src="" alt="">
-            </div>
-            <div class="Name">
-                <p>Usuario</p>
-            </div>
-            </div>
-            
-            <div class="Option">
-                <p>See profile</p>
-            </div>
-        </div>
-        <div class="Result">
-            <div class="Start">
-            <div class="Image">
-                <img src="" alt="">
-            </div>
-            <div class="Name">
-                <p>Usuario</p>
-            </div>
-            </div>
-            
-            <div class="Option">
-                <p>See profile</p>
-            </div>
-        </div>
-        <div class="Result">
-            <div class="Start">
-            <div class="Image">
-                <img src="" alt="">
-            </div>
-            <div class="Name">
-                <p>Usuario</p>
-            </div>
-            </div>
-            
-            <div class="Option">
-                <p>See profile</p>
-            </div>
-        </div>
+           <div class="ContainerInterest" *ngFor="let interest of filteredInterests">
+                <app-interests-search [interest]="interest"></app-interests-search>
+            </div> 
     </div>
 </div>
 </div>
