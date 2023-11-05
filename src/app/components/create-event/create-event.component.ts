@@ -47,7 +47,10 @@ export class CreateEventComponent {
 
 		this.eventService.createEvent(eventData).subscribe((res:any)=>{
 			if (res.status === 201) {
+				
 				this.sendEventInterests(res.body.id_event);
+				this.interestService.NewUserInterestsArray = [];
+
 				this.createdEvent = res.body;
 				this.OnCompleteAlert();
 			}
@@ -85,14 +88,14 @@ export class CreateEventComponent {
 		setTimeout(() => {
 			this.router.navigateByUrl("/event/" + this.createdEvent.id_event);
 			this.hideComponent(true);
-		}, 4000);
+		}, 2000);
 	}
 	OnErrorAlert(){
 		this.ErrorMessage.visibility = true;
 		this.CompleteMessage.visibility = false;
 		setTimeout(() => {
 			this.hideComponent(false);
-		}, 4000);
+		}, 2000);
 	}
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;

@@ -1,12 +1,17 @@
 <div *ngIf="chatData">
-    <div class="chatArea">
-
+    <div class="chatArea" >
+        <div *ngFor="let message of chatMessages">
+            <app-message [userId]="userId" [message]="message"></app-message>
+        </div>
+        <div *ngFor="let message of ownMessageSent">
+            <app-message [userId]="userId" [message]="message"></app-message>
+        </div>
     </div>
     <div>
-        <div class="writeArea">
-            <input type="text" [(ngModel)]="message" placeholder="Write your message...">
-            <button (click)="sendMessage()">Send</button>
-        </div>
+        <form (ngSubmit)="sendMessage()">
+            <input type="text" name="messageText" [(ngModel)]="message">
+            <button type="submit">Send</button>
+        </form>
     </div>
 </div>
 

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { NewGroupData } from './create-group.model';
 import { GroupService } from 'src/app/services/group.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-group',
@@ -21,9 +22,15 @@ export class CreateGroupComponent {
 
 	imageUrl:any;
 
+	createdGroup:any;
+
 	@Output() ComponentRemoved = new EventEmitter<boolean>();
 
-	constructor(public interestService: GetInterestsService, private groupService: GroupService) { }
+	constructor(
+		public interestService: GetInterestsService, 
+		private groupService: GroupService,
+		private router: Router
+	) { }
 
   	sendCreatedGroup(FormData:any){
   		const groupData: NewGroupData = {
@@ -35,6 +42,7 @@ export class CreateGroupComponent {
  		}
 		this.groupService.createGroup(groupData).subscribe((res:any)=>{
 			if (res.status === 201){
+				this.createdGroup = res;
 				this.OnCompleteAlert()
 			}
 			if (res.status !== 201){
@@ -65,7 +73,8 @@ export class CreateGroupComponent {
 		this.ErrorMessage.visibility = false;
 		setTimeout(() => {
 			this.hideComponent(true);
-		}, 4000);
+			this.router.navigateByUrl("/group/" + this.createdGroup.body[1].id);
+		}, 2000);
 	}
 	OnErrorAlert(){
 		this.ErrorMessage.visibility = true;

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
+import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,24 +11,46 @@ export class ChatComponent {
 
     @Input() chatId:any;
     chatData:any;
-        
+    chatMessages:any = [];
+    ownMessageSent:any = [];
+
+    userId:any;
+
     message: string = '';
 
     constructor(
-        private chatService: ChatService
+        private chatService: ChatService,
+        private userService: GetUserService
     ){}
 
+
     ngOnInit(){
+        this.getUser();
         this.bringGroupChat(this.chatId);
+        this.bringChatMessages(this.chatId);
     }
     
+    getUser(){
+        this.userService.getUser().subscribe((res:any)=>{
+            this.userId = res.id;
+        })
+    }
     bringGroupChat(id_chat:any){
 		this.chatService.BringChat(id_chat).subscribe((res:any)=>{
 			this.chatData = res;
-			console.log(this.chatData);
 		})
-	}    
-    sendMessage(){
+	}
 
+    bringChatMessages(id_chat:any){
+        this.chatService.BringChatMessages(id_chat).subscribe((res:any)=>{
+            this.chatMessages = res;
+        })
+    }
+
+    sendMessage(){
+        this.chatService.SendMessage(this.message, this.chatId).subscribe((res:any)=>{
+            this.message = "";
+            this.ownMessageSent.push(res);
+        })
     }
 }

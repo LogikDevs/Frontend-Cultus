@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { StatusService } from 'src/app/services/status.service';
-import { GetUserService } from '../../services/get-user.service';
 
 @Component({
 	selector: 'app-login',
@@ -22,8 +21,7 @@ export class LoginComponent {
 	constructor(
 		private api: AuthenticationService, 
 		private router: Router, 
-		private status: StatusService, 
-		private UserService: GetUserService
+		private status: StatusService
 	) { }
 
 	sendLogin(credentials: any) {

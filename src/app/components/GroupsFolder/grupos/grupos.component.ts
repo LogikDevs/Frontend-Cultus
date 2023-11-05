@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GroupService } from 'src/app/services/group.service';
 
 @Component({
   selector: 'app-grupos',

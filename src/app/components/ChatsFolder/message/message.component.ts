@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-message',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent {
+    @Input() message:any;
+    @Input() userId:any;
 
+    ownMessage:boolean;
+
+    ngOnInit(){
+      if (this.message.sender.id === this.userId) this.ownMessage = true;  
+    }
 }
