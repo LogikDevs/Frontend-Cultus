@@ -38,8 +38,6 @@ export class ChatComponent {
     }
 
     sendMessage(){
-        const messageToSend = this.message;
-
         this.chatService.SendMessage(this.message, this.chatId).subscribe((res:any)=>{
             console.log(res);
         })

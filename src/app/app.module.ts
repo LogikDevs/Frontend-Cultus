@@ -53,6 +53,9 @@ import { MessageComponent } from './components/ChatsFolder/message/message.compo
 import { JoinedgroupComponent } from './components/GroupsFolder/joinedgroup/joinedgroup.component';
 import { MygroupsComponent } from './components/GroupsFolder/mygroups/mygroups.component';
 import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgroups/suggestedgroups.component';
+import { JoinedeventComponent } from './components/EventsFolder/joinedevent/joinedevent.component';
+import { MyeventsComponent } from './components/EventsFolder/myevents/myevents.component';
+import { SuggestedeventsComponent } from './components/EventsFolder/suggestedevents/suggestedevents.component';
 
 
 
@@ -106,7 +109,10 @@ import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgro
     MessageComponent,
     JoinedgroupComponent,
     MygroupsComponent,
-    SuggestedgroupsComponent
+    SuggestedgroupsComponent,
+    JoinedeventComponent,
+    MyeventsComponent,
+    SuggestedeventsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,8 @@
+<div class="suggestedEvents" *ngIf="alreadyJoinedEvents">
+    <div *ngFor="let event of events">
+        <app-singleevent *ngIf="event" [event]="event" [alreadyJoinedEvents]="alreadyJoinedEvents" (leftGroup)="OnCompleteAlert()"></app-singleevent>
+    </div>
+</div>
+<div *ngIf="CompleteMessage.visibility">
+    <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
+</div>

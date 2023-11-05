@@ -18,6 +18,10 @@ export class CreatePostComponent {
 	userData:any;
 	username:string = "";
 
+	publishedPost:any;
+
+	@Output() postHasBeenPublished = new EventEmitter<boolean>();
+
 	@Input() EventPost:any = null;
 
 	@Output() ComponentRemoved = new EventEmitter<boolean>();
@@ -59,10 +63,10 @@ export class CreatePostComponent {
 		}
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){
-				const newPostId = res.body.id_post;
+				this.publishedPost = res.body;
 
-				this.sendPostInterests(newPostId);
-				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
+				this.sendPostInterests(this.publishedPost.id_post);
+				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, this.publishedPost.id_post);
 
 				this.OnCompleteAlert();
 			}
@@ -74,9 +78,7 @@ export class CreatePostComponent {
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
-		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{
-			console.log(res)
-		})
+		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{})
 	}
 	onFileChange(event: any) {
 		this.postMultimedia = event.target.files[0];
@@ -105,16 +107,18 @@ export class CreatePostComponent {
 		this.CompleteMessage.visibility = true;
 		this.ErrorMessage.visibility = false;
 		setTimeout(() => {
-			this.router.navigateByUrl("/profile/" + this.userData.id);
+			if (this.EventPost == null) this.router.navigateByUrl("/profile/" + this.userData.id);
+
+			if (this.EventPost) this.postHasBeenPublished.emit(true);
 			this.hideComponent(true);
-		}, 4000);
+		}, 2000);
 	}
 	OnErrorAlert(){
 		this.ErrorMessage.visibility = true;
 		this.CompleteMessage.visibility = false;
 		setTimeout(() => {
 			this.hideComponent(false);
-		}, 4000);
+		}, 2000);
 	}
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;

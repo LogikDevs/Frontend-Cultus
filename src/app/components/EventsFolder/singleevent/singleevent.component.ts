@@ -8,7 +8,8 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class SingleeventComponent {
     @Input() event:any;
-
+	@Input() alreadyJoinedEvents:any;
+    
     Image:any = "";
     userFollows:any;
     isFollowing:any;
@@ -17,10 +18,11 @@ export class SingleeventComponent {
         private eventService: EventService
     ){}
     ngOnInit(){
+        console.log("HOLA");
         this.checkFollowState(false);
     }
 	checkFollowState(click:boolean){
-		this.event.getUserFollowedEvents().subscribe((res:any)=>{
+		this.eventService.getUserFollowedEvents().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
 			const userFollowedEvents = this.userFollows.find((follow:any) => Number(follow.id) === this.event.id);
 			if (userFollowedEvents) {
