@@ -18,7 +18,7 @@
             <p #HtmlNameSurname *ngIf="ProfileData">{{ProfileData.name}} {{ProfileData.surname}}</p>
         </div>
         <div class="Age">
-            <p #HtmlAge *ngIf="ProfileData">, {{ProfileData.age}} </p>
+  
         </div>
 
         <div class="FollowOption" *ngIf="!ownProfile">
@@ -75,10 +75,10 @@
     </div>
     <div class="Data">
         <div class="LogoData">
-            <img src="assets/sidebar-images/grupos.svg" alt="">
+            <img src="assets/sidebar-images/cumple.png" alt="">
         </div>
         <div class="TextData">
-            <p>0 Friends</p>
+            <p #HtmlAge *ngIf="ProfileData"> {{ProfileData.age}} Years</p>
         </div>
     </div>
     <div class="Data">
