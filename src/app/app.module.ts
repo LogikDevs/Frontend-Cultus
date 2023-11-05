@@ -56,6 +56,8 @@ import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgro
 import { JoinedeventComponent } from './components/EventsFolder/joinedevent/joinedevent.component';
 import { MyeventsComponent } from './components/EventsFolder/myevents/myevents.component';
 import { SuggestedeventsComponent } from './components/EventsFolder/suggestedevents/suggestedevents.component';
+import { SettingsComponent } from './components/settings/settings.component';
+
 
 
 
@@ -112,7 +114,8 @@ import { SuggestedeventsComponent } from './components/EventsFolder/suggestedeve
     SuggestedgroupsComponent,
     JoinedeventComponent,
     MyeventsComponent,
-    SuggestedeventsComponent
+    SuggestedeventsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
