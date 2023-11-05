@@ -1,1 +1,3 @@
-<p>message works!</p>
+<label class="ownMessage" *ngIf="ownMessage">{{message.body}}</label>
+
+<label class="notOwnMessage" *ngIf="!ownMessage">{{message.sender.name}}: {{message.body}}</label>

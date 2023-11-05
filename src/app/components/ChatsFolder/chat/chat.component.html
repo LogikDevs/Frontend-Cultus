@@ -1,6 +1,11 @@
 <div *ngIf="chatData">
-    <div class="chatArea">
-
+    <div class="chatArea" >
+        <div *ngFor="let message of chatMessages">
+            <app-message [userId]="userId" [message]="message"></app-message>
+        </div>
+        <div *ngFor="let message of ownMessageSent">
+            <app-message [userId]="userId" [message]="message"></app-message>
+        </div>
     </div>
     <div>
         <form (ngSubmit)="sendMessage()">

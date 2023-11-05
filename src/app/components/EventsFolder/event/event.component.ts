@@ -30,13 +30,14 @@ export class EventComponent {
 		private userService: GetUserService
 	){}
 	ngOnInit(){
+		this.getUser();
 		this.getEvent();
 	}
 	getEvent(){
 		this.eventService.getEventData(this.EventId).subscribe((res:any)=>{
 			this.eventData = res;
 			this.checkEventType();
-			console.log(this.eventData);
+			this.checkIfIsAdmin();
 		})
 	}
 	checkCover(){
@@ -53,11 +54,7 @@ export class EventComponent {
 	}
 
 	checkIfIsAdmin(){
-		this.eventData.admin.forEach((adminUser:any) => {
-			if (this.userId === adminUser.id) this.isAdmin = true;
-			//CHEQUEAR adminUser.id
-		});
-		
+		if (this.userId === this.eventData.admin.id) this.isAdmin = true;
 	}
 	ShowPostCreationComponent(){
 		this.createPostComponentVisibility = true;
