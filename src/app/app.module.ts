@@ -53,6 +53,7 @@ import { MessageComponent } from './components/ChatsFolder/message/message.compo
 import { JoinedgroupComponent } from './components/GroupsFolder/joinedgroup/joinedgroup.component';
 import { MygroupsComponent } from './components/GroupsFolder/mygroups/mygroups.component';
 import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgroups/suggestedgroups.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 
@@ -106,7 +107,8 @@ import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgro
     MessageComponent,
     JoinedgroupComponent,
     MygroupsComponent,
-    SuggestedgroupsComponent
+    SuggestedgroupsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
