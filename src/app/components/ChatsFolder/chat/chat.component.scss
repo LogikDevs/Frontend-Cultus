@@ -2,14 +2,15 @@ $ColorFuente:#537D57;
 $ColorSecundario:#282928;
 .ContainerAll{
     display: flex;
-    height: 900px;
+
     width: 100%;
+    min-height: 100vh;
 }
 .ContainerAllChats{
     background-color: $ColorSecundario;
     width: 350px;
-    height: 100%;
-    margin-left: 80px;
+    height: 100vh;
+    margin-left: 78px;
     border-left: 2px solid $ColorFuente;
     border-right: 2px solid $ColorFuente;
     border-top: solid 1px $ColorFuente;
@@ -63,7 +64,7 @@ font-weight: bold;
     border-radius: 50%;
 }
 .ContainerContentChat{
-    background-color: #537D57;
+
     width: 75%;
 }
 .HeaderChat{
@@ -77,3 +78,78 @@ font-weight: bold;
     color: $ColorFuente;
     font-weight: bold;
 }
+.OptionsChat{
+
+    width: 80%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-left: 100px;
+}
+.Call,.VideoCall,.Option{
+    width: 40px;
+    height: 40px;
+    background-color: #151615;
+    margin: 8px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+}
+.Call img,.VideoCall img,.Option img{
+width: 50%;
+height: 50%;
+margin-top: 10px;
+}
+.Call:hover,.VideoCall:hover,.Option:hover{
+background-color: #0a0a0a;
+
+}
+.Content{
+    height: 85%;
+    max-height: 85%;
+  
+}
+.WriteContainer{
+    background-color: #181818;
+display: flex;
+position: fixed;
+bottom: 0px;
+width: 75%;
+border-top: solid 2px $ColorFuente;
+}
+.OptionsWriteContainer{
+
+
+display: flex;
+justify-content: end;
+align-items: center;
+}
+.Send,.Emogi,.Clip{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #0a0a0a;
+    margin: 5px;
+    border-radius: 50%;
+    text-align: center;
+}
+.Send img,.Emogi img,.Clip img{
+width: 80%;
+height: 80%;
+margin-top: 3px;
+transition: 300ms all ease;
+}
+.Send:hover,.Emogi:hover,.Clip:hover{
+background-color: #151615;
+    }
+    .WriteContainer input{
+        background-color: $ColorSecundario;
+        border: none;
+margin: 10px;
+padding: 10px;
+width: 60%;
+border-radius: 10px;
+color: $ColorFuente;
+    }
