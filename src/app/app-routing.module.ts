@@ -26,6 +26,7 @@ import { FollowedSectionComponent } from './components/followed-section/followed
 import { EventsComponent } from './components/EventsFolder/events/events.component';
 import { EventComponent } from './components/EventsFolder/event/event.component';
 import { GroupComponent } from './components/GroupsFolder/group/group.component';
+import { ChatComponent } from './components/ChatsFolder/chat/chat.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -53,7 +54,8 @@ const routes: Routes = [
   { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] },
   { path: 'events', component: EventsComponent, canActivate: [GuardAuthentication] },
   { path: 'event/:id', component: EventComponent, canActivate: [GuardAuthentication] },
-  { path: 'group/:id', component: GroupComponent, canActivate: [GuardAuthentication] }
+  { path: 'group/:id', component: GroupComponent, canActivate: [GuardAuthentication] },
+  { path: 'Chat', component: ChatComponent, canActivate: [GuardAuthentication] }
 ];
 
 

@@ -1,0 +1,77 @@
+$ColorFuente:#537D57;  
+$ColorSecundario:#282928;
+.ContainerAll{
+    display: flex;
+    height: 900px;
+    width: 100%;
+}
+.ContainerAllChats{
+    background-color: $ColorSecundario;
+    width: 350px;
+    height: 100%;
+    margin-left: 80px;
+    border-left: 2px solid $ColorFuente;
+    border-right: 2px solid $ColorFuente;
+    border-top: solid 1px $ColorFuente;
+}
+.Tittle{
+   border-bottom: 1px solid $ColorFuente;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 80px;
+}
+.Logo{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(34, 36, 36);
+    border-radius: 50%;
+    margin: 8px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.Logo img{
+    width: 100%;
+    height: 80%;
+    margin-top: 5px;
+}
+.Text{
+    font-weight:bold ;
+    color: $ColorFuente;
+}
+.ContainerChats{
+  margin: 10px;
+  max-height: 80%;
+}
+.Chat{
+display: flex;
+margin: 15px;
+background-color: #151615;
+border-radius: 15px;
+color: $ColorFuente;
+font-weight: bold;
+}
+.ImageChat{
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 50%;
+}
+.ImageChat img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.ContainerContentChat{
+    background-color: #537D57;
+    width: 75%;
+}
+.HeaderChat{
+    background-color: #282928;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: 2px solid $ColorFuente;
+    border-bottom: 2px solid $ColorFuente;
+}
