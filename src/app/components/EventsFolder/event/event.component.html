@@ -23,8 +23,8 @@
     </div>
 </div>
 <div id="CreatePostForEvent">
-    <button (click)="ShowPostCreationComponent()"></button>
+    <button *ngIf="isAdmin" (click)="ShowPostCreationComponent()">Upload Update</button>
     <div *ngIf="createPostComponentVisibility">
-        <app-create-post [EventPost]="eventData[0].id"></app-create-post>
+        <app-create-post [EventPost]="eventData[0].id"  (ComponentRemoved)="postPublished(false)" (postHasBeenPublished)="postPublished(true)"></app-create-post>
     </div>
 </div>

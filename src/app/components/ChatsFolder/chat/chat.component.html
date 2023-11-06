@@ -1,178 +1,30 @@
-<div *ngIf="chatData">
-    <div class="chatArea">
-
+<div class="Content">
+    <div *ngFor="let message of chatMessages">
+        <app-message [userId]="userId" [message]="message"></app-message>
     </div>
-    <div>
-        <div class="writeArea">
-            <input type="text" [(ngModel)]="message" placeholder="Write your message...">
-            <button (click)="sendMessage()">Send</button>
-        </div>
+    <div *ngFor="let message of ownMessageSent">
+        <app-message [userId]="userId" [message]="message"></app-message>
     </div>
 </div>
+<div class="WriteContainer">
+    <form (ngSubmit)="sendMessage()">
 
-<app-sidebar id="Sidebar"></app-sidebar>
-<div class="ContainerAll">
+        <input type="text" name="messageText" [(ngModel)]="message" placeholder="Write message...">
 
+        <div class="OptionsWriteContainer">
+                
+            <div class="Send" (click)="sendMessage()">
+                <img src="assets/Chat/send.svg" alt="">
+            </div>
 
+            <div class="Emogi">
+                <img src="assets/Chat/emogi.svg" alt="">
+            </div>
 
-
-<div class="ContainerAllChats">
-    <div class="Tittle">
-        <div class="Logo">
-<img src="assets/sidebar-images/SMS.svg" alt="">
+            <div class="Clip">
+                <img src="assets/Chat/clip.svg" alt="">
+            </div> 
+                
         </div>
-        <div class="Text">
-            Chats
-        </div>
-    </div>
-
-    <div class="ContainerChats">
-    
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-        <div class="Chat">
-            <div class="ImageChat">
-                <img src="assets/post-images/profile_def.jpg" alt="">
-            </div>
-            <div class="NameChat">
-                <p>Nombre</p>
-            </div>
-        
-        </div>
-    </div>
-</div>
-
-<div class="ContainerContentChat">
-    <div class="HeaderChat">
-        <div class="Back">
-            <img src="assets/Go Back.png" alt="">
-        </div>
-        <div  id="ImageGroup">
-            <img src="assets/post-images/profile_def.jpg" alt="">
-        </div>
-        <div class="NameChat">
-            <p>Nombre</p>
-        </div>
-        <div class="OptionsChat">
-            <div class="Call">
-                <img src="assets/Chat/llamada.svg" alt="">
-            </div>
-            <div class="VideoCall">
-                <img src="assets/Chat/videollamada.svg" alt="">
-            </div>
-            <div class="Option">
-                <img src="assets/Chat/menu.svg" alt="">
-            </div>
-        </div>
-    </div>
-
-    <div class="Content">
-        
-    </div>
-
-    <div class="WriteContainer">
-        <input type="text" placeholder="Send message" name="" id="">
-      <div class="OptionsWriteContainer">
-
-   
-        <div class="Send">
-            <img src="assets/Chat/send.svg" alt="">
-        </div>
-        <div class="Emogi">
-            <img src="assets/Chat/emogi.svg" alt="">
-        </div>
-        <div class="Clip">
-            <img src="assets/Chat/clip.svg" alt="">
-        </div> 
-      </div>
-    </div>
-</div>
+    </form>
 </div>

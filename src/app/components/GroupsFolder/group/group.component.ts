@@ -16,6 +16,8 @@ export class GroupComponent {
 	groupParticipants:any;
 
 	type="group";
+	
+	privateChat:boolean = false;
 
 	eventCover:string = "";
 	defaultUrlCover:string = "http://localhost:8002/public/picture/"

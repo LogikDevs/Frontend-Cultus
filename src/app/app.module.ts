@@ -53,7 +53,13 @@ import { MessageComponent } from './components/ChatsFolder/message/message.compo
 import { JoinedgroupComponent } from './components/GroupsFolder/joinedgroup/joinedgroup.component';
 import { MygroupsComponent } from './components/GroupsFolder/mygroups/mygroups.component';
 import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgroups/suggestedgroups.component';
+import { JoinedeventComponent } from './components/EventsFolder/joinedevent/joinedevent.component';
+import { MyeventsComponent } from './components/EventsFolder/myevents/myevents.component';
+import { SuggestedeventsComponent } from './components/EventsFolder/suggestedevents/suggestedevents.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { PrivateconversationsComponent } from './components/privateMsgFolder/privateconversations/privateconversations.component';
+import { UserschatComponent } from './components/privateMsgFolder/userschat/userschat.component';
+
 
 
 
@@ -108,7 +114,12 @@ import { SettingsComponent } from './components/settings/settings.component';
     JoinedgroupComponent,
     MygroupsComponent,
     SuggestedgroupsComponent,
-    SettingsComponent
+    JoinedeventComponent,
+    MyeventsComponent,
+    SuggestedeventsComponent,
+    SettingsComponent,
+    PrivateconversationsComponent,
+    UserschatComponent
   ],
   imports: [
     BrowserModule,
