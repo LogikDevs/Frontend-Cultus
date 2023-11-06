@@ -12,6 +12,6 @@ export class MessageComponent {
     ownMessage:boolean;
 
     ngOnInit(){
-      if (this.message.sender.id === this.userId) this.ownMessage = true;  
+      	if (this.message.sender.id === this.userId) this.ownMessage = true;  
     }
 }

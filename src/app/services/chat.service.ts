@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ChatService {
 
 	urlGetChat:string="http://localhost:8002/api/v1/chat/";
-	urlGetChatMessages:string="http://localhost:8002/chat/conversations/"
+	urlGetChatMessages:string="http://localhost:8002/api/v1/chat/"
 	urlSendMessage:string="http://localhost:8002/api/v1/message";
 
   	constructor(private http: HttpClient) { }
@@ -26,7 +26,7 @@ export class ChatService {
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
 		})
-		return this.http.get(this.urlGetChatMessages + id_chat +"/messages")
+		return this.http.get(this.urlGetChatMessages + id_chat)
 	}
 	SendMessage(messageToSend:any, id_chat:any){
 		const body = {

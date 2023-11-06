@@ -62,6 +62,7 @@ export class CreatePostComponent {
 			fk_id_event: this.EventPost
 		}
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
+			console.log(res);
 			if (res.status === 201){
 				this.publishedPost = res.body;
 

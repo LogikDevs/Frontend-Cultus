@@ -16,7 +16,7 @@ export class EventComponent {
 	isAdmin:boolean;
 
 	eventCover:string = "";
-	defaultUrlCover:string = "http://localhost:8003/cover_event/"
+	defaultUrlCover:string = "http://localhost:8003/storage/cover_event/"
 
 
 	eventData:any = "";
@@ -36,6 +36,7 @@ export class EventComponent {
 	getEvent(){
 		this.eventService.getEventData(this.EventId).subscribe((res:any)=>{
 			this.eventData = res;
+			this.checkCover();
 			this.checkEventType();
 			this.checkIfIsAdmin();
 		})
@@ -59,8 +60,8 @@ export class EventComponent {
 	ShowPostCreationComponent(){
 		this.createPostComponentVisibility = true;
 	}
-	postPublished(){
+	postPublished(published:boolean){
 		this.createPostComponentVisibility = false;
-		location.reload();
+		if (published) location.reload();
 	}
 }
