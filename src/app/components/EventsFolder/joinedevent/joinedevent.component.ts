@@ -8,10 +8,11 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./joinedevent.component.scss']
 })
 export class JoinedeventComponent {
-	pictureUrlDefault:string = ""
-	eventPicture:string = "";
 
 	@Input() event:any
+
+	pictureUrlDefault:string = "http://localhost:8003/storage/cover_event/"
+	eventPicture:string = "";
     constructor(
         private router: Router
     ){}
@@ -19,7 +20,7 @@ export class JoinedeventComponent {
 		this.checkPicture();
 	}
 	checkPicture(){
-		if (this.event.picture) this.eventPicture = this.pictureUrlDefault + this.event.picture
+		if (this.event[0].cover) this.eventPicture = this.pictureUrlDefault + this.event[0].cover;
 	}
     joinEvent(){
         this.router.navigateByUrl('/event/'+ this.event[0].id);

@@ -10,7 +10,9 @@ export class SingleeventComponent {
     @Input() event:any;
 	@Input() alreadyJoinedEvents:any;
     
-    Image:any = "";
+	pictureUrlDefault:string = "http://localhost:8003/storage/cover_event/"
+	eventPicture:string = "";
+
     userFollows:any;
     isFollowing:any;
 
@@ -18,9 +20,14 @@ export class SingleeventComponent {
         private eventService: EventService
     ){}
     ngOnInit(){
-        console.log("HOLA");
+        this.checkIfCoverExists();
         this.checkFollowState(false);
     }
+
+    checkIfCoverExists(){
+        if (this.event[0].cover) this.eventPicture = this.pictureUrlDefault + this.event[0].cover;
+    }
+
 	checkFollowState(click:boolean){
 		this.eventService.getUserFollowedEvents().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);

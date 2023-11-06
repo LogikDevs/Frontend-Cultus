@@ -57,6 +57,8 @@ import { JoinedeventComponent } from './components/EventsFolder/joinedevent/join
 import { MyeventsComponent } from './components/EventsFolder/myevents/myevents.component';
 import { SuggestedeventsComponent } from './components/EventsFolder/suggestedevents/suggestedevents.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { PrivateconversationsComponent } from './components/privateMsgFolder/privateconversations/privateconversations.component';
+import { UserschatComponent } from './components/privateMsgFolder/userschat/userschat.component';
 
 
 
@@ -115,7 +117,9 @@ import { SettingsComponent } from './components/settings/settings.component';
     JoinedeventComponent,
     MyeventsComponent,
     SuggestedeventsComponent,
-    SettingsComponent
+    SettingsComponent,
+    PrivateconversationsComponent,
+    UserschatComponent
   ],
   imports: [
     BrowserModule,

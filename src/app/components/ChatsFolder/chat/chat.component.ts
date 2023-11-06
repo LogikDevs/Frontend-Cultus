@@ -11,12 +11,15 @@ export class ChatComponent {
 
     @Input() chatId:any;
     chatData:any;
+    
     chatMessages:any = [];
     ownMessageSent:any = [];
 
     userId:any;
 
     message: string = '';
+
+    @Input() privateChat:boolean; 
 
     constructor(
         private chatService: ChatService,
@@ -26,10 +29,20 @@ export class ChatComponent {
 
     ngOnInit(){
         this.getUser();
+
+        if (this.privateChat) this.privateUserChat();
+        if (!this.privateChat) this.groupChat();
+    }
+    
+    privateUserChat(){
+        //Get private chat
+        console.log("CHAT PRIVADO");
+    }
+
+    groupChat(){
         this.bringGroupChat(this.chatId);
         this.bringChatMessages(this.chatId);
     }
-    
     getUser(){
         this.userService.getUser().subscribe((res:any)=>{
             this.userId = res.id;
