@@ -23,7 +23,7 @@
             <div class="ImageChat">
                 <img src="assets/post-images/profile_def.jpg" alt="">
             </div>
-            <div class="NameChat">
+            <div class="NameChat" *ngIf="groupData">
                 <p>{{groupData.name}}</p>
             </div>
         </div>
@@ -38,15 +38,15 @@
             <img src="assets/Go Back.png" alt="">
         </div>
         <div  id="ImageGroup">
-            <img src={{eventCover}} alt="">
+            <img src={{groupCover}} alt="">
         </div>
-        <div class="NameChat">
+        <div class="NameChat" *ngIf="groupData">
             <p>{{groupData.name}}</p>
         </div>
-        <div class="GroupDescription">
+        <div class="GroupDescription" *ngIf="groupData">
             <p>{{groupData.description}}</p>  <!--  ESTOS 3 Ubicalos bien, es data del grupo    -->
         </div>
-        <div>
+        <div *ngIf="groupData"> 
             <p>{{groupData.privacy}}</p>
         </div>
         <div class="OptionsChat">
@@ -56,7 +56,7 @@
         </div>
     </div>
     <div *ngIf="groupData">
-        <app-chat [chatId]="groupData.id_chat" [privateChat]="privateChat"></app-chat>
+        <app-chat [chatId]="groupData.id_chat"></app-chat>
     </div>
 </div>
 </div>

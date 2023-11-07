@@ -8,12 +8,12 @@
                 <img src="assets/sidebar-images/SMS.svg" alt="">
             </div>
             <div class="Text">
-                Private Chats
+                Direct Chats
             </div>
     </div>
 
-    <div class="ContainerChats">
-
+    <div class="ContainerChats" *ngFor="let conversation of PrivateChats">
+        <app-userschat [userId]="userId" [userChat]="conversation" (ChangeRoute)="displayConversation($event)"></app-userschat>
     </div>
 
 
@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="DisplayedChat">
-        <app-chat [chatId]="DisplayedChat" [privateChat]="privateChat"></app-chat>
+    <div *ngIf="displayedChat">
+        <app-chat [chatId]="ChatIdToDisplay"></app-chat>
     </div>
 </div>

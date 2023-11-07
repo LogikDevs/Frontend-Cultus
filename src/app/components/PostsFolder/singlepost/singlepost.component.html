@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="ScrollableContent">
-				<div class="AllCommentsPost" *ngFor="let comment of post.commentsPublished">
+				<div class="AllCommentsPost" *ngFor="let comment of post.comments">
 					<app-comment [comment]="comment" [userId]="userId"></app-comment>
 				</div>
 			</div>
@@ -57,13 +57,13 @@
 			<div class="DataPost">
 				<div class="UpvotesPost">
 					<div class="IconUpvotesPost" (click)="ClickVote(1)">
-						<img name="likebutton"src="assets/post-images/like.svg" alt="">
+						<img id=LikeButton_{{post.post.id_post}} name="likebutton" src={{likeButton}} alt="">
 					</div>
 					<div class="AmountUpvotesPost">
-						<p id=LikeButton_{{post.post.id_post}}>{{ post.post.votes }}</p>
+						<p id=VotesNumber_{{post.post.id_post}}>{{ post.post.votes }}</p>
 					</div>
 					<div class="IconUpvotesPost" (click)="ClickVote(0)">
-						<img name="DislikeButton_{{post.post.id_post}}" src="assets/post-images/disgusto.svg" alt="">
+						<img name="DislikeButton_{{post.post.id_post}}" src={{dislikeButton}} alt="">
 					</div>
 				</div>
 				<div class="CommentsPost">

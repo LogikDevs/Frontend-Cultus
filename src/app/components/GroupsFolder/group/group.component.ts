@@ -16,10 +16,8 @@ export class GroupComponent {
 	groupParticipants:any;
 
 	type="group";
-	
-	privateChat:boolean = false;
 
-	eventCover:string = "";
+	groupCover:string = "";
 	defaultUrlCover:string = "http://localhost:8002/public/picture/"
 
     constructor(
@@ -27,11 +25,11 @@ export class GroupComponent {
 		private groupService: GroupService
 	){}
 	ngOnInit(){
-		this.getEvent();
+		this.getGroup();
 		this.getParticipants();
 		this.checkCover();
 	}
-	getEvent(){
+	getGroup(){
 		this.groupService.getGroupData(this.GroupId).subscribe((res:any)=>{
 			this.groupData = res;
 		})
@@ -42,6 +40,6 @@ export class GroupComponent {
 		})
 	}
 	checkCover(){
-		if (this.groupData.picture) this.eventCover = this.defaultUrlCover + this.groupData.picture;
+		if (this.groupData.picture) this.groupCover = this.defaultUrlCover + this.groupData.picture;
 	}
 }
