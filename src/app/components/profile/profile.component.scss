@@ -5,7 +5,10 @@ $ColorSecundario:#282928;
     transition: all .5s ease;
 }
 
-
+.sendMessageButton{
+    width: 20px;
+    height: 20px;
+}
 .ContainerMyProfile{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -14,11 +17,11 @@ $ColorSecundario:#282928;
     transition: all .5s ease;
 }
 .ImageProfile{
-   background-color: $ColorFuente;
-   border: solid 10px $ColorSecundario;
-   position: relative;
-top: 80px;
-   margin: auto;
+    background-color: $ColorFuente;
+    border: solid 10px $ColorSecundario;
+    position: relative;
+    top: 80px;
+    margin: auto;
     width: 180px;
     height: 180px;
     border-radius: 50%;
@@ -395,4 +398,5 @@ margin-top: 13px;
 margin-left: 10px;
 cursor: pointer;
 }
+
 

@@ -55,7 +55,8 @@ const routes: Routes = [
   { path: 'events', component: EventsComponent, canActivate: [GuardAuthentication] },
   { path: 'event/:id', component: EventComponent, canActivate: [GuardAuthentication] },
   { path: 'group/:id', component: GroupComponent, canActivate: [GuardAuthentication] },
-  { path: 'Messages', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] }
+  { path: 'Messages', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] },
+  { path: 'Messages/:id', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] }
 ];
 
 

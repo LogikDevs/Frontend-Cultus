@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { Interest } from '../interest/interest.model';
 import { Router } from '@angular/router';
@@ -23,6 +23,8 @@ export class SelectInterestComponent {
 
 	@Input() SelectInterestType: string = "user";
 	@Input() WindowVisibility: boolean = true;
+
+	@Output() InterestsModified = new EventEmitter<boolean>();
 
 	constructor(
 		private interestService: GetInterestsService, 
@@ -57,6 +59,7 @@ export class SelectInterestComponent {
 		if (["post", "event"].includes(this.SelectInterestType)) {
 			this.interestService.displaySelectInterest = false;
 			this.WindowVisibility = false;
+			this.InterestsModified.emit(true);
 		}
 		if (this.SelectInterestType == "user") this.sendUserInterests();
  	}
