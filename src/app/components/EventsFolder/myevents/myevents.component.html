@@ -1,10 +1,49 @@
 
 
 
-<div class="ContainerMyEvents">
-    <div class="Event">
+
+
         <div class="joinedEvents" *ngFor="let event of events" class="myEvents">
     <app-joinedevent *ngIf="event" [event]="event"></app-joinedevent>
 </div>
+
+
+
+
+
+<div class="ContainerData">
+
+    <div class="EventOrGroup">
+        <div class="ImageEventOrGroup">
+            <img src="assets/punta del este.png" alt="">
+        </div>
+        <p>Text</p>
+    </div>
+
+    <div class="EventOrGroup">
+        <div class="ImageEventOrGroup">
+            <img src="assets/punta del este.png" alt="">
+        </div>
+        <div class="joinedEvents" *ngFor="let event of events" class="myEvents">
+            <app-joinedevent *ngIf="event" [event]="event"></app-joinedevent>
+        </div>
+    </div>
+    <div class="EventOrGroup">
+        <div class="ImageEventOrGroup">
+            <img src="assets/punta del este.png" alt="">
+        </div>
+        <p>Text</p>
+    </div>
+    <div class="EventOrGroup">
+        <div class="ImageEventOrGroup">
+            <img src="assets/punta del este.png" alt="">
+        </div>
+        <p>Text</p>
+    </div>
+    <div class="EventOrGroup">
+        <div class="ImageEventOrGroup">
+            <img src="assets/punta del este.png" alt="">
+        </div>
+        <p>Text</p>
     </div>
 </div>
