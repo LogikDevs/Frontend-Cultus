@@ -25,6 +25,9 @@ $ColorFuente:#7ab06a;
     width: 90%;
     border-bottom: 2px solid $ColorFuente;
 }
+.MyGroups,.Suggestions{
+    cursor: pointer;
+}
 .SubHeader p{
     margin: 10px;
 }
