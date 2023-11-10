@@ -1,4 +1,56 @@
-<div id="eventData" *ngIf="eventData">
+
+
+<app-sidebar></app-sidebar>
+
+
+<app-sidebar id="Sidebar"></app-sidebar>
+
+<div class="ContainerAll">
+    
+    <div class="ContainerAllChats">
+        <div class="Tittle">
+            <div class="Logo">
+                <img src="assets/sidebar-images/SMS.svg" alt="">
+            </div>
+            <div class="Text">
+                Private Chats
+            </div>
+    </div>
+
+    <div class="ContainerChats">
+
+    </div>
+
+
+</div>
+
+<div class="ContainerContentChat">
+    <div class="HeaderChat">
+        <div class="Back">
+            <img src="assets/Go Back.png" alt="">
+        </div>
+        <div  id="ImageGroup">
+      
+        </div>
+        <div class="NameChat">
+            <p>{{eventData[0].name}}</p>
+        </div>
+        <div class="OptionsChat">
+            <div class="Call">
+                <img src="assets/Chat/llamada.svg" alt="">
+            </div>
+            <div class="VideoCall">
+                <img src="assets/Chat/videollamada.svg" alt="">
+            </div>
+            <div class="Option">
+                <img src="assets/Chat/menu.svg" alt="">
+            </div>
+        </div>
+    </div>
+    
+
+<div class="ContainerEvents">
+    <div id="eventData" *ngIf="eventData">
     <p>Event Name: {{eventData[0].name}}</p>
     <p>Event Description: {{eventData[0].description}}</p>
     <p>Event Text: {{eventData[0].text}}</p>
@@ -27,4 +79,7 @@
     <div *ngIf="createPostComponentVisibility">
         <app-create-post [EventPost]="eventData[0].id"  (ComponentRemoved)="postPublished(false)" (postHasBeenPublished)="postPublished(true)"></app-create-post>
     </div>
+</div>
+</div>
+
 </div>
