@@ -1,4 +1,4 @@
-$ColorFuente: #537D57;
+$ColorFuente:#7ab06a;
 
 .HeaderGroups{
     display: flex;
@@ -24,6 +24,9 @@ $ColorFuente: #537D57;
     margin-left: 110px;
     width: 90%;
     border-bottom: 2px solid $ColorFuente;
+}
+.MyGroups,.Suggestions{
+    cursor: pointer;
 }
 .SubHeader p{
     margin: 10px;

@@ -1,0 +1,30 @@
+<div class="Content">
+    <div *ngFor="let message of chatMessages">
+        <app-message [userId]="userId" [message]="message"></app-message>
+    </div>
+    <div *ngFor="let message of ownMessageSent">
+        <app-message [userId]="userId" [message]="message"></app-message>
+    </div>
+</div>
+<div class="WriteContainer">
+    <form (ngSubmit)="sendMessage()">
+
+        <input type="text" name="messageText" [(ngModel)]="message" placeholder="Write message...">
+
+        <div class="OptionsWriteContainer">
+                
+            <div class="Send" (click)="sendMessage()">
+                <img src="assets/Chat/send.svg" alt="">
+            </div>
+
+            <div class="Emogi">
+                <img src="assets/Chat/emogi.svg" alt="">
+            </div>
+
+            <div class="Clip">
+                <img src="assets/Chat/clip.svg" alt="">
+            </div> 
+                
+        </div>
+    </form>
+</div>

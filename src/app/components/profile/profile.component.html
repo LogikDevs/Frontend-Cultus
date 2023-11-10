@@ -18,11 +18,14 @@
             <p #HtmlNameSurname *ngIf="ProfileData">{{ProfileData.name}} {{ProfileData.surname}}</p>
         </div>
         <div class="Age">
-            <p #HtmlAge *ngIf="ProfileData">, {{ProfileData.age}} </p>
+  
         </div>
 
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
+        </div>
+        <div *ngIf="!ownProfile" (click)="SendMessage()">
+            <img class="sendMessageButton" src="assets\chat.png" alt="">
         </div>
     </div>
     <div class="MyInterestProfile">
@@ -75,10 +78,10 @@
     </div>
     <div class="Data">
         <div class="LogoData">
-            <img src="assets/sidebar-images/grupos.svg" alt="">
+            <img src="assets/sidebar-images/cumple.png" alt="">
         </div>
         <div class="TextData">
-            <p>0 Friends</p>
+            <p #HtmlAge *ngIf="ProfileData"> {{ProfileData.age}} Years</p>
         </div>
     </div>
     <div class="Data">

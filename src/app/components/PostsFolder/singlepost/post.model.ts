@@ -1,7 +1,7 @@
 export interface Post {
-	commentsPublished: Comment[];
+	comments: Comment[];
 	interests: any;
-	multimedia: [0];
+	multimedia: MultimediaLink;
 	post: PostData;
 	user: UserOnPost;
   }
@@ -11,7 +11,9 @@ export interface Post {
 	user: UserOnComment;
   }
   export interface MultimediaLink {
-	multimediaLink: string
+	0: {
+		multimediaLink: string
+	}
   }
 
   export interface PostData {

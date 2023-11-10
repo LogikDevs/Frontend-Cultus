@@ -13,8 +13,10 @@ export class EventComponent {
 
 	userId:any;
 
+	isAdmin:boolean;
+
 	eventCover:string = "";
-	defaultUrlCover:string = "http://localhost:8003/cover_event/"
+	defaultUrlCover:string = "http://localhost:8003/storage/cover_event/"
 
 
 	eventData:any = "";
@@ -28,14 +30,15 @@ export class EventComponent {
 		private userService: GetUserService
 	){}
 	ngOnInit(){
+		this.getUser();
 		this.getEvent();
-		
 	}
 	getEvent(){
 		this.eventService.getEventData(this.EventId).subscribe((res:any)=>{
 			this.eventData = res;
+			this.checkCover();
 			this.checkEventType();
-			console.log(this.eventData);
+			this.checkIfIsAdmin();
 		})
 	}
 	checkCover(){
@@ -51,8 +54,14 @@ export class EventComponent {
 		if (this.eventData[0].private == 0) this.eventType = "Public";
 	}
 
+	checkIfIsAdmin(){
+		if (this.userId === this.eventData.admin.id) this.isAdmin = true;
+	}
 	ShowPostCreationComponent(){
 		this.createPostComponentVisibility = true;
 	}
-
+	postPublished(published:boolean){
+		this.createPostComponentVisibility = false;
+		if (published) location.reload();
+	}
 }

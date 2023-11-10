@@ -8,8 +8,11 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class SingleeventComponent {
     @Input() event:any;
+	@Input() alreadyJoinedEvents:any;
+    
+	pictureUrlDefault:string = "http://localhost:8003/storage/cover_event/"
+	eventPicture:string = "";
 
-    Image:any = "";
     userFollows:any;
     isFollowing:any;
 
@@ -17,10 +20,16 @@ export class SingleeventComponent {
         private eventService: EventService
     ){}
     ngOnInit(){
+        this.checkIfCoverExists();
         this.checkFollowState(false);
     }
+
+    checkIfCoverExists(){
+        if (this.event[0].cover) this.eventPicture = this.pictureUrlDefault + this.event[0].cover;
+    }
+
 	checkFollowState(click:boolean){
-		this.event.getUserFollowedEvents().subscribe((res:any)=>{
+		this.eventService.getUserFollowedEvents().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
 			const userFollowedEvents = this.userFollows.find((follow:any) => Number(follow.id) === this.event.id);
 			if (userFollowedEvents) {

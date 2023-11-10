@@ -46,11 +46,17 @@ import { Router } from '@angular/router';
   	AddComment:string = '';
 
 	vote:any;
+	userVoted:any;
 
   	scrollOffset: number = 0;
 	containerVisible: boolean = false;
   	showComments: boolean = false;
 	noCommentsTemplate: any;
+	commentPublishedMessage:string = "";
+
+	likeButton:string;
+	dislikeButton:string;
+
 
 	@Output() PostRemoved = new EventEmitter<boolean>();
 
@@ -78,7 +84,7 @@ import { Router } from '@angular/router';
     }
 	insertMultimedia(){
 		if (this.post.multimedia[0]) {
-			this.defaultUrl = this.defaultUrl + this.post.multimedia[0];
+			this.defaultUrl = this.defaultUrl + this.post.multimedia[0].multimediaLink;
 		}
 	}
 	IsFollowable(){
@@ -94,13 +100,21 @@ import { Router } from '@angular/router';
 		}
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
-				this.showCommentLocally(CreatedComment);
+					this.publishedComment();
+					this.showCommentLocally(CreatedComment.body);
 			});
 			this.AddComment = '';
 		}
-	}	
-	showCommentLocally(CreatedComment:any){
+	}
 
+	publishedComment(){
+		this.commentPublishedMessage = "Published."
+		setTimeout(() => {
+			this.commentPublishedMessage = "";
+		}, 3000);
+	}
+	showCommentLocally(CreatedComment:any){
+		console.log(CreatedComment);
 		const NewComment: Comment = {
 			id_comment: CreatedComment.comment.id_comment,
 			user:{
@@ -111,7 +125,7 @@ import { Router } from '@angular/router';
 			}, 
 			text: CreatedComment.comment.text
 		}
-		this.post.commentsPublished.push(NewComment);
+		this.post.comments.push(NewComment);
 		this.updateComments();
 	}
 
@@ -121,14 +135,15 @@ import { Router } from '@angular/router';
 	}
 	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res:any) => {
-				this.updateVotes()
-				this.VotesButtonColor(true,votetype);
+			this.userVoted = res.body;
+			this.updateVotes()
+			this.VotesButtonColor(this.userVoted);
 		})
 	}
 
 	updateVotes() {
 		this.voteService.updateVotes(this.post.post.id_post).subscribe((res: any) => {
-			this.post.post.votes = res[0].post.votes;
+			this.post.post.votes = res.post.votes;
 			this.VotesColor();
 		});
 	}
@@ -138,14 +153,27 @@ import { Router } from '@angular/router';
 		if (this.post.post.votes == 0) voteColor.style.color = "grey";
 		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
 	}
-	VotesButtonColor(CreateVote:boolean ,typeOfLike:boolean){
+	VotesButtonColor(typeOfLike:number){
 		const likeButton:any = document.getElementById('LikeButton_'+this.post.post.id_post);
 		const dislikeButton:any = document.getElementById('DislikeButton_'+this.post.post.id_post);
+
+		if (typeOfLike == 0) {
+			this.likeButton = "assets/post-images/like.svg"
+			this.dislikeButton = "assets/post-images/disliked.png"
+		}
+		if (typeOfLike == 1) {
+			this.likeButton = "assets/post-images/liked.png"
+			this.dislikeButton = "assets/post-images/disgusto.svg"
+		}
+		if (typeOfLike == 2) {
+			this.likeButton = "assets/post-images/like.svg"
+			this.dislikeButton = "assets/post-images/disgusto.svg"
+		}
 	}
 
 	updateComments(){
 		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
-			this.post.post.comments = res[0].post.comments;
+			this.post.comments = res.comments;
 		});
 	}
 	CheckFollowOrUnfollow(click:boolean){

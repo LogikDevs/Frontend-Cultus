@@ -137,6 +137,12 @@ export class ProfileComponent implements OnInit {
 		})
 	}
 
+	ToEditProfile(){
+		this.router.navigateByUrl('/EditProfile');
+	}
+	SendMessage(){
+		this.router.navigateByUrl('/Messages/' + this.ProfileId);
+	}
 
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
@@ -150,9 +156,7 @@ export class ProfileComponent implements OnInit {
 		};
 		reader.readAsDataURL(file);
 	}
-	ToEditProfile(){
-		this.router.navigateByUrl('/EditProfile');
-	}
+
   	onDragStart(event: DragEvent) {
     	event.dataTransfer?.setData('text/plain', ''); 
     	this.renderer.setStyle(event.currentTarget, 'opacity', '1');
