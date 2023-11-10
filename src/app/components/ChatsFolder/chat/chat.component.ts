@@ -19,44 +19,38 @@ export class ChatComponent {
 
     message: string = '';
 
-    @Input() privateChat:boolean; 
-
     constructor(
         private chatService: ChatService,
         private userService: GetUserService
     ){}
 
-
-    ngOnInit(){
+    ngOnChanges(){
+        this.ownMessageSent = [];
         this.getUser();
-
-        if (this.privateChat) this.privateUserChat();
-        if (!this.privateChat) this.groupChat();
-    }
-    
-    privateUserChat(){
-        //Get private chat
-        console.log("CHAT PRIVADO");
+        this.getChat();
     }
 
-    groupChat(){
+    getChat(){
         this.bringGroupChat(this.chatId);
         this.bringChatMessages(this.chatId);
     }
+
     getUser(){
         this.userService.getUser().subscribe((res:any)=>{
             this.userId = res.id;
         })
     }
+
     bringGroupChat(id_chat:any){
 		this.chatService.BringChat(id_chat).subscribe((res:any)=>{
 			this.chatData = res;
+            console.log(this.chatData);
 		})
 	}
 
     bringChatMessages(id_chat:any){
         this.chatService.BringChatMessages(id_chat).subscribe((res:any)=>{
-            this.chatMessages = res;
+            this.chatMessages = res.data;
         })
     }
 

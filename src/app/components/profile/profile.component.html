@@ -24,6 +24,9 @@
         <div class="FollowOption" *ngIf="!ownProfile">
             <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
         </div>
+        <div *ngIf="!ownProfile" (click)="SendMessage()">
+            <img class="sendMessageButton" src="assets\chat.png" alt="">
+        </div>
     </div>
     <div class="MyInterestProfile">
         <div class="TittleInterest">
