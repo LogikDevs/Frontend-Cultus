@@ -276,14 +276,34 @@ border-left: 2px solid $ColorFuente;
     float: right;
 }
 
-.Description{
-    margin: 10px;
-    background-color: #537D57;
+.Description,.Text{
+    margin: 20px;
+   
+
 }
-.ContentDescription{
+.ContentDescription,.ContentText{
     background-color: #151615;
-    height: 80px;
+    height: 60px;
     padding: 6px;
     color: $ColorFuente;
     font-weight: bold;
+    box-shadow:  0 0 4px gray;
+}
+.TittleDescription,.TittleText{
+    color: $ColorFuente;
+    margin: 10px;
+ 
+}
+.TittleDescription p{
+       margin-top: 30px;
+       font-weight: bold;
+}
+.Type{
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.ContainerInterest{
+    
 }
