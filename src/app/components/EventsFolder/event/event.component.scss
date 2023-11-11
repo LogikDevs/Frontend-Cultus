@@ -271,7 +271,7 @@ width: 50%;
 .ContainerEvents{
     background-color:$ColorSecundario;
 border-left: 2px solid $ColorFuente;
-    width: 300px;
+    width: 350px;
     height: 81vh;
     float: right;
 }
@@ -304,16 +304,16 @@ border-left: 2px solid $ColorFuente;
     margin: 20px;
 }
 
-.ContainerInterest{
+.ContainerInterest,.ContainerParticipants{
 
     margin: 20px;
     margin-top: -30px;
 }
-.TittleInterest{
+.TittleInterest,.TittleParticipants{
 color: $ColorFuente;
 font-weight: bold;
 }
-.ContainerAllInterest{
+.ContainerAllInterest,.ContainerAllParticipants{
 background-color: #151615 ;
 padding: 5px;
 border-radius: 10px;
@@ -324,4 +324,32 @@ box-shadow: 0 0 4px gray;
 .ContainerEvents{
     max-height: 81vh;
     overflow-y: scroll;
+}
+.ContainerParticipants{
+margin-top: 50px;
+}
+
+.ContainerAllInterest::-webkit-scrollbar,
+.ContainerAllParticipants::-webkit-scrollbar{
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.ContainerAllInterest::-webkit-scrollbar-thumb,
+.ContainerAllParticipants::-webkit-scrollbar-thumb{
+    background-color: $ColorFuente; /* Color del "thumb" (la parte deslizable) */
+}
+
+.ContainerAllInterest::-webkit-scrollbar-track,
+.ContainerAllParticipants::-webkit-scrollbar-track{
+    background-color: $ColorSecundario;
+}
+
+.ContainerEvents::-webkit-scrollbar-track {
+    background-color: rgb(20, 19, 19); /* Color de la pista del scrollbar (la parte no deslizable) */
+}
+.ContainerEvents::-webkit-scrollbar-thumb {
+    background-color:rgb(25, 139, 59)128, 128, 128; /* Color del "thumb" (la parte deslizable) */
+}
+.ContainerEvents::-webkit-scrollbar {
+    width: 12px; /* Ancho del scrollbar */
 }

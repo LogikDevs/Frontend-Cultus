@@ -94,12 +94,18 @@
      </div>
        
     </div>
-    <div>
-        <p>Event Participants:</p>
+    <div class="ContainerParticipants">
+        <div class="TittleParticipants">
+                <p>Event Participants:</p>
+        </div>
+          <div class="ContainerAllParticipants">
+    
         <div id="eventParticipants" *ngFor="let participant of eventData.participants">
             <app-participants *ngIf="participant" [participant]="participant"></app-participants>
         </div>
     </div>
+    </div>
+  
 </div>
 <div id="CreatePostForEvent">
     <button *ngIf="isAdmin" (click)="ShowPostCreationComponent()">Upload Update</button>
