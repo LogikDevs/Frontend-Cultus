@@ -13,7 +13,7 @@
     </div>
 
     <div class="ContainerChats" *ngFor="let conversation of PrivateChats">
-        <app-userschat [userId]="userId" [userChat]="conversation" (ChangeRoute)="displayConversation($event)"></app-userschat>
+        <app-userschat [userId]="userId" [userChat]="conversation" (ChangeRoute)="displayConversation($event)" (MessegeableUserInfo)="displayUserData($event)"></app-userschat>
     </div>
 
 
@@ -27,8 +27,8 @@
         <div  id="ImageGroup">
             <img src={{chatProfile}} alt="">
         </div>
-        <div class="NameChat">
-            <p> User Name </p>
+        <div class="NameChat" *ngIf="userInformation">
+            <p> {{userInformation.name}} {{userInformation.surname}} </p>
         </div>
         <div class="OptionsChat">
             <div class="Call">
