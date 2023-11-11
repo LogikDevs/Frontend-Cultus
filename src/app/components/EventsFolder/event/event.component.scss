@@ -268,3 +268,88 @@ width: 50%;
 #eventData{
     color: white;
 }
+.ContainerEvents{
+    background-color:$ColorSecundario;
+border-left: 2px solid $ColorFuente;
+    width: 350px;
+    height: 81vh;
+    float: right;
+}
+
+.Description,.Text{
+    margin: 20px;
+   
+
+}
+.ContentDescription,.ContentText{
+    background-color: #151615;
+    height: 60px;
+    padding: 6px;
+    color: $ColorFuente;
+    font-weight: bold;
+    box-shadow:  0 0 4px gray;
+}
+.TittleDescription,.TittleText{
+    color: $ColorFuente;
+    margin: 10px;
+ 
+}
+.TittleDescription p{
+       margin-top: 30px;
+       font-weight: bold;
+}
+.Type{
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.ContainerInterest,.ContainerParticipants{
+
+    margin: 20px;
+    margin-top: -30px;
+}
+.TittleInterest,.TittleParticipants{
+color: $ColorFuente;
+font-weight: bold;
+}
+.ContainerAllInterest,.ContainerAllParticipants{
+background-color: #151615 ;
+padding: 5px;
+border-radius: 10px;
+max-height: 170px;
+overflow-y: scroll;
+box-shadow: 0 0 4px gray;
+}
+.ContainerEvents{
+    max-height: 81vh;
+    overflow-y: scroll;
+}
+.ContainerParticipants{
+margin-top: 50px;
+}
+
+.ContainerAllInterest::-webkit-scrollbar,
+.ContainerAllParticipants::-webkit-scrollbar{
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.ContainerAllInterest::-webkit-scrollbar-thumb,
+.ContainerAllParticipants::-webkit-scrollbar-thumb{
+    background-color: $ColorFuente; 
+}
+
+.ContainerAllInterest::-webkit-scrollbar-track,
+.ContainerAllParticipants::-webkit-scrollbar-track{
+    background-color: $ColorSecundario;
+}
+
+.ContainerEvents::-webkit-scrollbar-track {
+    background-color: rgb(48, 48, 48);
+}
+.ContainerEvents::-webkit-scrollbar-thumb {
+    background-color:rgb(17, 16, 16);
+}
+.ContainerEvents::-webkit-scrollbar {
+    width: 12px;
+}

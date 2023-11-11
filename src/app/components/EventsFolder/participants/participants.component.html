@@ -1,3 +1,15 @@
-<div id="participant" (click)="toProfile()">
-    <p>{{participant.name}} {{participant.surname}}</p> <p *ngIf="type == 'event'">{{participant.rol}}</p>
+<div class="Participants">
+    <div class="ImageParticipants">
+        <img src="assets/interest-images/interes.svg" alt=""> 
+    </div>
+    <div id="participant" class="NameParticipants" (click)="toProfile()">
+<div class="Name">
+        <p>{{participant.name}} {{participant.surname}}</p> 
 </div>
+<div class="Rol">
+        <p *ngIf="type == 'event'">{{participant.rol}}</p>
+</div>
+
+</div>
+</div>
+
