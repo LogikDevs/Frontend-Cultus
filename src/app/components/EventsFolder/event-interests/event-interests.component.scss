@@ -1,0 +1,16 @@
+$ColorFuente:#537D57;  
+$ColorSecundario:#282928;
+.Interest{
+    margin: 10px;
+    background-color: black;
+    color: $ColorFuente;
+    font-weight: bold;
+    padding: 2px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.ImageInterest{
+    width: 20px;
+    height: 20px;
+}

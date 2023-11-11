@@ -34,7 +34,10 @@
         </div>
         <div class="NameChat">
             <p>{{eventData[0].name}}</p>
-        </div>
+        </div> 
+        <div class="Type">
+     <p>Event Type: {{eventType}}</p>
+ </div>
         <div class="OptionsChat">
             <div class="Call">
                 <img src="assets/Chat/llamada.svg" alt="">
@@ -71,9 +74,7 @@
             </div>
             
         </div>
- <div class="Type">
-     <p>Event Type: {{eventType}}</p>
- </div>
+
  
     <img src="{{eventCover}}" alt="">
    
@@ -83,10 +84,15 @@
 </div>
 <div id="eventParticipantsAndInterests">
     <div class="ContainerInterest">
-        <p>Event Interests:</p>
-        <div id="eventInterests" *ngFor="let interest of eventData.interests">
+        <div class="TittleInterest">
+               <p>Event Interests:</p>
+        </div>
+     <div class="ContainerAllInterest">
+         <div id="eventInterests" *ngFor="let interest of eventData.interests">
             <app-event-interests *ngIf="interest" [interest]="interest"></app-event-interests>
         </div>
+     </div>
+       
     </div>
     <div>
         <p>Event Participants:</p>
