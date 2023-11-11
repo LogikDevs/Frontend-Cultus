@@ -59,6 +59,7 @@ import { SuggestedeventsComponent } from './components/EventsFolder/suggestedeve
 import { SettingsComponent } from './components/settings/settings.component';
 import { PrivateconversationsComponent } from './components/privateMsgFolder/privateconversations/privateconversations.component';
 import { UserschatComponent } from './components/privateMsgFolder/userschat/userschat.component';
+import { LoadedComponent } from './components/loaded/loaded.component';
 
 
 
@@ -119,7 +120,8 @@ import { UserschatComponent } from './components/privateMsgFolder/userschat/user
     SuggestedeventsComponent,
     SettingsComponent,
     PrivateconversationsComponent,
-    UserschatComponent
+    UserschatComponent,
+    LoadedComponent
   ],
   imports: [
     BrowserModule,
