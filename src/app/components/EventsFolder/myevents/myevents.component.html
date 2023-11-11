@@ -1,3 +1,21 @@
-<div class="joinedEvents" *ngFor="let event of events" class="myEvents">
+
+
+<!-- 
+
+<div class="Eventos">
+       <div class="joinedEvents" *ngFor="let event of events" class="myEvents">
     <app-joinedevent *ngIf="event" [event]="event"></app-joinedevent>
+</div>
+</div>
+      -->
+
+
+
+
+
+<div class="ContainerData">
+
+        <div class="joinedEvents" *ngFor="let event of events" class="myEvents">
+            <app-joinedevent class="ContainerAllEventos" *ngIf="event" [event]="event"></app-joinedevent>
+        </div>
 </div>

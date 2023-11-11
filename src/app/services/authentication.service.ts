@@ -10,6 +10,7 @@ export class AuthenticationService {
 	private client = "101";
 	private secret = "lEO3N9wZzgJwv4Cuudo9TJWMGnDoQ32YmeTRW3FF";
 
+
 	constructor(private http: HttpClient) { }
 
 	sendLogin(credentials: any) {
