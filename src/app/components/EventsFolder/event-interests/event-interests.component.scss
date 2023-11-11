@@ -2,15 +2,20 @@ $ColorFuente:#537D57;
 $ColorSecundario:#282928;
 .Interest{
     margin: 10px;
-    background-color: black;
+    background-color: $ColorSecundario;
     color: $ColorFuente;
     font-weight: bold;
     padding: 2px;
     display: flex;
     justify-content: start;
     align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
 }
 .ImageInterest{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+}
+.Interest p{
+    margin-left: 10px;
 }
