@@ -27,6 +27,7 @@ import { EventsComponent } from './components/EventsFolder/events/events.compone
 import { EventComponent } from './components/EventsFolder/event/event.component';
 import { GroupComponent } from './components/GroupsFolder/group/group.component';
 import { PrivateconversationsComponent } from './components/privateMsgFolder/privateconversations/privateconversations.component';
+import { LoadedComponent } from './components/loaded/loaded.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -56,7 +57,10 @@ const routes: Routes = [
   { path: 'event/:id', component: EventComponent, canActivate: [GuardAuthentication] },
   { path: 'group/:id', component: GroupComponent, canActivate: [GuardAuthentication] },
   { path: 'Messages', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] },
-  { path: 'Messages/:id', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] }
+  { path: 'Messages/:id', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] },
+  
+  { path: 'Loaded', component: LoadedComponent, canActivate: [GuardAuthentication] }
+
 ];
 
 
