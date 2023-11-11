@@ -51,11 +51,23 @@
 
 <div class="ContainerEvents">
     <div id="eventData" *ngIf="eventData">
-    <p>Event Name: {{eventData[0].name}}</p>
-    <p>Event Description: {{eventData[0].description}}</p>
-    <p>Event Text: {{eventData[0].text}}</p>
+
+        <div class="Description">
+               <p>Event Description:</p>
+               <div class="ContentDescription">
+                  <p>{{eventData[0].description}}</p>
+               </div>
+             
+        </div>
+        <div class="Text">
+               <p>Event Text: {{eventData[0].text}}</p>
+        </div>
+ <div class="Type">
+     <p>Event Type: {{eventType}}</p>
+ </div>
+ 
     <img src="{{eventCover}}" alt="">
-    <p>Event Type: {{eventType}}</p>
+   
 </div>
 <div id="updates" *ngFor="let post of eventData.updates">
     <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
