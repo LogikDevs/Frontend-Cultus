@@ -32,8 +32,7 @@ export class SelectInterestComponent {
 	) { }
 
 	ngOnInit(){
-		
-		if (this.SelectInterestType == "user") this.getUserInterests();
+		if (this.SelectInterestType == "user" || "edit") this.getUserInterests();
 		this.getInterests();
 	}
 
@@ -61,16 +60,15 @@ export class SelectInterestComponent {
 			this.WindowVisibility = false;
 			this.InterestsModified.emit(true);
 		}
-		if (this.SelectInterestType == "user") this.sendUserInterests();
+		if (this.SelectInterestType == "user" || "edit") this.sendUserInterests();
  	}
 	
 	getUserInterests(){
 		this.interestService.getUserInterests().subscribe((res: any) => {
 			
-			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item.id_label);
-			
-			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item.id_label);
-			
+			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item);
+
+			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item);
 		})
 	}
 	sendUserInterests(){
@@ -78,15 +76,19 @@ export class SelectInterestComponent {
 		
 		this.InterestsToAdd = InterestsArray.filter((item:any) => !this.DataBaseInterests.includes(item));
 		this.InterestsToDelete = this.DataBaseInterests.filter((item: any) => !InterestsArray.includes(item));
-		console.log(this.InterestsToAdd);
-		console.log(this.InterestsToDelete);
+
 		this.AddUserInterests(this.InterestsToAdd); 
 		this.DeleteUserInterests(this.InterestsToDelete);
 
 		this.interestService.NewUserInterestsArray = [];
 		this.DataBaseInterests=[];
 
-		this.router.navigateByUrl('/home');
+		if (this.SelectInterestType == "user") this.router.navigateByUrl('/home');
+		if (this.SelectInterestType == "edit") {
+			this.interestService.displaySelectInterest = false;
+			this.WindowVisibility = false;
+			this.InterestsModified.emit(true);
+		}
 	}
 	
 	AddUserInterests(interest:any){

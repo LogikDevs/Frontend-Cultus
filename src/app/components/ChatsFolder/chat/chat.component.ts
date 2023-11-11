@@ -44,7 +44,6 @@ export class ChatComponent {
     bringGroupChat(id_chat:any){
 		this.chatService.BringChat(id_chat).subscribe((res:any)=>{
 			this.chatData = res;
-            console.log(this.chatData);
 		})
 	}
 

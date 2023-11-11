@@ -14,12 +14,14 @@ export class PrivateconversationsComponent {
 	ChatIdToDisplay:any
 	PrivateChats:any;
 
+	userInformation:any;
+
 	userId:any;
 
 	directMessage:number;
 
 	chatProfile:string = "";
-	defaultUrlProfile:string = "http://localhost:8002/public/picture/"
+	defaultUrlProfile:string = "http://localhost:8000/storage/profile_pic/"
 
 	displayedChat:boolean;
 
@@ -53,6 +55,15 @@ export class PrivateconversationsComponent {
 			this.displayedChat = true;
 		})
 	}
+	displayUserData(userData:any){
+		userData.conversation.participants.forEach((participant:any) => {
+			if (participant.messageable_id !== this.userId){ 
+				this.userInformation = participant.messageable;
+				this.chatProfile = this.defaultUrlProfile + participant.messageable.profile_pic;
+			}
+		});
+	}
+	
 	displayConversation(newRoute:any){
 		this.ChatIdToDisplay = newRoute;
 		this.displayedChat = true;

@@ -18,6 +18,8 @@ export class UserschatComponent {
 	Url_profile_pic:string = "http://localhost:8000/storage/profile_pic/"
 
 	@Output() ChangeRoute: any = new EventEmitter<number>();
+	@Output() MessegeableUserInfo: any = new EventEmitter<any>();
+
 	constructor(
 		private router: Router
 	){}
@@ -44,5 +46,6 @@ export class UserschatComponent {
 	}
 	displayConversation(){
 		this.ChangeRoute.emit(this.userChat.conversation_id);
+		this.MessegeableUserInfo.emit(this.userChat)
 	}
 }
