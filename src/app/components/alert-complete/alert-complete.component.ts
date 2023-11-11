@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-alert-complete',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./alert-complete.component.scss']
 })
 export class AlertCompleteComponent {
-
+    @Input() Message:string;
 }
+

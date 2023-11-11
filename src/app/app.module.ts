@@ -44,6 +44,23 @@ import { InterestsSearchComponent } from './components/Search/interests-search/i
 import { SinglegroupComponent } from './components/GroupsFolder/singlegroup/singlegroup.component';
 import { SingleeventComponent } from './components/EventsFolder/singleevent/singleevent.component';
 import { EventsComponent } from './components/EventsFolder/events/events.component';
+import { EventComponent } from './components/EventsFolder/event/event.component';
+import { ParticipantsComponent } from './components/EventsFolder/participants/participants.component';
+import { EventInterestsComponent } from './components/EventsFolder/event-interests/event-interests.component';
+import { GroupComponent } from './components/GroupsFolder/group/group.component';
+import { ChatComponent } from './components/ChatsFolder/chat/chat.component';
+import { MessageComponent } from './components/ChatsFolder/message/message.component';
+import { JoinedgroupComponent } from './components/GroupsFolder/joinedgroup/joinedgroup.component';
+import { MygroupsComponent } from './components/GroupsFolder/mygroups/mygroups.component';
+import { SuggestedgroupsComponent } from './components/GroupsFolder/suggestedgroups/suggestedgroups.component';
+import { JoinedeventComponent } from './components/EventsFolder/joinedevent/joinedevent.component';
+import { MyeventsComponent } from './components/EventsFolder/myevents/myevents.component';
+import { SuggestedeventsComponent } from './components/EventsFolder/suggestedevents/suggestedevents.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { PrivateconversationsComponent } from './components/privateMsgFolder/privateconversations/privateconversations.component';
+import { UserschatComponent } from './components/privateMsgFolder/userschat/userschat.component';
+import { LoadedComponent } from './components/loaded/loaded.component';
+
 
 
 
@@ -88,7 +105,23 @@ import { EventsComponent } from './components/EventsFolder/events/events.compone
     InterestsSearchComponent,
     SinglegroupComponent,
     SingleeventComponent,
-    EventsComponent
+    EventsComponent,
+    EventComponent,
+    ParticipantsComponent,
+    EventInterestsComponent,
+    GroupComponent,
+    ChatComponent,
+    MessageComponent,
+    JoinedgroupComponent,
+    MygroupsComponent,
+    SuggestedgroupsComponent,
+    JoinedeventComponent,
+    MyeventsComponent,
+    SuggestedeventsComponent,
+    SettingsComponent,
+    PrivateconversationsComponent,
+    UserschatComponent,
+    LoadedComponent
   ],
   imports: [
     BrowserModule,

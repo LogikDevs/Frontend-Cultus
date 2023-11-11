@@ -18,6 +18,8 @@ export class DatosPerfilComponent {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
 	ProfilePictureMultimedia: File;
+	
+	errorMessageProfilePic:string;
 
 	constructor(
 		private EditService: EditUserService, 
@@ -48,7 +50,11 @@ export class DatosPerfilComponent {
 		}
 
 		this.EditService.getEditUser(DataToEdit).subscribe((res: any) => {
-        	if(res.status === 201) this.router.navigateByUrl('/SelectInterest');
+        	if(res.status === 201) this.router.navigateByUrl('/SelectInterest')
+			
+			if(res.status !== 201){
+				if (res.body.profile_pic) this.errorMessageProfilePic = res.body.profile_pic[0]
+			}
 		})
 	}
 	

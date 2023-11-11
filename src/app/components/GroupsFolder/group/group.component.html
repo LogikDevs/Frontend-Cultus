@@ -1,0 +1,62 @@
+<div class="integrantes" *ngFor="let participant of groupParticipants">
+    <app-participants [type]="type" [participant]="participant"></app-participants>   <!--  Creá un espacio a la derecha con los integrantes, y yo arriba de los integrantes en un espacio separado pondría la descripcion  -->
+</div>                                                                                <!-- La linea 1 a 3 tira todos los integrantes uno tras otros. Si queres modificar como se ve cada celda anda a EventsFolder/Participants (Es el mismo que para los eventos)-->
+
+<app-sidebar id="Sidebar"></app-sidebar>
+
+
+<div class="ContainerAll">
+
+
+    <div class="ContainerAllChats">
+        <div class="Tittle">
+            <div class="Logo">
+                <img src="assets/sidebar-images/SMS.svg" alt="">
+            </div>
+            <div class="Text">
+                Chats
+            </div>
+    </div>
+
+    <div class="ContainerChats">
+        <div class="Chat">
+            <div class="ImageChat">
+                <img src="assets/post-images/profile_def.jpg" alt="">
+            </div>
+            <div class="NameChat" *ngIf="groupData">
+                <p>{{groupData.name}}</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="ContainerContentChat">
+    <div class="HeaderChat">
+        <div class="Back">
+            <img src="assets/Go Back.png" alt="">
+        </div>
+        <div  id="ImageGroup">
+            <img src={{groupCover}} alt="">
+        </div>
+        <div class="NameChat" *ngIf="groupData">
+            <p>{{groupData.name}}</p>
+        </div>
+        <div class="GroupDescription" *ngIf="groupData">
+            <p>{{groupData.description}}</p>  <!--  ESTOS 3 Ubicalos bien, es data del grupo    -->
+        </div>
+        <div *ngIf="groupData"> 
+            <p>{{groupData.privacy}}</p>
+        </div>
+        <div class="OptionsChat">
+            <div class="Option">
+                <img src="assets/Chat/menu.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="groupData">
+        <app-chat [chatId]="groupData.id_chat"></app-chat>
+    </div>
+</div>
+</div>

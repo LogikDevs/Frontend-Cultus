@@ -1,0 +1,162 @@
+$ColorFuente:#7ab06a;
+$ColorSecundario:#282928;
+
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 70%;
+   }
+   
+   .input {
+    width: 100%;
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #2c2c2d;
+    color: #357d33;
+    transition: .3s ease;
+    font-weight: bold;
+   }
+   
+   .input::placeholder {
+    color: #28623f;
+   }
+   
+   .input:focus, input:hover {
+    outline: none;
+    border-color: rgba(38, 116, 55, 0.4);
+    background-color: #2e2d2d;
+    box-shadow: 0 0 0 4px rgba(76, 234, 129, 0.1);
+   }
+   
+   .icon {
+    position: absolute;
+    left: 1rem;
+    fill: #1c692f;
+    width: 1rem;
+    height: 1rem;
+   }
+
+   .ContainerSearch{
+    height: 100%;
+    margin-left: 50px;
+    margin-top: 20px;
+  
+    width: 70%;
+
+  
+   }
+   .Form{
+    width: 100%;
+   }
+  
+   
+   .Categories{
+    margin-top: 10px;
+    border-bottom: 2px solid $ColorFuente;
+    margin-left: -70px;
+   }
+   .Buttons{
+    margin-left: 60px;
+   }
+   .Categories button{
+    margin: 10px;
+    
+background-color: $ColorSecundario;
+color: $ColorFuente;
+border: none;
+padding: 8px;
+border-radius: 10px;
+font-size: 15px;
+cursor: pointer;
+height: 40px;
+width: 100px;
+transition: .3s ease;
+   }
+   .Categories button:hover{
+background-color: #303130;
+   }
+
+   .Result{
+    margin: 10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: $ColorSecundario;
+    width: 50%;
+    border-radius: 20px;
+
+    
+   }
+   .Tittle {
+    color: $ColorFuente;
+   }
+   .Image{
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: #696b6b;
+    border-radius: 50%;
+   }
+   .Image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
+   .Name {
+    color: $ColorFuente;
+    font-weight: bold;
+    margin-left: 10px;
+   }
+   .Option{
+    color: rgb(11, 109, 200);
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 20px;
+    cursor: pointer;
+
+   }
+   .Start{
+    display: flex;
+    align-items: center;
+   }
+   .GeneralContainer{
+    display: flex;
+    height: 800px;
+   }
+   .BorderLeft{
+ border-left: 2px solid $ColorFuente;
+    margin-left: 250px;
+ width: 20px;
+ height: 100% !important;
+   }
+   
+
+   @media (max-width:850px){
+
+.BorderLeft{
+    margin-left: 80px;
+}
+.Result{
+    min-width: 300px;
+}
+   }
+   @media (max-width:500px){
+    .BorderLeft{
+        margin-left: 20px;
+        border: none;
+    }
+    .GeneralContainer{
+        margin-left: -70px;
+    }
+ 
+       }
+   
+   

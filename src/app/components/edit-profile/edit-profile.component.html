@@ -1,11 +1,14 @@
 <app-sidebar></app-sidebar>
 
-<form #ProfileDataForm="ngForm" action="" (ngSubmit)="saveProfileData(ProfileDataForm.value)">
+
 
 <div class="ContainerEditProfile">
     <div class="ContainerMyProfile">
+        <form #ProfileDataForm="ngForm" action="" (ngSubmit)="saveProfileData(ProfileDataForm.value)">
         <div class="BackgroundProfile">
+            
             <div class="ImageProfile">
+    
                 <div class="AddImage">
 
                     <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
@@ -51,6 +54,7 @@
                 </div>
 
 
+
             </div>
             <div class="GroupEditable2">
                 <div class="Content">
@@ -74,8 +78,22 @@
         <div class="FinishProfileData">
             <button id="FinishEditing">Save</button>
         </div>
+        </form>
+        <div class="DisplayInterestButton">
+            <button (click)="DisplayInterestSelector()">Modify Interests</button>
+        </div>
     </div>
 </div>
 
 
-</form>
+
+
+<div *ngIf="interestService.displaySelectInterest">
+    <app-select-interest class="ContainerSelectInterest" [SelectInterestType]="'edit'" [WindowVisibility]="true" (InterestsModified)="OnCompleteAlert()"></app-select-interest>
+</div>
+<div *ngIf="ErrorMessage.visibility">
+    <app-alert-error [Message]="ErrorMessage.Message"></app-alert-error>
+</div>
+<div *ngIf="CompleteMessage.visibility">
+    <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
+</div>

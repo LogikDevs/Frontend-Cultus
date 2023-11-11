@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { Interest } from '../interest/interest.model';
 import { Router } from '@angular/router';
@@ -24,14 +24,15 @@ export class SelectInterestComponent {
 	@Input() SelectInterestType: string = "user";
 	@Input() WindowVisibility: boolean = true;
 
+	@Output() InterestsModified = new EventEmitter<boolean>();
+
 	constructor(
 		private interestService: GetInterestsService, 
 		private router: Router
 	) { }
 
 	ngOnInit(){
-		
-		if (this.SelectInterestType == "user") this.getUserInterests();
+		if (this.SelectInterestType == "user" || "edit") this.getUserInterests();
 		this.getInterests();
 	}
 
@@ -54,20 +55,20 @@ export class SelectInterestComponent {
 	}
 
 	sendInterests(){
-		if (["post", "group", "event"].includes(this.SelectInterestType)) {
+		if (["post", "event"].includes(this.SelectInterestType)) {
 			this.interestService.displaySelectInterest = false;
 			this.WindowVisibility = false;
+			this.InterestsModified.emit(true);
 		}
-		if (this.SelectInterestType == "user") this.sendUserInterests();
+		if (this.SelectInterestType == "user" || "edit") this.sendUserInterests();
  	}
 	
 	getUserInterests(){
 		this.interestService.getUserInterests().subscribe((res: any) => {
 			
-			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item.id_label);
-			
-			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item.id_label);
-			
+			this.interestService.NewUserInterestsArray = Object.values(res.interests).map((item:any) => item);
+
+			this.DataBaseInterests = Object.values(res.interests).map((item:any) => item);
 		})
 	}
 	sendUserInterests(){
@@ -75,15 +76,19 @@ export class SelectInterestComponent {
 		
 		this.InterestsToAdd = InterestsArray.filter((item:any) => !this.DataBaseInterests.includes(item));
 		this.InterestsToDelete = this.DataBaseInterests.filter((item: any) => !InterestsArray.includes(item));
-		console.log(this.InterestsToAdd);
-		console.log(this.InterestsToDelete);
+
 		this.AddUserInterests(this.InterestsToAdd); 
 		this.DeleteUserInterests(this.InterestsToDelete);
 
 		this.interestService.NewUserInterestsArray = [];
 		this.DataBaseInterests=[];
 
-		this.router.navigateByUrl('/home');
+		if (this.SelectInterestType == "user") this.router.navigateByUrl('/home');
+		if (this.SelectInterestType == "edit") {
+			this.interestService.displaySelectInterest = false;
+			this.WindowVisibility = false;
+			this.InterestsModified.emit(true);
+		}
 	}
 	
 	AddUserInterests(interest:any){

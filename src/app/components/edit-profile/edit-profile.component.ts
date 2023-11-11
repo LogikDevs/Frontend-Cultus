@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { EditUserService } from 'src/app/services/edit-user.service';
 import { GetCountriesService } from 'src/app/services/get-countries.service';
+import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
@@ -23,9 +24,19 @@ export class EditProfileComponent {
 	homeland: number;
 	residence: number;
 
+	CompleteMessage = {
+		Message: "The Changes were submited.",
+		visibility: false
+	}
+	ErrorMessage = {
+		Message: "There was an error while submitting the changes.",
+		visibility: false
+	}
+
   	constructor(private EditService: EditUserService, 
 		private countries: GetCountriesService, 
 		private userService: GetUserService, 
+		public interestService: GetInterestsService
 	) {}
 	ngOnInit(){
 		this.countriesDropbox();
@@ -41,9 +52,9 @@ export class EditProfileComponent {
 		this.profile_pic_url = this.PublicUrl + this.userData.profile_pic;
 		this.checkProfilePic();
 		this.description = this.userData.description || '';
-		this.gender = this.userData.gender || 'No seleccionado';
-		this.homeland = this.userData.homeland || "No seleccionado";
-		this.residence = this.userData.residence || "No seleccionado";
+		this.gender = this.userData.gender || undefined;
+		this.homeland = this.userData.homeland || undefined;
+		this.residence = this.userData.residence || undefined;
 	}
 	checkProfilePic(){
 		const ProfilePicSrc:any = document.getElementById("UserPfp");
@@ -61,10 +72,12 @@ export class EditProfileComponent {
 			profile_pic: this.ProfilePictureMultimedia,
 			residence_country: DataReceived.residence
 		}
-
-		this.EditService.ProfileEditUser(DataToEdit).subscribe((res:any)=>{});
+		this.EditService.ProfileEditUser(DataToEdit).subscribe((res:any)=>{
+			if (res.status === 200) this.OnCompleteAlert();
+		},(error:any)=>{
+			this.OnErrorAlert();
+		})
   	}
-
 
   	triggerFileInput() {
 		this.fileInput.nativeElement.click();
@@ -96,5 +109,28 @@ export class EditProfileComponent {
 
 			select.add(newOption, undefined);
 		}
+	}
+
+	DisplayInterestSelector(){
+		this.interestService.displaySelectInterest = true;
+	}
+
+	OnCompleteAlert(){
+		this.CompleteMessage.visibility = true;
+		this.ErrorMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(true);
+		}, 4000);
+	}
+	OnErrorAlert(){
+		this.ErrorMessage.visibility = true;
+		this.CompleteMessage.visibility = false;
+		setTimeout(() => {
+			this.hideComponent(false);
+		}, 4000);
+	}
+	hideComponent(Complete:boolean){
+		if (Complete == true) this.CompleteMessage.visibility = false;
+		if (Complete == false) this.ErrorMessage.visibility = false;
 	}
 }

@@ -6,7 +6,7 @@
 <div class="ContainerModalCreatePost">
     <div class="Header">
 <div class="Close">
-    <img src="assets/post-images/close.svg" alt="">
+    <img src="assets/post-images/close.svg" (click)="ComponentRemove()" alt="">
 </div>
     </div>
     <div class="User">
@@ -19,13 +19,11 @@
 
     </div>
     <div class="ContainerInterest">
-        <div class="Interest">
             <p class="Interest" *ngFor="let interest of postInterests">{{ interest.interest }}</p>
-        </div>
     </div>
     <div class="PublicationSpace">
     
-        <input ngModel name="text" type="text"  required placeholder="What are you thinking of?">
+        <input ngModel name="text" type="text"  required placeholder="What do you think about?">
    
         <div class="SpacePhoto">
             <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
@@ -70,4 +68,13 @@
     <app-select-interest class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
 </div>
 </form>
+
+<div> 
+    <div *ngIf="ErrorMessage.visibility">
+        <app-alert-error [Message]="ErrorMessage.Message"></app-alert-error>
+    </div>
+    <div *ngIf="CompleteMessage.visibility">
+        <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
+    </div>
+</div>
 
