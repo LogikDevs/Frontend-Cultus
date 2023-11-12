@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class GrouplistComponent {
     @Input() groupToDisplay:any
     pfpUrl:any = "";
-    Url_Picture:string = "http://localhost:8002/public/picture/"
+    Url_Picture:string = "http://localhost:8002/storage/picture/"
 
     @Output() ChangeGroup: any = new EventEmitter<number>();
     constructor(){}

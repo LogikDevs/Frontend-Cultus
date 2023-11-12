@@ -12,13 +12,14 @@ export class PrivateconversationsComponent {
 	@Input() UserConversationId:any = Number(this.route.snapshot.params['id']);
 	
 	ChatIdToDisplay:any
+
 	PrivateChats:any;
+
+	conversationExists:boolean = false;
 
 	userInformation:any;
 
 	userId:any;
-
-	directMessage:number;
 
 	chatProfile:string = "";
 	defaultUrlProfile:string = "http://localhost:8000/storage/profile_pic/"
@@ -32,9 +33,8 @@ export class PrivateconversationsComponent {
 		private userService: GetUserService
   	){}
   	ngOnInit(){
-		
 		this.getUser();
-		this.createNewConversation();
+		if (this.UserConversationId) this.checkExistingChat();
 		this.getPrivateChats();
   	}
 
@@ -42,19 +42,46 @@ export class PrivateconversationsComponent {
 		this.userService.getUser().subscribe((res:any)=>{
 			this.userId = res.id;
 		})
-	}
+	}	
+
   	getPrivateChats(){
 		this.chatService.getUserPrivateConversations().subscribe((res:any)=>{
 			this.PrivateChats = res.data;
 		})
 	}
-	createNewConversation(){
-		this.chatService.createPrivateChat(this.UserConversationId).subscribe((res:any)=>{
-			this.directMessage = res.id;
-			this.ChatIdToDisplay = this.directMessage;
-			this.displayedChat = true;
+	
+	checkExistingChat(){
+		this.chatService.getExistingChat(this.UserConversationId).subscribe((res:any)=>{
+			if (!res){
+				this.createNewConversation(); 
+			}
+			if (res) {
+				this.ChatIdToDisplay = res.id;
+				this.showChatFromProfile(res.id);
+			}
 		})
 	}
+	createNewConversation(){
+		this.chatService.createPrivateChat(this.UserConversationId).subscribe((res:any)=>{
+			this.ChatIdToDisplay = res.id;
+			this.displayedChat = true;
+			this.showChatFromProfile(this.ChatIdToDisplay);
+		})
+	}
+
+	showChatFromProfile(chatId:any){
+		this.getPrivateChats();
+
+		this.chatService.BringConversation(chatId).subscribe((res:any)=>{
+			res[1].forEach((participant:any) => {
+				if (participant.id !== this.userId){ 
+					this.userInformation = participant;
+					this.chatProfile = this.defaultUrlProfile + participant.profile_pic;
+				}
+			});
+		})
+	}
+	
 	displayUserData(userData:any){
 		userData.conversation.participants.forEach((participant:any) => {
 			if (participant.messageable_id !== this.userId){ 

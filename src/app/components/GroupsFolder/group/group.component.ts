@@ -21,7 +21,7 @@ export class GroupComponent {
 	Section:boolean = true;
 
 	groupCover:string = "";
-	defaultUrlCover:string = "http://localhost:8002/public/picture/"
+	defaultUrlCover:string = "http://localhost:8002/storage/picture/"
 
     constructor(
 		private route: ActivatedRoute,
