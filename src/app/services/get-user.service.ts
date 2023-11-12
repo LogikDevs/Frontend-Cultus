@@ -7,8 +7,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 export class GetUserService {
 	private urlgetUser = 'http://localhost:8000/api/v1/validate';
 	private urlUserProfile = 'http://localhost:8000/api/v1/user/profile/'
+	private urlSearchUser = "http://localhost:8000/api/v1/user/search";
 
-	private constructor(private http: HttpClient) {  }
+	constructor(private http: HttpClient) {  }
 
 	getProfile(user:any){
 		const httpOptions = {
@@ -28,5 +29,18 @@ export class GetUserService {
 			})
 		}
 		return this.http.get(this.urlgetUser, httpOptions);
+	}
+	getUsersBySearch(dataReceived:any){
+		const body = {
+			name: dataReceived.name,
+			surname: dataReceived.surname
+		}
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+			})
+		}
+		return this.http.post(this.urlSearchUser, body,httpOptions);
 	}
 }
