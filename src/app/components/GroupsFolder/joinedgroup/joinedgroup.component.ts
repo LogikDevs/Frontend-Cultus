@@ -8,7 +8,7 @@ import { GroupService } from 'src/app/services/group.service';
   styleUrls: ['./joinedgroup.component.scss']
 })
 export class JoinedgroupComponent {
-	pictureUrlDefault:string = "http://localhost:8002/picture/"
+	pictureUrlDefault:string = "http://localhost:8002/storage/picture/"
 	groupPicture:string = "";
 
 	leftGroup:boolean = false;

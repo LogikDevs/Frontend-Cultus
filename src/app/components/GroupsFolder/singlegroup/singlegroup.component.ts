@@ -7,7 +7,7 @@ import { GroupService } from 'src/app/services/group.service';
   styleUrls: ['./singlegroup.component.scss']
 })
 export class SinglegroupComponent {
-	pictureUrlDefault:string = "http://localhost:8002/"
+	pictureUrlDefault:string = "http://localhost:8002/storage/picture/"
 	groupPicture:string = ""
 	joinButton:string = "Join";
 	joined:boolean = false;

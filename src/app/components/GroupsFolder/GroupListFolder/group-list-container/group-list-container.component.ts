@@ -25,12 +25,10 @@ export class GroupListContainerComponent {
     WhichToUse(){
 		if (this.GroupIdFromComponent === null){ 
             this.GroupToDisplay = this.GroupId
-            console.log("Grupo desde URL  "+this.GroupId);
         }
 
 		if (this.GroupIdFromComponent) {
             this.GroupToDisplay = this.GroupIdFromComponent
-            console.log("Grupo desde Componente: "+this.GroupIdFromComponent);
         }
 	}
     getMyGroups(){

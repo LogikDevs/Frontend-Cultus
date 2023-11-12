@@ -1,16 +1,13 @@
-
-
-<div class="Result">
+<div class="Result" *ngIf="user">
     <div class="Start">
-    <div class="Image">
-        <img src="Aqui va la foto de perfil del usuario" alt="">
-    </div>
-    <div class="Name">
-<p>user-search works!</p>
-    </div>
-    </div>
-    
-    <div class="Option">
+        <div class="ImageUser">
+            <img src="{{pfpUrl}}" alt="">
+        </div>
+        <div class="Name">
+            <p>{{user.name}} {{user.surname}}</p>
+        </div>
+    </div> 
+    <div class="Option" (click)="seeUser()">
         <p>See User</p>
     </div>
 </div>
