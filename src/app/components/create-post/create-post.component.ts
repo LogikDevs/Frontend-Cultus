@@ -11,6 +11,7 @@ import { GetCountriesService } from 'src/app/services/get-countries.service';
 	styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent {
+	@Input() isInsideEvents: boolean = false;
 	
 	postMultimedia: File;
 	imageUrl:any;
