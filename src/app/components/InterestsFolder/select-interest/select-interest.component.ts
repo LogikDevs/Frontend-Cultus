@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./select-interest.component.scss']
 })
 export class SelectInterestComponent {
-	
+	@Input() isInsideCreatePost: boolean = false;
 	userId = localStorage.getItem("IdUser");
 	
 	interests: Interest[] = [];

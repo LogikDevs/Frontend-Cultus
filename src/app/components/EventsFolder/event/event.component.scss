@@ -176,8 +176,11 @@ color: $ColorFuente;
     }
     #ImageGroup{
         width: 40px;
+        height: 40px;
+
         margin: 5px;
         border-radius: 50%;
+        object-fit: cover;
     }
     #ImageGroup img{
         width: 100%;
@@ -312,6 +315,9 @@ border-left: 2px solid $ColorFuente;
 color: $ColorFuente;
 font-weight: bold;
 }
+.TittleInterest{
+    margin-top: 60px;
+}
 .ContainerAllInterest,.ContainerAllParticipants{
 background-color: #151615 ;
 padding: 5px;
@@ -352,3 +358,41 @@ margin-top: 50px;
 .ContainerEvents::-webkit-scrollbar {
     width: 12px;
 }
+.NameChat,.Type{
+    width: 20%;
+
+}
+.NameChat p{
+    margin-left: 50px;
+}
+#ImageGroup img{
+    margin-left: 20px;
+}
+
+#CreatePostForEvent{
+    width: 50px;
+ 
+    position: relative;
+    top: 550px;
+    float: right;
+    margin-right: 40px;
+}
+#CreatePostForEvent button {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    transition: all 300ms ease;
+    
+  }
+  
+  #CreatePostForEvent button img {
+    width: 50px;
+    height: 50px;
+
+  }
+  .SpaceForModals{
+    background-color: #537D57;
+    height: 81vh;
+    max-height: 81vh;
+  }
+  

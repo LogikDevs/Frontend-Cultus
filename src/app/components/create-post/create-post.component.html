@@ -3,7 +3,7 @@
 
 
 <form #postCreateForm="ngForm" (ngSubmit)="sendPostData(postCreateForm.value)">
-<div class="ContainerModalCreatePost">
+<div class="ContainerModalCreatePost" [class.inside-events]="isInsideEvents">
     <div class="Header">
 <div class="Close">
     <img src="assets/post-images/close.svg" (click)="ComponentRemove()" alt="">
@@ -66,7 +66,7 @@
 
 </div>
 <div *ngIf="interestService.displaySelectInterest">
-    <app-select-interest class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+    <app-select-interest [isInsideCreatePost]="true"  class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
 </div>
 </form>
 
