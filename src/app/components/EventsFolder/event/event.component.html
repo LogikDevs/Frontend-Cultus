@@ -1,7 +1,11 @@
+
+<div class="OverflowHideen" style="overflow-y: hidden;">
+
+
 <app-sidebar></app-sidebar>
 
 <div class="ContainerAll">
-    
+
     <div class="ContainerAllChats">
         <div class="Tittle">
             <div class="Logo">
@@ -10,96 +14,105 @@
             <div class="Text">
                 Events
             </div>
+        </div>
+
+        <div class="ContainerChats">
+
+        </div>
+
+
     </div>
 
-    <div class="ContainerChats">
-
-    </div>
-
-
-</div>
-
-<div class="ContainerContentChat" *ngIf="eventData">
-    <div class="HeaderChat">
-        <div class="Back">
-            <img src="assets/Go Back.png" alt="">
-        </div>
-        <div id="ImageGroup">
-            <img src="{{eventCover}}" alt="">
-        </div>
-        <div class="NameChat">
-            <p>{{eventData.event.name}}</p>
-        </div> 
-        <div class="Type">
-     <p>Event Type: {{eventType}}</p>
- </div>
-        <div class="OptionsChat">
-            <div class="Option">
-                <img src="assets/Chat/menu.svg" alt="">
+    <div class="ContainerContentChat" *ngIf="eventData">
+        <div class="HeaderChat">
+            <div class="Back">
+                <img src="assets/Go Back.png" alt="">
+            </div>
+            <div id="ImageGroup">
+                <img src="{{eventCover}}" alt="">
+            </div>
+            <div class="NameChat">
+                <p>{{eventData.event.name}}</p>
+            </div>
+            <div class="Type">
+                <p>Event Type: {{eventType}}</p>
+            </div>
+            <div class="OptionsChat">
+                <div class="Option">
+                    <img src="assets/Chat/menu.svg" alt="">
+                </div>
             </div>
         </div>
-    </div>
-    
-<div *ngIf="createPostComponentVisibility">
-    <app-create-post [EventPost]="eventData.event.id"  (ComponentRemoved)="postPublished(false)" (postHasBeenPublished)="postPublished(true)"></app-create-post>
-</div>
-<div id="updates" *ngFor="let post of eventData.updates">
-    <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
-</div>
-<div class="ContainerEvents">
-    <div id="eventData" *ngIf="eventData">
 
-        <div class="Description">
-            <div class="TittleDescription">
-                     <p>Event Description:</p>
+
+
+        <div class="ContainerEvents">
+            <div id="eventData" *ngIf="eventData">
+
+                <div class="Description">
+                    <div class="TittleDescription">
+                        <p>Event Description:</p>
+                    </div>
+
+                    <div class="ContentDescription" *ngIf="eventData">
+                        <p>{{eventData.event.description}}</p>
+                    </div>
+
+                </div>
+                <div class="Text">
+                    <div class="TittleText">
+                        <p>Event Information:</p>
+                    </div>
+                    <div class="ContentText" *ngIf="eventData">
+                        <p> {{eventData.event.text}}</p>
+                    </div>
+
+                </div>
+
             </div>
-          
-               <div class="ContentDescription" *ngIf="eventData">
-                  <p>{{eventData.event.description}}</p>
-               </div>
-             
-        </div>
-        <div class="Text">
-            <div class="TittleText">
-                <p>Event Information:</p>
+
+            <div id="eventParticipantsAndInterests">
+                <div class="ContainerInterest">
+                    <div class="TittleInterest">
+                        <p>Event Interests:</p>
+                    </div>
+                    <div class="ContainerAllInterest">
+                        <div id="eventInterests" *ngFor="let interest of eventData.interests">
+                            <app-event-interests *ngIf="interest" [interest]="interest"></app-event-interests>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ContainerParticipants">
+                    <div class="TittleParticipants">
+                        <p>Event Participants:</p>
+                    </div>
+                    <div class="ContainerAllParticipants">
+
+                        <div id="eventParticipants" *ngFor="let participant of eventData.participants">
+                            <app-participants *ngIf="participant" [participant]="participant"></app-participants>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="ContentText" *ngIf="eventData">
-                   <p> {{eventData.event.text}}</p>
+
+        </div>
+        <div id="CreatePostForEvent">
+            <button *ngIf="isAdmin" (click)="ShowPostCreationComponent()">
+                <img src="assets/sidebar-images/create.svg" alt="Crear Posts">
+            </button>
+        </div>
+        <div class="SpaceForModals">
+            <div *ngIf="createPostComponentVisibility">
+                <app-create-post [EventPost]="eventData.event.id" (ComponentRemoved)="postPublished(false)"
+                    (postHasBeenPublished)="postPublished(true)" [isInsideEvents]="true"></app-create-post>
+                <div id="updates" *ngFor="let post of eventData.updates">
+                    <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
+                </div>
             </div>
-            
         </div>
-   
-</div>    
 
-<div id="eventParticipantsAndInterests">
-    <div class="ContainerInterest">
-        <div class="TittleInterest">
-               <p>Event Interests:</p>
-        </div>
-     <div class="ContainerAllInterest">
-         <div id="eventInterests" *ngFor="let interest of eventData.interests">
-            <app-event-interests *ngIf="interest" [interest]="interest"></app-event-interests>
-        </div>
-     </div>
-       
-    </div>
-    <div class="ContainerParticipants">
-        <div class="TittleParticipants">
-                <p>Event Participants:</p>
-        </div>
-          <div class="ContainerAllParticipants">
-    
-        <div id="eventParticipants" *ngFor="let participant of eventData.participants">
-            <app-participants *ngIf="participant" [participant]="participant"></app-participants>
-        </div>
-    </div>
-    </div>
-  
-</div>
-<div id="CreatePostForEvent">
-    <button *ngIf="isAdmin" (click)="ShowPostCreationComponent()">Upload Update</button>
 
-</div>
-</div>
-
+    </div>
 </div>

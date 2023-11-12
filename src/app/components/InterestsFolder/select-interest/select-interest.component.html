@@ -3,7 +3,7 @@
     <app-sidebar ></app-sidebar>
 </div>
 
-<div class="ContainerSelectInterest" *ngIf="WindowVisibility">
+<div class="ContainerSelectInterest" [class.inside-create-post]="isInsideCreatePost" *ngIf="WindowVisibility">
 
     <div class="ContainerSearchInterest">
 
