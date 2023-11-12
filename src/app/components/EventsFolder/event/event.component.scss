@@ -1,5 +1,6 @@
 $ColorFuente:#537D57;  
 $ColorSecundario:#282928;
+
 .ContainerAll{
     display: flex;
 
@@ -395,4 +396,6 @@ margin-top: 50px;
     height: 81vh;
     max-height: 81vh;
   }
-  
+  body{
+    overflow: hidden; 
+ }

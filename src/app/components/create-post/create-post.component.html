@@ -65,9 +65,12 @@
 </div>
 
 </div>
-<div *ngIf="interestService.displaySelectInterest">
+<div class="InterestForEvents" [class.inside-events]="isInsideEvents"  *ngIf="interestService.displaySelectInterest" >
+   
     <app-select-interest [isInsideCreatePost]="true"  class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+
 </div>
+
 </form>
 
 <div> 
