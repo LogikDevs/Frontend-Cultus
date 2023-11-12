@@ -34,16 +34,17 @@
         <div class="AddLocate">
             <img src="assets/post-images/Location.svg" alt="">
             <p>Add Location</p>
+            <select ngModel id="postLocation" name="postLocation" class="LocationSelector">
+                <option disabled selected></option>
+            </select>
         </div>
         <div class="AddInterest">
            
             <img (click)="showPostInterestSelection()" src="assets/interest-images/interes.svg" alt="">
             <p (click)="showPostInterestSelection()">Add Interest</p>
         </div>
-       
         
     </div>
-
     <div class="FooterCreatePost">
     <div class="AddPostImages">
         <div class="OpenCamara">

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from 'src/app/services/chat.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { GroupService } from 'src/app/services/group.service';
@@ -10,12 +10,15 @@ import { GroupService } from 'src/app/services/group.service';
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent {
-    @Input() GroupId:any = Number(this.route.snapshot.params['id']);
+
+	@Input() GroupToDisplay:any;
 
     groupData:any;
 	groupParticipants:any;
 
 	type="group";
+
+	Section:boolean = true;
 
 	groupCover:string = "";
 	defaultUrlCover:string = "http://localhost:8002/public/picture/"
@@ -24,18 +27,22 @@ export class GroupComponent {
 		private route: ActivatedRoute,
 		private groupService: GroupService
 	){}
-	ngOnInit(){
+	ngOnChanges(){
 		this.getGroup();
 		this.getParticipants();
 		this.checkCover();
 	}
+
+	ChangeSection(type:boolean){
+		if (type != this.Section) this.Section = type;
+	}
 	getGroup(){
-		this.groupService.getGroupData(this.GroupId).subscribe((res:any)=>{
+		this.groupService.getGroupData(this.GroupToDisplay).subscribe((res:any)=>{
 			this.groupData = res;
 		})
 	}
 	getParticipants(){
-		this.groupService.getGroupParticipants(this.GroupId).subscribe((res:any)=>{
+		this.groupService.getGroupParticipants(this.GroupToDisplay).subscribe((res:any)=>{
 			this.groupParticipants = res;
 		})
 	}

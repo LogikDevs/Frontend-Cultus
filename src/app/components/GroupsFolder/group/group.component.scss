@@ -6,22 +6,6 @@ $ColorSecundario:#282928;
     width: 100%;
     min-height: 90vh;
 }
-.ContainerAllChats{
-    background-color: $ColorSecundario;
-    width: 350px;
-    height: 92vh;
-    margin-left: 78px;
-    border-left: 2px solid $ColorFuente;
-    border-right: 2px solid $ColorFuente;
-    border-top: solid 1px $ColorFuente;
-}
-.Tittle{
-   border-bottom: 1px solid $ColorFuente;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    height: 80px;
-}
 .Logo{
     width: 40px;
     height: 40px;
@@ -40,23 +24,6 @@ $ColorSecundario:#282928;
     font-weight:bold ;
     color: $ColorFuente;
 }
-.ContainerChats{
-  margin: 10px;
-  max-height: 80%;
-  overflow-y: auto;
-}
-.ContainerChats::-webkit-scrollbar {
-    width: 8px; /* Ancho de la barra de desplazamiento */
-  }
-  
-  .ContainerChats::-webkit-scrollbar-track {
-    background-color: rgb(35, 35, 35);
-  }
-  
-  .ContainerChats::-webkit-scrollbar-thumb {
- background: #121111;
-
-  }
 .Chat{
 display: flex;
 margin: 15px;

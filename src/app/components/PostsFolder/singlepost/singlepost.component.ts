@@ -69,12 +69,16 @@ import { Router } from '@angular/router';
 	) { }
 	ngOnInit() {
 		this.postId = this.post.post.id_post;
-
 		this.checkAuthor();
+		this.VotesButtonColor(this.post.user_vote, true);
 		this.checkProfilePic();
 		this.insertMultimedia();
 		this.IsFollowable();
 		this.CheckFollowOrUnfollow(false)
+	}
+
+	ngAfterViewInit(){
+		this.VotesColor();
 	}
 	checkProfilePic(){
 		if (this.post.user.profile_pic) this.userPfp = this.urlPfp + this.post.user.profile_pic;
@@ -100,8 +104,8 @@ import { Router } from '@angular/router';
 		}
 		if (this.AddComment.trim() !== '') {
 			this.commentsService.postComment(bodyComment).subscribe((CreatedComment:any)=>{
-					this.publishedComment();
-					this.showCommentLocally(CreatedComment.body);
+				this.publishedComment();
+				this.showCommentLocally(CreatedComment.body);
 			});
 			this.AddComment = '';
 		}
@@ -137,7 +141,7 @@ import { Router } from '@angular/router';
 		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res:any) => {
 			this.userVoted = res.body;
 			this.updateVotes()
-			this.VotesButtonColor(this.userVoted);
+			this.VotesButtonColor(this.userVoted, false);
 		})
 	}
 
@@ -147,16 +151,16 @@ import { Router } from '@angular/router';
 			this.VotesColor();
 		});
 	}
+
 	VotesColor(){
 		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
-		if (this.post.post.votes < 0) voteColor.style.color = "#DB4141";
-		if (this.post.post.votes == 0) voteColor.style.color = "grey";
-		if (this.post.post.votes > 0) voteColor.style.color = "#537D57";
-	}
-	VotesButtonColor(typeOfLike:number){
-		const likeButton:any = document.getElementById('LikeButton_'+this.post.post.id_post);
-		const dislikeButton:any = document.getElementById('DislikeButton_'+this.post.post.id_post);
 
+		if (this.post.post.votes < 0) voteColor.style.color = "#ff1c18";
+		if (this.post.post.votes == 0) voteColor.style.color = "#dbdbdb";
+		if (this.post.post.votes > 0) voteColor.style.color = "#00ff00";
+	}
+
+	VotesButtonColor(typeOfLike:number, onInit:boolean){
 		if (typeOfLike == 0) {
 			this.likeButton = "assets/post-images/like.svg"
 			this.dislikeButton = "assets/post-images/disliked.png"
@@ -165,9 +169,17 @@ import { Router } from '@angular/router';
 			this.likeButton = "assets/post-images/liked.png"
 			this.dislikeButton = "assets/post-images/disgusto.svg"
 		}
-		if (typeOfLike == 2) {
-			this.likeButton = "assets/post-images/like.svg"
-			this.dislikeButton = "assets/post-images/disgusto.svg"
+		if (onInit == false){
+			if (typeOfLike == 2) {
+				this.likeButton = "assets/post-images/like.svg"
+				this.dislikeButton = "assets/post-images/disgusto.svg"
+			}
+		}
+		if (onInit == true){
+			if (typeOfLike == null) {
+				this.likeButton = "assets/post-images/like.svg"
+				this.dislikeButton = "assets/post-images/disgusto.svg"
+			}
 		}
 	}
 
@@ -194,8 +206,7 @@ import { Router } from '@angular/router';
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.post.post.fk_id_user).subscribe((res:any)=>{
-			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
-			else this.isFollowing = "Unfollow";
+			this.isFollowing = "Unfollow";
 			this.followButtonSrc = "assets/unfollow.png";
 		})
 	}

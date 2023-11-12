@@ -32,7 +32,8 @@ export class SelectInterestComponent {
 	) { }
 
 	ngOnInit(){
-		if (this.SelectInterestType == "user" || "edit") this.getUserInterests();
+		if (this.SelectInterestType == "user") this.getUserInterests();
+		if (this.SelectInterestType == "edit") this.getUserInterests();
 		this.getInterests();
 	}
 
@@ -60,7 +61,9 @@ export class SelectInterestComponent {
 			this.WindowVisibility = false;
 			this.InterestsModified.emit(true);
 		}
-		if (this.SelectInterestType == "user" || "edit") this.sendUserInterests();
+		if (["user", "edit"].includes(this.SelectInterestType)) { 
+			this.sendUserInterests();
+		}
  	}
 	
 	getUserInterests(){
