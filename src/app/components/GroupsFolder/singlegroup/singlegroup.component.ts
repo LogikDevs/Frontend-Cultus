@@ -28,7 +28,6 @@ export class SinglegroupComponent {
 		if (this.group.picture) this.groupPicture = this.pictureUrlDefault + this.group.picture;
 	}
 	checkIfAlreadyJoinedGroup(){
-		console.log(this.alreadyJoinedGroups);
 		this.alreadyJoinedGroups.forEach((joinedGroup:any) => {
 			if (this.group.id_group === joinedGroup.id_group){
 				this.joined = true

@@ -4,6 +4,7 @@ export interface Post {
 	multimedia: MultimediaLink;
 	post: PostData;
 	user: UserOnPost;
+	user_vote:any
   }
   export interface Comment {
 	id_comment: number;

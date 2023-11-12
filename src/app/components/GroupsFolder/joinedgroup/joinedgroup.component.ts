@@ -11,6 +11,8 @@ export class JoinedgroupComponent {
 	pictureUrlDefault:string = "http://localhost:8002/picture/"
 	groupPicture:string = "";
 
+	leftGroup:boolean = false;
+
 	@Input() group:any
     constructor(
 		private groupService: GroupService,
@@ -25,4 +27,9 @@ export class JoinedgroupComponent {
     joinGroup(){
         this.router.navigateByUrl('/group/'+ this.group.id_group);
 	} 
+	leaveGroup(){
+		this.groupService.leaveGroup(this.group.id_group).subscribe((res:any)=>{
+			this.leftGroup = true;
+		})
+	}
 }

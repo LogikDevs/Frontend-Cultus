@@ -31,3 +31,14 @@ $ColorFuente:#7ab06a;
     height: 100%;
     object-fit: cover;
 }
+.LeaveOption button{
+    background-color: #282828;
+    color: $ColorFuente;
+    border: none;
+    border-radius:10px ;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 13px;
+    margin-left: 10px;
+    cursor: pointer;
+}

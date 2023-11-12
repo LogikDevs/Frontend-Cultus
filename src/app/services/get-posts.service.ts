@@ -75,6 +75,6 @@ export class GetPostsService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.post(this.urlDeletePost+postId, httpOptions);
+		return this.http.delete(this.urlDeletePost+postId, httpOptions);
 	}
 }

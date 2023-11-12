@@ -42,7 +42,7 @@ export class EventComponent {
 		})
 	}
 	checkCover(){
-		if (this.eventData[0].cover) this.eventCover = this.defaultUrlCover + this.eventData[0].cover;
+		if (this.eventData.event.cover) this.eventCover = this.defaultUrlCover + this.eventData.event.cover;
 	}
 	getUser(){
     	this.userService.getUser().subscribe((res:any)=>{
@@ -50,8 +50,8 @@ export class EventComponent {
     	})
   	}
 	checkEventType(){
-		if (this.eventData[0].private == 1) this.eventType = "Private";
-		if (this.eventData[0].private == 0) this.eventType = "Public";
+		if (this.eventData.event.private == 1) this.eventType = "Private";
+		if (this.eventData.event.private == 0) this.eventType = "Public";
 	}
 
 	checkIfIsAdmin(){

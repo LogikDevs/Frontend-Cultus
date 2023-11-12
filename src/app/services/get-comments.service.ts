@@ -39,6 +39,6 @@ export class GetCommentsService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.post(this.URLDeleteComment+CommentId, httpOptions);
+		return this.http.delete(this.URLDeleteComment+CommentId, httpOptions);
   	}
 }
