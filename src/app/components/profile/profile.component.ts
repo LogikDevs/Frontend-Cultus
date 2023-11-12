@@ -127,8 +127,7 @@ export class ProfileComponent implements OnInit {
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.ProfileId).subscribe((res:any)=>{
-			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
-			else this.isFollowing = "Unfollow";
+			this.isFollowing = "Unfollow";
 		})
 	}
 	UnfollowAction(){

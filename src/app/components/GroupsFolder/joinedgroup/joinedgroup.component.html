@@ -1,5 +1,11 @@
-<div (click)="joinGroup()">
-    <img src={{groupPicture}} alt="">
-    <p>{{group.name}}</p>
-    <!--La idea es que aparezcan tipo barras x cada grupo, y cuando clickeas ya te redirige al grupo en sí.-->
+<div *ngIf="!leftGroup" class="EventOrGroup">
+    <div (click)="joinGroup()">
+        <div class="ImageEventOrGroup">
+            <img src={{groupPicture}} alt="">
+        </div>
+        <p>{{group.name}}</p>
+        </div>
+    <div class="LeaveOption">
+        <button name="JoinGroupBtn" (click)="leaveGroup()">Leave</button>
+    </div>
 </div>

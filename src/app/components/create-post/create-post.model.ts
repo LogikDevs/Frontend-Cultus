@@ -1,7 +1,6 @@
 export interface NewPostData{
     text: string;
-    latitud: string;
-    longitud: string;
+    location: number;
     multimedia_file: File;
     fk_id_event: number | null
 }

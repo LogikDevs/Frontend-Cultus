@@ -101,6 +101,20 @@ margin-top: 0px;
     align-items: center;
     margin-left: 10px;
 }
+.LocationSelector{
+    background-color: $ColorSecundario;
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    text-align: center;
+    height: 85%;
+    width: 20%;
+    cursor: pointer;
+}
 .AddLocate , .AddInterest{
     background-color: $ColorSecundario;
     color: $ColorFuente;

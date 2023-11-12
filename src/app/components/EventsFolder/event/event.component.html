@@ -1,9 +1,4 @@
-
-
 <app-sidebar></app-sidebar>
-
-
-<app-sidebar id="Sidebar"></app-sidebar>
 
 <div class="ContainerAll">
     
@@ -13,7 +8,7 @@
                 <img src="assets/sidebar-images/SMS.svg" alt="">
             </div>
             <div class="Text">
-                Private Chats
+                Events
             </div>
     </div>
 
@@ -24,34 +19,33 @@
 
 </div>
 
-<div class="ContainerContentChat">
+<div class="ContainerContentChat" *ngIf="eventData">
     <div class="HeaderChat">
         <div class="Back">
             <img src="assets/Go Back.png" alt="">
         </div>
-        <div  id="ImageGroup">
-      
+        <div id="ImageGroup">
+            <img src="{{eventCover}}" alt="">
         </div>
         <div class="NameChat">
-            <p>{{eventData[0].name}}</p>
+            <p>{{eventData.event.name}}</p>
         </div> 
         <div class="Type">
      <p>Event Type: {{eventType}}</p>
  </div>
         <div class="OptionsChat">
-            <div class="Call">
-                <img src="assets/Chat/llamada.svg" alt="">
-            </div>
-            <div class="VideoCall">
-                <img src="assets/Chat/videollamada.svg" alt="">
-            </div>
             <div class="Option">
                 <img src="assets/Chat/menu.svg" alt="">
             </div>
         </div>
     </div>
     
-
+<div *ngIf="createPostComponentVisibility">
+    <app-create-post [EventPost]="eventData.event.id"  (ComponentRemoved)="postPublished(false)" (postHasBeenPublished)="postPublished(true)"></app-create-post>
+</div>
+<div id="updates" *ngFor="let post of eventData.updates">
+    <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
+</div>
 <div class="ContainerEvents">
     <div id="eventData" *ngIf="eventData">
 
@@ -60,28 +54,23 @@
                      <p>Event Description:</p>
             </div>
           
-               <div class="ContentDescription">
-                  <p>{{eventData[0].description}}</p>
+               <div class="ContentDescription" *ngIf="eventData">
+                  <p>{{eventData.event.description}}</p>
                </div>
              
         </div>
         <div class="Text">
             <div class="TittleText">
-                <p>Event Text:</p>
+                <p>Event Information:</p>
             </div>
-            <div class="ContentText">
-                   <p> {{eventData[0].text}}</p>
+            <div class="ContentText" *ngIf="eventData">
+                   <p> {{eventData.event.text}}</p>
             </div>
             
         </div>
-
- 
-    <img src="{{eventCover}}" alt="">
    
-</div>
-<div id="updates" *ngFor="let post of eventData.updates">
-    <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
-</div>
+</div>    
+
 <div id="eventParticipantsAndInterests">
     <div class="ContainerInterest">
         <div class="TittleInterest">
@@ -109,9 +98,7 @@
 </div>
 <div id="CreatePostForEvent">
     <button *ngIf="isAdmin" (click)="ShowPostCreationComponent()">Upload Update</button>
-    <div *ngIf="createPostComponentVisibility">
-        <app-create-post [EventPost]="eventData[0].id"  (ComponentRemoved)="postPublished(false)" (postHasBeenPublished)="postPublished(true)"></app-create-post>
-    </div>
+
 </div>
 </div>
 
