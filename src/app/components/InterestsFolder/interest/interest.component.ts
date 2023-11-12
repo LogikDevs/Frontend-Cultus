@@ -15,6 +15,7 @@ export class InterestComponent {
 	ngDoCheck(){
 		const VisualInterest = document.getElementById("InterestVisual_"+this.interest.id_label);
 		const insertId = this.interest;
+
 		for (let i = 0; i < this.interestService.NewUserInterestsArray.length; i++){
 			if (this.interestService.NewUserInterestsArray[i].id_label == insertId.id_label){
 				if (VisualInterest) VisualInterest.style.backgroundColor = "#1a1919";
@@ -31,16 +32,12 @@ export class InterestComponent {
 		});
 
 		if (isInterestAlreadyAdded) {
-			console.log("isInterestAlreadyAdded");
 			const removedElementArray = this.interestService.NewUserInterestsArray.filter(item => item.id_label !== insertId.id_label);
 			this.interestService.NewUserInterestsArray = removedElementArray;
-			console.log(this.interestService.NewUserInterestsArray);
 			if (VisualInterest) VisualInterest.style.backgroundColor = "#27272b";
 		}
 		if (!isInterestAlreadyAdded){
-			console.log("ISNTInterestAlreadyAdded");
 			this.interestService.NewUserInterestsArray.push(insertId);
-			console.log(this.interestService.NewUserInterestsArray);
 			if (VisualInterest) VisualInterest.style.backgroundColor = "#1a1919";
 		}
  	}

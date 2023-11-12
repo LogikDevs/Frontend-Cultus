@@ -60,6 +60,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PrivateconversationsComponent } from './components/privateMsgFolder/privateconversations/privateconversations.component';
 import { UserschatComponent } from './components/privateMsgFolder/userschat/userschat.component';
 import { LoadedComponent } from './components/loaded/loaded.component';
+import { GroupPostsComponent } from './components/GroupsFolder/group-posts/group-posts.component';
+import { GrouplistComponent } from './components/GroupsFolder/GroupListFolder/grouplist/grouplist.component';
+import { GroupListContainerComponent } from './components/GroupsFolder/GroupListFolder/group-list-container/group-list-container.component';
 
 
 
@@ -121,7 +124,10 @@ import { LoadedComponent } from './components/loaded/loaded.component';
     SettingsComponent,
     PrivateconversationsComponent,
     UserschatComponent,
-    LoadedComponent
+    LoadedComponent,
+    GroupPostsComponent,
+    GrouplistComponent,
+    GroupListContainerComponent
   ],
   imports: [
     BrowserModule,

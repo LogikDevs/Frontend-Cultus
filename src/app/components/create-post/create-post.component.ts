@@ -4,6 +4,7 @@ import { NewPostData } from './create-post.model';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { Router } from '@angular/router';
+import { GetCountriesService } from 'src/app/services/get-countries.service';
 @Component({
 	selector: 'app-create-post',
 	templateUrl: './create-post.component.html',
@@ -35,16 +36,20 @@ export class CreatePostComponent {
 		visibility: false
 	}
 
+	selectLocation:any = "";
+
 	postInterests:any = this.interestService.NewUserInterestsArray;
 
 	constructor(
 		private userService: GetUserService, 
 		private createPostService: CreatePostService, 
 		public interestService: GetInterestsService,
-		private router: Router
+		private router: Router,
+		private countries: GetCountriesService
 	) { }
 	ngOnInit(){
 		this.getUser();
+		this.countriesDropbox();
 	}
 	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
@@ -54,13 +59,15 @@ export class CreatePostComponent {
 		})
 	}
 	sendPostData(FormData: any) {
+		this.selectLocation = document.getElementById("postLocation");
+
 		const postData: NewPostData = {
 			text: FormData.text,
-			latitud: FormData.latitud,
-			longitud: FormData.longitud,
+			location: Number(this.selectLocation.value),
 			multimedia_file: this.postMultimedia,
 			fk_id_event: this.EventPost
 		}
+		console.log(postData)
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){
 				this.publishedPost = res.body;
@@ -101,6 +108,23 @@ export class CreatePostComponent {
 			this.interestService.sendPostInterests(postId, InterestsArray[i].id_label).subscribe((res:any)=>{})
 		}
 		this.interestService.NewUserInterestsArray = [];
+	}
+
+	countriesDropbox() {
+		const selectLocation: any = document.getElementById("postLocation");
+		
+		this.countries.getCountries().subscribe((res: any) => {
+			this.countriesIntoDropbox(selectLocation, res);
+		})
+	}
+
+	countriesIntoDropbox(select: any, res: any) {
+		for (let i = 0; i < res.length; i++) {
+			var country = res[i];
+			let newOption = new Option(country.country_name, country.id_country);
+
+			select.add(newOption, undefined);
+		}
 	}
 
 	OnCompleteAlert(){

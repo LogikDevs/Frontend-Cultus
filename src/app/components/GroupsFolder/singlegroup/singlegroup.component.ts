@@ -7,7 +7,7 @@ import { GroupService } from 'src/app/services/group.service';
   styleUrls: ['./singlegroup.component.scss']
 })
 export class SinglegroupComponent {
-	pictureUrlDefault:string = "http://localhost:8002/picture/"
+	pictureUrlDefault:string = "http://localhost:8002/"
 	groupPicture:string = ""
 	joinButton:string = "Join";
 	joined:boolean = false;
@@ -25,7 +25,7 @@ export class SinglegroupComponent {
 		this.checkPicture();
 	}
 	checkPicture(){
-		if (this.group.picture) this.groupPicture = this.pictureUrlDefault + this.group.picture
+		if (this.group.picture) this.groupPicture = this.pictureUrlDefault + this.group.picture;
 	}
 	checkIfAlreadyJoinedGroup(){
 		console.log(this.alreadyJoinedGroups);
@@ -39,8 +39,7 @@ export class SinglegroupComponent {
 	joinGroup(join:boolean){
 		if (join === false) {
 			this.groupService.joinGroup(this.group.id_group).subscribe((res:any)=>{
-				console.log(res);
-				if (res.status === 201) {
+				if (res.ok === true) {
 					this.joinButton = "Leave"
 					this.joined = true;
 				}
