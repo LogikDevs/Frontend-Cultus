@@ -105,11 +105,10 @@
         </div>
         <div class="SpaceForModals">
             <div *ngIf="createPostComponentVisibility">
-                <app-create-post [EventPost]="eventData.event.id" (ComponentRemoved)="postPublished(false)"
-                    (postHasBeenPublished)="postPublished(true)" [isInsideEvents]="true"></app-create-post>
-                <div id="updates" *ngFor="let post of eventData.updates">
-                    <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
-                </div>
+                <app-create-post [EventPost]="eventData.event.id" (ComponentRemoved)="postPublished(false)" (postHasBeenPublished)="postPublished(true)" [isInsideEvents]="true"></app-create-post>
+            </div>
+            <div id="updates" *ngFor="let post of eventData.updates">
+                <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>
             </div>
         </div>
 
