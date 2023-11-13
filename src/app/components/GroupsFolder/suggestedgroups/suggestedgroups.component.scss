@@ -1,3 +1,27 @@
 .myGroups{
     margin-left: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    max-width: 90%;
+    overflow-x: auto; 
+    white-space: nowrap; 
+}
+.myGroups::-webkit-scrollbar {
+    width: 4px; 
+}
+
+.myGroups::-webkit-scrollbar-thumb {
+    background-color: #181818; 
+    border-radius: 6px;
+}
+
+.myGroups::-webkit-scrollbar-thumb:hover {
+    background-color: #303030; 
+}
+
+
+.Groups{
+    width: 20%;
+    margin: 30px;
 }

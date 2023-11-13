@@ -3,7 +3,10 @@
         <div class="ImageEventOrGroup">
             <img src={{groupPicture}} alt="">
         </div>
-        <p>{{group.name}}</p>
+        <div class="DataEventOrGroup">
+                <p>Name: {{group.name}}</p>
+        </div>
+    
         </div>
     <div class="LeaveOption">
         <button name="JoinGroupBtn" (click)="leaveGroup()">Leave</button>
