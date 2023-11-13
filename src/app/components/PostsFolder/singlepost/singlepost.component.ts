@@ -130,7 +130,7 @@ import { Router } from '@angular/router';
 			text: CreatedComment.comment.text
 		}
 		this.post.comments.push(NewComment);
-		this.updateComments();
+		this.post.post.comments++;
 	}
 
 	ClickVote(votetype:any){
@@ -139,55 +139,45 @@ import { Router } from '@angular/router';
 	}
 	CreateVote(votetype:any){
 		this.voteService.voteCreate(this.post.post.id_post, votetype).subscribe((res:any) => {
-			this.userVoted = res.body;
-			this.updateVotes()
-			this.VotesButtonColor(this.userVoted, false);
-		})
-	}
-
-	updateVotes() {
-		this.voteService.updateVotes(this.post.post.id_post).subscribe((res: any) => {
-			this.post.post.votes = res.post.votes;
+			this.VotesButtonColor(res.body.vote, false);
+			this.post.post.votes = res.body.vote_count;
 			this.VotesColor();
-		});
+		})
 	}
 
 	VotesColor(){
 		const voteColor:any = document.getElementById('VotesNumber_'+this.post.post.id_post);
 
 		if (this.post.post.votes < 0) voteColor.style.color = "#ff1c18";
+
 		if (this.post.post.votes == 0) voteColor.style.color = "#dbdbdb";
+
 		if (this.post.post.votes > 0) voteColor.style.color = "#00ff00";
 	}
 
 	VotesButtonColor(typeOfLike:number, onInit:boolean){
 		if (typeOfLike == 0) {
-			this.likeButton = "assets/post-images/like.svg"
+			this.likeButton = "assets/post-images/like.png"
 			this.dislikeButton = "assets/post-images/disliked.png"
 		}
 		if (typeOfLike == 1) {
 			this.likeButton = "assets/post-images/liked.png"
-			this.dislikeButton = "assets/post-images/disgusto.svg"
+			this.dislikeButton = "assets/post-images/dislike.png"
 		}
 		if (onInit == false){
 			if (typeOfLike == 2) {
-				this.likeButton = "assets/post-images/like.svg"
-				this.dislikeButton = "assets/post-images/disgusto.svg"
+				this.likeButton = "assets/post-images/like.png"
+				this.dislikeButton = "assets/post-images/dislike.png"
 			}
 		}
 		if (onInit == true){
 			if (typeOfLike == null) {
-				this.likeButton = "assets/post-images/like.svg"
-				this.dislikeButton = "assets/post-images/disgusto.svg"
+				this.likeButton = "assets/post-images/like.png"
+				this.dislikeButton = "assets/post-images/dislike.png"
 			}
 		}
 	}
 
-	updateComments(){
-		this.postService.updatePostComments(this.post.post.id_post).subscribe((res:any)=>{
-			this.post.comments = res.comments;
-		});
-	}
 	CheckFollowOrUnfollow(click:boolean){
 		this.followService.getUserFollowedAccounts().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
@@ -217,8 +207,6 @@ import { Router } from '@angular/router';
 		})
 	}
 
-
-	
 	mostrarComentarios() {
 		this.showComments = true;
 	}

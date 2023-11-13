@@ -4,63 +4,65 @@ import { EventService } from 'src/app/services/event.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
-  selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.scss']
+	selector: 'app-event',
+	templateUrl: './event.component.html',
+	styleUrls: ['./event.component.scss']
 })
-export class EventComponent {
-	@Input() EventId:any = Number(this.route.snapshot.params['id']);
+export class EventComponent {	
+	userId: any;
 
-	userId:any;
+	@Input() EventToDisplay:any;
+	
+	isAdmin: boolean;
 
-	isAdmin:boolean;
-
-	eventCover:string = "";
-	defaultUrlCover:string = "http://localhost:8003/storage/cover_event/"
+	eventCover: string = "";
+	defaultUrlCover: string = "http://localhost:8003/storage/cover_event/"
 
 
-	eventData:any = "";
-	eventType:any;
+	eventData: any = "";
+	eventType: any;
 
-	createPostComponentVisibility:boolean = false;
+	createPostComponentVisibility: boolean = false;
 
-    constructor(
+	constructor(
 		private route: ActivatedRoute,
 		private eventService: EventService,
 		private userService: GetUserService
-	){}
-	ngOnInit(){
+	) { }
+	ngOnChanges() {
 		this.getUser();
 		this.getEvent();
+	}	
+	
+	getUser() {
+		this.userService.getUser().subscribe((res: any) => {
+			this.userId = res.id;
+		})
 	}
-	getEvent(){
-		this.eventService.getEventData(this.EventId).subscribe((res:any)=>{
+	getEvent() {
+		this.eventService.getEventData(this.EventToDisplay).subscribe((res: any) => {
 			this.eventData = res;
 			this.checkCover();
 			this.checkEventType();
 			this.checkIfIsAdmin();
 		})
 	}
-	checkCover(){
+	checkCover() {
 		if (this.eventData.event.cover) this.eventCover = this.defaultUrlCover + this.eventData.event.cover;
 	}
-	getUser(){
-    	this.userService.getUser().subscribe((res:any)=>{
-      		this.userId = res.id;
-    	})
-  	}
-	checkEventType(){
+
+	checkEventType() {
 		if (this.eventData.event.private == 1) this.eventType = "Private";
 		if (this.eventData.event.private == 0) this.eventType = "Public";
 	}
 
-	checkIfIsAdmin(){
+	checkIfIsAdmin() {
 		if (this.userId === this.eventData.admin.id) this.isAdmin = true;
 	}
-	ShowPostCreationComponent(){
+	ShowPostCreationComponent() {
 		this.createPostComponentVisibility = true;
 	}
-	postPublished(published:boolean){
+	postPublished(published: boolean) {
 		this.createPostComponentVisibility = false;
 		if (published) location.reload();
 	}

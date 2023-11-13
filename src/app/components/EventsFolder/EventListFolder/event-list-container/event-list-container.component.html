@@ -1,0 +1,20 @@
+<app-sidebar id="Sidebar"></app-sidebar>
+
+<div class="ContainerAllChats">
+    <div class="Tittle">
+        <div class="Logo">
+            <img src="assets/sidebar-images/SMS.svg" alt="">
+        </div>
+        <div class="Text">
+            Events
+        </div>
+    </div>
+    <div class="ContainerChats" *ngIf="myEvents">
+        <div *ngFor="let event of myEvents">
+            <app-eventlist [eventToDisplay]="event" (ChangeEvent)="displayEvent($event)"></app-eventlist>
+        </div>
+    </div>
+</div>
+<div class="eventToDisplay">
+    <app-event [EventToDisplay]="EventToDisplay"></app-event>
+</div>

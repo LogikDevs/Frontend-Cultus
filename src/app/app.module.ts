@@ -63,6 +63,8 @@ import { LoadedComponent } from './components/loaded/loaded.component';
 import { GroupPostsComponent } from './components/GroupsFolder/group-posts/group-posts.component';
 import { GrouplistComponent } from './components/GroupsFolder/GroupListFolder/grouplist/grouplist.component';
 import { GroupListContainerComponent } from './components/GroupsFolder/GroupListFolder/group-list-container/group-list-container.component';
+import { EventListContainerComponent } from './components/EventsFolder/EventListFolder/event-list-container/event-list-container.component';
+import { EventlistComponent } from './components/EventsFolder/EventListFolder/eventlist/eventlist.component';
 
 
 
@@ -127,7 +129,9 @@ import { GroupListContainerComponent } from './components/GroupsFolder/GroupList
     LoadedComponent,
     GroupPostsComponent,
     GrouplistComponent,
-    GroupListContainerComponent
+    GroupListContainerComponent,
+    EventListContainerComponent,
+    EventlistComponent
   ],
   imports: [
     BrowserModule,

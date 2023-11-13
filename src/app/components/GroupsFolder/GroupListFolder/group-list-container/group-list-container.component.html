@@ -6,10 +6,9 @@
             <img src="assets/sidebar-images/SMS.svg" alt="">
         </div>
         <div class="Text">
-            Chats
+            Groups
         </div>
     </div>
-
     <div class="ContainerChats">
         <div *ngFor="let group of myGroups">
             <app-grouplist [groupToDisplay]="group" (ChangeGroup)="displayGroup($event)"></app-grouplist>

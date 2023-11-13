@@ -21,8 +21,7 @@ export interface Post {
 	id_post: number;
 	fk_id_user: number;
 	text: string;
-	latitud: string;
-	longitud: string;
+	location: string;
 	date: string;
 	votes: number;
 	comments: number;

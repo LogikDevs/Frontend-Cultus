@@ -27,6 +27,7 @@ export class GroupComponent {
 		private route: ActivatedRoute,
 		private groupService: GroupService
 	){}
+	
 	ngOnChanges(){
 		this.getGroup();
 		this.getParticipants();
