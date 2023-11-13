@@ -57,8 +57,10 @@ export class TypeSearchComponent {
 				result.interest.toLowerCase().startsWith(dataReceived.toLowerCase())
 			)
 		}
+		if (this.filteredData.length == 0) this.InCaseNoResults();
 	}
 	InCaseNoResults(){
+		console.log("InCaseNoResults");
 		if (this.typeSearchVariable == "interests") this.SearchNotFound = this.nothingFoungMsg.notFoundInterest;
 
 		if (this.typeSearchVariable == "user") this.SearchNotFound = this.nothingFoungMsg.notFoundUser;

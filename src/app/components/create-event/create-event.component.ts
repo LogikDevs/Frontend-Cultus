@@ -12,12 +12,17 @@ import { Router } from '@angular/router';
 export class CreateEventComponent {
     eventMultimedia:File;
 	
+	ErrorMessageShowed:any=""
+
 	CompleteMessage = {
 		Message: "the Event has been created.",
 		visibility: false
 	}
 	ErrorMessage = {
 		Message: "There was an error during the process.",
+		CoverError: "The cover must be of type jpg or png.",
+		MessageDateBefore: "Date must be equal or after today.",
+		MessageDateWrong: "Start date must be before Close date.",
 		visibility: false
 	}
 
@@ -55,10 +60,10 @@ export class CreateEventComponent {
 				this.OnCompleteAlert();
 			}
 			if (res.status !== 201) {			
-				this.OnErrorAlert()
+				this.OnErrorAlert(res)
 			}
 		}, (error:any)=>{
-			this.OnErrorAlert()
+			this.OnErrorAlert(error)
 		})
     }
 
@@ -90,12 +95,22 @@ export class CreateEventComponent {
 			this.hideComponent(true);
 		}, 2000);
 	}
-	OnErrorAlert(){
+	OnErrorAlert(error:any){
+
+		this.ErrorMessageShowed = this.ErrorMessage.Message;
+
+		if (error.error.cover) this.ErrorMessageShowed = this.ErrorMessage.CoverError;
+
+		if (error.error.start_date) this.ErrorMessageShowed = this.ErrorMessage.MessageDateBefore;
+
+		if (error.error.end_date) this.ErrorMessageShowed = this.ErrorMessage.MessageDateWrong;
+
 		this.ErrorMessage.visibility = true;
 		this.CompleteMessage.visibility = false;
+		
 		setTimeout(() => {
 			this.hideComponent(false);
-		}, 2000);
+		}, 3000);
 	}
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;

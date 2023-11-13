@@ -26,7 +26,12 @@ export class CreatePostComponent {
 
 	@Input() EventPost:any = null;
 
+	@Input() GroupPost:any = null;
+
 	@Output() ComponentRemoved = new EventEmitter<boolean>();
+
+	CompleteMessageShowed:string;
+	ErrorMessageShowed:string;
 
 	CompleteMessage = {
 		Message: "The Post has been published.",
@@ -34,6 +39,7 @@ export class CreatePostComponent {
 	}
 	ErrorMessage = {
 		Message: "There was an error during the process.",
+		LocationMessage: "Location cannot be empty",
 		visibility: false
 	}
 
@@ -66,10 +72,12 @@ export class CreatePostComponent {
 			text: FormData.text,
 			location: Number(this.selectLocation.value),
 			multimedia_file: this.postMultimedia,
-			fk_id_event: this.EventPost
+			fk_id_event: this.EventPost,
+			fk_id_group: this.GroupPost
 		}
-		console.log(postData)
+		console.log(postData);
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
+			
 			if (res.status === 201){
 				this.publishedPost = res.body;
 
@@ -79,10 +87,10 @@ export class CreatePostComponent {
 				this.OnCompleteAlert();
 			}
 			if (res.status !== 201) {
-				this.OnErrorAlert();
+				this.OnErrorAlert(res);
 			}
 		}, (error:any)=>{
-			this.OnErrorAlert();
+			this.OnErrorAlert(error);
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
@@ -138,7 +146,11 @@ export class CreatePostComponent {
 			this.hideComponent(true);
 		}, 2000);
 	}
-	OnErrorAlert(){
+	OnErrorAlert(error:any){
+		this.ErrorMessageShowed = this.ErrorMessage.Message;
+		
+		if (error.error.location) this.ErrorMessageShowed= this.ErrorMessage.LocationMessage;
+
 		this.ErrorMessage.visibility = true;
 		this.CompleteMessage.visibility = false;
 		setTimeout(() => {

@@ -13,9 +13,9 @@ export class CreatePostService {
 	postCreate(postDataReceived: any) {
 		const body = {
 			text: postDataReceived.text,
-			latitud: postDataReceived.latitud,
-			longitud:postDataReceived.longitud,
-			fk_id_event: postDataReceived.fk_id_event
+			location: postDataReceived.location,
+			fk_id_event: postDataReceived.fk_id_event,
+			fk_id_group: postDataReceived.fk_id_group
 		}
 		const httpOptions = {
 			headers: new HttpHeaders({
