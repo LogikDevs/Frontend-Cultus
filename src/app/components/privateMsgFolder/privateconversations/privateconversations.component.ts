@@ -4,94 +4,94 @@ import { ChatService } from 'src/app/services/chat.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
-  selector: 'app-privateconversations',
-  templateUrl: './privateconversations.component.html',
-  styleUrls: ['./privateconversations.component.scss']
+	selector: 'app-privateconversations',
+	templateUrl: './privateconversations.component.html',
+	styleUrls: ['./privateconversations.component.scss']
 })
 export class PrivateconversationsComponent {
-	@Input() UserConversationId:any = Number(this.route.snapshot.params['id']);
-	
-	ChatIdToDisplay:any
+	@Input() UserConversationId: any = Number(this.route.snapshot.params['id']);
 
-	PrivateChats:any;
+	ChatIdToDisplay: any
 
-	conversationExists:boolean = false;
+	PrivateChats: any;
 
-	userInformation:any;
+	conversationExists: boolean = false;
 
-	userId:any;
+	userInformation: any;
 
-	chatProfile:string = "";
-	defaultUrlProfile:string = "http://localhost:8000/storage/profile_pic/"
+	userId: any;
 
-	displayedChat:boolean;
+	chatProfile: string = "";
+	defaultUrlProfile: string = "http://localhost:8000/storage/profile_pic/"
 
-  	constructor(
-  		private route: ActivatedRoute,
+	displayedChat: boolean;
+
+	constructor(
+		private route: ActivatedRoute,
 		private router: Router,
 		private chatService: ChatService,
 		private userService: GetUserService
-  	){}
-  	ngOnInit(){
+	) { }
+	ngOnInit() {
 		this.getUser();
 		if (this.UserConversationId) this.checkExistingChat();
 		this.getPrivateChats();
-  	}
+	}
 
-	getUser(){
-		this.userService.getUser().subscribe((res:any)=>{
+	getUser() {
+		this.userService.getUser().subscribe((res: any) => {
 			this.userId = res.id;
 		})
-	}	
+	}
 
-  	getPrivateChats(){
-		this.chatService.getUserPrivateConversations().subscribe((res:any)=>{
+	getPrivateChats() {
+		this.chatService.getUserPrivateConversations().subscribe((res: any) => {
 			this.PrivateChats = res.data;
 		})
 	}
-	
-	checkExistingChat(){
-		this.chatService.getExistingChat(this.UserConversationId).subscribe((res:any)=>{
-			if (!res){
-				this.createNewConversation(); 
-			}
+
+	checkExistingChat() {
+		this.chatService.getExistingChat(this.UserConversationId).subscribe((res: any) => {
+			
+			if (!res) this.createNewConversation();
+			
 			if (res) {
 				this.ChatIdToDisplay = res.id;
 				this.showChatFromProfile(res.id);
 			}
 		})
 	}
-	createNewConversation(){
-		this.chatService.createPrivateChat(this.UserConversationId).subscribe((res:any)=>{
+	createNewConversation() {
+		this.chatService.createPrivateChat(this.UserConversationId).subscribe((res: any) => {
 			this.ChatIdToDisplay = res.id;
 			this.displayedChat = true;
 			this.showChatFromProfile(this.ChatIdToDisplay);
 		})
 	}
 
-	showChatFromProfile(chatId:any){
+	showChatFromProfile(chatId: any) {
 		this.getPrivateChats();
 
-		this.chatService.BringConversation(chatId).subscribe((res:any)=>{
-			res[1].forEach((participant:any) => {
-				if (participant.id !== this.userId){ 
+		this.chatService.BringConversation(chatId).subscribe((res: any) => {
+			res[1].forEach((participant: any) => {
+				if (participant.id !== this.userId) {
 					this.userInformation = participant;
 					this.chatProfile = this.defaultUrlProfile + participant.profile_pic;
 				}
 			});
 		})
 	}
-	
-	displayUserData(userData:any){
-		userData.conversation.participants.forEach((participant:any) => {
-			if (participant.messageable_id !== this.userId){ 
+
+	displayUserData(userData: any) {
+		userData.conversation.participants.forEach((participant: any) => {
+			if (participant.messageable_id !== this.userId) {
 				this.userInformation = participant.messageable;
 				this.chatProfile = this.defaultUrlProfile + participant.messageable.profile_pic;
 			}
 		});
 	}
-	
-	displayConversation(newRoute:any){
+
+	displayConversation(newRoute: any) {
 		this.ChatIdToDisplay = newRoute;
 		this.displayedChat = true;
 	}

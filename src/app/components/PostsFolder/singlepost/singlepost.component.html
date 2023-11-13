@@ -14,10 +14,10 @@
 			</div>
 			<ng-template #noCommentsTemplate>
 				<p>No comments to show.</p>
-			  </ng-template>
+			</ng-template>
 		</div>
 		<div class="HeaderPost">
-		
+
 			<div class="UserPost">
 				<div class="UserLogo">
 					<img (click)="clickedProfile()" src={{userPfp}} alt="">
@@ -41,11 +41,11 @@
 			<p>{{ post.post.location }}</p>
 		</div>
 		<div class="ContainerInterestPosts">
-				<div class="Interest" *ngFor="let interest of post.interests">
-			<p>{{interest}}</p>
+			<div class="Interest" *ngFor="let interest of post.interests">
+				<p>{{interest}}</p>
+			</div>
 		</div>
-		</div>
-	
+
 		<div class="PostDescription">
 			<p>{{ post.post.text }}</p>
 		</div>
@@ -82,24 +82,26 @@
 			</div>
 		</div>
 		<div class="Comments">
-      
+
 			<div class="AddCommentDesktop">
-        
-			  <form (submit)="sendComment()">
-				  <textarea [(ngModel)]="AddComment" name="AddComment" placeholder="Agregar un comentario..."></textarea>
-				  <button type="submit"><img src="assets/post-images/enviar-mensaje.svg" alt=""></button>
-				  <p class="publishedComment">{{commentPublishedMessage}}</p>
-			  </form>
-		  </div>
+
+				<form (submit)="sendComment()">
+					<textarea [(ngModel)]="AddComment" name="AddComment"
+						placeholder="Agregar un comentario..."></textarea>
+					<button type="submit"><img src="assets/post-images/enviar-mensaje.svg" alt=""></button>
+					<p class="publishedComment">{{commentPublishedMessage}}</p>
+				</form>
+			</div>
+
+		</div>
 
 	</div>
-
-</div>	<div class="ContainerPostDesktop" *ngIf="!ProfilePosts">
-			<div class="PostDesktop">
-				<div class="HeaderPostDesktop">
-					<div class="OptionPostDesktop">
-					</div>
+	<div class="ContainerPostDesktop" *ngIf="!ProfilePosts">
+		<div class="PostDesktop">
+			<div class="HeaderPostDesktop">
+				<div class="OptionPostDesktop">
 				</div>
+			</div>
 			<div class="PostContentImageAndInteractions">
 				<div class="InteractionsPostDesktop">
 					<div class="IconUpvote">
@@ -136,5 +138,6 @@
 		</div>
 	</div>
 	<div *ngIf="displayedOptions">
-		<app-modal-option-post [optionVisibility]="displayedOptions" [postId]="postId" [ownPost]="ownPost" (PostRemoved)="onRemoving()"></app-modal-option-post>
+		<app-modal-option-post [optionVisibility]="displayedOptions" [postId]="postId" [ownPost]="ownPost"
+			(PostRemoved)="onRemoving()"></app-modal-option-post>
 	</div>

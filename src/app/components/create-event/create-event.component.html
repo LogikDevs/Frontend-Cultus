@@ -1,4 +1,4 @@
- <form #eventCreateForm="ngForm" (ngSubmit)="sendCreatedEvent(eventCreateForm.value)">
+<form #eventCreateForm="ngForm" (ngSubmit)="sendCreatedEvent(eventCreateForm.value)">
     <div class="ContainerCreate">
         <div class="HeaderCreate">
             <div class="Back">
@@ -13,35 +13,34 @@
         </div>
         <div class="ContainerImage">
             <div class="Image">
-              <label for="fileInput">
-                <img *ngIf="!imageUrl" src="assets/Crear-imagenes/Agregar.png" alt="Agregar Imagen">
-                <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
-              </label>
-              <input id="fileInput" type="file" (change)="onFileChange($event)">
+                <label for="fileInput">
+                    <img *ngIf="!imageUrl" src="assets/Crear-imagenes/Agregar.png" alt="Agregar Imagen">
+                    <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
+                </label>
+                <input id="fileInput" type="file" (change)="onFileChange($event)">
             </div>
-          </div>
-    
+        </div>
+
         <div class="DataCreate">
             <div class="Group1">
-                  <div class="Data">
-                <p>Event Name</p>
-                <input ngModel name="EventName" type="text" placeholder="Event Name" required>
-            </div>
-            <div class="Data">
-                <p>Event type</p>
-                <select ngModel name ="EventType">
-                    <option value="true">Private</option>
-                    <option value="false">Public</option>
-                </select>
-            </div>
-            <div class="Data">
-                <p>Event Interests</p>
-                <button type="button" name="EventInterests"(click)="showEventInterestSelection()">Select interests</button>
-              
-            </div>
+                <div class="Data">
+                    <p>Event Name</p>
+                    <input ngModel name="EventName" type="text" placeholder="Event Name" required>
+                </div>
+                <div class="Data">
+                    <p>Event type</p>
+                    <select ngModel name="EventType">
+                        <option value="true">Private</option>
+                        <option value="false">Public</option>
+                    </select>
+                </div>
+                <div class="Data">
+                    <p>Event Interests</p>
+                    <button type="button" name="EventInterests" (click)="showEventInterestSelection()">Select Interests</button>
+                </div>
             </div>
             <div class="Group2">
-      
+
                 <div class="Data" id="FechaInicio">
                     <p>Start Date</p>
                     <input ngModel type="date" id="InitDate" name="InitDate">
@@ -60,16 +59,16 @@
                     <p>Event Information</p>
                     <input ngModel name="EventText" type="text" placeholder="">
                 </div>
-         
+
             </div>
-          
+
         </div>
     </div>
-    
-    </form>
-    <div *ngIf="interestService.displaySelectInterest" id="ContainerInterest">
-        <app-select-interest [SelectInterestType]="'event'" [WindowVisibility]="true"></app-select-interest>
-    </div>
+
+</form>
+<div *ngIf="interestService.displaySelectInterest" id="ContainerInterest">
+    <app-select-interest [SelectInterestType]="'event'" [WindowVisibility]="true"></app-select-interest>
+</div>
 <div>
     <div *ngIf="ErrorMessage.visibility">
         <app-alert-error [Message]="ErrorMessageShowed"></app-alert-error>

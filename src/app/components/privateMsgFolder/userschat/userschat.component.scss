@@ -1,6 +1,6 @@
-$ColorFuente:#537D57;  
-$ColorSecundario:#282928;
-.Chat{
+$ColorFuente: #537d57;
+$ColorSecundario: #282928;
+.Chat {
     display: flex;
     margin: 15px;
     background-color: #151615;
@@ -10,16 +10,16 @@ $ColorSecundario:#282928;
     cursor: pointer;
     transition: all 300ms ease;
 }
-.Chat:hover{
- background-color: #121111;
-    }
-.ImageChat{
+.Chat:hover {
+    background-color: #121111;
+}
+.ImageChat {
     width: 40px;
     height: 40px;
     margin: 5px;
     border-radius: 50%;
 }
-.ImageChat img{
+.ImageChat img {
     width: 100%;
     height: 100%;
     border-radius: 50%;

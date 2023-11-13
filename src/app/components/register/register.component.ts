@@ -12,22 +12,22 @@ import { HttpResponse } from '@angular/common/http';
 	styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-	
-	@Input() InputEmailError:any;
-	@Input() InputPasswordError:any;
-	@Input() InputNameError:any;
-	@Input() InputSurnameError:any;
-	@Input() InputAgeError:any;
 
-	ErrorResetTimeout:any;
-	secondsToReset:number = 8000;
+	@Input() InputEmailError: any;
+	@Input() InputPasswordError: any;
+	@Input() InputNameError: any;
+	@Input() InputSurnameError: any;
+	@Input() InputAgeError: any;
 
-	DateToAge:any;
-	
+	ErrorResetTimeout: any;
+	secondsToReset: number = 8000;
+
+	DateToAge: any;
+
 	constructor(
-		private registerService: PostRegisterService, 
-		private router: Router, 
-		private status: StatusService, 
+		private registerService: PostRegisterService,
+		private router: Router,
+		private status: StatusService,
 		private apiauth: AuthenticationService
 	) { };
 
@@ -41,7 +41,7 @@ export class RegisterComponent {
 			if (res.status !== 201) this.handleErrorResponse(res);
 		})
 	}
-	RegisterLogin(inputdata:any){
+	RegisterLogin(inputdata: any) {
 		this.apiauth.sendLogin(inputdata).subscribe((res: any) => {
 			localStorage.setItem('accessToken', (res["access_token"]));
 			this.status.isLoggedIn = true;
@@ -64,7 +64,7 @@ export class RegisterComponent {
 			this.InputAgeError = Errors.ageError || '';
 		}
 	}
-	AgeCalculator(dateInserted:any) {
+	AgeCalculator(dateInserted: any) {
 		var bornDate = new Date(dateInserted);
 		var actualDate = new Date();
 		var age = actualDate.getFullYear() - bornDate.getFullYear();
@@ -73,6 +73,7 @@ export class RegisterComponent {
 			(actualDate.getMonth() === bornDate.getMonth() && actualDate.getDate() < bornDate.getDate())) {
 			age--;
 		}
+
 		this.DateToAge = age;
 	}
 }

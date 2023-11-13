@@ -1,7 +1,7 @@
-$ColorFuente:#537D57;  
-$ColorSecundario:#282928;
+$ColorFuente: #537d57;
+$ColorSecundario: #282928;
 
-.ContainerAllChats{
+.ContainerAllChats {
     background-color: $ColorSecundario;
     width: 350px;
     height: 92vh;
@@ -10,30 +10,30 @@ $ColorSecundario:#282928;
     border-right: 2px solid $ColorFuente;
     border-top: solid 1px $ColorFuente;
 }
-.Tittle{
+.Tittle {
     border-bottom: 1px solid $ColorFuente;
-     display: flex;
-     justify-content: start;
-     align-items: center;
-     height: 80px;
- }
-.ContainerChats{
-  margin: 10px;
-  max-height: 80%;
-  overflow-y: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 80px;
+}
+.ContainerChats {
+    margin: 10px;
+    max-height: 80%;
+    overflow-y: auto;
 }
 .ContainerChats::-webkit-scrollbar {
     width: 8px; /* Ancho de la barra de desplazamiento */
 }
-  
+
 .ContainerChats::-webkit-scrollbar-track {
     background-color: rgb(35, 35, 35);
 }
-  
+
 .ContainerChats::-webkit-scrollbar-thumb {
- background: #121111;
+    background: #121111;
 }
-.Logo{
+.Logo {
     width: 40px;
     height: 40px;
     background-color: rgb(34, 36, 36);
@@ -42,12 +42,12 @@ $ColorSecundario:#282928;
     margin-left: 15px;
     cursor: pointer;
 }
-.Logo img{
+.Logo img {
     width: 100%;
     height: 80%;
     margin-top: 5px;
 }
-.Text{
-    font-weight:bold ;
+.Text {
+    font-weight: bold;
     color: $ColorFuente;
 }

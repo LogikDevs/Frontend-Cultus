@@ -1,6 +1,6 @@
-$ColorFuente:#537D57;  
-$ColorSecundario:#282928;
-.Interest{
+$ColorFuente: #537d57;
+$ColorSecundario: #282928;
+.Interest {
     margin: 10px;
     background-color: $ColorSecundario;
     color: $ColorFuente;
@@ -12,10 +12,10 @@ $ColorSecundario:#282928;
     cursor: pointer;
     border-radius: 10px;
 }
-.ImageInterest{
+.ImageInterest {
     width: 30px;
     height: 30px;
 }
-.Interest p{
+.Interest p {
     margin-left: 10px;
 }

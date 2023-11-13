@@ -1,106 +1,92 @@
-$ColorFuente:#7ab06a;
-$ColorSecundario:#282928;
-.ContainerHome {
-
-    
-}
+$ColorFuente: #7ab06a;
+$ColorSecundario: #282928;
 
 .PostHome {
- 
-    margin-left: 150px;
-    width: calc(100% - 278px);
-    transition: all .5s ease;
- 
+  margin-left: 150px;
+  width: calc(100% - 278px);
+  transition: all 0.5s ease;
 }
-.PostHome{
 
+#MenuMobile {
+  display: none;
 }
-#MenuMobile{
-    display: none;
+@media (max-width: 650px) {
+  .PostHome {
+    border: none;
+  }
 }
-@media(max-width:650px){
-    .PostHome{
-        border: none;
-    }
-
-}
-@media(max-width:499px){
-
- #MenuMobile{
+@media (max-width: 499px) {
+  #MenuMobile {
     display: block;
- }
- .Post{
+  }
+  .Post {
     width: 100%;
- 
- }
- .ContainerPostMobile {
+  }
+  .ContainerPostMobile {
     width: 100%;
     margin-left: -30px;
-}
-.ContainerPost {
+  }
+  .ContainerPost {
     width: 100%;
-}
-.ContainerPostDesktop {
+  }
+  .ContainerPostDesktop {
     display: none;
-}
-.ContainerHome {
+  }
+  .ContainerHome {
     display: block;
-}
-.PostHome {
+  }
+  .PostHome {
     margin-left: 110px;
     width: 90%;
+  }
 }
-
-
-}
-@media(min-width:501px){
-    .SubHeaderHome{
-        margin-left: 120px;
-    }
-    .Discovery,.Followed{
-
-     background-color: $ColorSecundario;
-     width: 200px;
-     height: 40px;
- text-align: center;   
- border-radius: 30px;    
- cursor: pointer;
-      }
-      .Discovery{
-        border-bottom: 3px solid $ColorFuente;
-      }
-      .Discovery p,.Followed p{
-margin-top: 10px;
-        
-      }
+@media (min-width: 501px) {
+  .SubHeaderHome {
+    margin-left: 120px;
+  }
+  .Discovery,
+  .Followed {
+    background-color: $ColorSecundario;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  .Discovery {
+    border-bottom: 3px solid $ColorFuente;
+  }
+  .Discovery p,
+  .Followed p {
+    margin-top: 10px;
+  }
 }
 
 #Sidebar {
-    z-index: 1;
-  }
-  
-  .Crear {
-    z-index: 2;
-  }
-  .SliderUsuarios{
-    margin-top: 100px;
-  }
+  z-index: 1;
+}
 
-  .SubHeaderHome{
-display: flex;
-justify-content: start;
-align-items: center;
-margin-top: 20px;
-  }
-  .Discovery,.Followed{
+.Crear {
+  z-index: 2;
+}
+.SliderUsuarios {
+  margin-top: 100px;
+}
 
-    margin: 8px;
-    margin-left: 15px;
-    color: $ColorFuente;
-    font-weight: bold;
-    
-  }
-  .Discovery p,.Followed p{
-padding: 2px;
-    
-  }
+.SubHeaderHome {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 20px;
+}
+.Discovery,
+.Followed {
+  margin: 8px;
+  margin-left: 15px;
+  color: $ColorFuente;
+  font-weight: bold;
+}
+.Discovery p,
+.Followed p {
+  padding: 2px;
+}

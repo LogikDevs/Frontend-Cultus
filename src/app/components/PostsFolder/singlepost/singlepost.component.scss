@@ -1,327 +1,319 @@
-$ColorFuente:#7ab06a;
+$ColorFuente: #7ab06a;
 
 .ContainerPostDesktop {
-  display: none;
-  background-color: #282928;
-  border-radius: 15px;
-  height: 250px;
-  box-shadow: 0 0 8px $ColorFuente;
+    display: none;
+    background-color: #282928;
+    border-radius: 15px;
+    height: 250px;
+    box-shadow: 0 0 8px $ColorFuente;
 }
 
 .ContainerPost {
-  display: flex;
-  margin: auto;
+    display: flex;
+    margin: auto;
 }
 
 .ContainerPostMobile {
     box-shadow: 0 0 8px $ColorFuente;
-  background-color: #282928;
-  margin: auto;
-  margin-top: 100px;
-  width: 90%;
-  border-radius: 15px;
-  position: relative;
+    background-color: #282928;
+    margin: auto;
+    margin-top: 100px;
+    width: 90%;
+    border-radius: 15px;
+    position: relative;
 }
-.UserPost{
+.UserPost {
     display: flex;
-
 }
-.UserLogo{
+.UserLogo {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin: 15px;
     background-color: #3e5e3e;
 }
-.UserLogo img{
+.UserLogo img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
-.NameAndDate{
-  margin-top: 5px;
+.NameAndDate {
+    margin-top: 5px;
 }
-.UsernamePost p{
-color: $ColorFuente;
-font-weight: bold;
-font-size: 15px;
-
+.UsernamePost p {
+    color: $ColorFuente;
+    font-weight: bold;
+    font-size: 15px;
 }
-.PostUploadDate p{
+.PostUploadDate p {
     color: #596259;
     font-weight: bold;
     font-size: 12px;
     margin-top: -10px;
 }
-.OptionsPost{
-  margin: 15px;
+.OptionsPost {
+    margin: 15px;
     margin-left: auto;
     cursor: pointer;
-
 }
-.OptionsPost img{
-  margin-top: 10px;
+.OptionsPost img {
+    margin-top: 10px;
 }
-.Interest{
+.Interest {
     display: flex;
     align-items: center;
     height: 30px;
-    background-color:#161716;
+    background-color: #161716;
     margin: 5px;
     border-radius: 12px;
     text-align: center;
 }
-.ContainerInterestPosts{
-display: flex;
-margin-left: 10px;
+.ContainerInterestPosts {
+    display: flex;
+    margin-left: 10px;
 }
-.Interest p{
-padding: 5px;
+.Interest p {
+    padding: 5px;
     color: $ColorFuente;
     font-weight: bold;
     font-size: 12px;
 }
-.PostDescription p{
+.PostDescription p {
     color: $ColorFuente;
     font-weight: bold;
     font-size: 12px;
     margin-left: 15px;
     margin-top: 10px;
 }
-.PostImage{
-   margin: auto;
+.PostImage {
+    margin: auto;
     width: 90%;
-    height:240px;
-    background-color: #537D57;
+    height: 240px;
+    background-color: #537d57;
     border-radius: 15px;
 }
-.PostImage img{
+.PostImage img {
     width: 100%;
     height: 100%;
     border-radius: 15px;
     object-fit: cover;
 }
-.FooterPost{
+.FooterPost {
     display: flex;
     margin-top: 30px;
 }
-.DataPost{
+.DataPost {
     width: 50%;
     display: flex;
     justify-content: start;
     margin-left: 20px;
 }
-.UpvotesPost{
-display: flex;
+.UpvotesPost {
+    display: flex;
     height: 50px;
     margin-right: 20px;
-
 }
-.IconUpvotesPost{
+.IconUpvotesPost {
     display: flex;
     width: 30px;
     height: 30px;
     background-color: #596259;
     border-radius: 50%;
-text-align: center;
-align-items: center;
-justify-content: center;
-cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-.IconUpvotesPost img{
-
+.IconUpvotesPost img {
     width: 100%;
     height: 100%;
 }
-.CommentsPost{
+.CommentsPost {
     display: flex;
 }
-.IconCommentsPost{
+.IconCommentsPost {
     display: flex;
     width: 30px;
     height: 30px;
     background-color: #596259;
     border-radius: 50%;
-text-align: center;
-align-items: center;
-justify-content: center;
-cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-.IconCommentsPost img{
-
+.IconCommentsPost img {
     width: 60%;
     height: 60%;
 }
-.SharePost{
+.SharePost {
     display: flex;
     margin-left: auto;
     margin-right: 20px;
-
 }
-.IconSharePost{
+.IconSharePost {
     display: flex;
     width: 30px;
     height: 30px;
     background-color: #596259;
     border-radius: 50%;
-text-align: center;
-align-items: center;
-justify-content: center;
-cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-.IconSharePost img{
-
+.IconSharePost img {
     width: 60%;
     height: 60%;
 }
-.AmountUpvotesPost p ,.AmountCommentPost p{
-margin: 7px;
-font-size: 15px;
-color: $ColorFuente;
-font-weight: bold;
+.AmountUpvotesPost p,
+.AmountCommentPost p {
+    margin: 7px;
+    font-size: 15px;
+    color: $ColorFuente;
+    font-weight: bold;
 }
-.ContainerPostDesktop{
-    margin: 10px; 
+.ContainerPostDesktop {
+    margin: 10px;
     margin-top: 100px;
-   transition: all 300ms ease-in;
-   width: 300px;
-
+    transition: all 300ms ease-in;
+    width: 300px;
 }
-.ProfilePostDesktop{
+.ProfilePostDesktop {
     transition: all 300ms ease-in-out;
     margin-top: 30px;
 }
-.DataProfile{
+.DataProfile {
     display: flex;
-  justify-content: center;
+    justify-content: center;
     margin-top: 10px;
 }
-.Follow,.SendMessage,.Country,.OptionsProfilePost{
+.Follow,
+.SendMessage,
+.Country,
+.OptionsProfilePost {
     display: flex;
     width: 33px;
     height: 33px;
     background-color: #596259;
     border-radius: 50%;
-text-align: center;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-margin: 5px;
-
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 5px;
 }
-.Follow img,.SendMessage img,.Country img, .OptionsProfilePost img{
-width: 60%;
-height: 60%;
+.Follow img,
+.SendMessage img,
+.Country img,
+.OptionsProfilePost img {
+    width: 60%;
+    height: 60%;
 }
-.PerfilImage{
+.PerfilImage {
     height: 100px;
     width: 100px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-margin: auto;
+    margin: auto;
     margin-top: 10px;
     text-align: center;
 }
-.PerfilImage img{
-width: 100%;
-height: 100%;
-border-radius: 50%;
-
+.PerfilImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
-.UsernameProfile{
+.UsernameProfile {
     text-align: center;
 }
-.UsernameProfile p{
+.UsernameProfile p {
     font-weight: bold;
     color: $ColorFuente;
     margin: 0px;
     margin-top: 10px;
 }
-.LocationPostDesktop{
+.LocationPostDesktop {
     color: rgb(129, 134, 132);
     font-size: 16px;
     font-weight: bold;
     margin-left: 12px;
 }
-.Comments{
+.Comments {
     position: relative;
     display: flex;
     width: 100%;
     z-index: 0;
-
 }
-.AddCommentDesktop{
+.AddCommentDesktop {
     display: flex;
     width: 100%;
-margin: 10px;
+    margin: 10px;
 }
-.AddCommentDesktop form{
+.AddCommentDesktop form {
     width: 100%;
 }
 
-.AddCommentDesktop textarea{
+.AddCommentDesktop textarea {
     outline: none;
     width: 80%;
     resize: none;
-margin-right: 5px;
-height: 20px;
-background-color: rgba(0, 0, 0, 0);
-border: none;
-border-bottom: 1px solid rgb(79, 78, 78);
-color: $ColorFuente;
+    margin-right: 5px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px solid rgb(79, 78, 78);
+    color: $ColorFuente;
 }
-.AddCommentDesktop button{
-margin-left: 10px;
-height: 25px;
-width: 25px;
+.AddCommentDesktop button {
+    margin-left: 10px;
+    height: 25px;
+    width: 25px;
 
-background-color: #596259;
-border: none;
-text-align: center;
-border-radius: 60px;
-cursor: pointer;
-
+    background-color: #596259;
+    border: none;
+    text-align: center;
+    border-radius: 60px;
+    cursor: pointer;
 }
-.AddCommentDesktop img{
-margin-left: 1px;
+.AddCommentDesktop img {
+    margin-left: 1px;
     width: 100%;
 
     height: 100%;
     text-align: center;
-
 }
-.publishedComment{
+.publishedComment {
     color: rgb(70, 193, 59);
 }
 .ContainerAllComments {
-  position: absolute;
-  top: 0;
-  width: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
 
     max-height: 0;
-height: 260px;
-max-width: 100%;
+    height: 260px;
+    max-width: 100%;
     opacity: 0;
 
     overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    transition:
+        max-height 0.3s ease-out,
+        opacity 0.3s ease-out;
+}
 
-  }
-
-
-  .slide-up {
-
-
-    max-height: 80%; 
+.slide-up {
+    max-height: 80%;
     opacity: 1;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out; 
-        height: 100%;
-        border-bottom: 1px solid rgba(4, 171, 74, 0.234);
-
-  }
+    transition:
+        max-height 0.3s ease-out,
+        opacity 0.3s ease-out;
+    height: 100%;
+    border-bottom: 1px solid rgba(4, 171, 74, 0.234);
+}
 
 .ScrollableContent {
     height: calc(100% - 80px);
@@ -329,7 +321,6 @@ max-width: 100%;
     overflow-x: hidden;
     padding: 10px;
     background-color: #333732;
-
 }
 
 .AllCommentsPost {
@@ -352,11 +343,11 @@ max-width: 100%;
     padding: 10px;
     z-index: 2;
 }
-.HeaderComments{
+.HeaderComments {
     color: $ColorFuente;
     font-weight: bold;
 }
-.Close button{
+.Close button {
     width: 40px;
     height: 40px;
     background-color: rgba(0, 0, 0, 0);
@@ -366,7 +357,7 @@ max-width: 100%;
     cursor: pointer;
     font-size: 15px;
 }
-.Close img{
+.Close img {
     width: 100%;
     height: 100%;
 }
@@ -375,125 +366,117 @@ max-width: 100%;
     width: 8px;
 }
 
-
 .ScrollableContent::-webkit-scrollbar-thumb {
-
-    background-color: #3f6046; 
-    border-radius: 4px; 
-     height: 6px;
+    background-color: #3f6046;
+    border-radius: 4px;
+    height: 6px;
 }
-
 
 .ScrollableContent::-webkit-scrollbar-track {
-    background-color: #1b1a1a; 
+    background-color: #1b1a1a;
 }
 
-
-@media(min-width:500px){
-    .ContainerPostMobile{
+@media (min-width: 500px) {
+    .ContainerPostMobile {
         min-width: 330px;
-      margin-left: -30px;
-        }
-    .ContainerPost{
-border: none;
+        margin-left: -30px;
+    }
+    .ContainerPost {
+        border: none;
     }
 }
 
-@media (min-width:850px) {
-.ContainerPostMobile{
-min-width: 360px;
-   margin-left: 20px;
-}
-.ContainerPostDesktop{
-    display: block;
-}
-
-}
-@media (min-width:650px) {
-    .ContainerPostMobile{
-    min-width: 300px;
-       margin-left: 20px;
+@media (min-width: 850px) {
+    .ContainerPostMobile {
+        min-width: 360px;
+        margin-left: 20px;
     }
-.ContainerPost{
-    min-width: 360px;
+    .ContainerPostDesktop {
+        display: block;
+    }
+}
+@media (min-width: 650px) {
+    .ContainerPostMobile {
+        min-width: 300px;
+        margin-left: 20px;
+    }
+    .ContainerPost {
+        min-width: 360px;
+    }
+}
+@media (max-width: 499px) {
+    .ContainerPostMobile {
+        width: 100%;
+        margin-left: -30px;
+    }
+    .ContainerPost {
+        width: 100%;
+    }
 }
 
-    }
-    @media(max-width:499px){
-        .ContainerPostMobile{
-         width: 100%;
-               margin-left: -30px;
-            }
-    .ContainerPost{
-    width: 100%;
-    }
-
-
-       }
-
-
-@media (min-width:870px) {
-    .DataProfile{
+@media (min-width: 870px) {
+    .DataProfile {
         display: flex;
-        margin:10px;
+        margin: 10px;
         margin-top: 10px;
     }
-    .Follow,.SendMessage,.Country,.OptionsProfilePost{
+    .Follow,
+    .SendMessage,
+    .Country,
+    .OptionsProfilePost {
         display: flex;
         width: 40px;
         height: 40px;
-
     }
-    .PerfilImage img{
+    .PerfilImage img {
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        }
-
     }
-    @media (min-width:900px) {
-        .ContainerPost{
-            max-width: 840px;
-        }
-        .DataProfile{
-            display: flex;
-            margin:40px;
-            margin-top: 10px;
-        }
-        .Follow,.SendMessage,.Country,.OptionsProfilePost{
-            display: flex;
-            width: 40px;
-            height: 40px;
-
-        }
-        .PerfilImage img{
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-
-            }
-            .PerfilImage{
-                margin-top: 20px;
-                height: 140px;
-                width: 140px;
-            }
-            .ContainerPostDesktop{
-                height: 300px;
-                margin-left: 30px;
-            }
-            .DataProfile{
-                margin-top: 20px;
-            }
-            .UsernameProfile{
-                margin-top: 20px;
-            }
-        }
-        .ImagePostDesktop{
-            max-height: 300px;
-
-        }
-        .ImagePostDesktop img{
-width: 100%;
-max-height: 300px;
-object-fit: cover;
-        }
+}
+@media (min-width: 900px) {
+    .ContainerPost {
+        max-width: 840px;
+    }
+    .DataProfile {
+        display: flex;
+        margin: 40px;
+        margin-top: 10px;
+    }
+    .Follow,
+    .SendMessage,
+    .Country,
+    .OptionsProfilePost {
+        display: flex;
+        width: 40px;
+        height: 40px;
+    }
+    .PerfilImage img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    .PerfilImage {
+        margin-top: 20px;
+        height: 140px;
+        width: 140px;
+    }
+    .ContainerPostDesktop {
+        height: 300px;
+        margin-left: 30px;
+    }
+    .DataProfile {
+        margin-top: 20px;
+    }
+    .UsernameProfile {
+        margin-top: 20px;
+    }
+}
+.ImagePostDesktop {
+    max-height: 300px;
+}
+.ImagePostDesktop img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}

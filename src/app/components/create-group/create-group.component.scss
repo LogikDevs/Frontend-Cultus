@@ -1,73 +1,69 @@
-$ColorFuente:#7ab06a;
-$ColorSecundario:#282928;
-.ContainerCreate{
+$ColorFuente: #7ab06a;
+$ColorSecundario: #282928;
+.ContainerCreate {
     width: 100%;
     max-width: 500px;
     box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
-        background-color: #1D1D1D;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-   margin: auto;
-   position: relative;
-   top: -310px;
+    background-color: #1d1d1d;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin: auto;
+    position: relative;
+    top: -310px;
 }
-.HeaderCreate{
+.HeaderCreate {
     width: 100%;
     height: 60px;
- 
+
     display: flex;
     justify-content: space-around;
     align-items: center;
-border-bottom: 1px solid $ColorFuente;
+    border-bottom: 1px solid $ColorFuente;
 }
-.Back{
+.Back {
     height: 100%;
 
-width: 33%;
+    width: 33%;
 }
-.Back img{
+.Back img {
     width: 35px;
     height: 60%;
     margin: 8px;
 }
-.Tittle{
+.Tittle {
     color: $ColorFuente;
     font-size: 10px;
     width: 33%;
     text-align: center;
 }
-.ButtonCreate{
+.ButtonCreate {
     width: 33%;
-text-align: end;
-margin-right: 15px;
+    text-align: end;
+    margin-right: 15px;
 }
-.ButtonCreate button{
-
-
-background-color:#137695 ;
-border: none;
-color: white;
-padding: 5px;
-padding-left: 12px;
-padding-right: 12px;
-border-radius: 15px;
-cursor: pointer;
-
+.ButtonCreate button {
+    background-color: #137695;
+    border: none;
+    color: white;
+    padding: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
-.ContainerImage{
-    
-width: 100%;
-text-align: center;
+.ContainerImage {
+    width: 100%;
+    text-align: center;
 }
-.Image{
+.Image {
     margin: auto;
     margin-top: 10px;
-width: 40%;
-height: 130px;
-background-color: #343534;
-position: relative;
-border-radius: 15px;
+    width: 40%;
+    height: 130px;
+    background-color: #343534;
+    position: relative;
+    border-radius: 15px;
 }
 input[type="file"] {
     position: absolute;
@@ -78,26 +74,26 @@ input[type="file"] {
     opacity: 0;
     z-index: -1;
 }
-.Image img{
+.Image img {
     margin-top: 6px;
     width: 70%;
     height: 90%;
     cursor: pointer;
     border-radius: 10px;
 }
-.Group1,.Group2,.Group3{
+.Group1,
+.Group2,
+.Group3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
 }
-.Data{
+.Data {
     color: $ColorFuente;
     font-weight: bold;
     margin: 10px;
 }
-.Data input  {
+.Data input {
     width: 120px;
     background-color: #282928;
     resize: none;
@@ -107,7 +103,7 @@ input[type="file"] {
     padding: 7px;
     border-radius: 10px;
 }
-.Data select{
+.Data select {
     width: 120px;
     background-color: #282928;
     resize: none;
@@ -116,12 +112,11 @@ input[type="file"] {
     font-size: 15px;
     padding: 7px;
     border-radius: 10px;
-   
 }
-.Back{
+.Back {
     cursor: pointer;
 }
-.Data button{
+.Data button {
     width: 120px;
     background-color: #282928;
     resize: none;
@@ -131,19 +126,17 @@ input[type="file"] {
     padding: 7px;
 }
 
-#Description input{
-height: 40px;
-width: 100%;
-
+#Description input {
+    height: 40px;
+    width: 100%;
 }
-#ContainerInterest{
+#ContainerInterest {
     position: relative;
     z-index: 1;
     top: -450px;
-
 }
-option{
+option {
     font-weight: bold;
     font-size: 16px;
-padding: 10px;
+    padding: 10px;
 }
