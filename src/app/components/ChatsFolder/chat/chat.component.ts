@@ -32,7 +32,6 @@ export class ChatComponent {
 
     getChat(){
         this.bringGroupChat(this.chatId);
-        this.bringChatMessages(this.chatId);
     }
 
     getUser(){
@@ -44,14 +43,9 @@ export class ChatComponent {
     bringGroupChat(id_chat:any){
 		this.chatService.BringChat(id_chat).subscribe((res:any)=>{
 			this.chatData = res;
+            this.chatMessages = res[0].data;
 		})
 	}
-
-    bringChatMessages(id_chat:any){
-        this.chatService.BringChatMessages(id_chat).subscribe((res:any)=>{
-            this.chatMessages = res.data;
-        })
-    }
 
     sendMessage(){
         this.chatService.SendMessage(this.message, this.chatId).subscribe((res:any)=>{

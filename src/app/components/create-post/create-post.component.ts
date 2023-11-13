@@ -12,7 +12,9 @@ import { GetCountriesService } from 'src/app/services/get-countries.service';
 })
 export class CreatePostComponent {
 	@Input() isInsideEvents: boolean = false;
-	
+	@Input() isInsideGroups: boolean = false;
+
+
 	postMultimedia: File;
 	imageUrl:any;
 	defaultUrl:string = "http://localhost:8000/storage/profile_pic/";
@@ -75,7 +77,6 @@ export class CreatePostComponent {
 			fk_id_event: this.EventPost,
 			fk_id_group: this.GroupPost
 		}
-		console.log(postData);
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			
 			if (res.status === 201){

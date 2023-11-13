@@ -20,9 +20,9 @@ export class JoinedeventComponent {
 		this.checkPicture();
 	}
 	checkPicture(){
-		if (this.event[0].cover) this.eventPicture = this.pictureUrlDefault + this.event[0].cover;
+		if (this.event.event.cover) this.eventPicture = this.pictureUrlDefault + this.event.event.cover;
 	}
     joinEvent(){
-        this.router.navigateByUrl('/event/'+ this.event[0].id);
+        this.router.navigateByUrl('/event/'+ this.event.event.id);
 	} 
 }
