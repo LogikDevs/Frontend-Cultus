@@ -1,6 +1,7 @@
-<div class="integrantes" *ngFor="let participant of groupParticipants">
-    <app-participants [type]="type" [participant]="participant"></app-participants>   <!--  Creá un espacio a la derecha con los integrantes, y yo arriba de los integrantes en un espacio separado pondría la descripcion  -->
-</div>                                                                                <!-- La linea 1 a 3 tira todos los integrantes uno tras otros. Si queres modificar como se ve cada celda anda a EventsFolder/Participants (Es el mismo que para los eventos)-->
+                                                                        
+
+<div class="OverflowHideen" style="overflow-y: hidden;">
+
 
 
 <div class="ContainerAll">
@@ -17,33 +18,85 @@
         <div class="NameChat" *ngIf="groupData">
             <p>{{groupData.name}}</p>
         </div>
-        <div class="GroupDescription" *ngIf="groupData">
-            <p>{{groupData.description}}</p>  <!--  ESTOS 3 Ubicalos bien, es data del grupo    -->
-        </div>
-        <div *ngIf="groupData"> 
-            <p>{{groupData.privacy}}</p>
-        </div>
+ 
         <div class="OptionsChat">
-            <div class="SubHeaderHome">
-                <div (click)="ChangeSection(true)" class="Discovery">
-                    <p>Group Posts</p>
-                </div>
-                <div (click)="ChangeSection(false)" class="Followed">
-                    <p>Group Chat</p>
-                </div>
-            </div>
+       
             <div class="Option">
                 <img src="assets/Chat/menu.svg" alt="">
             </div>
         </div>
     </div>
-    <div *ngIf="groupData">
-        <div *ngIf="!Section">
-            <app-chat [chatId]="groupData.id_chat"></app-chat>
+       
+    <div class="ContainerContentGroups">
+ 
+          <div *ngIf="groupData">    <div class="SubHeaderHome">
+            <div (click)="ChangeSection(true)" class="Discovery">
+                <p>Group Posts</p>
+            </div>
+            <div (click)="ChangeSection(false)" class="Followed">
+                <p>Group Chat</p>
+            </div>
+        </div>
+        <div  *ngIf="!Section">
+            <app-chat class="Chat" [chatId]="groupData.id_chat"></app-chat>
         </div>
         <div *ngIf="Section">
             <app-group-posts></app-group-posts>
         </div>
+        
+    <div id="CreatePost">
+        <button >
+            <img src="assets/sidebar-images/create.svg" alt="Crear Posts">
+        </button>
     </div>
+    </div>
+ <div class="ContainerDataGroups">
+    <div id="GroupData">
+
+        <div class="Description">
+            <div class="TittleDescription">
+                <p>Group Description:</p>
+            </div>
+
+    
+            <div class="ContentDescription"  *ngIf="groupData">
+               <p>{{groupData.description}}</p> 
+            </div>
+
+        </div>
+        <div class="Text">
+       
+            <div class="TittleText">
+                <p>Group Privacy:</p>
+            </div>
+            <div class="ContentText" *ngIf="groupData">
+             <p>{{groupData.privacy}}</p>
+            </div>
+
+        </div>
+
+        <div class="ContainerParticipants">
+            <div class="TittleParticipants">
+                <p>Group Participants:</p>
+            </div>
+            <div class="ContainerAllParticipants">
+
+                <div class="integrantes" *ngFor="let participant of groupParticipants">
+                    <app-participants [type]="type" [participant]="participant"></app-participants>  
+                </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+   
+
+
+
 </div>
+
+
+
 </div>

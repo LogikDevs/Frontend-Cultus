@@ -50,7 +50,7 @@ transition: all 300ms ease;
 }
 .ContainerContentChat{
 
-    width: 75%;
+    width: 100%;
 }
 .HeaderChat{
     background-color: #282928;
@@ -228,3 +228,160 @@ width: 50%;
     margin-top: 5px;
     }
 }
+
+.ContainerContentGroups{
+
+ display: flex;
+ justify-content: space-between;
+ width: 100%;
+
+    height: 81vh;
+}
+.ContainerDataGroups{
+
+    width: 350px;
+    height: 100%;
+    float: right;
+    background-color:$ColorSecundario;
+border-left: 2px solid $ColorFuente;
+}
+
+
+#GroupData{
+    color: white; 
+}
+
+.Description,.Text{
+    margin: 20px;
+   
+
+}
+.ContentDescription,.ContentText{
+    background-color: #151615;
+    height: 60px;
+    padding: 6px;
+    color: $ColorFuente;
+    font-weight: bold;
+    box-shadow:  0 0 4px gray;
+}
+.TittleDescription,.TittleText{
+    color: $ColorFuente;
+    margin: 10px;
+ 
+}
+.TittleDescription p{
+       margin-top: 30px;
+       font-weight: bold;
+}
+.Type{
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.ContainerInterest,.ContainerParticipants{
+
+    margin: 20px;
+    margin-top: -30px;
+}
+.TittleInterest,.TittleParticipants{
+color: $ColorFuente;
+font-weight: bold;
+}
+.TittleInterest{
+    margin-top: 60px;
+}
+.ContainerAllInterest,.ContainerAllParticipants{
+background-color: #151615 ;
+padding: 5px;
+border-radius: 10px;
+max-height: 170px;
+overflow-y: scroll;
+box-shadow: 0 0 4px gray;
+}
+.NameChat{
+    width: 40%;
+}
+
+.ContainerParticipants{
+    margin-top: 50px;
+    }
+    
+    .ContainerAllInterest::-webkit-scrollbar,
+    .ContainerAllParticipants::-webkit-scrollbar{
+        width: 8px; 
+    }
+    
+    .ContainerAllInterest::-webkit-scrollbar-thumb,
+    .ContainerAllParticipants::-webkit-scrollbar-thumb{
+        background-color: $ColorFuente; 
+    }
+    
+    .ContainerAllInterest::-webkit-scrollbar-track,
+    .ContainerAllParticipants::-webkit-scrollbar-track{
+        background-color: $ColorSecundario;
+    }
+    
+.ContainerDataGroups::-webkit-scrollbar-track {
+    background-color: rgb(48, 48, 48);
+}
+.ContainerDataGroups::-webkit-scrollbar-thumb {
+    background-color:rgb(17, 16, 16);
+}
+.ContainerDataGroups::-webkit-scrollbar {
+    width: 12px;
+}
+.SubHeaderHome{
+
+display: flex;
+justify-content: start;
+width: 100vh;
+border-bottom: 2px solid $ColorFuente;
+
+}
+.SubHeaderHome p{
+    background-color: $ColorSecundario;
+margin: 10px;
+cursor: pointer;
+color: $ColorFuente;
+font-weight: bold;
+transition: all 300ms ease;
+padding: 8px;
+border-radius: 10px;
+
+    }
+    .SubHeaderHome p:hover{
+        color: rgb(63, 104, 63);
+    background-color: #1f1e1e
+    ;
+        }
+
+        
+#CreatePost{
+    width: 50px;
+ 
+    position: relative;
+    top: 55%;
+    float: right;
+    margin-right: 40px;
+    transition: all 300ms ease;
+}
+#CreatePost:hover{
+transform: scale(1.2);
+}
+#CreatePost button {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    transition: all 300ms ease;
+    
+  }
+  
+  #CreatePost button img {
+    width: 50px;
+    height: 50px;
+
+  }
+  .Chat{
+    width: 100%;
+  }
