@@ -1,6 +1,6 @@
 <div class="integrantes" *ngFor="let participant of groupParticipants">
-    <app-participants [type]="type" [participant]="participant"></app-participants>   <!--  Creá un espacio a la derecha con los integrantes, y yo arriba de los integrantes en un espacio separado pondría la descripcion  -->
-</div>                                                                                <!-- La linea 1 a 3 tira todos los integrantes uno tras otros. Si queres modificar como se ve cada celda anda a EventsFolder/Participants (Es el mismo que para los eventos)-->
+    <app-participants [type]="type" [participant]="participant"></app-participants>   
+</div>                                                                                
 
 
 <div class="ContainerAll">
@@ -18,7 +18,7 @@
             <p>{{groupData.name}}</p>
         </div>
         <div class="GroupDescription" *ngIf="groupData">
-            <p>{{groupData.description}}</p>  <!--  ESTOS 3 Ubicalos bien, es data del grupo    -->
+            <p>{{groupData.description}}</p>
         </div>
         <div *ngIf="groupData"> 
             <p>{{groupData.privacy}}</p>

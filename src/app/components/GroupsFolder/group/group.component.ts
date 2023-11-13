@@ -13,6 +13,9 @@ export class GroupComponent {
 
 	@Input() GroupToDisplay:any;
 
+	userId: any;
+	isAdmin:boolean;
+
     groupData:any;
 	groupParticipants:any;
 
@@ -23,7 +26,10 @@ export class GroupComponent {
 	groupCover:string = "";
 	defaultUrlCover:string = "http://localhost:8002/storage/picture/"
 
+	createPostComponentVisibility: boolean = false;
+
     constructor(
+		private userService: GetUserService,
 		private route: ActivatedRoute,
 		private groupService: GroupService
 	){}
@@ -31,9 +37,14 @@ export class GroupComponent {
 	ngOnChanges(){
 		this.getGroup();
 		this.getParticipants();
+		this.checkIfIsAdmin();
 		this.checkCover();
 	}
-
+	getUser() {
+		this.userService.getUser().subscribe((res: any) => {
+			this.userId = res.id;
+		})
+	}
 	ChangeSection(type:boolean){
 		if (type != this.Section) this.Section = type;
 	}
@@ -49,5 +60,13 @@ export class GroupComponent {
 	}
 	checkCover(){
 		if (this.groupData.picture) this.groupCover = this.defaultUrlCover + this.groupData.picture;
+	}
+	checkIfIsAdmin() {
+		
+		if (this.userId === this.groupData.admin.id) this.isAdmin = true;
+	}
+	postPublished(published: boolean) {
+		this.createPostComponentVisibility = false;
+		if (published) location.reload();
 	}
 }
