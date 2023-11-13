@@ -269,10 +269,28 @@ top: -300px;
 position: relative;
 top: -650px;
 }
-.ContainerInterest{
+.ContainerInterest {
     display: flex;
     position: relative;
+    max-width: 90%;
+    overflow-x: auto; 
+    white-space: nowrap; 
 }
+
+
+.ContainerInterest::-webkit-scrollbar {
+    width: 4px; 
+}
+
+.ContainerInterest::-webkit-scrollbar-thumb {
+    background-color: #181818; 
+    border-radius: 6px;
+}
+
+.ContainerInterest::-webkit-scrollbar-thumb:hover {
+    background-color: #303030; 
+}
+
 .Interest{
     display: flex;
     justify-content: start;
