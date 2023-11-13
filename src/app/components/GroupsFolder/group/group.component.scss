@@ -1,12 +1,12 @@
-$ColorFuente:#537D57;  
-$ColorSecundario:#282928;
-.ContainerAll{
+$ColorFuente: #537d57;
+$ColorSecundario: #282928;
+.ContainerAll {
     display: flex;
 
     width: 100%;
     min-height: 90vh;
 }
-.Logo{
+.Logo {
     width: 40px;
     height: 40px;
     background-color: rgb(34, 36, 36);
@@ -15,44 +15,44 @@ $ColorSecundario:#282928;
     margin-left: 15px;
     cursor: pointer;
 }
-.Logo img{
+.Logo img {
     width: 100%;
     height: 80%;
     margin-top: 5px;
 }
-.Text{
-    font-weight:bold ;
+.Text {
+    font-weight: bold;
     color: $ColorFuente;
 }
-.Chat{
-display: flex;
-margin: 15px;
-background-color: #151615;
-border-radius: 15px;
-color: $ColorFuente;
-font-weight: bold;
-cursor: pointer;
-transition: all 300ms ease;
+.Chat {
+    display: flex;
+    margin: 15px;
+    background-color: #151615;
+    border-radius: 15px;
+    color: $ColorFuente;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 300ms ease;
 }
-.Chat:hover{
- background-color: #121111;
-    }
-.ImageChat{
+.Chat:hover {
+    background-color: #121111;
+}
+.ImageChat {
     width: 40px;
     height: 40px;
     margin: 5px;
     border-radius: 50%;
 }
-.ImageChat img{
+.ImageChat img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
-.ContainerContentChat{
 
+.ContainerContentChat{
     width: 100%;
 }
-.HeaderChat{
+.HeaderChat {
     background-color: #282928;
     height: 80px;
     display: flex;
@@ -63,15 +63,16 @@ transition: all 300ms ease;
     color: $ColorFuente;
     font-weight: bold;
 }
-.OptionsChat{
-
+.OptionsChat {
     width: 80%;
     display: flex;
     justify-content: end;
     align-items: center;
     margin-left: 100px;
 }
-.Call,.VideoCall,.Option{
+.Call,
+.VideoCall,
+.Option {
     width: 40px;
     height: 40px;
     background-color: #151615;
@@ -80,38 +81,39 @@ transition: all 300ms ease;
     border-radius: 50%;
     cursor: pointer;
     transition: all 300ms ease;
-
 }
-.Call img,.VideoCall img,.Option img{
-width: 50%;
-height: 50%;
-margin-top: 10px;
+.Call img,
+.VideoCall img,
+.Option img {
+    width: 50%;
+    height: 50%;
+    margin-top: 10px;
 }
-.Call:hover,.VideoCall:hover,.Option:hover{
-background-color: #0a0a0a;
-
+.Call:hover,
+.VideoCall:hover,
+.Option:hover {
+    background-color: #0a0a0a;
 }
-.Content{
+.Content {
     height: 85%;
     max-height: 85%;
-  
 }
-.WriteContainer{
+.WriteContainer {
     background-color: #181818;
-display: flex;
-position: fixed;
-bottom: 0px;
-width: 75%;
-border-top: solid 2px $ColorFuente;
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    width: 75%;
+    border-top: solid 2px $ColorFuente;
 }
-.OptionsWriteContainer{
-
-
-display: flex;
-justify-content: end;
-align-items: center;
+.OptionsWriteContainer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
-.Send,.Emogi,.Clip{
+.Send,
+.Emogi,
+.Clip {
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -120,112 +122,122 @@ align-items: center;
     border-radius: 50%;
     text-align: center;
 }
-.Back{
+.Back {
     display: none;
 }
-.Send img,.Emogi img,.Clip img{
-width: 80%;
-height: 80%;
-margin-top: 3px;
-transition: 300ms all ease;
+.Send img,
+.Emogi img,
+.Clip img {
+    width: 80%;
+    height: 80%;
+    margin-top: 3px;
+    transition: 300ms all ease;
 }
-.Send:hover,.Emogi:hover,.Clip:hover{
-background-color: #151615;
-    }
-    .WriteContainer input{
-        background-color: $ColorSecundario;
-        border: none;
-margin: 10px;
-padding: 10px;
-width: 60%;
-border-radius: 10px;
-color: $ColorFuente;
-    }
-    #ImageGroup{
-        width: 40px;
+.Send:hover,
+.Emogi:hover,
+.Clip:hover {
+    background-color: #151615;
+}
+.WriteContainer input {
+    background-color: $ColorSecundario;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    width: 60%;
+    border-radius: 10px;
+    color: $ColorFuente;
+}
+#ImageGroup {
+    width: 40px;
 
-        margin: 5px;
-        border-radius: 50%;
-    }
-    #ImageGroup img{
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-    }
-@media(max-width:1000px){
-    .WriteContainer input{
+    margin: 5px;
+    border-radius: 50%;
+}
+#ImageGroup img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+@media (max-width: 1000px) {
+    .WriteContainer input {
         width: 40%;
     }
 }
-@media(max-width:650px){
- .ContainerAllChats{
-    display: none;
- }
- .ContainerContentChat{
-  margin-left: 79px;
-  border-left: 2px solid $ColorFuente;
-  width: 87%;
- }
-.WriteContainer{
-    width: 87%;
-    border-left: 2px solid $ColorFuente;
-    margin-left: -2px;
+@media (max-width: 650px) {
+    .ContainerAllChats {
+        display: none;
+    }
+    .ContainerContentChat {
+        margin-left: 79px;
+        border-left: 2px solid $ColorFuente;
+        width: 87%;
+    }
+    .WriteContainer {
+        width: 87%;
+        border-left: 2px solid $ColorFuente;
+        margin-left: -2px;
+    }
 }
-}
-@media(max-width:500px){
-    .Back{
+@media (max-width: 500px) {
+    .Back {
         display: Block;
         cursor: pointer;
     }
-    .ContainerContentChat{
- 
+    .ContainerContentChat {
         width: 100%;
         margin-left: 0px;
-       }
-       .WriteContainer{
+    }
+    .WriteContainer {
         width: 100%;
-  
     }
-       #Sidebar{
+    #Sidebar {
         display: none;
-       }
-       .WriteContainer input{
-width: 50%;
     }
-    #ImageGroup{
+    .WriteContainer input {
+        width: 50%;
+    }
+    #ImageGroup {
         width: 40px;
     }
-    .OptionsChat{
+    .OptionsChat {
         width: 40%;
     }
-    .Call,.VideoCall,.Option{
+    .Call,
+    .VideoCall,
+    .Option {
         width: 30px;
         height: 30px;
     }
-    .Call img,.VideoCall img,.Option img{
-    width: 60%;
-    height: 60%;
-    margin-top: 5px;
+    .Call img,
+    .VideoCall img,
+    .Option img {
+        width: 60%;
+        height: 60%;
+        margin-top: 5px;
     }
 }
-@media(max-width:380px){
-    #ImageGroup{
+@media (max-width: 380px) {
+    #ImageGroup {
         width: 40px;
     }
-    .OptionsChat{
+    .OptionsChat {
         width: 40%;
         display: flex;
         justify-content: center;
         margin-left: 20px;
     }
-    .Call,.VideoCall,.Option{
+    .Call,
+    .VideoCall,
+    .Option {
         width: 30px;
         height: 30px;
     }
-    .Call img,.VideoCall img,.Option img{
-    width: 60%;
-    height: 60%;
-    margin-top: 5px;
+    .Call img,
+    .VideoCall img,
+    .Option img {
+        width: 60%;
+        height: 60%;
+        margin-top: 5px;
     }
 }
 

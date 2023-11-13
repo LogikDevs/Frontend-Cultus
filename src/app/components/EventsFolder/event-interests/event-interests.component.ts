@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./event-interests.component.scss']
 })
 export class EventInterestsComponent {
-    @Input() interest:any;
+    @Input() interest: any;
 }

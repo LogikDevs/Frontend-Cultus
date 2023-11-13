@@ -25,13 +25,13 @@ export class SingleeventComponent {
     }
 
     checkIfCoverExists(){
-        if (this.event[0].cover) this.eventPicture = this.pictureUrlDefault + this.event[0].cover;
+        if (this.event.event.cover) this.eventPicture = this.pictureUrlDefault + this.event.event.cover;
     }
 
 	checkFollowState(click:boolean){
 		this.eventService.getUserFollowedEvents().subscribe((res:any)=>{
 			this.userFollows = Object.values(res);
-			const userFollowedEvents = this.userFollows.find((follow:any) => Number(follow.id) === this.event.id);
+			const userFollowedEvents = this.userFollows.find((follow:any) => Number(follow.id) === this.event.event.id);
 			if (userFollowedEvents) {
 				this.isFollowing = "Unfollow";
 				if (click === true) this.UnfollowAction();
@@ -43,12 +43,13 @@ export class SingleeventComponent {
 		})
 	}
     UnfollowAction(){
-        this.eventService.unfollowEvent().subscribe((res:any)=>{
+        this.eventService.unfollowEvent(this.event.event.id).subscribe((res:any)=>{
             this.isFollowing = "Follow";
         })
     }
     FollowAction(){
-        this.eventService.followEvent().subscribe((res:any)=>{
+        console.log(this.event.event.id);
+        this.eventService.followEvent(this.event.event.id).subscribe((res:any)=>{
             this.isFollowing = "Unfollow";
         })
     }

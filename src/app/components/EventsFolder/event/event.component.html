@@ -1,27 +1,4 @@
-
 <div class="OverflowHideen" style="overflow-y: hidden;">
-
-
-<app-sidebar></app-sidebar>
-
-<div class="ContainerAll">
-
-    <div class="ContainerAllChats">
-        <div class="Tittle">
-            <div class="Logo">
-                <img src="assets/sidebar-images/SMS.svg" alt="">
-            </div>
-            <div class="Text">
-                Events
-            </div>
-        </div>
-
-        <div class="ContainerChats">
-
-        </div>
-
-
-    </div>
 
     <div class="ContainerContentChat" *ngIf="eventData">
         <div class="HeaderChat">
@@ -43,8 +20,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <div class="ContainerEvents">
             <div id="eventData" *ngIf="eventData">
@@ -105,7 +80,8 @@
         </div>
         <div class="SpaceForModals">
             <div *ngIf="createPostComponentVisibility">
-                <app-create-post [EventPost]="eventData.event.id" (ComponentRemoved)="postPublished(false)" (postHasBeenPublished)="postPublished(true)" [isInsideEvents]="true"></app-create-post>
+                <app-create-post [EventPost]="eventData.event.id" (ComponentRemoved)="postPublished(false)"
+                    (postHasBeenPublished)="postPublished(true)" [isInsideEvents]="true"></app-create-post>
             </div>
             <div id="updates" *ngFor="let post of eventData.updates">
                 <app-singlepost *ngIf="post" [post]="post" [userId]="userId"></app-singlepost>

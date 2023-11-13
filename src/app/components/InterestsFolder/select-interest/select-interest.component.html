@@ -1,6 +1,6 @@
 <div class="OthersComponents" *ngIf="WindowVisibility">
 
-    <app-sidebar ></app-sidebar>
+    <app-sidebar></app-sidebar>
 </div>
 
 <div class="ContainerSelectInterest" [class.inside-create-post]="isInsideCreatePost" *ngIf="WindowVisibility">
@@ -16,22 +16,22 @@
                 </g>
             </svg>
             <form>
-                <input class="input" type="text" (input)="onInterestsSearch($event)" placeholder="Busca tus intereses...">
+                <input class="input" type="text" (input)="onInterestsSearch($event)"
+                    placeholder="Busca tus intereses...">
             </form>
-           
+
         </div>
-    <div class="SkipSearchInterest">
-                <button routerLink="/home" *ngIf="SelectInterestType === 'user'">Skip</button>
-            </div>
+        <div class="SkipSearchInterest">
+            <button routerLink="/home" *ngIf="SelectInterestType === 'user'">Skip</button>
+        </div>
     </div>
     <div class="ContainerResultsSearch">
         <div class="ContainerInterest" *ngFor="let interest of filteredInterests">
             <app-interest *ngIf="interest" [interest]="interest"></app-interest>
         </div>
-       
-    </div>
-     <div class="FinishSelectInterest">
-            <button (click)="sendInterests()">Save</button>
-        </div>
 
+    </div>
+    <div class="FinishSelectInterest">
+        <button (click)="sendInterests()">Save</button>
+    </div>
 </div>

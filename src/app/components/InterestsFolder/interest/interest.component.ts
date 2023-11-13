@@ -12,21 +12,21 @@ export class InterestComponent {
 
 	constructor(private interestService: GetInterestsService) { }
 
-	ngDoCheck(){
-		const VisualInterest = document.getElementById("InterestVisual_"+this.interest.id_label);
+	ngDoCheck() {
+		const VisualInterest = document.getElementById("InterestVisual_" + this.interest.id_label);
 		const insertId = this.interest;
 
-		for (let i = 0; i < this.interestService.NewUserInterestsArray.length; i++){
-			if (this.interestService.NewUserInterestsArray[i].id_label == insertId.id_label){
+		for (let i = 0; i < this.interestService.NewUserInterestsArray.length; i++) {
+			if (this.interestService.NewUserInterestsArray[i].id_label == insertId.id_label) {
 				if (VisualInterest) VisualInterest.style.backgroundColor = "#1a1919";
 			}
 		}
 	}
 	AddInterestFunction() {
-		const VisualInterest = document.getElementById("InterestVisual_"+this.interest.id_label);
+		const VisualInterest = document.getElementById("InterestVisual_" + this.interest.id_label);
 		const insertId = this.interest;
 		let isInterestAlreadyAdded = false;
-		
+
 		this.interestService.NewUserInterestsArray.forEach(element => {
 			if (element.id_label == insertId.id_label) isInterestAlreadyAdded = true;
 		});
@@ -36,10 +36,10 @@ export class InterestComponent {
 			this.interestService.NewUserInterestsArray = removedElementArray;
 			if (VisualInterest) VisualInterest.style.backgroundColor = "#27272b";
 		}
-		if (!isInterestAlreadyAdded){
+		if (!isInterestAlreadyAdded) {
 			this.interestService.NewUserInterestsArray.push(insertId);
 			if (VisualInterest) VisualInterest.style.backgroundColor = "#1a1919";
 		}
- 	}
+	}
 }
 

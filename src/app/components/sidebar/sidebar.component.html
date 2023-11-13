@@ -10,11 +10,11 @@
         <li>
             <a routerLink="/home">
                 <img src="assets/sidebar-images/home.svg" class="ImageSidebar custom-size">
-            
+
                 <span class="LinkName">Home</span>
-            </a>   
+            </a>
             <span class="tooltip">Home</span>
-        </li> 
+        </li>
         <li>
             <a href="/Search">
                 <img src="assets/sidebar-images/Search.svg" alt="">
@@ -25,18 +25,18 @@
         <li>
             <div class="Crear-menu">
                 <a id="Crear">
-                <app-crear-menu ></app-crear-menu>
-            </a>
+                    <app-crear-menu></app-crear-menu>
+                </a>
             </div>
-           
+
             <a id="Off" routerLink="/Create">
                 <img src="assets/sidebar-images/create.svg" alt="">
                 <span class="LinkName">Create</span>
             </a>
             <span class="tooltip">Create</span>
         </li>
-        <li  id="ImgMessage">
-            <a href="/Messages" >
+        <li id="ImgMessage">
+            <a href="/Messages">
                 <img src="assets/sidebar-images/SMS.svg" alt="">
                 <span class="LinkName">Message</span>
             </a>
@@ -56,16 +56,16 @@
             </a>
             <span class="tooltip">Events</span>
         </li>
-       
+
         <li id="Off">
             <a href="#">
                 <img src="assets/sidebar-images/Settings.svg" alt="">
                 <span class="LinkName">Settings</span>
             </a>
-            <span class="tooltip">Settings</span> 
+            <span class="tooltip">Settings</span>
         </li>
         <li id="Off">
-       
+
             <a href="#" (click)="logout()">
 
                 <img src="assets/sidebar-images/Logout.svg" alt="">
@@ -74,13 +74,13 @@
             <span class="tooltip">Logout</span>
         </li>
         <div class="ProfileUser">
-            <li class="profile" id="mobile" >
+            <li class="profile" id="mobile">
                 <div class="ProfileDetails" (click)="ToOwnProfile()">
                     <img *ngIf="showProfilePic" src={{userPfp}} class="fotoperfil" alt="profile image">
                     <div class="ProfileContent" id="Off">
-                            <div class="name">
-                                <p id="username">{{Username}}</p>
-                            </div>
+                        <div class="name">
+                            <p id="username">{{Username}}</p>
+                        </div>
                     </div>
                 </div>
             </li>

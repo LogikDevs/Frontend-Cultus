@@ -1,4 +1,4 @@
-.Modal{
+.Modal {
     position: absolute;
     z-index: 2;
     width: 150px;
@@ -9,17 +9,17 @@
     box-shadow: 0 0 8px rgb(11, 77, 11);
     margin-top: -55px;
 }
-.ReportComment,.DeleteComment{
+.ReportComment,
+.DeleteComment {
     margin: 5px;
     margin-top: 10px;
     background-color: rgb(45, 46, 46);
     text-align: center;
     border-radius: 8px;
 }
-.ReportComment p,.DeleteComment p{
+.ReportComment p,
+.DeleteComment p {
     margin: 5px;
-margin-top: 10px;
-padding: 10px;
-
-
+    margin-top: 10px;
+    padding: 10px;
 }

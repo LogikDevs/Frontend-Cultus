@@ -1,54 +1,49 @@
-$ColorFuente:#7ab06a;
+$ColorFuente: #7ab06a;
 
-.ErrorMessageProfilePic{
-    color:  red;
+.ErrorMessageProfilePic {
+    color: red;
 }
 
-.ContainerDatosPerfil{
+.ContainerDatosPerfil {
     max-width: 600px;
 
-  box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
-  margin:30px;
-  margin-top: -30px;
-  
+    box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
+    margin: 30px;
+    margin-top: -30px;
 }
 textarea {
     resize: none;
-  }
-.AddImage{
-text-align: center;
-
-
-}  
-.AddImage img{
-margin-top: 10px;
 }
-
+.AddImage {
+    text-align: center;
+}
+.AddImage img {
+    margin-top: 10px;
+}
 
 .AddImageInput {
-background-color: #537D57;
-opacity: 0%;
+    background-color: #537d57;
+    opacity: 0%;
 }
-#pfp-input{
-    background-color: #537D57;
+#pfp-input {
+    background-color: #537d57;
 }
-.ImageSpace{
+.ImageSpace {
     cursor: pointer;
     margin: auto;
-position: relative;
-top: -30px;
+    position: relative;
+    top: -30px;
     border-radius: 50%;
-width: 170px;
-height: 170px;
-background-image: url('https://static.thenounproject.com/png/3465604-200.png');
-
-}.ImageSpace .editText {
+    width: 170px;
+    height: 170px;
+    background-image: url("https://static.thenounproject.com/png/3465604-200.png");
+}
+.ImageSpace .editText {
     display: none;
     cursor: pointer;
-  }
+}
 
-  
-  .ImageSpace.showEdit .editText {
+.ImageSpace.showEdit .editText {
     display: block;
     position: absolute;
     bottom: 10px;
@@ -61,51 +56,47 @@ background-image: url('https://static.thenounproject.com/png/3465604-200.png');
     font-size: 12px;
     pointer-events: none;
     cursor: pointer;
-  }
-  
-  
-.ImageSpace img{
+}
+
+.ImageSpace img {
     width: 100%;
     height: 100%;
 }
 .hideImage {
     background-image: none !important;
-  }
+}
 
-  
-.BackgroundAddImage{
-  background-color: rgb(27, 26, 26);
+.BackgroundAddImage {
+    background-color: rgb(27, 26, 26);
     width: 100%;
-height: 230px;
-border-bottom: solid 2px $ColorFuente;
+    height: 230px;
+    border-bottom: solid 2px $ColorFuente;
 }
-.AddDescription textarea{
-width: 90%;
-max-width: 500px;
-height: 50px;
-background-color: rgb(28, 27, 27);
-border: 1px solid rgb(26, 40, 26);
-color: $ColorFuente;
-font-weight: bold;
-
-
+.AddDescription textarea {
+    width: 90%;
+    max-width: 500px;
+    height: 50px;
+    background-color: rgb(28, 27, 27);
+    border: 1px solid rgb(26, 40, 26);
+    color: $ColorFuente;
+    font-weight: bold;
 }
-.AddDescription{
-text-align: center;
+.AddDescription {
+    text-align: center;
     margin-top: 20px;
 }
-.TittleDescription p{
+.TittleDescription p {
     text-align: start;
     margin-left: 22px;
     color: $ColorFuente;
     font-weight: bold;
     font-size: 12px;
 }
-input{
-    background-color: #537D57;
+input {
+    background-color: #537d57;
     cursor: pointer;
 }
-select{
+select {
     cursor: pointer;
     text-align: center;
     background-color: rgb(28, 27, 27);
@@ -116,38 +107,40 @@ select{
     border-radius: 20px;
     color: $ColorFuente;
     font-weight: bold;
-    max-height: 50px; 
+    max-height: 50px;
     overflow-y: auto;
-
 }
-#MenuMobile{
+#MenuMobile {
     display: none;
 }
-.AddGender,.AddCountry,.AddResidenceCountry,.FinishProfileData{
+.AddGender,
+.AddCountry,
+.AddResidenceCountry,
+.FinishProfileData {
     text-align: center;
     margin: 20px;
 }
-.FinishProfileData button{
+.FinishProfileData button {
     background-color: rgb(50, 84, 50);
     border: 1px solid rgb(26, 40, 26);
     width: 40%;
     height: 50px;
-    border-radius:20px ;
+    border-radius: 20px;
     font-weight: bold;
     color: black;
     cursor: pointer;
     margin-bottom: 20px;
 }
-.ImageSpace p{
+.ImageSpace p {
     margin-top: -25px;
-    color:$ColorFuente;
+    color: $ColorFuente;
     font-weight: bold;
 }
-.SkipDatosPerfil{
+.SkipDatosPerfil {
     display: flex;
     justify-content: end;
 }
-.SkipDatosPerfil button{
+.SkipDatosPerfil button {
     margin-left: -50px;
     margin: 10px;
     background-color: #252725;
@@ -158,42 +151,33 @@ select{
     font-weight: bold;
     cursor: pointer;
 }
-@media (min-width:700px){
-    .ContainerDatosPerfil{
-      margin: auto;
-      margin-top: -30px;
-    
-   
-      
+@media (min-width: 700px) {
+    .ContainerDatosPerfil {
+        margin: auto;
+        margin-top: -30px;
     }
-
 }
-@media (max-width:800px){
-    .ContainerDatosPerfil{
- width: 70%;
-      margin-left: 110px;
-     
-        
-      }
+@media (max-width: 800px) {
+    .ContainerDatosPerfil {
+        width: 70%;
+        margin-left: 110px;
+    }
 }
-@media (max-width:600px){
-    .ContainerDatosPerfil{
- width: 70%;
-      margin-left: 110px;
-    
-        
-      }
+@media (max-width: 600px) {
+    .ContainerDatosPerfil {
+        width: 70%;
+        margin-left: 110px;
+    }
 }
 
-
-@media(max-width:499px){
-    #SidebarOff{
-       display: none;
+@media (max-width: 499px) {
+    #SidebarOff {
+        display: none;
     }
-    #MenuMobile{
-       display: block;
+    #MenuMobile {
+        display: block;
     }
-    .ContainerDatosPerfil{
+    .ContainerDatosPerfil {
         margin: auto;
         margin-top: -20px;
     }
