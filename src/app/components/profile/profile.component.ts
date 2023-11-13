@@ -50,6 +50,11 @@ export class ProfileComponent implements OnInit {
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   	@ViewChild('ContainerInterest', { static: true }) ContainerInterest!: ElementRef<HTMLDivElement>;
   
+	CompleteMessage = {
+		Message: "the Post has been removed.",
+		visibility: false
+	}
+
 	constructor(
     	private route: ActivatedRoute, 
     	private userService: GetUserService, 
@@ -122,8 +127,7 @@ export class ProfileComponent implements OnInit {
 	}
 	FollowAction(){
 		this.followService.sendFollow(this.ProfileId).subscribe((res:any)=>{
-			if (res.id_followed[0] === "This user already follows the other.") this.UnfollowAction();
-			else this.isFollowing = "Unfollow";
+			this.isFollowing = "Unfollow";
 		})
 	}
 	UnfollowAction(){
@@ -132,6 +136,12 @@ export class ProfileComponent implements OnInit {
 		})
 	}
 
+	ToEditProfile(){
+		this.router.navigateByUrl('/EditProfile');
+	}
+	SendMessage(){
+		this.router.navigateByUrl('/Messages/' + this.ProfileId);
+	}
 
 	triggerFileInput() {
 		this.fileInput.nativeElement.click();
@@ -145,28 +155,36 @@ export class ProfileComponent implements OnInit {
 		};
 		reader.readAsDataURL(file);
 	}
-	ToEditProfile(){
-		this.router.navigateByUrl('/EditProfile');
+
+  	onDragStart(event: DragEvent) {
+    	event.dataTransfer?.setData('text/plain', ''); 
+    	this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    	this.isDragging = true;
+  	}
+
+  	onDragEnd(event: DragEvent) {
+    	this.renderer.setStyle(event.currentTarget, 'opacity', '1');
+    	this.isDragging = false;
+  	}
+
+  	onDragOver(event: DragEvent) {
+    	event.preventDefault();
+    	if (this.isDragging) {
+    	  	const container = event.currentTarget as HTMLElement;
+    	  	const offsetX = event.clientX - container.getBoundingClientRect().left;
+    	  	const containerWidth = container.clientWidth;
+    	  	const scrollLeft = (offsetX / containerWidth) * (container.scrollWidth - containerWidth);
+    	  	container.scrollLeft = scrollLeft;
+    	}
+  	}
+
+	OnCompleteAlert(){
+		this.CompleteMessage.visibility = true;
+		setTimeout(() => {
+			this.hideComponent(true);
+		}, 4000);
 	}
-  onDragStart(event: DragEvent) {
-    event.dataTransfer?.setData('text/plain', ''); 
-    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
-    this.isDragging = true;
-  }
-
-  onDragEnd(event: DragEvent) {
-    this.renderer.setStyle(event.currentTarget, 'opacity', '1');
-    this.isDragging = false;
-  }
-
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-    if (this.isDragging) {
-      const container = event.currentTarget as HTMLElement;
-      const offsetX = event.clientX - container.getBoundingClientRect().left;
-      const containerWidth = container.clientWidth;
-      const scrollLeft = (offsetX / containerWidth) * (container.scrollWidth - containerWidth);
-      container.scrollLeft = scrollLeft;
-    }
-  }
+	hideComponent(Complete:boolean){
+		if (Complete == true) this.CompleteMessage.visibility = false;
+	}
 }

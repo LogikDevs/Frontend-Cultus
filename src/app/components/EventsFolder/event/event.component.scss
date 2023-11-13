@@ -1,0 +1,449 @@
+$ColorFuente:#537D57;  
+$ColorSecundario:#282928;
+
+.ContainerAll{
+    display: flex;
+
+    width: 100%;
+    min-height: 90vh;
+}
+.ContainerAllChats{
+    background-color: $ColorSecundario;
+    width: 350px;
+    height: 92vh;
+    margin-left: 78px;
+    border-left: 2px solid $ColorFuente;
+    border-right: 2px solid $ColorFuente;
+    border-top: solid 1px $ColorFuente;
+}
+.Tittle{
+   border-bottom: 1px solid $ColorFuente;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 80px;
+}
+.Logo{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(34, 36, 36);
+    border-radius: 50%;
+    margin: 8px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.Logo img{
+    width: 100%;
+    height: 80%;
+    margin-top: 5px;
+}
+.Text{
+    font-weight:bold ;
+    color: $ColorFuente;
+}
+.ContainerChats{
+  margin: 10px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+.ContainerChats::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+  }
+  
+  .ContainerChats::-webkit-scrollbar-track {
+    background-color: rgb(35, 35, 35);
+  }
+  
+  .ContainerChats::-webkit-scrollbar-thumb {
+ background: #121111;
+
+  }
+.Chat{
+display: flex;
+margin: 15px;
+background-color: #151615;
+border-radius: 15px;
+color: $ColorFuente;
+font-weight: bold;
+cursor: pointer;
+transition: all 300ms ease;
+}
+.Chat:hover{
+ background-color: #121111;
+    }
+.ImageChat{
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 50%;
+}
+.ImageChat img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.ContainerContentChat{
+
+    width: 75%;
+}
+.HeaderChat{
+    background-color: #282928;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: 2px solid $ColorFuente;
+    border-bottom: 2px solid $ColorFuente;
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.OptionsChat{
+
+    width: 80%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-left: 100px;
+}
+.Call,.VideoCall,.Option{
+    width: 40px;
+    height: 40px;
+    background-color: #151615;
+    margin: 8px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+}
+.Call img,.VideoCall img,.Option img{
+width: 50%;
+height: 50%;
+margin-top: 10px;
+}
+.Call:hover,.VideoCall:hover,.Option:hover{
+background-color: #0a0a0a;
+
+}
+.Content{
+    height: 85%;
+    max-height: 85%;
+  
+}
+.WriteContainer{
+    background-color: #181818;
+display: flex;
+position: fixed;
+bottom: 0px;
+width: 75%;
+border-top: solid 2px $ColorFuente;
+}
+.OptionsWriteContainer{
+
+
+display: flex;
+justify-content: end;
+align-items: center;
+}
+.Send,.Emogi,.Clip{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #0a0a0a;
+    margin: 5px;
+    border-radius: 50%;
+    text-align: center;
+}
+.Back{
+    display: none;
+}
+.Send img,.Emogi img,.Clip img{
+width: 80%;
+height: 80%;
+margin-top: 3px;
+transition: 300ms all ease;
+}
+.Send:hover,.Emogi:hover,.Clip:hover{
+background-color: #151615;
+    }
+    .WriteContainer input{
+        background-color: $ColorSecundario;
+        border: none;
+margin: 10px;
+padding: 10px;
+width: 60%;
+border-radius: 10px;
+color: $ColorFuente;
+    }
+    #ImageGroup{
+        width: 40px;
+        height: 40px;
+
+        margin: 5px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    #ImageGroup img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+@media(max-width:1000px){
+    .WriteContainer input{
+        width: 40%;
+    }
+}
+@media(max-width:650px){
+ .ContainerAllChats{
+    display: none;
+ }
+ .ContainerContentChat{
+  margin-left: 79px;
+  border-left: 2px solid $ColorFuente;
+  width: 87%;
+ }
+.WriteContainer{
+    width: 87%;
+    border-left: 2px solid $ColorFuente;
+    margin-left: -2px;
+}
+}
+@media(max-width:500px){
+    .Back{
+        display: Block;
+        cursor: pointer;
+    }
+    .ContainerContentChat{
+ 
+        width: 100%;
+        margin-left: 0px;
+       }
+       .WriteContainer{
+        width: 100%;
+  
+    }
+       #Sidebar{
+        display: none;
+       }
+       .WriteContainer input{
+width: 50%;
+    }
+    #ImageGroup{
+        width: 40px;
+    }
+    .OptionsChat{
+        width: 40%;
+    }
+    .Call,.VideoCall,.Option{
+        width: 30px;
+        height: 30px;
+    }
+    .Call img,.VideoCall img,.Option img{
+    width: 60%;
+    height: 60%;
+    margin-top: 5px;
+    }
+}
+@media(max-width:380px){
+    #ImageGroup{
+        width: 40px;
+    }
+    .OptionsChat{
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+    }
+    .Call,.VideoCall,.Option{
+        width: 30px;
+        height: 30px;
+    }
+    .Call img,.VideoCall img,.Option img{
+    width: 60%;
+    height: 60%;
+    margin-top: 5px;
+    }
+}
+
+.ContainerEvent p{
+   color: white;
+}
+#eventData{
+    color: white;
+}
+.ContainerEvents{
+    background-color:$ColorSecundario;
+border-left: 2px solid $ColorFuente;
+    width: 350px;
+    height: 81vh;
+    float: right;
+}
+
+.Description,.Text{
+    margin: 20px;
+   
+
+}
+.ContentDescription,.ContentText{
+    background-color: #151615;
+    height: 60px;
+    padding: 6px;
+    color: $ColorFuente;
+    font-weight: bold;
+    box-shadow:  0 0 4px gray;
+}
+.TittleDescription,.TittleText{
+    color: $ColorFuente;
+    margin: 10px;
+ 
+}
+.TittleDescription p{
+       margin-top: 30px;
+       font-weight: bold;
+}
+.Type{
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.ContainerInterest,.ContainerParticipants{
+
+    margin: 20px;
+    margin-top: -30px;
+}
+.TittleInterest,.TittleParticipants{
+color: $ColorFuente;
+font-weight: bold;
+}
+.TittleInterest{
+    margin-top: 60px;
+}
+.ContainerAllInterest,.ContainerAllParticipants{
+background-color: #151615 ;
+padding: 5px;
+border-radius: 10px;
+max-height: 170px;
+overflow-y: scroll;
+box-shadow: 0 0 4px gray;
+}
+.ContainerEvents{
+    max-height: 81vh;
+    overflow-y: scroll;
+}
+.ContainerParticipants{
+margin-top: 50px;
+}
+
+.ContainerAllInterest::-webkit-scrollbar,
+.ContainerAllParticipants::-webkit-scrollbar{
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.ContainerAllInterest::-webkit-scrollbar-thumb,
+.ContainerAllParticipants::-webkit-scrollbar-thumb{
+    background-color: $ColorFuente; 
+}
+
+.ContainerAllInterest::-webkit-scrollbar-track,
+.ContainerAllParticipants::-webkit-scrollbar-track{
+    background-color: $ColorSecundario;
+}
+
+.ContainerEvents::-webkit-scrollbar-track {
+    background-color: rgb(48, 48, 48);
+}
+.ContainerEvents::-webkit-scrollbar-thumb {
+    background-color:rgb(17, 16, 16);
+}
+.ContainerEvents::-webkit-scrollbar {
+    width: 12px;
+}
+.NameChat,.Type{
+    width: 20%;
+
+}
+.NameChat p{
+    margin-left: 50px;
+}
+#ImageGroup img{
+    margin-left: 20px;
+}
+
+#CreatePostForEvent{
+    width: 50px;
+ 
+    position: relative;
+    top: 75%;
+    float: right;
+    margin-right: 40px;
+    transition: all 300ms ease;
+}
+#CreatePostForEvent:hover{
+transform: scale(1.2);
+}
+#CreatePostForEvent button {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    transition: all 300ms ease;
+    
+  }
+  
+  #CreatePostForEvent button img {
+    width: 50px;
+    height: 50px;
+
+  }
+  .SpaceForModals{
+
+    height: 81vh;
+    max-height: 81vh;
+  }
+.OverflowHideen{
+    overflow: hidden;
+}
+@media(max-width:1170px){
+
+          .ContainerAllChats{
+            width: 250px;
+          }
+}
+@media(max-width:1075px){
+
+    .ContainerAllChats{
+      display: none;
+    }
+
+}
+@media(max-width:1075px){
+
+.ContainerContentChat{
+
+    width: 100%;
+    margin-left: 78px;
+}
+
+
+}
+@media(max-width:800px){
+
+.ContainerEvents{
+    width: 250px;
+}
+    
+    }
+    @media(max-width:700px){
+
+        .ContainerEvents{
+            display: none;
+        }
+        .OptionsChat{
+        width: 20%;
+            
+            }
+            .type{
+                width: 50%;
+            }
+
+        }

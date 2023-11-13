@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { EditUserService } from 'src/app/services/edit-user.service';
 import { GetCountriesService } from 'src/app/services/get-countries.service';
+import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
@@ -35,6 +36,7 @@ export class EditProfileComponent {
   	constructor(private EditService: EditUserService, 
 		private countries: GetCountriesService, 
 		private userService: GetUserService, 
+		public interestService: GetInterestsService
 	) {}
 	ngOnInit(){
 		this.countriesDropbox();
@@ -107,6 +109,10 @@ export class EditProfileComponent {
 
 			select.add(newOption, undefined);
 		}
+	}
+
+	DisplayInterestSelector(){
+		this.interestService.displaySelectInterest = true;
 	}
 
 	OnCompleteAlert(){

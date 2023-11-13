@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { NotFoundError } from 'rxjs';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
+import { GetUserService } from 'src/app/services/get-user.service';
 
 @Component({
   selector: 'app-type-search',
@@ -14,23 +16,25 @@ export class TypeSearchComponent {
     buttonInterests = document.getElementById('btnInterests');
 
 	typeSearchVariable:any = "users" || "posts" || "interests";
-	AllUsers:any;
-	AllPosts:any;
+	
 	AllInterests:any;
-	filteredUsers:any;
-	filteredInterests:any;
+	filteredData:any;
+
+	nothingFoungMsg = {
+		notFoundUser: "No User was found.",
+		notFoundInterest:"No interest was found."
+	}
+	SearchNotFound:any = "";
+
     constructor(
 		private interestService: GetInterestsService, 
-		private postService: GetPostsService
+		private userService: GetUserService
 	) { }
 
 	ngOnInit(){
 		this.RequestInformation();
 	};
 	RequestInformation(){
-		this.postService.getPosts().subscribe((res:any)=>{
-			this.AllPosts = res;
-		})
 		this.interestService.getInterests().subscribe((res:any)=>{
 			this.AllInterests = res;
 		});
@@ -40,19 +44,23 @@ export class TypeSearchComponent {
     }
     onSearch(data:Event){
 	  	const ReceivedText = (data.target as HTMLInputElement).value.toLowerCase();
-    
-	  		if (ReceivedText.length >= 2) this.typeData(ReceivedText);
-	  	}
+	  	if (ReceivedText.length >= 2) this.typeData(ReceivedText);
+	}
     typeData(dataReceived: string) {
 		if (this.typeSearchVariable == "users") {
-			this.filteredUsers = this.AllUsers.filter((result:any) =>
-				result.name.toLowerCase().startsWith(dataReceived.toLowerCase())
-			)
+			this.userService.getUsersBySearch(dataReceived).subscribe((res:any)=>{
+				this.filteredData = res;
+			})
 		}
 		if (this.typeSearchVariable == "interests") {
-			this.filteredInterests = this.AllInterests.filter((result:any) =>
+			this.filteredData = this.AllInterests.filter((result:any) =>
 				result.interest.toLowerCase().startsWith(dataReceived.toLowerCase())
 			)
 		}
+	}
+	InCaseNoResults(){
+		if (this.typeSearchVariable == "interests") this.SearchNotFound = this.nothingFoungMsg.notFoundInterest;
+
+		if (this.typeSearchVariable == "user") this.SearchNotFound = this.nothingFoungMsg.notFoundUser;
 	}
 }

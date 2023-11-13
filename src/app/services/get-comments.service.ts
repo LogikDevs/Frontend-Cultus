@@ -27,7 +27,8 @@ export class GetCommentsService {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
-			})
+			}),
+			observe: "response" as 'body'
 		}
 		return this.http.post(this.URLCreateComment, receivedPostData, httpOptions);
   	}
@@ -38,6 +39,6 @@ export class GetCommentsService {
 				'Authorization': `Bearer ` + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.post(this.URLDeleteComment+CommentId, httpOptions);
+		return this.http.delete(this.URLDeleteComment+CommentId, httpOptions);
   	}
 }

@@ -1,15 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CreatePostService } from '../../services/create-post.service';
 import { NewPostData } from './create-post.model';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetUserService } from 'src/app/services/get-user.service';
+import { Router } from '@angular/router';
+import { GetCountriesService } from 'src/app/services/get-countries.service';
 @Component({
 	selector: 'app-create-post',
 	templateUrl: './create-post.component.html',
 	styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent {
-		
+	@Input() isInsideEvents: boolean = false;
+	
 	postMultimedia: File;
 	imageUrl:any;
 	defaultUrl:string = "http://localhost:8000/storage/profile_pic/";
@@ -17,8 +20,16 @@ export class CreatePostComponent {
 	userData:any;
 	username:string = "";
 
+	publishedPost:any;
+
+	@Output() postHasBeenPublished = new EventEmitter<boolean>();
+
+	@Input() EventPost:any = null;
+
+	@Output() ComponentRemoved = new EventEmitter<boolean>();
+
 	CompleteMessage = {
-		Message: "the Post has been published.",
+		Message: "The Post has been published.",
 		visibility: false
 	}
 	ErrorMessage = {
@@ -26,15 +37,20 @@ export class CreatePostComponent {
 		visibility: false
 	}
 
+	selectLocation:any = "";
+
 	postInterests:any = this.interestService.NewUserInterestsArray;
 
 	constructor(
 		private userService: GetUserService, 
 		private createPostService: CreatePostService, 
-		public interestService: GetInterestsService
+		public interestService: GetInterestsService,
+		private router: Router,
+		private countries: GetCountriesService
 	) { }
 	ngOnInit(){
 		this.getUser();
+		this.countriesDropbox();
 	}
 	getUser(){
 		this.userService.getUser().subscribe((res:any)=>{
@@ -44,18 +60,21 @@ export class CreatePostComponent {
 		})
 	}
 	sendPostData(FormData: any) {
+		this.selectLocation = document.getElementById("postLocation");
+
 		const postData: NewPostData = {
 			text: FormData.text,
-			latitud: FormData.latitud,
-			longitud: FormData.longitud,
-			multimedia_file: this.postMultimedia
+			location: Number(this.selectLocation.value),
+			multimedia_file: this.postMultimedia,
+			fk_id_event: this.EventPost
 		}
+		console.log(postData)
 		this.createPostService.postCreate(postData).subscribe((res:any)=>{
 			if (res.status === 201){
-				const newPostId = res.body.id_post;
+				this.publishedPost = res.body;
 
-				this.sendPostInterests(newPostId);
-				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, newPostId);
+				this.sendPostInterests(this.publishedPost.id_post);
+				if (this.postMultimedia) this.sendPostMultimedia(postData.multimedia_file, this.publishedPost.id_post);
 
 				this.OnCompleteAlert();
 			}
@@ -67,9 +86,7 @@ export class CreatePostComponent {
 		})
 	}
 	sendPostMultimedia(postMultimedia:File, id_post:any ) {
-		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{
-			console.log(res)
-		})
+		this.createPostService.postMultimedia(postMultimedia, id_post).subscribe((res:any)=>{})
 	}
 	onFileChange(event: any) {
 		this.postMultimedia = event.target.files[0];
@@ -79,7 +96,7 @@ export class CreatePostComponent {
 				this.imageUrl = event.target?.result;
 			}
 			reader.readAsDataURL(this.postMultimedia);
-		  }
+		}
 	}
 
 	showPostInterestSelection(){
@@ -94,22 +111,45 @@ export class CreatePostComponent {
 		this.interestService.NewUserInterestsArray = [];
 	}
 
+	countriesDropbox() {
+		const selectLocation: any = document.getElementById("postLocation");
+		
+		this.countries.getCountries().subscribe((res: any) => {
+			this.countriesIntoDropbox(selectLocation, res);
+		})
+	}
+
+	countriesIntoDropbox(select: any, res: any) {
+		for (let i = 0; i < res.length; i++) {
+			var country = res[i];
+			let newOption = new Option(country.country_name, country.id_country);
+
+			select.add(newOption, undefined);
+		}
+	}
+
 	OnCompleteAlert(){
 		this.CompleteMessage.visibility = true;
 		this.ErrorMessage.visibility = false;
 		setTimeout(() => {
+			if (this.EventPost == null) this.router.navigateByUrl("/profile/" + this.userData.id);
+
+			if (this.EventPost) this.postHasBeenPublished.emit(true);
 			this.hideComponent(true);
-		}, 4000);
+		}, 2000);
 	}
 	OnErrorAlert(){
 		this.ErrorMessage.visibility = true;
 		this.CompleteMessage.visibility = false;
 		setTimeout(() => {
 			this.hideComponent(false);
-		}, 4000);
+		}, 2000);
 	}
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;
 		if (Complete == false) this.ErrorMessage.visibility = false;
+	}
+	ComponentRemove(){
+		this.ComponentRemoved.emit(true);
 	}
 }

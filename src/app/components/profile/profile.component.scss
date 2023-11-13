@@ -1,11 +1,14 @@
-$ColorFuente:#4A5C45;
+$ColorFuente:#7ab06a;
 $ColorSecundario:#282928;
 *{
 
     transition: all .5s ease;
 }
 
-
+.sendMessageButton{
+    width: 20px;
+    height: 20px;
+}
 .ContainerMyProfile{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -14,11 +17,11 @@ $ColorSecundario:#282928;
     transition: all .5s ease;
 }
 .ImageProfile{
-   background-color: $ColorFuente;
-   border: solid 10px $ColorSecundario;
-   position: relative;
-top: 80px;
-   margin: auto;
+    background-color: $ColorFuente;
+    border: solid 10px $ColorSecundario;
+    position: relative;
+    top: 80px;
+    margin: auto;
     width: 180px;
     height: 180px;
     border-radius: 50%;
@@ -53,6 +56,7 @@ margin-top: 5px;
 .DataMyProfile{
     display: flex;
     justify-content: center;
+    align-items: center;
   color: $ColorFuente;
   font-weight: bold;
   width: 100%;
@@ -383,4 +387,16 @@ margin-top: 20px;
 .TittleDescription p{
     margin-left: 20px;
 }
+.FollowOption button{
+    background-color: #282828;
+    color: $ColorFuente;
+    border: none;
+    border-radius:10px ;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 13px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 

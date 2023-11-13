@@ -3,7 +3,7 @@
     <app-sidebar ></app-sidebar>
 </div>
 
-<div class="ContainerSelectInterest" *ngIf="WindowVisibility">
+<div class="ContainerSelectInterest" [class.inside-create-post]="isInsideCreatePost" *ngIf="WindowVisibility">
 
     <div class="ContainerSearchInterest">
 
@@ -21,7 +21,7 @@
            
         </div>
     <div class="SkipSearchInterest">
-                <button routerLink="/home" *ngIf="SelectInterestType === 'user'">Omitir</button>
+                <button routerLink="/home" *ngIf="SelectInterestType === 'user'">Skip</button>
             </div>
     </div>
     <div class="ContainerResultsSearch">
@@ -31,7 +31,7 @@
        
     </div>
      <div class="FinishSelectInterest">
-            <button (click)="sendInterests()">Continuar</button>
+            <button (click)="sendInterests()">Save</button>
         </div>
 
 </div>

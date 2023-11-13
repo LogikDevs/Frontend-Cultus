@@ -1,4 +1,4 @@
-$ColorFuente: #537D57;
+$ColorFuente:#7ab06a;
 
 .ContainerPostDesktop {
   display: none;
@@ -292,6 +292,9 @@ margin-left: 1px;
     text-align: center;
 
 }
+.publishedComment{
+    color: rgb(70, 193, 59);
+}
 .ContainerAllComments {
   position: absolute;
   top: 0;
@@ -476,6 +479,7 @@ min-width: 360px;
             }
             .ContainerPostDesktop{
                 height: 300px;
+                margin-left: 30px;
             }
             .DataProfile{
                 margin-top: 20px;

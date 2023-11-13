@@ -1,5 +1,11 @@
-<img src={{groupPicture}} alt="">
-<p>{{group.name}}</p>
-<p>{{group.description}}</p>
-<p>{{group.privacy}}</p>
-<button name="JoinGroupBtn" (click)="joinGroup">{{joinButton}}</button>
+<div class="EventOrGroup">
+    <div class="ImageEventOrGroup">
+        <img src={{groupPicture}} alt="">
+    </div>
+    <p>{{group.name}}</p>
+    <p>{{group.description}}</p>
+    <p>{{group.privacy}}</p>
+    <div class="JoinOption">
+        <button name="JoinGroupBtn" (click)="joinGroup(joined)">{{joinButton}}</button>
+    </div>
+</div>

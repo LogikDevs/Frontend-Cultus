@@ -1,7 +1,9 @@
-$ColorFuente:#4A5C45;
+$ColorFuente:#7ab06a;
 $ColorSecundario:#282928;
-.ContainerModalCreatePost{
 
+.ContainerModalCreatePost{
+position: relative;
+top: -320px;
     width: 100%;
 max-width: 500px;
 box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
@@ -100,7 +102,21 @@ margin-top: 0px;
     align-items: center;
     margin-left: 10px;
 }
-.AddLocate , .AddInterest{
+.LocationSelector{
+    background-color: $ColorSecundario;
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    text-align: center;
+    height: 85%;
+    width: 40%;
+    cursor: pointer;
+}
+ .AddInterest{
     background-color: $ColorSecundario;
     color: $ColorFuente;
     font-weight: bold;
@@ -111,6 +127,20 @@ align-items: center;
     border-radius: 15px;
 text-align: center;
 height: 60%;
+cursor: pointer;
+}
+.AddLocate{
+    background-color: $ColorSecundario;
+    color: $ColorFuente;
+    font-weight: bold;
+    margin: 5px;
+display: flex;
+justify-content: center;
+align-items: center;
+    border-radius: 15px;
+text-align: center;
+height: 60%;
+width: 50%;
 cursor: pointer;
 }
 .AddLocate p , .AddInterest p{
@@ -177,13 +207,32 @@ cursor: pointer;
 }
 .ContainerModalCreatePost{
     margin: auto;
-    margin-top: -60px;
+position: relative;
+
 
 }
 @media(min-width:500px){
+    .ContainerModalCreatePost.inside-events {      
+        margin: 0px;
+        position: relative;
+        top: 0px;
+        margin-left: 160px;
+        max-height: 80vh; 
+          }
+          .InterestForEvents{
+            background: none;
+          }
+          .InterestForEvents.inside-events{
+        
+        margin-left: -100px;
+        margin-top: 280px;
+        width: 1000px;
+        height: 0px;
+          }
     .ContainerModalCreatePost{
 width: 70%;
 margin-left: 100px;
+top: -320px;
 
     }
     .ContainerSelectInterest{
@@ -191,20 +240,38 @@ margin-left: 100px;
     }
 }
 @media(min-width:700px){
+    .ContainerModalCreatePost.inside-events {      
+        margin: 0px;
+        position: relative;
+        top: 0px;
+        margin-left: 160px;
+        max-height: 80vh; 
+          }
+          .InterestForEvents{
+            background: none;
+          }
+          .InterestForEvents.inside-events{
+        
+        margin-left: -100px;
+        margin-top: 280px;
+        width: 1000px;
+        height: 0px;
+          }
     .ContainerModalCreatePost{
 
 margin: auto;
-margin-top: -60px;
+
+top: -300px;
 
     }
 }
 .ContainerSelectInterest{
 position: relative;
-top: -300px;
+top: -650px;
 }
 .ContainerInterest{
     display: flex;
-    margin-top: 10px;
+    position: relative;
 }
 .Interest{
     display: flex;
@@ -226,3 +293,114 @@ font-weight: bold;
    text-align: center;
 
    } 
+
+.ContainerModalCreatePost.inside-events {      
+margin: 0px;
+position: relative;
+top: 0px;
+margin-left: 160px;
+max-height: 80vh; 
+  }
+  .InterestForEvents{
+    background: none;
+  }
+  .InterestForEvents.inside-events{
+
+margin-left: -100px;
+margin-top: 280px;
+width: 1000px;
+height: 0px;
+  }
+  
+@media(max-width:1430px){
+    .ContainerModalCreatePost.inside-events {      
+        margin: 0px;
+        position: relative;
+        top: 0px;
+        margin-left: 60px;
+        max-height: 80vh; 
+          }
+   
+          .InterestForEvents.inside-events{
+        
+        margin-left: -100px;
+        margin-top: 280px;
+        width: 1000px;
+        height: 0px;
+          }
+}
+  
+@media(max-width:1340px){
+    .ContainerModalCreatePost.inside-events {      
+        margin: 0px;
+        position: relative;
+        top: 0px;
+        margin-left: 0px;
+        max-height: 80vh; 
+          }
+   
+          .InterestForEvents.inside-events{
+        
+        margin-left: -100px;
+        margin-top: 280px;
+        width: 1000px;
+        height: 0px;
+          }
+}
+@media(max-width:1270px){
+    .ContainerModalCreatePost.inside-events {      
+        margin: 0px;
+        position: relative;
+        top: 0px;
+        width: 350px;
+        margin-left: 40px;
+        max-height: 80vh; 
+          }
+   
+          .InterestForEvents.inside-events{
+        
+        margin-left: -100px;
+        margin-top: 280px;
+        width: 1000px;
+        height: 0px;
+          }
+}
+@media(max-width:1170px){
+    .ContainerModalCreatePost.inside-events {      
+        margin: 0px;
+        position: relative;
+        top: 0px;
+        width: 350px;
+        margin-left: 40px;
+        max-height: 80vh; 
+          }
+   
+          .InterestForEvents.inside-events{
+        
+        margin-left: -100px;
+        margin-top: 280px;
+        width: 1000px;
+        height: 0px;
+          }
+     
+}
+
+@media(max-width:850px){
+    .ContainerModalCreatePost.inside-events {      
+        margin: 0px;
+        position: relative;
+        top: 0px;
+        width: 300px;
+        margin-left: 40px;
+        max-height: 80vh; 
+          }
+   
+          .InterestForEvents.inside-events{
+        
+        margin-left: -100px;
+        margin-top: 280px;
+        width: 1000px;
+        height: 0px;
+          }
+     
+}

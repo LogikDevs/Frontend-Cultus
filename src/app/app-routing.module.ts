@@ -24,6 +24,11 @@ import { CreateComponent } from './components/create/create.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { FollowedSectionComponent } from './components/followed-section/followed-section.component';
 import { EventsComponent } from './components/EventsFolder/events/events.component';
+import { EventComponent } from './components/EventsFolder/event/event.component';
+import { GroupComponent } from './components/GroupsFolder/group/group.component';
+import { PrivateconversationsComponent } from './components/privateMsgFolder/privateconversations/privateconversations.component';
+import { LoadedComponent } from './components/loaded/loaded.component';
+import { GroupListContainerComponent } from './components/GroupsFolder/GroupListFolder/group-list-container/group-list-container.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent, canActivate: [GuardAuthentication]},
@@ -49,7 +54,13 @@ const routes: Routes = [
   { path: 'Create', component: CreateComponent, canActivate: [GuardAuthentication] },
   { path: 'createGroup', component: CreateGroupComponent, canActivate: [GuardAuthentication] },
   { path: 'FollowedSection', component: FollowedSectionComponent, canActivate: [GuardAuthentication] },
-  { path: 'events', component: EventsComponent, canActivate: [GuardAuthentication] }
+  { path: 'events', component: EventsComponent, canActivate: [GuardAuthentication] },
+  { path: 'event/:id', component: EventComponent, canActivate: [GuardAuthentication] },
+  { path: 'group/:id', component: GroupListContainerComponent, canActivate: [GuardAuthentication] },
+  { path: 'Messages', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] },
+  { path: 'Messages/:id', component: PrivateconversationsComponent, canActivate: [GuardAuthentication] },
+  { path: 'Loaded', component: LoadedComponent, canActivate: [GuardAuthentication] }
+
 ];
 
 

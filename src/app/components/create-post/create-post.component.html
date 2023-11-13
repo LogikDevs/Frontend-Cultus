@@ -3,10 +3,10 @@
 
 
 <form #postCreateForm="ngForm" (ngSubmit)="sendPostData(postCreateForm.value)">
-<div class="ContainerModalCreatePost">
+<div class="ContainerModalCreatePost" [class.inside-events]="isInsideEvents">
     <div class="Header">
 <div class="Close">
-    <img src="assets/post-images/close.svg" alt="">
+    <img src="assets/post-images/close.svg" (click)="ComponentRemove()" alt="">
 </div>
     </div>
     <div class="User">
@@ -19,13 +19,11 @@
 
     </div>
     <div class="ContainerInterest">
-     
             <p class="Interest" *ngFor="let interest of postInterests">{{ interest.interest }}</p>
-   
     </div>
     <div class="PublicationSpace">
     
-        <input ngModel name="text" type="text"  required placeholder="What are you thinking of?">
+        <input ngModel name="text" type="text"  required placeholder="What do you think about?">
    
         <div class="SpacePhoto">
             <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
@@ -36,16 +34,17 @@
         <div class="AddLocate">
             <img src="assets/post-images/Location.svg" alt="">
             <p>Add Location</p>
+            <select ngModel id="postLocation" name="postLocation" class="LocationSelector">
+                <option disabled selected></option>
+            </select>
         </div>
         <div class="AddInterest">
            
             <img (click)="showPostInterestSelection()" src="assets/interest-images/interes.svg" alt="">
             <p (click)="showPostInterestSelection()">Add Interest</p>
         </div>
-       
         
     </div>
-
     <div class="FooterCreatePost">
     <div class="AddPostImages">
         <div class="OpenCamara">
@@ -66,9 +65,12 @@
 </div>
 
 </div>
-<div *ngIf="interestService.displaySelectInterest">
-    <app-select-interest class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+<div class="InterestForEvents" [class.inside-events]="isInsideEvents"  *ngIf="interestService.displaySelectInterest" >
+   
+    <app-select-interest [isInsideCreatePost]="true"  class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+
 </div>
+
 </form>
 
 <div> 

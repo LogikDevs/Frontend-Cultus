@@ -1,0 +1,55 @@
+$ColorFuente:#7ab06a;
+
+.myEvents{
+display: flex;
+}
+.Eventos{
+display: flex;}
+.Event{
+    display: flex;
+    
+}
+.joinedEvents{
+    background-color: rgb(9, 140, 39);
+}
+
+
+.ContainerData{
+
+    margin: 100px;
+        display: flex;
+        justify-content: start;
+        text-align: center;
+    }
+    .EventOrGroup{
+        box-shadow: 0 0 4px rgb(69, 69, 69);
+        background-color: #232423;
+        margin: 10px;
+        width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    transition: all 300ms ease-in;
+    cursor: pointer;
+    }
+    .EventOrGroup:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 8px $ColorFuente;
+    }
+    .ImageEventOrGroup{
+    
+        width: 100%;
+        height: 70%;
+        border-radius: 10px;
+    }
+    .EventOrGroup p{
+        color: $ColorFuente;
+        font-weight: bold;
+    }
+    .ImageEventOrGroup img{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
