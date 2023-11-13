@@ -1,0 +1,74 @@
+<div class="OthersComponents">
+
+    <app-sidebar></app-sidebar>
+</div>
+
+<div class="ContainerDatosPerfil">
+    <form #ProfileDataForm="ngForm" action="" (ngSubmit)="sendProfileData(ProfileDataForm.value)">
+
+
+        <div class="BackgroundAddImage">
+            <div class="SkipDatosPerfil">
+                <button routerLink="/SelectInterest">Omitir</button>
+            </div>
+            <div class="AddImage">
+
+                <div class="ImageSpace" [style.background-image]="'url(' + selectedImage + ')'"
+                    [style.background-size]="'cover'" [style.background-position]="'center'"
+                    [class.hideImage]="!selectedImage" [class.showEdit]="selectedImage" (click)="triggerFileInput()">
+                    <img *ngIf="!selectedImage"
+                        src="https://i.ibb.co/Fh9yqwz/add-profile-picture-icon-upload-photo-of-social-media-user-vector-removebg-preview.png"
+                        alt="">
+                    <p *ngIf="!selectedImage" class="hideImage">Agregar imagen</p>
+
+                    <span class="editText">Editar imagen</span>
+                     
+                </div>
+           <p class="ErrorMessageProfilePic">{{errorMessageProfilePic}}</p>
+                <div class="AddImageInput">
+                    <label for="pfp" class="InputContainer">
+                        <input ngModel type="file" (change)="onFileSelected($event)" accept="image/*" id="pfp"
+                            name="profile_pic" #fileInput>
+                    </label>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="AddDescription">
+            <div class="TittleDescription">
+                <p>Agrega una descripcion :</p>
+            </div>
+
+            <textarea ngModel name="description" id="description" placeholder=""> </textarea>
+        </div>
+
+        <div class="AddGender">
+            <select ngModel id="gender" name="gender" required>
+                <option disabled selected value="">Selecciona un genero</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="nonbinary">Non Binary</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="AddCountry">
+            <select ngModel id="homeland" name="homeland">
+                <option disabled selected value="">Selecciona tu país</option>
+            </select>
+        </div>
+        <div class="AddResidenceCountry">
+            <select ngModel id="residenceCountry" name="residenceCountry">
+                <option disabled selected value="">Selecciona tu pais de residencia</option>
+            </select>
+        </div>
+
+        <div class="FinishProfileData">
+            <button id="FinishRegister">Continuar</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+    <div class="ContainerHome">
+
+        <div class="SubHeaderHome">
+            <div (click)="ChangeSection(true)" class="Discovery">
+                <p>Discovery</p>
+            </div>
+            <div (click)="ChangeSection(false)" class="Followed">
+                <p>Followed</p>
+            </div>
+
+
+        </div>
+        <div id="Sidebar">
+            <app-sidebar></app-sidebar>
+        </div>
+
+
+        <div class="PostHome">
+
+            <div *ngIf="Section">
+                <app-discovery-section class="Post"></app-discovery-section>
+            </div>
+            <div *ngIf="!Section">
+                <app-followed-section class="Post"></app-followed-section>
+            </div>
+
+        </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,394 @@
+$ColorFuente:#7ab06a;
+$ColorSecundario:#282928;
+*{
+
+    transition: all .5s ease;
+}
+.ContainerEditProfile{
+    margin-top: 50px;
+}
+
+.ContainerMyProfile{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    background-color: #181818;
+    transition: all .5s ease;
+    height: 600px;
+}
+.ImageProfile{
+   background-color: $ColorFuente;
+   border: solid 10px $ColorSecundario;
+   position: relative;
+top: 80px;
+   margin: auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+
+
+}
+.ImageProfile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.EditProfile{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color:#333131;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+float: right;
+margin: 0px;
+
+    text-align: center;
+    cursor: pointer;
+}
+.EditProfile img{
+width: 80%;
+height: 80%;
+margin-top: 5px;
+}
+
+@media(min-width:501px){
+
+  
+.ContainerMyProfile{
+    width: 80%;
+    float: right;
+    margin-right: 15px;
+    max-width: 500px;
+
+}
+
+
+}
+@media(min-width:630px){
+  
+    .ContainerMyProfile{
+        width: 300%;
+ float: none;
+ margin: auto;
+
+        max-width: 500px;
+     
+
+
+    }
+
+    }
+    @media(min-width:900px){
+   
+     
+  .ContainerMyProfile{
+ min-width: 650px;
+  }}
+    @media(min-width:1100px){
+    
+  .ContainerMyProfile{
+ min-width: 950px;
+  }
+
+    }
+   
+    .BackgroundProfile{
+        background: url('https://thumbs.dreamstime.com/b/hojas-de-oto%C3%B1o-en-el-camino-lluvioso-127151896.jpg');
+ background-size: cover;
+ height: 250px;
+ border-top-left-radius: 20px;
+ border-top-right-radius: 20px;
+    }
+ 
+@media(max-width:499px){
+
+    .ImageProfile{
+
+        position: relative;
+     top: 80px;
+        margin: auto;
+         width: 120px;
+         height: 120px;
+         border-radius: 50%;
+     
+     
+     }
+     .BackgroundProfile{
+        height: 200px;
+     }
+     
+     
+
+}
+.EditableContent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+$ColorFuente:#7ab06a;
+$ColorSecundario:#282928;
+*{
+
+    transition: all .5s ease;
+}
+.ContainerEditProfile{
+    margin-top: 50px;
+}
+
+.ContainerMyProfile{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    background-color: #181818;
+    transition: all .5s ease;
+    height: 600px;
+}
+.ImageProfile{
+   background-color: $ColorFuente;
+   border: solid 10px $ColorSecundario;
+   position: relative;
+top: 80px;
+   margin: auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+
+
+}
+.ImageProfile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.EditProfile{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color:#333131;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+float: right;
+margin: 0px;
+
+    text-align: center;
+    cursor: pointer;
+}
+.EditProfile img{
+width: 80%;
+height: 80%;
+margin-top: 5px;
+}
+
+@media(min-width:501px){
+
+  
+.ContainerMyProfile{
+    width: 80%;
+    float: right;
+    margin-right: 15px;
+    max-width: 500px;
+
+}
+
+
+}
+@media(min-width:630px){
+  
+    .ContainerMyProfile{
+        width: 300%;
+ float: none;
+ margin: auto;
+
+        max-width: 500px;
+     
+
+
+    }
+
+    }
+    @media(min-width:900px){
+   
+     
+  .ContainerMyProfile{
+ min-width: 650px;
+  }}
+    @media(min-width:1100px){
+    
+  .ContainerMyProfile{
+ min-width: 950px;
+  }
+
+    }
+   
+    .BackgroundProfile{
+        background: url('https://thumbs.dreamstime.com/b/hojas-de-oto%C3%B1o-en-el-camino-lluvioso-127151896.jpg');
+ background-size: cover;
+ height: 250px;
+ border-top-left-radius: 20px;
+ border-top-right-radius: 20px;
+    }
+ 
+@media(max-width:499px){
+
+    .ImageProfile{
+
+        position: relative;
+     top: 80px;
+        margin: auto;
+         width: 120px;
+         height: 120px;
+         border-radius: 50%;
+     
+     
+     }
+     .BackgroundProfile{
+        height: 200px;
+     }
+     
+     
+
+}
+.EditableContent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+textarea {
+    resize: none;
+  }
+.AddImage{
+text-align: center;
+
+
+}  
+
+
+
+.AddImageInput {
+background-color: #537D57;
+opacity: 0%;
+}
+#pfp-input{
+    background-color: #537D57;
+}
+.ImageSpace{
+    cursor: pointer;
+    margin: auto;
+position: relative;
+
+    border-radius: 50%;
+width: 180px;
+height: 180px;
+background-image: url('https://static.thenounproject.com/png/3465604-200.png');
+
+}.ImageSpace .editText {
+    display: none;
+    cursor: pointer;
+  }
+
+  
+  .ImageSpace.showEdit .editText {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    cursor: pointer;
+  }
+  
+  
+.ImageSpace img{
+    width: 100%;
+    height: 100%;
+
+}
+.hideImage {
+    background-image: none !important;
+  }
+  .EditableContent p{
+    color: $ColorFuente;
+    font-weight: bold;
+    font-size: 14px;
+  }
+textarea{
+    border: none;
+    border-radius: 8px;
+  background-color: #100F0F;
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.Content option,.Content select{
+    background-color: #100F0F;
+    color: $ColorFuente;
+    font-weight: bold;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+}
+.FinishProfileData{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+#FinishEditing{
+    margin-right: 60px;
+    margin-top: 50px;
+    background-color: #0B6886;
+color: #fff;
+border: none;
+padding: 12px;
+border-radius: 10px;
+cursor: pointer;
+
+}
+.hideImage {
+    background-image: none !important;
+  }
+  .EditableContent p{
+    color: $ColorFuente;
+    font-weight: bold;
+    font-size: 14px;
+  }
+textarea{
+    border: none;
+    border-radius: 8px;
+  background-color: #100F0F;
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.Content option,.Content select{
+    background-color: #100F0F;
+    color: $ColorFuente;
+    font-weight: bold;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+}
+.FinishProfileData{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+#FinishEditing{
+    margin-right: 60px;
+    margin-top: 50px;
+    background-color: #0B6886;
+color: #fff;
+border: none;
+padding: 12px;
+border-radius: 10px;
+cursor: pointer;
+}

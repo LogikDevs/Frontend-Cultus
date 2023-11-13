@@ -1,0 +1,145 @@
+$ColorFuente:#7ab06a;
+
+.HeaderGroups{
+    display: flex;
+    justify-content: space-between;
+width: 100%;
+    align-items: center;
+color: $ColorFuente;
+font-weight: bold;
+
+}
+.TittleGroups{
+    margin-left: 120px;
+}
+.ButtonCreateGroup{
+    margin-right: 30px;
+}
+.SubHeader{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: $ColorFuente;
+font-weight: bold;
+margin-left: 110px;
+width: 90%;
+border-bottom: 2px solid $ColorFuente;
+}
+.SubHeader p{
+    margin: 10px;
+}
+.ButtonCreateGroup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+background-color: #232423;
+margin-left:20px;
+padding: 5px;
+border-radius: 10px;
+margin-top: 15px;
+cursor: pointer;
+}
+.ButtonCreateGroup img{
+    height: 80%;
+    margin: 5px;
+}
+.SliderGroups{
+width: 80%;
+
+margin-left: 160px;
+margin-top: 40px;
+}
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div .caption {
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    color: #fff;
+    background-image: green !important;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 0 0 5px 5px;
+}
+
+.TittleCategories{
+    margin-left: 150px;
+    margin-top: 20px;
+    color: $ColorFuente;
+}
+.ContainerCategories{
+max-width: 85%;
+ 
+    margin-left: 150px;
+    height: 170px;
+    display: flex;
+    justify-content: center
+    ;
+}
+.Categories{
+    background-color: #232423;
+    margin: 10px;
+    width: 200px;
+    border-radius: 10px;
+}
+.Image{
+    height: 80%;
+    background-color: #29442c;
+    border-radius: 10px;
+}
+.Image img{
+    border-radius: 10px;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.Text{
+    text-align: center;
+    
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.Text p{
+    margin-top: 5px;
+}
+
+
+
+.ContainerData{
+
+margin: 100px;
+    display: flex;
+    justify-content: start;
+    text-align: center;
+}
+.EventOrGroup{
+    box-shadow: 0 0 4px rgb(69, 69, 69);
+    background-color: #232423;
+    margin: 10px;
+    width: 20%;
+height: 150px;
+border-radius: 10px;
+transition: all 300ms ease-in;
+cursor: pointer;
+}
+.EventOrGroup:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 8px $ColorFuente;
+}
+.ImageEventOrGroup{
+
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+}
+.EventOrGroup p{
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.ImageEventOrGroup img{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+height: 100%;
+object-fit: cover;
+}

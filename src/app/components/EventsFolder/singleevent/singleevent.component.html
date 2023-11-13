@@ -1,0 +1,10 @@
+<div class="EventOrGroup" *ngIf="event">
+    <div class="ImageEventOrGroup">
+        <img src={{eventPicture}} alt="">
+    </div>
+    <p>{{event.event.name}}</p>
+    <p>{{event.event.description}}</p>
+    <div class="JoinOption">
+        <button (click)="checkFollowState(true)">{{isFollowing}}</button>
+    </div>
+</div>

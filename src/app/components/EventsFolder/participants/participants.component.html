@@ -1,0 +1,15 @@
+<div class="Participants">
+    <div class="ImageParticipants">
+        <img src="{{pfpUrl}}" alt=""> 
+    </div>
+    <div id="participant" class="NameParticipants" (click)="toProfile()">
+<div class="Name">
+        <p>{{participant.name}} {{participant.surname}}</p> 
+</div>
+<div class="Rol" *ngIf="participant.rol=='admin'">
+        <p class="adminText" *ngIf="type == 'event'">{{participant.rol}}</p>
+</div>
+
+</div>
+</div>
+

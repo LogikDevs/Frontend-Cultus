@@ -1,0 +1,62 @@
+<app-sidebar></app-sidebar>
+
+
+<form>
+    <div class="ContainerModalCreatePost">
+        <div class="Header">
+            <div class="Create">
+                <h2>Create</h2>
+            </div>
+        </div>
+        <div class="Space">
+            <div class="HeaderSpace">
+                <div class="User">
+                    <div class="Photo">
+                        <img src="assets/post-images/profile_def.jpg" alt="">
+                    </div>
+                    <div class="Text">
+                        <p>¿What are you thinking of?</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="OptionsCreate">
+                <div class="CreateBlock" (click)="SelectedTypeOfCreate(3)">
+                    <div class="Image">
+                         <img src="assets/Crear-imagenes/evento.svg" alt=""> 
+                    </div>
+                    <p>Create Event</p>
+                </div>
+                <div class="CreateBlock" (click)="SelectedTypeOfCreate(2)">
+                    <div class="Image">
+                        <img src="assets/Crear-imagenes/grupo.svg" alt="">
+                    </div>
+
+                    <p>Create Group</p>
+                </div>
+                <div class="CreateBlock" (click)="SelectedTypeOfCreate(1)">
+                    <div class="Image">
+                        <img src="assets/Crear-imagenes/post.svg" alt="">
+                    </div>
+
+                    <p>Create Post</p>
+                </div>
+
+            </div>
+        </div>
+
+
+<div class="Footer"></div>
+.
+    </div>
+
+</form>
+<div *ngIf="ShowCreationComponent==1">
+    <app-create-post (ComponentRemoved)="QuitCreation()"></app-create-post>
+</div>
+<div *ngIf="ShowCreationComponent==2">
+    <app-create-group (ComponentRemoved)="QuitCreation()"></app-create-group>
+</div>
+<div *ngIf="ShowCreationComponent==3">
+    <app-create-event (ComponentRemoved)="QuitCreation()"></app-create-event>
+</div>

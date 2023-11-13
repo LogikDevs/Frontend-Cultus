@@ -1,0 +1,28 @@
+<app-sidebar></app-sidebar>
+
+<div class="HeaderGroups">
+
+    <p class="TittleGroups">Groups</p>
+
+</div>
+
+<div class="SubHeader">
+    <div (click)="ChangeSection(true)" class="Suggestions">
+        <p>Suggestions</p>
+
+    </div>
+    <div (click)="ChangeSection(false)" class="MyGroups">
+        <p>My Groups</p>
+    </div>
+</div>
+
+<div *ngIf="Section">
+    <app-suggestedgroups></app-suggestedgroups>
+</div>
+<div *ngIf="!Section">
+    <app-mygroups></app-mygroups>
+</div>
+
+<div class="ContainerData">
+
+</div>

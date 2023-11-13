@@ -1,0 +1,65 @@
+<form #loginForm="ngForm" action="" (ngSubmit)="sendLogin(loginForm.value)">
+
+    <div class="ContainerLogin">
+        <div class="ContainerImagesExamples">
+            <div class="PhoneImage">
+                <img src="assets/Diseño_sin_título__1_-removebg-preview.png" alt="">
+            </div>
+            <div class="PhoneAndDesktopImage">
+                <img src="assets/imagenes.png" alt="">
+            </div>
+        </div>
+
+        <div class="DataLogin">
+
+            <div class="Return">
+                <a routerLink="/comienzo"><img src="assets/Go Back.png" alt=""></a>
+            </div>
+            <div class="TextLogin">
+                <h2>Welcome Back!</h2>
+                <p>Log in to your account</p>
+            </div>
+            <div class="InputLogin">
+                <div class="Username">
+                    <p>Email</p>
+                    <input ngModel name='email' type="text" placeholder="">
+                    <p id="InputError">{{InputLoginError}}</p>
+                </div>
+                <div class="Password">
+                    <p>Password</p>
+
+                    <input ngModel name='password' type="password" placeholder="">
+                    <a routerLink="/ForgotPassword">Forgot my password</a>
+
+                </div>
+                <div class="ContinueBottom">
+                    <button>Log In</button>
+                </div>
+
+                <div class="StartWithGoogle">
+                    <p>or continue with</p>
+                    <div class="LogosStartSection">
+                        <div class="Google">
+                            <img src="assets/Google.png" alt="">
+                            <p>Google</p>
+                        </div>
+                        <div class="Guest">
+                            <img src="assets/Account.png" alt="">
+                            <p>Guest</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="RegisterFromLogin">
+                    <p>¿No tienes cuenta?</p>
+                    <a routerLink="/register">Registrese aqui</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</form>
+<app-footer></app-footer>

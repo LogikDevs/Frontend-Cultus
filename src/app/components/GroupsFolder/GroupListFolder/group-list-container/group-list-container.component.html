@@ -1,0 +1,20 @@
+<app-sidebar id="Sidebar"></app-sidebar>
+
+<div class="ContainerAllChats">
+    <div class="Tittle">
+        <div class="Logo">
+            <img src="assets/sidebar-images/SMS.svg" alt="">
+        </div>
+        <div class="Text">
+            Groups
+        </div>
+    </div>
+    <div class="ContainerChats">
+        <div *ngFor="let group of myGroups">
+            <app-grouplist [groupToDisplay]="group" (ChangeGroup)="displayGroup($event)"></app-grouplist>
+        </div>
+    </div>
+</div>
+<div class="groupToDisplay">
+    <app-group [GroupToDisplay]="GroupToDisplay"></app-group>
+</div>
