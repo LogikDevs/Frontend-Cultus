@@ -82,22 +82,29 @@ export class EventService {
 	}
 
 
-	followEvent(){
+	followEvent(id_event:any){
+		const body = {
+			fk_id_event: id_event
+		}
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.post(this.urlFollowEvent, httpOptions);
+		return this.http.post(this.urlFollowEvent, body, httpOptions);
 	}
-	unfollowEvent(){
+
+	unfollowEvent(id_event:any){
+		const body = {
+			fk_id_event: id_event
+		}
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
 			})
 		}
-		return this.http.post(this.urlUnfollowEvent, httpOptions);
+		return this.http.post(this.urlUnfollowEvent, body, httpOptions);
 	}
 }
