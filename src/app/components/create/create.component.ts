@@ -2,31 +2,31 @@ import { Component } from '@angular/core';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+    selector: 'app-create',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-    ShowCreationComponent:number;
+    ShowCreationComponent: number;
 
-    constructor(private interestService: GetInterestsService){}
+    constructor(private interestService: GetInterestsService) { }
 
-    SelectedTypeOfCreate(type:number){
-        if (type != this.ShowCreationComponent){
+    SelectedTypeOfCreate(type: number) {
+        if (type != this.ShowCreationComponent) {
             switch (type) {
                 case 1:
                     this.ShowCreationComponent = 1;
-                  break;
+                    break;
                 case 2:
                     this.ShowCreationComponent = 2;
-                  break;
+                    break;
                 case 3:
                     this.ShowCreationComponent = 3;
             }
             this.interestService.NewUserInterestsArray = [];
         }
     }
-    QuitCreation(){
+    QuitCreation() {
         this.interestService.NewUserInterestsArray = [];
         this.ShowCreationComponent = 0;
     }

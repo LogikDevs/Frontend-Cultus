@@ -1,33 +1,27 @@
-$ColorFuente:#7ab06a;
-.ContainerSelectInterest{
+$ColorFuente: #7ab06a;
+.ContainerSelectInterest {
     background-color: #111111;
     max-width: 600px;
     width: 80%;
     height: 608px;
-margin: auto;
+    margin: auto;
     box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
     margin-top: -30px;
-
-    
 }
-.ContainerSearchInterest{
+.ContainerSearchInterest {
     display: flex;
     justify-content: space-around;
 }
 .Search {
-   
-  
     line-height: 28px;
     align-items: center;
     position: relative;
     width: 100%;
-    margin:auto ;
-   margin-left: 20px;
-   
+    margin: auto;
+    margin-left: 20px;
+}
 
-   }
-   
-   .input {
+.input {
     width: 80%;
     height: 40px;
     line-height: 28px;
@@ -37,23 +31,24 @@ margin: auto;
     border-radius: 8px;
     outline: none;
     background-color: #232524;
-    color:$ColorFuente;
-    transition: .3s ease;
+    color: $ColorFuente;
+    transition: 0.3s ease;
     margin-top: 20px;
-   }
-   
-   .input::placeholder {
-color: $ColorFuente;
-   }
-   
-   .input:focus, input:hover {
+}
+
+.input::placeholder {
+    color: $ColorFuente;
+}
+
+.input:focus,
+input:hover {
     outline: none;
     border-color: rgba(76, 234, 131, 0.4);
     background-color: #1d1c1c;
     box-shadow: 0 0 0 4px rgba(76, 234, 87, 0.1);
-   }
-   
-   .icon {
+}
+
+.icon {
     position: absolute;
     left: 1rem;
     fill: $ColorFuente;
@@ -61,33 +56,30 @@ color: $ColorFuente;
     height: 1rem;
     margin-top: 35px;
     cursor: pointer;
-   }
-   
-   .ContainerResultsSearch{
+}
+
+.ContainerResultsSearch {
     width: 90%;
-margin: auto;
+    margin: auto;
     margin-top: 30px;
 
-max-height: 400px;
-text-align: center;
-overflow-y: scroll;
-
-   }
-   .ContainerResultsSearch::-webkit-scrollbar {
-    width: 10px; 
-    
+    max-height: 400px;
+    text-align: center;
+    overflow-y: scroll;
 }
-   .ContainerResultsSearch::-webkit-scrollbar-thumb {
+.ContainerResultsSearch::-webkit-scrollbar {
+    width: 10px;
+}
+.ContainerResultsSearch::-webkit-scrollbar-thumb {
     background-color: #262525;
     border-radius: 5px;
 }
 
-
 .ContainerResultsSearch::-webkit-scrollbar-track {
-    background-color: #343333; 
+    background-color: #343333;
     border-radius: 5px;
 }
-   .Interest{
+.Interest {
     margin: auto;
     margin-top: 20px;
     width: 80%;
@@ -95,50 +87,46 @@ overflow-y: scroll;
     display: flex;
     justify-content: space-between;
     border-radius: 15px;
-    
-   }
-   .Interest img{
+}
+.Interest img {
     height: 60%;
-margin: 8px;
-   }
-   .NameAndImage{
+    margin: 8px;
+}
+.NameAndImage {
     display: flex;
     color: $ColorFuente;
     font-weight: bold;
-   }
-   .AddInterest img{
+}
+.AddInterest img {
     margin-left: -40px;
     cursor: pointer;
-   }
-   .FinishSelectInterest button{
+}
+.FinishSelectInterest button {
     margin: auto;
     background-color: rgb(50, 84, 50);
     border: 1px solid rgb(26, 40, 26);
     width: 40%;
     height: 50px;
-    border-radius:20px ;
+    border-radius: 20px;
     font-weight: bold;
     color: black;
     cursor: pointer;
     margin-top: 20px;
-
-
 }
-#MenuMobile{
+#MenuMobile {
     display: none;
 }
-.FinishSelectInterest{
+.FinishSelectInterest {
     width: 100%;
 
     text-align: center;
 }
- 
-.SkipSearchInterest{
+
+.SkipSearchInterest {
     display: flex;
     justify-content: end;
 }
-.SkipSearchInterest button{
-    
+.SkipSearchInterest button {
     margin: 10px;
     margin-top: 20px;
     background-color: #252725;
@@ -148,65 +136,49 @@ margin: 8px;
     color: $ColorFuente;
     font-weight: bold;
     cursor: pointer;
-}  
-   
-@media (min-width:700px){
-    .ContainerSelectInterest{
-      margin: auto;
-      margin-top: -30px;
-    
-   
-      
+}
+
+@media (min-width: 700px) {
+    .ContainerSelectInterest {
+        margin: auto;
+        margin-top: -30px;
     }
-
 }
-@media (max-width:800px){
-    .ContainerSelectInterest{
- width: 70%;
- margin:auto ;
-
-     
-        
-      }
+@media (max-width: 800px) {
+    .ContainerSelectInterest {
+        width: 70%;
+        margin: auto;
+    }
 }
-@media (max-width:600px){
-    .ContainerSelectInterest{
- width: 70%;
- margin-top: 20px;
-margin-left: 110px;
-    
-        
-      }
+@media (max-width: 600px) {
+    .ContainerSelectInterest {
+        width: 70%;
+        margin-top: 20px;
+        margin-left: 110px;
+    }
 }
-@media(max-width:501px){
+@media (max-width: 501px) {
+    .ContainerSelectInterest {
+        width: 70%;
 
-    .ContainerSelectInterest{
-    width: 70%;
-
-margin: auto;
-
+        margin: auto;
     }
 }
 
-@media(max-height:699px){
-    .ContainerResultsSearch{
-
+@media (max-height: 699px) {
+    .ContainerResultsSearch {
         margin-top: 30px;
-    
-    max-height: 300px;
-    text-align: center;
-    overflow-y: scroll;
-    
-       }
-       .ContainerSelectInterest{
+
+        max-height: 300px;
+        text-align: center;
+        overflow-y: scroll;
+    }
+    .ContainerSelectInterest {
         background-color: #111111;
 
-      height: 500px;
-
+        height: 500px;
 
         box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
         margin-top: -30px;
-    
-        
     }
 }

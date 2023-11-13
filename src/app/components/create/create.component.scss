@@ -1,22 +1,21 @@
-$ColorFuente:#7ab06a;
-$ColorSecundario:#282928;
-.ContainerModalCreatePost{
-
+$ColorFuente: #7ab06a;
+$ColorSecundario: #282928;
+.ContainerModalCreatePost {
     width: 100%;
-max-width: 500px;
-box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
-    background-color: #1D1D1D;
+    max-width: 500px;
+    box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
+    background-color: #1d1d1d;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-.Header{
+.Header {
     width: 100%;
     height: 60px;
- 
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-border-bottom: 1px solid $ColorFuente;
+    border-bottom: 1px solid $ColorFuente;
 }
 .Create {
     margin-left: 220px;
@@ -24,16 +23,15 @@ border-bottom: 1px solid $ColorFuente;
     text-align: center;
     color: $ColorFuente;
 }
-.Close{
-
+.Close {
     height: 70%;
     margin: 10px;
-cursor: pointer;
+    cursor: pointer;
 }
-.Close img{
+.Close img {
     height: 100%;
 }
-.User{
+.User {
     margin-top: 20px;
     width: 100%;
     height: 50px;
@@ -42,65 +40,58 @@ cursor: pointer;
     justify-content: start;
     align-items: center;
 }
-.Photo{
-
+.Photo {
     height: 80%;
     margin-left: 15px;
 }
-.Photo img{
+.Photo img {
     height: 100%;
     border-radius: 50%;
 }
-.Text{
+.Text {
     margin-left: 15px;
     margin-top: 10px;
     color: $ColorFuente;
-    font-weight: bold ;
+    font-weight: bold;
 }
-.PublicationSpace{
+.PublicationSpace {
     background-color: #282928;
-  width: 90%;
-  margin: auto;
-  margin-top: 10px;
-  border-radius: 5px;
-
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 5px;
 }
-.ContainerModalCreatePost{
+.ContainerModalCreatePost {
     margin: auto;
     margin-top: -60px;
-
 }
-@media(min-width:500px){
-    .ContainerModalCreatePost{
-width: 70%;
-margin-left: 100px;
-
+@media (min-width: 500px) {
+    .ContainerModalCreatePost {
+        width: 70%;
+        margin-left: 100px;
     }
-    .ContainerSelectInterest{
+    .ContainerSelectInterest {
         margin-top: -50px;
     }
 }
-@media(min-width:700px){
-    .ContainerModalCreatePost{
-
-margin: auto;
-margin-top: -60px;
-
+@media (min-width: 700px) {
+    .ContainerModalCreatePost {
+        margin: auto;
+        margin-top: -60px;
     }
 }
 
-.OptionsCreate{
+.OptionsCreate {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.CreateBlock{
-
-color: $ColorFuente;
-font-weight: bold;
+.CreateBlock {
+    color: $ColorFuente;
+    font-weight: bold;
     margin: 20px;
 }
-.Image{
+.Image {
     cursor: pointer;
     margin: auto;
     text-align: center;
@@ -109,26 +100,25 @@ font-weight: bold;
     width: 50px;
     height: 50px;
 }
-.Image img{
+.Image img {
     width: 70%;
     height: 70%;
     margin: 5px;
 }
-.Space{
+.Space {
     background-color: #282928;
     margin: 20px;
     border-radius: 20px;
-    
 }
-@media(max-width:700px){
-    .Create{
+@media (max-width: 700px) {
+    .Create {
         margin: auto;
     }
-    .Create h2{
+    .Create h2 {
         margin-left: 50px;
     }
-    .CreateBlock p{
-font-size:15px ;
-text-align: center;
+    .CreateBlock p {
+        font-size: 15px;
+        text-align: center;
     }
 }

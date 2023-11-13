@@ -3,40 +3,36 @@ import { ActivatedRoute } from '@angular/router';
 import { GroupService } from 'src/app/services/group.service';
 
 @Component({
-  selector: 'app-group-list-container',
-  templateUrl: './group-list-container.component.html',
-  styleUrls: ['./group-list-container.component.scss']
+    selector: 'app-group-list-container',
+    templateUrl: './group-list-container.component.html',
+    styleUrls: ['./group-list-container.component.scss']
 })
 export class GroupListContainerComponent {
-    @Input() GroupId:any = Number(this.route.snapshot.params['id']);
-	@Input() GroupIdFromComponent:any = null;
+    @Input() GroupId: any = Number(this.route.snapshot.params['id']);
+    @Input() GroupIdFromComponent: any = null;
 
-    GroupToDisplay:any;
+    GroupToDisplay: any;
 
-    myGroups:any;
+    myGroups: any;
     constructor(
         private groupService: GroupService,
         private route: ActivatedRoute
-    ){}
-    ngOnInit(){
-        this.WhichToUse();
+    ) { }
+    ngOnInit() {
+        this.ChooseIdToUse();
         this.getMyGroups();
     }
-    WhichToUse(){
-		if (this.GroupIdFromComponent === null){ 
-            this.GroupToDisplay = this.GroupId
-        }
+    ChooseIdToUse() {
+        if (this.GroupIdFromComponent === null) this.GroupToDisplay = this.GroupId
 
-		if (this.GroupIdFromComponent) {
-            this.GroupToDisplay = this.GroupIdFromComponent
-        }
-	}
-    getMyGroups(){
-		this.groupService.getMyGroups().subscribe((res:any)=>{
-	      	this.myGroups = res;
-	    })
-	}
-    displayGroup(group:any){
+        if (this.GroupIdFromComponent) this.GroupToDisplay = this.GroupIdFromComponent
+    }
+    getMyGroups() {
+        this.groupService.getMyGroups().subscribe((res: any) => {
+            this.myGroups = res;
+        })
+    }
+    displayGroup(group: any) {
         this.GroupToDisplay = group;
     }
 }

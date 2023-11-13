@@ -1,9 +1,8 @@
-
 <app-sidebar></app-sidebar>
 
 
 <form #postCreateForm="ngForm" (ngSubmit)="sendPostData(postCreateForm.value)">
-    <div class="ContainerModalCreatePost" [class.inside-events]="isInsideEvents">
+    <div class="ContainerModalCreatePost" *ngIf="userData" [class.inside-events]="isInsideEvents">
         <div class="Header">
             <div class="Close">
                 <img src="assets/post-images/close.svg" (click)="ComponentRemove()" alt="">
@@ -13,61 +12,63 @@
             <div class="Photo">
                 <img src={{userPfp}} alt="">
             </div>
-        <div class="Name">
-            <p>{{username}}</p>
-        </div>
-    </div>
-    <div class="ContainerInterest">
-        <p class="Interest" *ngFor="let interest of postInterests">{{ interest.interest }}</p>
-    </div>
-    <div class="PublicationSpace">
-        <input ngModel name="text" type="text"  required placeholder="What do you think about?">
-        <div class="SpacePhoto">
-            <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
-        </div>
-    </div>
-    <div class="AddPost">
-        <div class="AddLocate">
-            <img src="assets/post-images/Location.svg" alt="">
-            <p>Add Location</p>
-            <select ngModel id="postLocation" name="postLocation" class="LocationSelector">
-                <option disabled selected></option>
-            </select>
-        </div>
-        <div class="AddInterest">
-            <img (click)="showPostInterestSelection()" src="assets/interest-images/interes.svg" alt="">
-            <p (click)="showPostInterestSelection()">Add Interest</p>
-        </div>
-    </div>
-    <div class="FooterCreatePost">
-        <div class="AddPostImages">
-            <div class="OpenCamara">
-                <img src="assets/interest-images/camara.svg" alt="">
+            <div class="Name">
+                <p>{{this.userData.name}} {{this.userData.surname}}</p>
             </div>
-        <div class="AddImage">
-            <input id="fileInput" name="multimedia_file" type="file" (change)="onFileChange($event)" style="display: none;">
-            <label for="fileInput">
-                <img src="assets/interest-images/AddImage.svg" alt="">
-            </label>
         </div>
-        
-    </div>
-    <div class="ShareCreatePost">
-        <button type="submit" name="CreatePost">Share</button>
-    </div>
-    
-</div>
+        <div class="ContainerInterest">
+            <p class="Interest" *ngFor="let interest of postInterests">{{ interest.interest }}</p>
+        </div>
+        <div class="PublicationSpace">
+            <input ngModel name="text" type="text" required placeholder="What do you think about?">
+            <div class="SpacePhoto">
+                <img [src]="imageUrl" *ngIf="imageUrl" alt="Selected Image">
+            </div>
+        </div>
+        <div class="AddPost">
+            <div class="AddLocate">
+                <img src="assets/post-images/Location.svg" alt="">
+                <p>Add Location</p>
+                <select ngModel id="postLocation" name="postLocation" class="LocationSelector">
+                    <option disabled selected></option>
+                </select>
+            </div>
+            <div class="AddInterest">
+                <img (click)="showPostInterestSelection()" src="assets/interest-images/interes.svg" alt="">
+                <p (click)="showPostInterestSelection()">Add Interest</p>
+            </div>
+        </div>
+        <div class="FooterCreatePost">
+            <div class="AddPostImages">
+                <div class="OpenCamara">
+                    <img src="assets/interest-images/camara.svg" alt="">
+                </div>
+                <div class="AddImage">
+                    <input id="fileInput" name="multimedia_file" type="file" (change)="onFileChange($event)"
+                        style="display: none;">
+                    <label for="fileInput">
+                        <img src="assets/interest-images/AddImage.svg" alt="">
+                    </label>
+                </div>
 
-</div>
-<div class="InterestForEvents" [class.inside-events]="isInsideEvents"  *ngIf="interestService.displaySelectInterest" >
-   
-    <app-select-interest [isInsideCreatePost]="true"  class="ContainerSelectInterest" [SelectInterestType]="'post'" [WindowVisibility]="true"></app-select-interest>
+            </div>
+            <div class="ShareCreatePost">
+                <button type="submit" name="CreatePost">Share</button>
+            </div>
 
-</div>
+        </div>
+
+    </div>
+    <div class="InterestForEvents" [class.inside-events]="isInsideEvents" *ngIf="interestService.displaySelectInterest">
+
+        <app-select-interest [isInsideCreatePost]="true" class="ContainerSelectInterest" [SelectInterestType]="'post'"
+            [WindowVisibility]="true"></app-select-interest>
+
+    </div>
 
 </form>
 
-<div> 
+<div>
     <div *ngIf="ErrorMessage.visibility">
         <app-alert-error [Message]="ErrorMessageShowed"></app-alert-error>
     </div>
@@ -75,4 +76,3 @@
         <app-alert-complete [Message]="CompleteMessage.Message"></app-alert-complete>
     </div>
 </div>
-

@@ -8,11 +8,11 @@ import { GetUserService } from 'src/app/services/get-user.service';
 	templateUrl: './event.component.html',
 	styleUrls: ['./event.component.scss']
 })
-export class EventComponent {	
+export class EventComponent {
 	userId: any;
 
-	@Input() EventToDisplay:any;
-	
+	@Input() EventToDisplay: any;
+
 	isAdmin: boolean;
 
 	eventCover: string = "";
@@ -32,8 +32,8 @@ export class EventComponent {
 	ngOnChanges() {
 		this.getUser();
 		this.getEvent();
-	}	
-	
+	}
+
 	getUser() {
 		this.userService.getUser().subscribe((res: any) => {
 			this.userId = res.id;

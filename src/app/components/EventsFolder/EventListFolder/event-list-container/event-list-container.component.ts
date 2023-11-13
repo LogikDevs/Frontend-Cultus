@@ -9,6 +9,7 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventListContainerComponent {
 	@Input() EventId: any = Number(this.route.snapshot.params['id']);
+
 	@Input() EventIdFromComponent: any = null;
 
 	EventToDisplay: any;
@@ -22,16 +23,13 @@ export class EventListContainerComponent {
 	) { }
 
 	ngOnInit() {
-		this.WhichToUse();
-        this.getMyEvents();
+		this.ChooseEventId();
+		this.getMyEvents();
 	}
-	WhichToUse() {
-		if (this.EventIdFromComponent === null) {
-			this.EventToDisplay = this.EventId;
-		}
-		if (this.EventIdFromComponent) {
-			this.EventToDisplay = this.EventIdFromComponent;
-		}
+	ChooseEventId() {
+		if (this.EventIdFromComponent === null) this.EventToDisplay = this.EventId;
+
+		if (this.EventIdFromComponent) this.EventToDisplay = this.EventIdFromComponent;
 	}
 	getMyEvents() {
 		this.eventService.getUserFollowedEvents().subscribe((res: any) => {
@@ -40,6 +38,6 @@ export class EventListContainerComponent {
 	}
 	displayEvent(event: any) {
 		this.EventToDisplay = event;
-		this.router.navigateByUrl('/event/'+this.EventToDisplay)
+		this.router.navigateByUrl('/event/' + this.EventToDisplay)
 	}
 }

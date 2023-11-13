@@ -1,6 +1,6 @@
-$ColorFuente:#537D57;  
-$ColorSecundario:#282928;
-.Participants{
+$ColorFuente: #537d57;
+$ColorSecundario: #282928;
+.Participants {
     margin: 10px;
     background-color: $ColorSecundario;
     color: $ColorFuente;
@@ -12,28 +12,28 @@ $ColorSecundario:#282928;
     cursor: pointer;
     border-radius: 10px;
 }
-.ImageParticipants{
+.ImageParticipants {
     width: 40px;
     margin: 5px;
     border-radius: 50%;
 }
-.ImageParticipants img{
+.ImageParticipants img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
-.Participants p{
+.Participants p {
     margin-left: 10px;
 }
-.NameParticipants{
-display: flex;
-align-items: center;
+.NameParticipants {
+    display: flex;
+    align-items: center;
 }
 
-.Rol{
-font-size: 14px;
-color: rgb(109, 107, 107);
+.Rol {
+    font-size: 14px;
+    color: rgb(109, 107, 107);
 }
-.adminText{
-    color: rgb(62, 145, 239)
+.adminText {
+    color: rgb(62, 145, 239);
 }

@@ -17,7 +17,7 @@ export class ParticipantsComponent {
 		private router: Router
     ){}
     ngOnInit(){
-      this.checkProfilePic();
+      	this.checkProfilePic();
     }
     toProfile(){
       	this.router.navigateByUrl('/profile/'+this.participant.id);
