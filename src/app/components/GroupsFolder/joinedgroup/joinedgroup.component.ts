@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { GroupService } from 'src/app/services/group.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { GroupService } from 'src/app/services/group.service';
 	styleUrls: ['./joinedgroup.component.scss']
 })
 export class JoinedgroupComponent {
-	pictureUrlDefault: string = "http://localhost:8002/storage/picture/"
+	pictureUrlDefault: string = API_URLs.GROUPS+"storage/picture/"
 	groupPicture: string = "";
 
 	leftGroup: boolean = false;

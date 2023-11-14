@@ -1,16 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_URLs } from '../common/globalVariables';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupService {
 
-	private urlGroups:string ="http://localhost:8002/api/v1/group/";
-	private urlMyGroups:string ="http://localhost:8002/api/v1/chats/";
-	private urlJoinGroup:string="http://localhost:8002/api/v1/group/join/";
-	private urlLeaveGroup:string="http://localhost:8002/api/v1/leave/"
-	private urlGetParticipants:string="http://localhost:8002/api/v1/integrates/"
+	private urlGroups:string =API_URLs.GROUPS+"api/v1/group/";
+	private urlMyGroups:string =API_URLs.GROUPS+"api/v1/chats/";
+	private urlJoinGroup:string=API_URLs.GROUPS+"api/v1/group/join/";
+	private urlLeaveGroup:string=API_URLs.GROUPS+"api/v1/leave/"
+	private urlGetParticipants:string=API_URLs.GROUPS+"api/v1/integrates/"
 	
   	constructor(private http: HttpClient) {}
 

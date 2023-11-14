@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { API_URLs } from '../common/globalVariables';
 @Injectable({
 	providedIn: 'root'
 })
 
 export class GetUserService {
-	private urlgetUser = 'http://localhost:8000/api/v1/validate';
-	private urlUserProfile = 'http://localhost:8000/api/v1/user/profile/'
-	private urlSearchUser = "http://localhost:8000/api/v1/user/search";
+	private urlgetUser = API_URLs.AUTH+'api/v1/validate';
+	private urlUserProfile = API_URLs.AUTH+'api/v1/user/profile/'
+	private urlSearchUser = API_URLs.AUTH+"api/v1/user/search";
 
 	constructor(private http: HttpClient) {  }
 

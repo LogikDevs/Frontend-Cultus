@@ -33,7 +33,6 @@ export class DiscoverySectionComponent {
 	getEvents(){
 		this.eventService.getEventsFromInterests().subscribe((res:any)=>{
 			this.events = res;
-			console.log(this.events);
 		})
 	}
   	getPosts() {

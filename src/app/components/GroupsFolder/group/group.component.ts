@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { ChatService } from 'src/app/services/chat.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { GroupService } from 'src/app/services/group.service';
@@ -21,7 +22,9 @@ export class GroupComponent {
 	Section: boolean = true;
 
 	groupCover: string = "";
-	defaultUrlCover: string = "http://localhost:8002/storage/picture/"
+	defaultUrlCover: string = API_URLs.GROUPS+"storage/picture/"
+
+	createPostComponentVisibility: boolean = false;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -49,5 +52,12 @@ export class GroupComponent {
 	}
 	checkCover() {
 		if (this.groupData.picture) this.groupCover = this.defaultUrlCover + this.groupData.picture;
+	}
+	ShowPostCreationComponent() {
+		this.createPostComponentVisibility = true;
+	}
+	postPublished(published: boolean) {
+		this.createPostComponentVisibility = false;
+		if (published) location.reload();
 	}
 }

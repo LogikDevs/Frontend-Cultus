@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import {API_URLs} from "src/app/common/globalVariables";
 @Injectable({
   providedIn: 'root'
 })
 export class FollowsService {
-  private urlSendFollow = "http://localhost:8000/api/v1/follow";
-  private urlUnfollow = "http://localhost:8000/api/v1/unfollow";
-  private urlUserFollowed = "http://localhost:8000/api/v1/followeds/"
+  private urlSendFollow = API_URLs.AUTH+"api/v1/follow";
+  private urlUnfollow = API_URLs.AUTH+"api/v1/unfollow";
+  private urlUserFollowed = API_URLs.AUTH+"api/v1/followeds/"
 
   constructor(private http: HttpClient) { }
 

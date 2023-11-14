@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { EventService } from 'src/app/services/event.service';
 export class JoinedeventComponent {
 	@Input() event: any
 
-	pictureUrlDefault: string = "http://localhost:8003/storage/cover_event/"
+	pictureUrlDefault: string = API_URLs.EVENTS+"storage/cover_event/"
 	eventPicture: string = "";
 	
 	constructor(

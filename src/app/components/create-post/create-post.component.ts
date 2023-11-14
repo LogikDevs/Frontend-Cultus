@@ -5,6 +5,7 @@ import { GetInterestsService } from 'src/app/services/get-interests.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 import { Router } from '@angular/router';
 import { GetCountriesService } from 'src/app/services/get-countries.service';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
 	selector: 'app-create-post',
@@ -23,7 +24,7 @@ export class CreatePostComponent {
 	postMultimedia: File;
 	imageUrl: any;
 
-	defaultUrl: string = "http://localhost:8000/storage/profile_pic/";
+	defaultUrl: string = API_URLs.AUTH+"storage/profile_pic/";
 	userPfp: string = "assets/post-images/profile_def.jpg";
 
 	userData: any;
@@ -124,8 +125,9 @@ export class CreatePostComponent {
 
 	countriesDropbox() {
 		const selectLocation: any = document.getElementById("postLocation");
-
+		
 		this.countries.getCountries().subscribe((res: any) => {
+			console.log(res);
 			this.countriesIntoDropbox(selectLocation, res);
 		})
 	}
@@ -134,9 +136,9 @@ export class CreatePostComponent {
 		for (let i = 0; i < res.length; i++) {
 			var country = res[i];
 			let newOption = new Option(country.country_name, country.id_country);
-
 			select.add(newOption, undefined);
 		}
+		
 	}
 
 	OnCompleteAlert() {

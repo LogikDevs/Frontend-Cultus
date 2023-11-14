@@ -1,17 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_URLs } from '../common/globalVariables';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  	private urlCreateEvent = "http://localhost:8003/api/v1/event/create";
-	private urlSendEventInterests = "http://localhost:8003/api/v1/event/interests/create";
-	private urlGetEventsFromInterests = "http://localhost:8003/api/v1/event/interested";
-	private urlGetFollowedEvents = "http://localhost:8003/api/v1/event/followed";
-	private urlFollowEvent = "http://localhost:8003/api/v1/participant/create";
-	private urlUnfollowEvent = "http://localhost:8003/api/v1/participant/delete";
-	private urlEventData = "http://localhost:8003/api/v1/events/";
+  	private urlCreateEvent = API_URLs.EVENTS+"api/v1/event/create";
+	private urlSendEventInterests = API_URLs.EVENTS+"api/v1/event/interests/create";
+	private urlGetEventsFromInterests = API_URLs.EVENTS+"api/v1/event/interested";
+	private urlGetFollowedEvents = API_URLs.EVENTS+"api/v1/event/followed";
+	private urlFollowEvent = API_URLs.EVENTS+"api/v1/participant/create";
+	private urlUnfollowEvent = API_URLs.EVENTS+"api/v1/participant/delete";
+	private urlEventData = API_URLs.EVENTS+"api/v1/events/";
 
   	constructor(private http: HttpClient) { }
 	

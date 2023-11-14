@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
     selector: 'app-grouplist',
@@ -8,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class GrouplistComponent {
     @Input() groupToDisplay: any
     pfpUrl: any = "";
-    Url_Picture: string = "http://localhost:8002/storage/picture/"
+    Url_Picture: string = API_URLs.GROUPS+"storage/picture/"
 
     @Output() ChangeGroup: any = new EventEmitter<number>();
     constructor() { }

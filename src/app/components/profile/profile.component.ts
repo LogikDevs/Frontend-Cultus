@@ -5,6 +5,7 @@ import { Post } from '../PostsFolder/singlepost/post.model';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FollowsService } from 'src/app/services/follows.service';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
 	selector: 'app-profile',
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit {
 
 	ownProfile: boolean = false;
 
-	Url_profile_pic: string = "http://localhost:8000/storage/profile_pic/";
+	Url_profile_pic: string = API_URLs.AUTH+"storage/profile_pic/";
 
 	userInterests: any[] = [];
 

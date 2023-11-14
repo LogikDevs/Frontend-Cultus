@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {API_URLs} from "src/app/common/globalVariables";
 
 @Injectable({
 	providedIn: 'root'
 })
 export class CreatePostService {
-	private urlCreatePost = 'http://localhost:8001/api/v1/posts/create';
-	private urlCreateMultimedia = 'http://localhost:8001/api/v1/multimedia/create';
+	private urlCreatePost = API_URLs.POSTS+'api/v1/posts/create';
+	private urlCreateMultimedia = API_URLs.POSTS+'api/v1/multimedia/create';
 	
 	constructor(private http: HttpClient) { }
 

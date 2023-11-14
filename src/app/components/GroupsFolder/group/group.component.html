@@ -1,6 +1,10 @@
 <div class="OverflowHideen" style="overflow-y: hidden;">
 
-<div class="ContainerAll">
+
+<div *ngIf="!groupData"> 
+    <app-loaded></app-loaded>
+</div>
+<div class="ContainerAll" *ngIf="groupData">
 
 
 
@@ -18,7 +22,7 @@
  
         <div class="OptionsChat">
        
-            <div class="Option">
+            <div class="Option" (click)="ShowPostCreationComponent()">
                 <img src="assets/Chat/menu.svg" alt="">
             </div>
         </div>
@@ -34,14 +38,14 @@
                 <p>Group Chat</p>
             </div>
         </div>
-        <div  *ngIf="!Section">
+        <div *ngIf="!Section">
             <app-chat class="Chat" [chatId]="groupData.id_chat"></app-chat>
         </div>
         <div *ngIf="Section">
             <app-group-posts></app-group-posts>
         </div>
         
-    <div id="CreatePost">
+    <div id="CreatePost" *ngIf="Section">
         <button >
             <img src="assets/sidebar-images/create.svg" alt="Crear Posts">
         </button>
@@ -54,8 +58,6 @@
             <div class="TittleDescription">
                 <p>Group Description:</p>
             </div>
-
-    
             <div class="ContentDescription"  *ngIf="groupData">
                <p>{{groupData.description}}</p> 
             </div>
@@ -77,7 +79,6 @@
                 <p>Group Participants:</p>
             </div>
             <div class="ContainerAllParticipants">
-
                 <div class="integrantes" *ngFor="let participant of groupParticipants">
                     <app-participants [type]="type" [participant]="participant"></app-participants>  
                 </div>  

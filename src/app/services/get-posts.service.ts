@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../components/PostsFolder/singlepost/post.model';
 import { Observable } from 'rxjs';
+import { API_URLs } from '../common/globalVariables';
 @Injectable({
 	providedIn: 'root'
 })
 export class GetPostsService {
-	private urlGetPosts = 'http://localhost:8001/api/v1/posts/';
-	private urlGetPostsFromInterests = 'http://localhost:8001/api/v1/posts/interested/';
-	private urlUserPosts = 'http://localhost:8001/api/v1/posts/user/';
-	private urlUpdateComments='http://localhost:8001/api/v1/posts/list/'
-	private urlGetPostsInterests='http://localhost:8001/api/v1/characterizes/listPost/'
-	private urlGetPostsFromFolloweds='http://localhost:8001/api/v1/posts/followed';
-	private urlDeletePost='http://localhost:8001/api/v1/posts/delete/'
+	private urlGetPosts = API_URLs.POSTS+'api/v1/posts/';
+	private urlGetPostsFromInterests = API_URLs.POSTS+'api/v1/posts/interested/';
+	private urlUserPosts = API_URLs.POSTS+'api/v1/posts/user/';
+	private urlUpdateComments=API_URLs.POSTS+'api/v1/posts/list/'
+	private urlGetPostsInterests=API_URLs.POSTS+'api/v1/characterizes/listPost/'
+	private urlGetPostsFromFolloweds=API_URLs.POSTS+'api/v1/posts/followed';
+	private urlDeletePost=API_URLs.POSTS+'api/v1/posts/delete/'
 	constructor(private http: HttpClient) { }
 	getPosts(): Observable<Post[]> {
 		const httpOptions = {

@@ -1,4 +1,7 @@
 <app-sidebar></app-sidebar>
+<div *ngIf="!ProfileData"> 
+    <app-loaded></app-loaded>
+</div>
 <div class="Profile" *ngIf="ProfileData">
     <div class="ContainerData">
         <div class="ContainerMyProfile">

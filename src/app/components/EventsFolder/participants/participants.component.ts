@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
   selector: 'app-participants',
@@ -10,7 +11,7 @@ export class ParticipantsComponent {
     @Input() type:string = "event" || "group";
     @Input() participant:any;
 
-	defaultUrl:any = "http://localhost:8000/storage/profile_pic/"
+	defaultUrl:any = API_URLs.AUTH+"storage/profile_pic/"
 	pfpUrl:any= "";
 
     constructor(
