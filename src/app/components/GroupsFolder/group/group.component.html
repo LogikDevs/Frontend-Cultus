@@ -1,6 +1,5 @@
 <div class="OverflowHideen" style="overflow-y: hidden;">
 
-
 <div *ngIf="!groupData"> 
     <app-loaded></app-loaded>
 </div>
@@ -19,7 +18,6 @@
         <div class="NameChat" *ngIf="groupData">
             <p>{{groupData.name}}</p>
         </div>
- 
         <div class="OptionsChat">
        
             <div class="Option" (click)="ShowPostCreationComponent()">

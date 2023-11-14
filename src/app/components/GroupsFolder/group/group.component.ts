@@ -26,6 +26,7 @@ export class GroupComponent {
 
 	createPostComponentVisibility: boolean = false;
 
+
 	constructor(
 		private route: ActivatedRoute,
 		private groupService: GroupService
@@ -34,10 +35,11 @@ export class GroupComponent {
 	ngOnChanges() {
 		this.getGroup();
 		this.getParticipants();
+		this.checkIfIsAdmin();
 		this.checkCover();
 	}
 
-	ChangeSection(type: boolean) {
+  ChangeSection(type: boolean) {
 		if (type != this.Section) this.Section = type;
 	}
 	getGroup() {
@@ -53,9 +55,11 @@ export class GroupComponent {
 	checkCover() {
 		if (this.groupData.picture) this.groupCover = this.defaultUrlCover + this.groupData.picture;
 	}
+  
 	ShowPostCreationComponent() {
 		this.createPostComponentVisibility = true;
 	}
+  
 	postPublished(published: boolean) {
 		this.createPostComponentVisibility = false;
 		if (published) location.reload();
