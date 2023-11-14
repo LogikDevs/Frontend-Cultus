@@ -119,7 +119,6 @@ export class SinglepostComponent implements OnInit {
 		}, 3000);
 	}
 	showCommentLocally(CreatedComment: any) {
-		console.log(CreatedComment);
 		const NewComment: Comment = {
 			id_comment: CreatedComment.comment.id_comment,
 			user: {

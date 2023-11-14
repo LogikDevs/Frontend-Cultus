@@ -14,7 +14,6 @@ export class EventlistComponent {
 	@Output() ChangeEvent: any = new EventEmitter<number>();
 	constructor() { }
 	ngOnInit() {
-		console.log(this.eventToDisplay);
 		this.checkProfilePic();
 	}
 	displayEvent() {

@@ -11,7 +11,7 @@ export class GetInterestsService {
   	private urlGetInterests = API_URLs.AUTH+'api/v1/interest';
   	private urlSendInterests = API_URLs.AUTH+'api/v1/likes/';
 	private urlGetUserInterests = API_URLs.AUTH+'api/v1/likes/user/'
-	private urlSendPostInterests = API_URLs.AUTH+'api/v1/characterizes/create';
+	private urlSendPostInterests = API_URLs.POSTS+'api/v1/characterizes/create';
 
 	public displaySelectInterest:boolean = false;
 

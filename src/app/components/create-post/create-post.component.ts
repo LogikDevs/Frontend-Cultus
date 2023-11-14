@@ -127,7 +127,6 @@ export class CreatePostComponent {
 		const selectLocation: any = document.getElementById("postLocation");
 		
 		this.countries.getCountries().subscribe((res: any) => {
-			console.log(res);
 			this.countriesIntoDropbox(selectLocation, res);
 		})
 	}

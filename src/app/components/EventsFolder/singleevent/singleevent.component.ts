@@ -49,7 +49,6 @@ export class SingleeventComponent {
         })
     }
     FollowAction(){
-        console.log(this.event.event.id);
         this.eventService.followEvent(this.event.event.id).subscribe((res:any)=>{
             this.isFollowing = "Unfollow";
         })
