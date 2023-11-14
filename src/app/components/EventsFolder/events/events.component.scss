@@ -1,21 +1,20 @@
-$ColorFuente:#7ab06a;
+$ColorFuente: #7ab06a;
 
-.HeaderGroups{
+.HeaderGroups {
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: center;
     color: $ColorFuente;
     font-weight: bold;
-
 }
-.TittleGroups{
+.TittleGroups {
     margin-left: 120px;
 }
-.ButtonCreateGroup{
+.ButtonCreateGroup {
     margin-right: 30px;
 }
-.SubHeader{
+.SubHeader {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -25,29 +24,30 @@ $ColorFuente:#7ab06a;
     width: 90%;
     border-bottom: 2px solid $ColorFuente;
 }
-.MyGroups,.Suggestions{
+.MyGroups,
+.Suggestions {
     cursor: pointer;
 }
-.SubHeader p{
+.SubHeader p {
     margin: 10px;
 }
-.ButtonCreateGroup{
+.ButtonCreateGroup {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30px;
     background-color: #232423;
-    margin-left:20px;
+    margin-left: 20px;
     padding: 5px;
     border-radius: 10px;
     margin-top: 15px;
-cursor: pointer;
+    cursor: pointer;
 }
-.ButtonCreateGroup img{
+.ButtonCreateGroup img {
     height: 80%;
     margin: 5px;
 }
-.SliderGroups{
+.SliderGroups {
     width: 80%;
 
     margin-left: 160px;
@@ -65,43 +65,43 @@ cursor: pointer;
     border-radius: 0 0 5px 5px;
 }
 
-.TittleCategories{
+.TittleCategories {
     margin-left: 150px;
     margin-top: 20px;
     color: $ColorFuente;
 }
-.ContainerCategories{
-max-width: 85%;
- 
+.ContainerCategories {
+    max-width: 85%;
+
     margin-left: 150px;
     height: 170px;
     display: flex;
-    justify-content: center
-    ;
+    justify-content: center;
 }
-.Categories{
+.Categories {
     background-color: #232423;
     margin: 10px;
     width: 200px;
     border-radius: 10px;
 }
-.Image{
+.Image {
     height: 80%;
     background-color: #29442c;
     border-radius: 10px;
 }
-.Image img{
+.Image img {
     border-radius: 10px;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.Text{
+.Text {
     text-align: center;
-    
+
     color: $ColorFuente;
     font-weight: bold;
 }
-.Text p{
+.Text p {
     margin-top: 5px;
+
 }

@@ -1,13 +1,13 @@
 <app-sidebar id="Sidebar"></app-sidebar>
-
-<div class="ContainerAllChats">
+<div class="ContainerGroups">
+  <div class="ContainerAllChats">
     <div class="Tittle">
-        <div class="Logo">
-            <img src="assets/sidebar-images/SMS.svg" alt="">
-        </div>
-        <div class="Text">
-            Groups
-        </div>
+       <div class="Logo">
+          <img src="assets/sidebar-images/SMS.svg" alt="">
+       </div>
+       <div class="Text">
+          Groups
+       </div>
     </div>
     <div class="ContainerChats">
         <div *ngFor="let group of myGroups">
@@ -18,3 +18,8 @@
 <div class="groupToDisplay">
     <app-group [GroupToDisplay]="GroupToDisplay"></app-group>
 </div>
+</div>
+
+
+
+

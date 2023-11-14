@@ -1,33 +1,32 @@
-$ColorFuente:#7ab06a;
-$ColorSecundario:#282928;
+$ColorFuente: #7ab06a;
+$ColorSecundario: #282928;
 
-.ContainerModalCreatePost{
-position: relative;
-top: -320px;
+.ContainerModalCreatePost {
+    position: relative;
+    top: -320px;
     width: 100%;
-max-width: 500px;
-box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
-    background-color: #1D1D1D;
+    max-width: 500px;
+    box-shadow: 0 0 15px rgba(25, 144, 25, 0.604);
+    background-color: #1d1d1d;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-.Header{
+.Header {
     width: 100%;
     height: 40px;
- 
+
     display: flex;
     justify-content: end;
-
 }
-.Close{
+.Close {
     height: 100%;
     margin: 10px;
-cursor: pointer;
+    cursor: pointer;
 }
-.Close img{
+.Close img {
     height: 100%;
 }
-.User{
+.User {
     margin-top: 20px;
     width: 100%;
     height: 50px;
@@ -36,39 +35,36 @@ cursor: pointer;
     justify-content: start;
     align-items: center;
 }
-.Photo{
-
+.Photo {
     height: 80%;
     margin-left: 15px;
 }
-.Photo img{
+.Photo img {
     height: 100%;
     border-radius: 50%;
 }
-.Name{
+.Name {
     margin-left: 5px;
     color: $ColorFuente;
-    font-weight: bold ;
+    font-weight: bold;
 }
-.PublicationSpace{
+.PublicationSpace {
     background-color: #282928;
-  width: 90%;
-  margin: auto;
-  margin-top: 10px;
-  border-radius: 5px;
-
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 5px;
 }
-.PublicationSpace input{
+.PublicationSpace input {
     background-color: #282928;
-  resize: none;
-  margin: 20px;
-  width: 80%;
-  height: 30px;
-  color: $ColorFuente;
-  border: none;
-  font-size: 15px;
-  padding: 7px;
-
+    resize: none;
+    margin: 20px;
+    width: 80%;
+    height: 30px;
+    color: $ColorFuente;
+    border: none;
+    font-size: 15px;
+    padding: 7px;
 }
 input:focus {
     outline: none;
@@ -80,29 +76,27 @@ input::placeholder {
     font-size: 15px;
 }
 
-
-.SpacePhoto{
-    
+.SpacePhoto {
     width: 90%;
     margin: auto;
 
     margin-bottom: 20px;
 }
-.SpacePhoto img{
+.SpacePhoto img {
     width: 100%;
-max-height: 200px;
-object-fit: cover;
-margin-bottom: 20px;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
 }
-.AddPost{
+.AddPost {
     display: flex;
     justify-content: start;
     height: 50px;
-margin-top: 0px;
+    margin-top: 0px;
     align-items: center;
     margin-left: 10px;
 }
-.LocationSelector{
+.LocationSelector {
     background-color: $ColorSecundario;
     color: $ColorFuente;
     font-weight: bold;
@@ -116,83 +110,86 @@ margin-top: 0px;
     width: 40%;
     cursor: pointer;
 }
- .AddInterest{
+.AddInterest {
     background-color: $ColorSecundario;
     color: $ColorFuente;
     font-weight: bold;
     margin: 5px;
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 15px;
-text-align: center;
-height: 60%;
-cursor: pointer;
+    text-align: center;
+    height: 60%;
+    cursor: pointer;
 }
-.AddLocate{
+.AddLocate {
     background-color: $ColorSecundario;
     color: $ColorFuente;
     font-weight: bold;
     margin: 5px;
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 15px;
-text-align: center;
-height: 60%;
-width: 50%;
-cursor: pointer;
+    text-align: center;
+    height: 60%;
+    width: 50%;
+    cursor: pointer;
 }
-.AddLocate p , .AddInterest p{
-
+.AddLocate p,
+.AddInterest p {
     color: $ColorFuente;
     font-weight: bold;
-margin-right: 10px;
+    margin-right: 10px;
 
-text-align: center;
+    text-align: center;
 
-padding: 10px;
-font-size: 11px;
+    padding: 10px;
+    font-size: 11px;
 }
-.AddLocate img , .AddInterest img{
-height: 60%;
-margin-left: 10px;
+.AddLocate img,
+.AddInterest img {
+    height: 60%;
+    margin-left: 10px;
 }
-.FooterCreatePost{
+.FooterCreatePost {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 10px;
     margin-top: 0px;
 }
-.AddPostImages{
+.AddPostImages {
     display: flex;
     justify-content: start;
     align-items: center;
 }
-.OpenCamara,.AddImage{
+.OpenCamara,
+.AddImage {
     margin: 5px;
     margin-top: 5px;
-background-color: $ColorSecundario;
-width: 60px;
-height: 60px;
-border-radius: 10px;
-cursor: pointer;
+    background-color: $ColorSecundario;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    cursor: pointer;
 }
-.OpenCamara img,.AddImage img{
-height: 60%;
-width: 100%;
-margin-top: 10px;
+.OpenCamara img,
+.AddImage img {
+    height: 60%;
+    width: 100%;
+    margin-top: 10px;
 }
-.ShareCreatePost button{
-background-color:#137695 ;
-border: none;
-color: white;
-padding: 8px;
-padding-left: 12px;
-padding-right: 12px;
-border-radius: 20px;
-cursor: pointer;
+.ShareCreatePost button {
+    background-color: #137695;
+    border: none;
+    color: white;
+    padding: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 20px;
+    cursor: pointer;
 }
 .AddImage {
     position: relative;
@@ -205,202 +202,203 @@ cursor: pointer;
 .AddImage label {
     cursor: pointer;
 }
-.ContainerModalCreatePost{
+.ContainerModalCreatePost {
     margin: auto;
-position: relative;
-
-
+    position: relative;
 }
-@media(min-width:500px){
-    .ContainerModalCreatePost.inside-events {      
+@media (min-width: 500px) {
+    .ContainerModalCreatePost.inside-events {
         margin: 0px;
         position: relative;
         top: 0px;
         margin-left: 160px;
-        max-height: 80vh; 
-          }
-          .InterestForEvents{
-            background: none;
-          }
-          .InterestForEvents.inside-events{
-        
+        max-height: 80vh;
+    }
+    .InterestForEvents {
+        background: none;
+    }
+    .InterestForEvents.inside-events {
         margin-left: -100px;
         margin-top: 280px;
         width: 1000px;
         height: 0px;
-          }
-    .ContainerModalCreatePost{
-width: 70%;
-margin-left: 100px;
-top: -320px;
-
     }
-    .ContainerSelectInterest{
+    .ContainerModalCreatePost {
+        width: 70%;
+        margin-left: 100px;
+        top: -320px;
+    }
+    .ContainerSelectInterest {
         margin-top: -50px;
     }
 }
-@media(min-width:700px){
-    .ContainerModalCreatePost.inside-events {      
+@media (min-width: 700px) {
+    .ContainerModalCreatePost.inside-events {
         margin: 0px;
         position: relative;
         top: 0px;
         margin-left: 160px;
-        max-height: 80vh; 
-          }
-          .InterestForEvents{
-            background: none;
-          }
-          .InterestForEvents.inside-events{
-        
+        max-height: 80vh;
+    }
+    .InterestForEvents {
+        background: none;
+    }
+    .InterestForEvents.inside-events {
         margin-left: -100px;
         margin-top: 280px;
         width: 1000px;
         height: 0px;
-          }
-    .ContainerModalCreatePost{
+    }
+    .ContainerModalCreatePost {
+        margin: auto;
 
-margin: auto;
-
-top: -300px;
-
+        top: -300px;
     }
 }
-.ContainerSelectInterest{
-position: relative;
-top: -650px;
+.ContainerSelectInterest {
+    position: relative;
+    top: -650px;
 }
-.ContainerInterest{
+.ContainerInterest {
     display: flex;
     position: relative;
+    max-width: 90%;
+    overflow-x: auto;
+    white-space: nowrap;
 }
-.Interest{
+
+.ContainerInterest::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ContainerInterest::-webkit-scrollbar-thumb {
+    background-color: #181818;
+    border-radius: 6px;
+}
+
+.ContainerInterest::-webkit-scrollbar-thumb:hover {
+    background-color: #303030;
+}
+
+.Interest {
     display: flex;
     justify-content: start;
     align-items: center;
     margin-left: 20px;
-   background-color: #111111;
-   border-radius: 15px;
-   padding: 5px;
-   height: 25px;
-   color: $ColorFuente;
-   font-weight: bold;
-   }
-   .Interest p{
-color: $ColorFuente;
-font-weight: bold;
-   font-size: 12px;
-   margin-top: 5px;
-   text-align: center;
+    background-color: #111111;
+    border-radius: 15px;
+    padding: 5px;
+    height: 25px;
+    color: $ColorFuente;
+    font-weight: bold;
+}
+.Interest p {
+    color: $ColorFuente;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+}
 
-   } 
-
-.ContainerModalCreatePost.inside-events {      
-margin: 0px;
-position: relative;
-top: 0px;
-margin-left: 160px;
-max-height: 80vh; 
-  }
-  .InterestForEvents{
+.ContainerModalCreatePost.inside-events {
+    margin: 0px;
+    position: relative;
+    top: 0px;
+    margin-left: 160px;
+    max-height: 80vh;
+}
+.InterestForEvents {
     background: none;
-  }
-  .InterestForEvents.inside-events{
+}
+.InterestForEvents.inside-events {
+    margin-left: -100px;
+    margin-top: 280px;
+    width: 1000px;
+    height: 0px;
+}
 
-margin-left: -100px;
-margin-top: 280px;
-width: 1000px;
-height: 0px;
-  }
-  
-@media(max-width:1430px){
-    .ContainerModalCreatePost.inside-events {      
+@media (max-width: 1430px) {
+    .ContainerModalCreatePost.inside-events {
         margin: 0px;
         position: relative;
         top: 0px;
         margin-left: 60px;
-        max-height: 80vh; 
-          }
-   
-          .InterestForEvents.inside-events{
-        
+        max-height: 80vh;
+    }
+
+    .InterestForEvents.inside-events {
         margin-left: -100px;
         margin-top: 280px;
         width: 1000px;
         height: 0px;
-          }
+    }
 }
-  
-@media(max-width:1340px){
-    .ContainerModalCreatePost.inside-events {      
+
+@media (max-width: 1340px) {
+    .ContainerModalCreatePost.inside-events {
         margin: 0px;
         position: relative;
         top: 0px;
         margin-left: 0px;
-        max-height: 80vh; 
-          }
-   
-          .InterestForEvents.inside-events{
-        
+        max-height: 80vh;
+    }
+
+    .InterestForEvents.inside-events {
         margin-left: -100px;
         margin-top: 280px;
         width: 1000px;
         height: 0px;
-          }
+    }
 }
-@media(max-width:1270px){
-    .ContainerModalCreatePost.inside-events {      
+@media (max-width: 1270px) {
+    .ContainerModalCreatePost.inside-events {
         margin: 0px;
         position: relative;
         top: 0px;
         width: 350px;
         margin-left: 40px;
-        max-height: 80vh; 
-          }
-   
-          .InterestForEvents.inside-events{
-        
+        max-height: 80vh;
+    }
+
+    .InterestForEvents.inside-events {
         margin-left: -100px;
         margin-top: 280px;
         width: 1000px;
         height: 0px;
-          }
+    }
 }
-@media(max-width:1170px){
-    .ContainerModalCreatePost.inside-events {      
+@media (max-width: 1170px) {
+    .ContainerModalCreatePost.inside-events {
         margin: 0px;
         position: relative;
         top: 0px;
         width: 350px;
         margin-left: 40px;
-        max-height: 80vh; 
-          }
-   
-          .InterestForEvents.inside-events{
-        
+        max-height: 80vh;
+    }
+
+    .InterestForEvents.inside-events {
         margin-left: -100px;
         margin-top: 280px;
         width: 1000px;
         height: 0px;
-          }
-     
+    }
 }
 
-@media(max-width:850px){
-    .ContainerModalCreatePost.inside-events {      
+@media (max-width: 850px) {
+    .ContainerModalCreatePost.inside-events {
         margin: 0px;
         position: relative;
         top: 0px;
         width: 300px;
         margin-left: 40px;
-        max-height: 80vh; 
-          }
-   
-          .InterestForEvents.inside-events{
-        
+        max-height: 80vh;
+    }
+
+    .InterestForEvents.inside-events {
         margin-left: -100px;
         margin-top: 280px;
         width: 1000px;
         height: 0px;
-          }
-     
+    }
 }

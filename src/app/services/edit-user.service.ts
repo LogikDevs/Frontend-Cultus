@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {API_URLs} from "src/app/common/globalVariables";
 
 @Injectable({
 	providedIn: 'root'
 })
 export class EditUserService {
-	private urlApiRegisterOptionalData = "http://localhost:8000/api/v1/user/2";
-	private urlApiEditUser = "http://localhost:8000/api/v1/user/edit";
+	private urlApiRegisterOptionalData = API_URLs.AUTH+"api/v1/user/2";
+	private urlApiEditUser = API_URLs.AUTH+"api/v1/user/edit";
   
 	constructor(private http: HttpClient) {}
 	

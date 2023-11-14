@@ -1,3 +1,36 @@
-* {
-    color: white;
+$ColorFuente:#537D57;  
+$ColorSecundario:#282928;
+
+
+.ownMessage{
+background-color: $ColorSecundario;
+color: $ColorFuente;
+font-weight: bold;
+padding: 10px;
+border-top-left-radius: 30px;
+border-bottom-left-radius: 30px;
+border-bottom-right-radius: 30px;
+
+margin-top:10px ;
+margin: 20px;
+
+}
+.MyMessage{
+    position: absolute;
+right:0px;
+display: flex;
+flex-direction: column;
+margin-top: 20px;
+}
+.notOwnMessage{
+    background-color: $ColorSecundario;
+color: $ColorFuente;
+font-weight: bold;
+padding: 10px;
+border-top-right-radius: 30px;
+border-bottom-left-radius: 30px;
+border-bottom-right-radius: 30px;
+
+margin-top:10px ;
+margin: 20px;
 }

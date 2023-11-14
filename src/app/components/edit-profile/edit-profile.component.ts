@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { EditUserService } from 'src/app/services/edit-user.service';
 import { GetCountriesService } from 'src/app/services/get-countries.service';
 import { GetInterestsService } from 'src/app/services/get-interests.service';
@@ -10,12 +11,13 @@ import { GetUserService } from 'src/app/services/get-user.service';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent {
-	PublicUrl:string = "http://localhost:8000/storage/profile_pic/";
+	PublicUrl:string = API_URLs.AUTH+"storage/profile_pic/";
 	
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-	selectedImage: string | undefined;
 	
 	userData:any;
+	
+	selectedImage: string | undefined;
 	ProfilePictureMultimedia: File;
 
 	profile_pic_url: any;
@@ -118,6 +120,7 @@ export class EditProfileComponent {
 	OnCompleteAlert(){
 		this.CompleteMessage.visibility = true;
 		this.ErrorMessage.visibility = false;
+
 		setTimeout(() => {
 			this.hideComponent(true);
 		}, 4000);
@@ -125,12 +128,14 @@ export class EditProfileComponent {
 	OnErrorAlert(){
 		this.ErrorMessage.visibility = true;
 		this.CompleteMessage.visibility = false;
+
 		setTimeout(() => {
 			this.hideComponent(false);
 		}, 4000);
 	}
 	hideComponent(Complete:boolean){
 		if (Complete == true) this.CompleteMessage.visibility = false;
+		
 		if (Complete == false) this.ErrorMessage.visibility = false;
 	}
 }

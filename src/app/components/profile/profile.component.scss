@@ -8,6 +8,14 @@ $ColorSecundario:#282928;
 .sendMessageButton{
     width: 20px;
     height: 20px;
+    margin: 5px;
+    margin-left: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+.sendMessageButton:hover{
+    transform: scale(1.1);
 }
 .ContainerMyProfile{
     border-top-left-radius: 20px;
@@ -396,7 +404,5 @@ margin-top: 20px;
     font-weight: bold;
     margin-top: 13px;
     margin-left: 10px;
-    cursor: pointer;
+    cursor: pointer;
 }
-
-

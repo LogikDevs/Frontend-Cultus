@@ -1,7 +1,7 @@
 <app-sidebar id="Sidebar"></app-sidebar>
 
 <div class="ContainerAll">
-    
+
     <div class="ContainerAllChats">
         <div class="Tittle">
             <div class="Logo">
@@ -10,39 +10,38 @@
             <div class="Text">
                 Direct Chats
             </div>
+        </div>
+
+        <div class="ContainerChats" *ngFor="let conversation of PrivateChats">
+            <app-userschat [userId]="userId" [userChat]="conversation" (ChangeRoute)="displayConversation($event)"
+                (MessegeableUserInfo)="displayUserData($event)"></app-userschat>
+        </div>
     </div>
 
-    <div class="ContainerChats" *ngFor="let conversation of PrivateChats">
-        <app-userschat [userId]="userId" [userChat]="conversation" (ChangeRoute)="displayConversation($event)" (MessegeableUserInfo)="displayUserData($event)"></app-userschat>
-    </div>
-
-
-</div>
-
-<div class="ContainerContentChat">
-    <div class="HeaderChat">
-        <div class="Back">
-            <img src="assets/Go Back.png" alt="">
-        </div>
-        <div  id="ImageGroup">
-            <img src={{chatProfile}} alt="">
-        </div>
-        <div class="NameChat" *ngIf="userInformation">
-            <p> {{userInformation.name}} {{userInformation.surname}} </p>
-        </div>
-        <div class="OptionsChat">
-            <div class="Call">
-                <img src="assets/Chat/llamada.svg" alt="">
+    <div class="ContainerContentChat">
+        <div class="HeaderChat">
+            <div class="Back">
+                <img src="assets/Go Back.png" alt="">
             </div>
-            <div class="VideoCall">
-                <img src="assets/Chat/videollamada.svg" alt="">
+            <div id="ImageGroup">
+                <img src={{chatProfile}} alt="">
             </div>
-            <div class="Option">
-                <img src="assets/Chat/menu.svg" alt="">
+            <div class="NameChat" *ngIf="userInformation">
+                <p> {{userInformation.name}} {{userInformation.surname}} </p>
+            </div>
+            <div class="OptionsChat">
+                <div class="Call">
+                    <img src="assets/Chat/llamada.svg" alt="">
+                </div>
+                <div class="VideoCall">
+                    <img src="assets/Chat/videollamada.svg" alt="">
+                </div>
+                <div class="Option">
+                    <img src="assets/Chat/menu.svg" alt="">
+                </div>
             </div>
         </div>
+        <div *ngIf="ChatIdToDisplay">
+            <app-chat [chatId]="ChatIdToDisplay"></app-chat>
+        </div>
     </div>
-    <div *ngIf="ChatIdToDisplay">
-        <app-chat [chatId]="ChatIdToDisplay"></app-chat>
-    </div>
-</div>

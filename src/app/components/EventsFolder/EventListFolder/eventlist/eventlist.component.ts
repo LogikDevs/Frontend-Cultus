@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
 	selector: 'app-eventlist',
@@ -8,12 +9,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class EventlistComponent {
 	@Input() eventToDisplay: any
 	pfpUrl: any = "";
-	Url_Picture: string = "http://localhost:8003/storage/cover_event/"
+	Url_Picture: string = API_URLs.EVENTS+"storage/cover_event/"
 
 	@Output() ChangeEvent: any = new EventEmitter<number>();
 	constructor() { }
 	ngOnInit() {
-		console.log(this.eventToDisplay);
 		this.checkProfilePic();
 	}
 	displayEvent() {

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { EventService } from 'src/app/services/event.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
@@ -8,15 +9,15 @@ import { GetUserService } from 'src/app/services/get-user.service';
 	templateUrl: './event.component.html',
 	styleUrls: ['./event.component.scss']
 })
-export class EventComponent {	
+export class EventComponent {
 	userId: any;
 
-	@Input() EventToDisplay:any;
-	
+	@Input() EventToDisplay: any;
+
 	isAdmin: boolean;
 
 	eventCover: string = "";
-	defaultUrlCover: string = "http://localhost:8003/storage/cover_event/"
+	defaultUrlCover: string = API_URLs.EVENTS+"storage/cover_event/"
 
 
 	eventData: any = "";
@@ -32,8 +33,8 @@ export class EventComponent {
 	ngOnChanges() {
 		this.getUser();
 		this.getEvent();
-	}	
-	
+	}
+
 	getUser() {
 		this.userService.getUser().subscribe((res: any) => {
 			this.userId = res.id;

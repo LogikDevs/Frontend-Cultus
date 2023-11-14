@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_URLs } from '../common/globalVariables';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class GetCountriesService {
-	private urlCountries = "http://localhost:8000/api/v1/country";
+	private urlCountries = API_URLs.AUTH+"api/v1/country";
 
 	constructor(private http: HttpClient) { }
 

@@ -1,73 +1,55 @@
-<!-- <form #groupCreateForm="ngForm" (ngSubmit)="sendCreatedGroup(groupCreateForm.value)">
-    <input ngModel name="GroupName" type="text" placeholder="Group Name" required>
-    <input ngModel name="GroupDescription" type="text" placeholder="Group Description" required>
-    <select ngModel name ="GroupType">
-        <option value="private">Private</option>
-        <option value="public">Public</option>
-    </select>
-    <input ngModel name="multimedia_file" type="file" (change)="onFileChange($event)">
-    <button type="button" name="GroupInterests"(click)="showGroupInterestSelection()">Select Group interests</button>
-    <div *ngIf="interestService.displaySelectInterest">
-        <app-select-interest [SelectInterestType]="'group'" [WindowVisibility]="true"></app-select-interest>
-    </div>
-
-    <button type="submit" name="CreateGroup">Create Group</button> -->
-
-
-    <form #groupCreateForm="ngForm" (ngSubmit)="sendCreatedGroup(groupCreateForm.value)">
-        <div class="ContainerCreate">
-            <div class="HeaderCreate">
-                <div class="Back">
-                    <img src="assets/Go Back.png" (click)="ComponentRemove()" alt="">
-                </div>
-                <div class="Tittle">
-                    <h2>Create Group</h2>
-                </div>
-                <div class="ButtonCreate">
-                    <button type="submit" name="CreateGroup">Create</button> 
-                </div>
+<form #groupCreateForm="ngForm" (ngSubmit)="sendCreatedGroup(groupCreateForm.value)">
+    <div class="ContainerCreate">
+        <div class="HeaderCreate">
+            <div class="Back">
+                <img src="assets/Go Back.png" (click)="ComponentRemove()" alt="">
             </div>
-            <div class="ContainerImage">
-                <div class="Image">
-                  <label for="fileInput">
+            <div class="Tittle">
+                <h2>Create Group</h2>
+            </div>
+            <div class="ButtonCreate">
+                <button type="submit" name="CreateGroup">Create</button>
+            </div>
+        </div>
+        <div class="ContainerImage">
+            <div class="Image">
+                <label for="fileInput">
                     <img *ngIf="!imageUrl" src="assets/Crear-imagenes/Agregar.png" alt="Agregar Imagen">
                     <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
-                  </label>
-                  <input id="fileInput" type="file" (change)="onFileChange($event)">
-                </div>
-              </div>
-              
-            
-        
-            <div class="DataCreate">
-                <div class="Group1">
-                      <div class="Data">
+                </label>
+                <input id="fileInput" type="file" (change)="onFileChange($event)">
+            </div>
+        </div>
+
+        <div class="DataCreate">
+            <div class="Group1">
+                <div class="Data">
                     <p>Group name</p>
                     <input ngModel name="GroupName" type="text" placeholder="Group Name" required>
                 </div>
                 <div class="Data">
                     <p>Group type</p>
-                    <select ngModel name ="GroupType">
+                    <select ngModel name="GroupType">
                         <option value="private">Private</option>
                         <option value="public">Public</option>
                     </select>
                 </div>
-                </div>
-                <div class="Group2">
-                   <div class="Data" id="Description">
-                        <p>Description</p>
-                        <input ngModel name="GroupDescription" type="text" placeholder="Group Description" required>
-                    </div>
-                </div>
-                <div class="Group3">
-                 
-               
-                </div>
-              
             </div>
+            <div class="Group2">
+                <div class="Data" id="Description">
+                    <p>Description</p>
+                    <input ngModel name="GroupDescription" type="text" placeholder="Group Description" required>
+                </div>
+            </div>
+            <div class="Group3">
+
+
+            </div>
+
         </div>
-        
-        </form>
+    </div>
+
+</form>
 
 <div>
     <div *ngIf="ErrorMessage.visibility">

@@ -1,4 +1,7 @@
 <app-sidebar></app-sidebar>
+<div *ngIf="!ProfileData"> 
+    <app-loaded></app-loaded>
+</div>
 <div class="Profile" *ngIf="ProfileData">
     <div class="ContainerData">
         <div class="ContainerMyProfile">
@@ -8,13 +11,13 @@
                     <div class="EditProfile" *ngIf="ownProfile">
                         <img src="assets/Profile-Image/Pencil Drawing.svg" alt="" (click)="ToEditProfile()">
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="DataMyProfile">
                 <div class="NameMyProfile">
                     <p #HtmlNameSurname>{{ProfileData.name}} {{ProfileData.surname}}</p>
                 </div>
-            
+
                 <div class="FollowOption" *ngIf="!ownProfile">
                     <button id="FollowButton" (click)="CheckFollowOrUnfollow(true)">{{ isFollowing }}</button>
                 </div>
@@ -26,22 +29,24 @@
                 <div class="TittleInterest">
                     <p>Interests:</p>
                 </div>
-                <div class="ContainerInterest" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" [ngClass]="{'dragging': isDragging}">
+                <div class="ContainerInterest" draggable="true" (dragstart)="onDragStart($event)"
+                    (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" [ngClass]="{'dragging': isDragging}">
                     <p class="Interest" *ngFor="let interest of userInterests">{{ interest }}</p>
-                </div> 
+                </div>
             </div>
             <div class="PostMyProfile">
                 <div class="PostTypes">
                     <div class="ImagePost">
                         <p>Posts:</p>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
         <div class="ContainerProfile">
             <div class="ContainerPost">
-                <div class="ContainerImagePost"  *ngFor="let post of posts">
-                    <app-singlepost *ngIf="post" [userId]="userId" [post]="post" [ProfilePosts]=true (PostRemoved)="OnCompleteAlert()"></app-singlepost>
+                <div class="ContainerImagePost" *ngFor="let post of posts">
+                    <app-singlepost *ngIf="post" [userId]="userId" [post]="post" [ProfilePosts]=true
+                        (PostRemoved)="OnCompleteAlert()"></app-singlepost>
                 </div>
             </div>
             <div class="DataUser">
@@ -83,7 +88,7 @@
                 <div class="DescriptionData">
                     <div class="TittleDescription">
                         <p>Description:</p>
-                    </div>  
+                    </div>
                     <div class="Description">
                         <p> {{userDataVariable.description}} </p>
                     </div>

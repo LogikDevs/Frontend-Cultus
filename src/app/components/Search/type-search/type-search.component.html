@@ -30,7 +30,7 @@
             <form #UserToSearch="ngForm"  (ngSubmit)="typeData(UserToSearch.value)">
                 <input ngModel name="name" class="inputNames" type="text" placeholder="Name">
                 <input ngModel name="surname" class="inputNames" type="text" placeholder="Surname">
-                <button>Search</button>
+                <button class="ButtonSearch">Search</button>
             </form>
         </div>  
     </div>
@@ -46,14 +46,14 @@
     <div class="ContainerResult">
         
         <div class="Tittle">
-            <h2>Results: {{ SearchNotFound }}</h2>
+            <h2>Results: {{SearchNotFound}}</h2>
         </div>
-        <div *ngIf="typeSearchVariable=='interests'">
+        <div *ngIf="typeSearchVariable=='interests'" class="ContainerResultsUserAndInterest">
            <div class="ContainerInterest" *ngFor="let interest of filteredData">
                 <app-interests-search [interest]="interest"></app-interests-search>
             </div> 
         </div>
-        <div *ngIf="typeSearchVariable=='users'">
+        <div *ngIf="typeSearchVariable=='users'" class="ContainerResultsUserAndInterest">
             <div class="ContainerInterest" *ngFor="let user of filteredData">
                  <app-user-search [user]="user"></app-user-search>
              </div> 
@@ -61,5 +61,3 @@
     </div>
 </div>
 </div>
-
-

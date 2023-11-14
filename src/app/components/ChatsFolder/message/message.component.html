@@ -1,3 +1,6 @@
-<label class="ownMessage" *ngIf="ownMessage">{{message.body}}</label>
-
-<label class="notOwnMessage" *ngIf="!ownMessage">{{message.sender.name}}: {{message.body}}</label>
+<div class="MyMessage">
+    <label class="ownMessage" *ngIf="ownMessage">{{message.body}}</label>
+    </div>
+    <div class="YourMessage">
+    <label class="notOwnMessage" *ngIf="!ownMessage">{{message.sender.name}}: {{message.body}}</label>
+    </div>

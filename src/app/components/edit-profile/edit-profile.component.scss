@@ -361,6 +361,22 @@ cursor: pointer;
     font-weight: bold;
     font-size: 14px;
   }
+  .DisplayInterestButton{
+    margin: 35px;
+    margin-top: -50px;
+    margin-left: 100px;
+    border-radius: 8px;
+ 
+      font-weight: bold;
+  }
+  .DisplayInterestButton button{
+    background-color: #100F0F;
+    color: $ColorFuente;
+    border: none ;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
 textarea{
     border: none;
     border-radius: 8px;
@@ -390,5 +406,5 @@ color: #fff;
 border: none;
 padding: 12px;
 border-radius: 10px;
-cursor: pointer;
+cursor: pointer;
 }
