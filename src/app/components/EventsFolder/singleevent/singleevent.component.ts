@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class SingleeventComponent {
     @Input() event:any;
 	@Input() alreadyJoinedEvents:any;
     
-	pictureUrlDefault:string = "http://localhost:8003/storage/cover_event/"
+	pictureUrlDefault:string = API_URLs.EVENTS+"storage/cover_event/"
 	eventPicture:string = "";
 
     userFollows:any;

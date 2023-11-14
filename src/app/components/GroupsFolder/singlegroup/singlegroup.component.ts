@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { GroupService } from 'src/app/services/group.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { GroupService } from 'src/app/services/group.service';
 	styleUrls: ['./singlegroup.component.scss']
 })
 export class SinglegroupComponent {
-	pictureUrlDefault: string = "http://localhost:8002/storage/picture/"
+	pictureUrlDefault: string = API_URLs.GROUPS+"storage/picture/"
 	groupPicture: string = ""
 	joinButton: string = "Join";
 	joined: boolean = false;

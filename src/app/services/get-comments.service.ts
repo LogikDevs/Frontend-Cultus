@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_URLs } from '../common/globalVariables';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetCommentsService {
-  	private URLCreateComment = "http://localhost:8001/api/v1/comments/create";
-  	private URLGetComment = "http://localhost:8001/api/v1/comments/listPost/";
-	private URLDeleteComment = "http://localhost:8001/api/v1/comments/delete/";
+  	private URLCreateComment = API_URLs.POSTS+"api/v1/comments/create";
+  	private URLGetComment = API_URLs.POSTS+"api/v1/comments/listPost/";
+	private URLDeleteComment = API_URLs.POSTS+"api/v1/comments/delete/";
   	constructor(private http: HttpClient) { }
   
  	 getComment(PostId:number): Observable<Comment[]>{

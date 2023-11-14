@@ -1,5 +1,7 @@
 <div class="OverflowHideen" style="overflow-y: hidden;">
-
+    <div *ngIf="!eventData"> 
+        <app-loaded></app-loaded>
+    </div>
     <div class="ContainerContentChat" *ngIf="eventData">
         <div class="HeaderChat">
             <div class="Back">

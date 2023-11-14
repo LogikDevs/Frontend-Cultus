@@ -1,3 +1,6 @@
+<div *ngIf="!alreadyJoinedEvents"> 
+    <app-loaded></app-loaded>
+</div>
 <div class="suggestedEvents" *ngIf="alreadyJoinedEvents">
     <div *ngFor="let event of events">
         <app-singleevent *ngIf="event" [event]="event" [alreadyJoinedEvents]="alreadyJoinedEvents" (leftGroup)="OnCompleteAlert()"></app-singleevent>

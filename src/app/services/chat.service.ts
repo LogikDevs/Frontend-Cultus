@@ -1,16 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {API_URLs} from "src/app/common/globalVariables";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-	urlGetChat:string="http://localhost:8002/api/v1/chat/";
-	urlGetChatMessages:string="http://localhost:8002/api/v1/chat/"
-	urlSendMessage:string="http://localhost:8002/api/v1/message";
-	urlCreatePrivateChat:string="http://localhost:8002/api/v1/chat/direct/"
-	urlGetPrivateConversations:string="http://localhost:8002/api/v1/chat/get/direct/";
+	urlGetChat:string=API_URLs.GROUPS+"api/v1/chat/";
+	urlGetChatMessages:string=API_URLs.GROUPS+"api/v1/chat/"
+	urlSendMessage:string=API_URLs.GROUPS+"api/v1/message";
+	urlCreatePrivateChat:string=API_URLs.GROUPS+"api/v1/chat/direct/"
+	urlGetPrivateConversations:string=API_URLs.GROUPS+"api/v1/chat/get/direct/";
 
   	constructor(private http: HttpClient) { }
 

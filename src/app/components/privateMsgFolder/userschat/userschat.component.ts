@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
 	selector: 'app-userschat',
@@ -15,7 +16,7 @@ export class UserschatComponent {
 	userDirection: any;
 
 	pfpUrl: any;
-	Url_profile_pic: string = "http://localhost:8000/storage/profile_pic/"
+	Url_profile_pic: string = API_URLs.AUTH+"storage/profile_pic/"
 
 	@Output() ChangeRoute: any = new EventEmitter<number>();
 	@Output() MessegeableUserInfo: any = new EventEmitter<any>();

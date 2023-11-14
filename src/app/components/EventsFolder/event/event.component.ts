@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { EventService } from 'src/app/services/event.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
@@ -16,7 +17,7 @@ export class EventComponent {
 	isAdmin: boolean;
 
 	eventCover: string = "";
-	defaultUrlCover: string = "http://localhost:8003/storage/cover_event/"
+	defaultUrlCover: string = API_URLs.EVENTS+"storage/cover_event/"
 
 
 	eventData: any = "";

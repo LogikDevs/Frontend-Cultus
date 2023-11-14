@@ -1,8 +1,6 @@
 <app-sidebar></app-sidebar>
-
-
 <form #postCreateForm="ngForm" (ngSubmit)="sendPostData(postCreateForm.value)">
-    <div class="ContainerModalCreatePost" *ngIf="userData" [class.inside-events]="isInsideEvents">
+    <div class="ContainerModalCreatePost" [class.inside-events]="isInsideEvents">
         <div class="Header">
             <div class="Close">
                 <img src="assets/post-images/close.svg" (click)="ComponentRemove()" alt="">
@@ -12,7 +10,7 @@
             <div class="Photo">
                 <img src={{userPfp}} alt="">
             </div>
-            <div class="Name">
+            <div class="Name" *ngIf="userData">
                 <p>{{this.userData.name}} {{this.userData.surname}}</p>
             </div>
         </div>

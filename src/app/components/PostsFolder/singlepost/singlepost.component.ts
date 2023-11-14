@@ -6,6 +6,7 @@ import { GetCommentsService } from 'src/app/services/get-comments.service';
 import { GetPostsService } from 'src/app/services/get-posts.service';
 import { FollowsService } from 'src/app/services/follows.service';
 import { Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
 	selector: 'app-singlepost',
@@ -23,9 +24,9 @@ import { Router } from '@angular/router';
 export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
 
-	defaultUrl: string = "http://localhost:8001/multimedia_post/";
+	defaultUrl: string = API_URLs.POSTS+"multimedia_post/";
 
-	urlPfp: any = "http://localhost:8000/storage/profile_pic/";
+	urlPfp: any = API_URLs.AUTH+"storage/profile_pic/";
 	userPfp: any = "/assets/post-images/profile_def.jpg";
 
 	@Input() ProfilePosts: boolean = false;

@@ -1,14 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_URLs } from '../common/globalVariables';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class VoteService {
-	private urlCreateVote = 'http://localhost:8001/api/v1/votes/create';
-	private urlUpdateVotes = 'http://localhost:8001/api/v1/posts/list/';
-	private urlDeleteVote = 'http://localhost:8001/api/v1/votes/delete/';
-	private urlUserVotes= 'http://localhost:8001/api/v1/votes/listUser/';
+	private urlCreateVote = API_URLs.POSTS+'api/v1/votes/create';
+	private urlUpdateVotes = API_URLs.POSTS+'api/v1/posts/list/';
+	private urlDeleteVote = API_URLs.POSTS+'api/v1/votes/delete/';
+	private urlUserVotes= API_URLs.POSTS+'api/v1/votes/listUser/';
 	constructor(private http: HttpClient) { }
 
 	voteCreate(postIdReceived: any, votetype: any) {
