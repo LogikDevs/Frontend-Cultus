@@ -8,8 +8,8 @@ import {API_URLs} from "src/app/common/globalVariables";
 export class AuthenticationService {
 	private loginUrl = API_URLs.AUTH+"oauth/token";
 	private logoutUrl = API_URLs.AUTH+"api/v1/logout";
-	private client = "101";
-	private secret = "sPQwfUy9CHW2lsG1rFiSlYYeXNmApzpDYwFqcg4O";
+	private client = API_URLs.client;
+	private secret = API_URLs.secret;
 
 	constructor(private http: HttpClient) { }
 

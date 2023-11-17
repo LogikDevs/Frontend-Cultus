@@ -3,4 +3,7 @@ export class API_URLs {
     public static POSTS: string = ""; 
     public static GROUPS: string = "";
     public static EVENTS: string = "";
+
+    public static client: string = "";
+    public static secret: string = ""
 }
