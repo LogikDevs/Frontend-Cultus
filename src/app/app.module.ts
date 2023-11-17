@@ -31,7 +31,6 @@ import { ModalOptionPostComponent } from './components/modal-option-post/modal-o
 
 import { CrearMenuComponent } from './components/crear-menu/crear-menu.component';
 import { GruposComponent } from './components/GroupsFolder/grupos/grupos.component';
-import { NgImageSliderModule } from 'ng-image-slider';
 import { SliderGruposComponent } from './components/slider-grupos/slider-grupos.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TypeSearchComponent } from './components/Search/type-search/type-search.component';
@@ -135,7 +134,6 @@ import { EventlistComponent } from './components/EventsFolder/EventListFolder/ev
   ],
   imports: [
     BrowserModule,
-    NgImageSliderModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule
