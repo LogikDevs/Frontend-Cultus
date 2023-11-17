@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../components/PostsFolder/singlepost/post.model';
 import { Observable } from 'rxjs';
-import { API_URLs } from '../common/globalVariables';
+import { API_URLs } from '../common/globalVariables.ts.example';
 @Injectable({
 	providedIn: 'root'
 })
