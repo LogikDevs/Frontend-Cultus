@@ -35,7 +35,6 @@ export class GroupComponent {
 	ngOnChanges() {
 		this.getGroup();
 		this.getParticipants();
-		this.checkIfIsAdmin();
 		this.checkCover();
 	}
 
