@@ -1,6 +1,0 @@
-export class API_URLs {
-    public static AUTH: string = "";
-    public static POSTS: string = ""; 
-    public static GROUPS: string = "";
-    public static EVENTS: string = "";
-}
