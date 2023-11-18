@@ -11,7 +11,7 @@ export class SingleeventComponent {
     @Input() event:any;
 	@Input() alreadyJoinedEvents:any;
     
-	pictureUrlDefault:string = API_URLs.EVENTS+"storage/cover_event/"
+	pictureUrlDefault:string = API_URLs.EVENTS+"/storage/cover_event/"
 	eventPicture:string = "";
 
     userFollows:any;

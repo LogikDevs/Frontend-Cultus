@@ -6,9 +6,9 @@ import { API_URLs } from '../common/globalVariables';
 })
 
 export class GetUserService {
-	private urlgetUser = API_URLs.AUTH+'api/v1/validate';
-	private urlUserProfile = API_URLs.AUTH+'api/v1/user/profile/'
-	private urlSearchUser = API_URLs.AUTH+"api/v1/user/search";
+	private urlgetUser = API_URLs.AUTH+'/api/v1/validate';
+	private urlUserProfile = API_URLs.AUTH+'/api/v1/user/profile/'
+	private urlSearchUser = API_URLs.AUTH+"/api/v1/user/search";
 
 	constructor(private http: HttpClient) {  }
 

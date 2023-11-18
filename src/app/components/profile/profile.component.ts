@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
 
 	ownProfile: boolean = false;
 
-	Url_profile_pic: string = API_URLs.AUTH+"storage/profile_pic/";
+	Url_profile_pic: string = API_URLs.AUTH+"/storage/profile_pic/";
 
 	userInterests: any[] = [];
 

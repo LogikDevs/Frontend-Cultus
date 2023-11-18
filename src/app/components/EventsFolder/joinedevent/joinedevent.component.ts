@@ -11,7 +11,7 @@ import { EventService } from 'src/app/services/event.service';
 export class JoinedeventComponent {
 	@Input() event: any
 
-	pictureUrlDefault: string = API_URLs.EVENTS+"storage/cover_event/"
+	pictureUrlDefault: string = API_URLs.EVENTS+"/storage/cover_event/"
 	eventPicture: string = "";
 	
 	constructor(

@@ -17,7 +17,7 @@ export class EventComponent {
 	isAdmin: boolean;
 
 	eventCover: string = "";
-	defaultUrlCover: string = API_URLs.EVENTS+"storage/cover_event/"
+	defaultUrlCover: string = API_URLs.EVENTS+"/storage/cover_event/"
 
 
 	eventData: any = "";

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from '../singlepost/post.model';
 import { Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
     selector: 'app-comment',
@@ -20,7 +21,7 @@ export class CommentComponent implements OnInit {
     commentId: any;
     ownComment: boolean = false;
 
-    urlPfp: any = "http://localhost:8000/storage/profile_pic/";
+    urlPfp: any = API_URLs.AUTH+"/storage/profile_pic/";
     userPfp: any = "/assets/post-images/profile_def.jpg";
 
     constructor(

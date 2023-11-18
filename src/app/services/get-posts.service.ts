@@ -7,13 +7,13 @@ import { API_URLs } from '../common/globalVariables';
 	providedIn: 'root'
 })
 export class GetPostsService {
-	private urlGetPosts = API_URLs.POSTS+'api/v1/posts/';
-	private urlGetPostsFromInterests = API_URLs.POSTS+'api/v1/posts/interested/';
-	private urlUserPosts = API_URLs.POSTS+'api/v1/posts/user/';
-	private urlUpdateComments=API_URLs.POSTS+'api/v1/posts/list/'
-	private urlGetPostsInterests=API_URLs.POSTS+'api/v1/characterizes/listPost/'
-	private urlGetPostsFromFolloweds=API_URLs.POSTS+'api/v1/posts/followed';
-	private urlDeletePost=API_URLs.POSTS+'api/v1/posts/delete/'
+	private urlGetPosts = API_URLs.POSTS+'/api/v1/posts/';
+	private urlGetPostsFromInterests = API_URLs.POSTS+'/api/v1/posts/interested/';
+	private urlUserPosts = API_URLs.POSTS+'/api/v1/posts/user/';
+	private urlUpdateComments=API_URLs.POSTS+'/api/v1/posts/list/'
+	private urlGetPostsInterests=API_URLs.POSTS+'/api/v1/characterizes/listPost/'
+	private urlGetPostsFromFolloweds=API_URLs.POSTS+'/api/v1/posts/followed';
+	private urlDeletePost=API_URLs.POSTS+'/api/v1/posts/delete/'
 	constructor(private http: HttpClient) { }
 	getPosts(): Observable<Post[]> {
 		const httpOptions = {

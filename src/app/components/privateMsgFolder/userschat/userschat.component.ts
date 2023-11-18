@@ -16,7 +16,7 @@ export class UserschatComponent {
 	userDirection: any;
 
 	pfpUrl: any;
-	Url_profile_pic: string = API_URLs.AUTH+"storage/profile_pic/"
+	Url_profile_pic: string = API_URLs.AUTH+"/storage/profile_pic/"
 
 	@Output() ChangeRoute: any = new EventEmitter<number>();
 	@Output() MessegeableUserInfo: any = new EventEmitter<any>();

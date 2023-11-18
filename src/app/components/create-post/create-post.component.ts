@@ -24,7 +24,7 @@ export class CreatePostComponent {
 	postMultimedia: File;
 	imageUrl: any;
 
-	defaultUrl: string = API_URLs.AUTH+"storage/profile_pic/";
+	defaultUrl: string = API_URLs.AUTH+"/storage/profile_pic/";
 	userPfp: string = "assets/post-images/profile_def.jpg";
 
 	userData: any;
