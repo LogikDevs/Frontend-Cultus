@@ -6,8 +6,8 @@ import {API_URLs} from "src/app/common/globalVariables";
 	providedIn: 'root'   
 })
 export class AuthenticationService {
-	private loginUrl = API_URLs.AUTH+"oauth/token";
-	private logoutUrl = API_URLs.AUTH+"api/v1/logout";
+	private loginUrl = API_URLs.AUTH+"/oauth/token";
+	private logoutUrl = API_URLs.AUTH+"/api/v1/logout";
 	private client = API_URLs.client;
 	private secret = API_URLs.secret;
 

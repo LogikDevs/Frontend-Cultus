@@ -7,11 +7,11 @@ import {API_URLs} from "src/app/common/globalVariables";
 })
 export class ChatService {
 
-	urlGetChat:string=API_URLs.GROUPS+"api/v1/chat/";
-	urlGetChatMessages:string=API_URLs.GROUPS+"api/v1/chat/"
-	urlSendMessage:string=API_URLs.GROUPS+"api/v1/message";
-	urlCreatePrivateChat:string=API_URLs.GROUPS+"api/v1/chat/direct/"
-	urlGetPrivateConversations:string=API_URLs.GROUPS+"api/v1/chat/get/direct/";
+	urlGetChat:string=API_URLs.GROUPS+"/api/v1/chat/";
+	urlGetChatMessages:string=API_URLs.GROUPS+"/api/v1/chat/"
+	urlSendMessage:string=API_URLs.GROUPS+"/api/v1/message";
+	urlCreatePrivateChat:string=API_URLs.GROUPS+"/api/v1/chat/direct/"
+	urlGetPrivateConversations:string=API_URLs.GROUPS+"/api/v1/chat/get/direct/";
 
   	constructor(private http: HttpClient) { }
 

@@ -9,7 +9,7 @@ import { API_URLs } from 'src/app/common/globalVariables';
 export class GrouplistComponent {
     @Input() groupToDisplay: any
     pfpUrl: any = "";
-    Url_Picture: string = API_URLs.GROUPS+"storage/picture/"
+    Url_Picture: string = API_URLs.GROUPS+"/storage/picture/"
 
     @Output() ChangeGroup: any = new EventEmitter<number>();
     constructor() { }

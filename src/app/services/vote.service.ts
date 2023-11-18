@@ -6,10 +6,10 @@ import { API_URLs } from '../common/globalVariables';
 	providedIn: 'root'
 })
 export class VoteService {
-	private urlCreateVote = API_URLs.POSTS+'api/v1/votes/create';
-	private urlUpdateVotes = API_URLs.POSTS+'api/v1/posts/list/';
-	private urlDeleteVote = API_URLs.POSTS+'api/v1/votes/delete/';
-	private urlUserVotes= API_URLs.POSTS+'api/v1/votes/listUser/';
+	private urlCreateVote = API_URLs.POSTS+'/api/v1/votes/create';
+	private urlUpdateVotes = API_URLs.POSTS+'/api/v1/posts/list/';
+	private urlDeleteVote = API_URLs.POSTS+'/api/v1/votes/delete/';
+	private urlUserVotes= API_URLs.POSTS+'/api/v1/votes/listUser/';
 	constructor(private http: HttpClient) { }
 
 	voteCreate(postIdReceived: any, votetype: any) {

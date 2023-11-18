@@ -7,9 +7,9 @@ import { API_URLs } from '../common/globalVariables';
   providedIn: 'root'
 })
 export class GetCommentsService {
-  	private URLCreateComment = API_URLs.POSTS+"api/v1/comments/create";
-  	private URLGetComment = API_URLs.POSTS+"api/v1/comments/listPost/";
-	private URLDeleteComment = API_URLs.POSTS+"api/v1/comments/delete/";
+  	private URLCreateComment = API_URLs.POSTS+"/api/v1/comments/create";
+  	private URLGetComment = API_URLs.POSTS+"/api/v1/comments/listPost/";
+	private URLDeleteComment = API_URLs.POSTS+"/api/v1/comments/delete/";
   	constructor(private http: HttpClient) { }
   
  	 getComment(PostId:number): Observable<Comment[]>{

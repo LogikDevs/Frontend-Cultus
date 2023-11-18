@@ -11,7 +11,7 @@ import { GetUserService } from 'src/app/services/get-user.service';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent {
-	PublicUrl:string = API_URLs.AUTH+"storage/profile_pic/";
+	PublicUrl:string = API_URLs.AUTH+"/storage/profile_pic/";
 	
 	@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 	

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 
 @Component({
     selector: 'app-user-search',
@@ -10,7 +11,7 @@ export class UserSearchComponent {
     @Input() user: any;
 
     pfpUrl: any = "";
-    Url_profile_pic: string = "http://localhost:8000/storage/profile_pic/"
+    Url_profile_pic: string = API_URLs.AUTH+"/storage/profile_pic/"
 
     constructor(
         private router: Router

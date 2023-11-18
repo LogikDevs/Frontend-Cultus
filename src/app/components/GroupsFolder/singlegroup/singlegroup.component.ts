@@ -8,7 +8,7 @@ import { GroupService } from 'src/app/services/group.service';
 	styleUrls: ['./singlegroup.component.scss']
 })
 export class SinglegroupComponent {
-	pictureUrlDefault: string = API_URLs.GROUPS+"storage/picture/"
+	pictureUrlDefault: string = API_URLs.GROUPS+"/storage/picture/"
 	groupPicture: string = ""
 	joinButton: string = "Join";
 	joined: boolean = false;

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { API_URLs } from 'src/app/common/globalVariables';
 import { ChatService } from 'src/app/services/chat.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 
@@ -22,7 +23,7 @@ export class PrivateconversationsComponent {
 	userId: any;
 
 	chatProfile: string = "";
-	defaultUrlProfile: string = "http://localhost:8000/storage/profile_pic/"
+	defaultUrlProfile: string = API_URLs.AUTH+"/storage/profile_pic/"
 
 	displayedChat: boolean;
 

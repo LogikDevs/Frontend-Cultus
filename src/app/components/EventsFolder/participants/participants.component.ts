@@ -11,7 +11,7 @@ export class ParticipantsComponent {
     @Input() type:string = "event" || "group";
     @Input() participant:any;
 
-	defaultUrl:any = API_URLs.AUTH+"storage/profile_pic/"
+	defaultUrl:any = API_URLs.AUTH+"/storage/profile_pic/"
 	pfpUrl:any= "";
 
     constructor(

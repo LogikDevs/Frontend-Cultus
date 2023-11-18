@@ -6,7 +6,7 @@ import { API_URLs } from '../common/globalVariables';
 	providedIn: 'root'
 })
 export class GetCountriesService {
-	private urlCountries = API_URLs.AUTH+"api/v1/country";
+	private urlCountries = API_URLs.AUTH+"/api/v1/country";
 
 	constructor(private http: HttpClient) { }
 
