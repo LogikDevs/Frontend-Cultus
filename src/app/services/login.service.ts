@@ -5,7 +5,7 @@ import { API_URLs } from '../common/globalVariables';
 	providedIn: 'root'
 })
 export class PostLoginService {
-	private urlAuthenticationAPI: string = API_URLs.AUTH+'api/v1/user';
+	private urlAuthenticationAPI: string = API_URLs.AUTH+'/api/v1/user';
 
 	constructor(private http: HttpClient) { }
 

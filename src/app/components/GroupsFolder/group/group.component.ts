@@ -22,7 +22,7 @@ export class GroupComponent {
 	Section: boolean = true;
 
 	groupCover: string = "";
-	defaultUrlCover: string = API_URLs.GROUPS+"storage/picture/"
+	defaultUrlCover: string = API_URLs.GROUPS+"/storage/picture/"
 
 	createPostComponentVisibility: boolean = false;
 

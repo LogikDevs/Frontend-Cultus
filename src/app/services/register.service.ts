@@ -6,7 +6,7 @@ import { API_URLs } from '../common/globalVariables';
 	providedIn: 'root'
 })
 export class PostRegisterService {
-	private urlAuthenticationAPI = API_URLs.AUTH+'api/v1/user';
+	private urlAuthenticationAPI = API_URLs.AUTH+'/api/v1/user';
 
 	private constructor(private http: HttpClient) { }
 

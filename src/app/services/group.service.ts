@@ -7,11 +7,11 @@ import { API_URLs } from '../common/globalVariables';
 })
 export class GroupService {
 
-	private urlGroups:string =API_URLs.GROUPS+"api/v1/group/";
-	private urlMyGroups:string =API_URLs.GROUPS+"api/v1/chats/";
-	private urlJoinGroup:string=API_URLs.GROUPS+"api/v1/group/join/";
-	private urlLeaveGroup:string=API_URLs.GROUPS+"api/v1/leave/"
-	private urlGetParticipants:string=API_URLs.GROUPS+"api/v1/integrates/"
+	private urlGroups:string =API_URLs.GROUPS+"/api/v1/group/";
+	private urlMyGroups:string =API_URLs.GROUPS+"/api/v1/chats/";
+	private urlJoinGroup:string=API_URLs.GROUPS+"/api/v1/group/join/";
+	private urlLeaveGroup:string=API_URLs.GROUPS+"/api/v1/leave/"
+	private urlGetParticipants:string=API_URLs.GROUPS+"/api/v1/integrates/"
 	
   	constructor(private http: HttpClient) {}
 

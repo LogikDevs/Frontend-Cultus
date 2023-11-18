@@ -6,8 +6,8 @@ import {API_URLs} from "src/app/common/globalVariables";
 	providedIn: 'root'
 })
 export class CreatePostService {
-	private urlCreatePost = API_URLs.POSTS+'api/v1/posts/create';
-	private urlCreateMultimedia = API_URLs.POSTS+'api/v1/multimedia/create';
+	private urlCreatePost = API_URLs.POSTS+'/api/v1/posts/create';
+	private urlCreateMultimedia = API_URLs.POSTS+'/api/v1/multimedia/create';
 	
 	constructor(private http: HttpClient) { }
 

@@ -6,8 +6,8 @@ import {API_URLs} from "src/app/common/globalVariables";
 	providedIn: 'root'
 })
 export class EditUserService {
-	private urlApiRegisterOptionalData = API_URLs.AUTH+"api/v1/user/2";
-	private urlApiEditUser = API_URLs.AUTH+"api/v1/user/edit";
+	private urlApiRegisterOptionalData = API_URLs.AUTH+"/api/v1/user/2";
+	private urlApiEditUser = API_URLs.AUTH+"/api/v1/user/edit";
   
 	constructor(private http: HttpClient) {}
 	

@@ -24,9 +24,9 @@ import { API_URLs } from 'src/app/common/globalVariables';
 export class SinglepostComponent implements OnInit {
 	@Input() post: Post;
 
-	defaultUrl: string = API_URLs.POSTS+"multimedia_post/";
+	defaultUrl: string = API_URLs.POSTS+"/multimedia_post/";
 
-	urlPfp: any = API_URLs.AUTH+"storage/profile_pic/";
+	urlPfp: any = API_URLs.AUTH+"/storage/profile_pic/";
 	userPfp: any = "/assets/post-images/profile_def.jpg";
 
 	@Input() ProfilePosts: boolean = false;

@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { StatusService } from 'src/app/services/status.service';
 import { GetUserService } from '../../services/get-user.service';
+import { API_URLs } from 'src/app/common/globalVariables';
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
@@ -19,7 +20,7 @@ export class SidebarComponent implements OnInit {
     userId: any;
     userData: any;
 
-    urlPfp: any = "http://localhost:8000/storage/profile_pic/";
+    urlPfp: any = API_URLs.AUTH+"/storage/profile_pic/";
     userPfp: any = "/assets/post-images/profile_def.jpg";
     constructor(
         private api: AuthenticationService,

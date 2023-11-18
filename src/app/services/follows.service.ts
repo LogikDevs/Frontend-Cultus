@@ -5,9 +5,9 @@ import {API_URLs} from "src/app/common/globalVariables";
   providedIn: 'root'
 })
 export class FollowsService {
-  private urlSendFollow = API_URLs.AUTH+"api/v1/follow";
-  private urlUnfollow = API_URLs.AUTH+"api/v1/unfollow";
-  private urlUserFollowed = API_URLs.AUTH+"api/v1/followeds/"
+  private urlSendFollow = API_URLs.AUTH+"/api/v1/follow";
+  private urlUnfollow = API_URLs.AUTH+"/api/v1/unfollow";
+  private urlUserFollowed = API_URLs.AUTH+"/api/v1/followeds/"
 
   constructor(private http: HttpClient) { }
 
