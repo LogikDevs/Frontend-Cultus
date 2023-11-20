@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Interest, UserInterests } from '../components/InterestsFolder/interest/interest.model';
-import { API_URLs } from '../common/globalVariables';
+import { API_URLs } from '../common/globalVariables.ts.example';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { API_URLs } from '../common/globalVariables';
+import { API_URLs } from '../common/globalVariables.ts.example';
 @Injectable({
 	providedIn: 'root'
 })
